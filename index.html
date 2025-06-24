@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KxN | Deconstrucción Vocal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --black: #000000;
@@ -12,7 +13,7 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--black);
             color: var(--white);
             line-height: 1.8;
@@ -20,6 +21,7 @@
             margin: 0 auto;
             padding: 2rem;
             -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
         
         header {
@@ -29,10 +31,10 @@
         }
         
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 300;
-            letter-spacing: -0.05em;
-            margin: 1rem 0 0.5rem;
+            letter-spacing: -0.03em;
+            margin: 2rem 0 0.5rem;
         }
         
         .tagline {
@@ -43,44 +45,38 @@
             margin-bottom: 3rem;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+            margin: 3rem 0;
         }
         
-        .social-links a {
+        .social-card {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .social-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .social-card i {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
+        }
+        
+        .social-card a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .social-links a:hover {
-            color: var(--gold);
-        }
-        
-        .social-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-        
-        .social-links a:hover::after {
-            width: 100%;
-        }
-        
-        .social-links strong {
-            color: var(--gold);
-            font-weight: normal;
+            font-size: 0.85rem;
+            display: block;
         }
         
         section {
@@ -88,32 +84,51 @@
         }
         
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
             color: var(--gold);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
         }
         
         p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .birthday {
+        .highlight {
             display: inline-block;
-            margin: 0.5rem 0;
             padding: 0.3rem 0.6rem;
             background: rgba(212, 175, 55, 0.1);
             border-left: 2px solid var(--gold);
-            font-size: 0.9rem;
             color: var(--gold);
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        .youtube-container {
+            margin: 3rem auto;
+            max-width: 700px;
         }
         
         .youtube-player {
-            margin: 3rem 0;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
@@ -127,27 +142,32 @@
             border: none;
         }
         
-        hr {
-            border: 0;
-            height: 1px;
-            background: rgba(212, 175, 55, 0.2);
-            margin: 3rem 0;
-            width: 50%;
-            margin-left: auto;
-            margin-right: auto;
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             h1 {
                 font-size: 2.5rem;
             }
-            
-            .tagline {
-                letter-spacing: 0.3em;
+        }
+        
+        @media (max-width: 500px) {
+            .social-grid {
+                grid-template-columns: 1fr;
             }
             
-            .social-links {
-                gap: 1rem;
+            body {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -155,38 +175,67 @@
 <body>
     <header>
         <h1>KxN</h1>
-        <p class="tagline">ARTE VOCAL DE VANGUARDIA</p>
-        
-        <div class="social-links">
-            <a href="https://youtube.com/@kxnoficial" target="_blank">YouTube</a>
-            <a href="https://www.bandlab.com/kxnoficial" target="_blank"><strong>BandLab</strong></a>
-            <a href="https://www.tiktok.com/@kxnoficial" target="_blank">TikTok</a>
-            <a href="https://www.instagram.com/kxnoficial" target="_blank">Instagram</a>
-        </div>
+        <p class="tagline">DECONSTRUCCIÓN VOCAL</p>
     </header>
     
     <section id="bio">
         <h2>Tomás Miguel</h2>
-        <p><span class="birthday">Viernes 24 de diciembre de 1999</span><br>
+        <p><span class="highlight">24 de diciembre de 1999</span><br>
         Santa Cruz de Tenerife, Islas Canarias</p>
         
-        <p>Proyecto amateur de experimentación vocal donde el autotune trasciende su función técnica para convertirse en instrumento de expresión. Cada distorsión es una decisión estética consciente.</p>
+        <p>Transformo canciones que amo en piezas únicas, donde mi voz se fusiona con tecnología para crear algo nuevo. Cada cover es un viaje personal entre lo orgánico y lo digital.</p>
         
-        <p>Esta es mi evolución sonora: cruda, digital y en constante transformación.</p>
+        <p>No busco perfección, sino emociones auténticas envueltas en capas de autotune y efectos. Bienvenidos a mi evolución sonora.</p>
     </section>
     
-    <hr>
+    <div class="social-grid">
+        <div class="social-card">
+            <i class="fab fa-youtube"></i>
+            <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank">YouTube</a>
+        </div>
+        <div class="social-card">
+            <i class="fab fa-tiktok"></i>
+            <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank">TikTok</a>
+        </div>
+        <div class="social-card">
+            <i class="fab fa-instagram"></i>
+            <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank">Instagram</a>
+        </div>
+        <div class="social-card">
+            <i class="fab fa-threads"></i>
+            <a href="https://www.threads.net/@kxnoficial" target="_blank">Threads</a>
+        </div>
+        <div class="social-card">
+            <i class="fab fa-facebook"></i>
+            <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank">Facebook</a>
+        </div>
+        <div class="social-card">
+            <i class="fab fa-twitter"></i>
+            <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank">X / Twitter</a>
+        </div>
+        <div class="social-card">
+            <i class="fas fa-circle"></i>
+            <a href="https://bsky.app/profiloficial.com" target="_blank">Bluesky</a>
+        </div>
+    </div>
     
     <section id="music">
-        <h2>Última creación</h2>
-        <div class="youtube-player">
-            <!-- Reemplaza con tu ID de YouTube -->
-            <iframe 
-                src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+        <h2>Último Cover</h2>
+        <div class="youtube-container">
+            <div class="youtube-player">
+                <!-- Reemplaza con tu ID de YouTube -->
+                <iframe 
+                    src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </section>
+    
+    <footer>
+        <p>KxN © 2024 | Arte Vocal Experimental</p>
+        <p>Santa Cruz de Tenerife, Islas Canarias</p>
+    </footer>
 </body>
 </html>
