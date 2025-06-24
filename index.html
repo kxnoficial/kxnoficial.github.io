@@ -12,17 +12,46 @@
             --gold: #D4AF37;
         }
         
+        /* Fondo en movimiento minimalista */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--black);
             color: var(--white);
             line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
+            margin: 0;
+            padding: 0;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, transparent 0%, rgba(0,0,0,0.9) 70%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23D4AF37" opacity="0.3"/></svg>');
+            z-index: -2;
+            animation: drift 40s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 100% 0, 100% 100%; }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            min-height: 100vh;
         }
         
         /* Foto de perfil flotante */
@@ -65,258 +94,157 @@
             margin-bottom: 1rem;
         }
         
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        /* Navegación entre subpáginas */
+        .nav-pages {
+            display: flex;
+            justify-content: center;
             gap: 1.5rem;
-            margin: 3rem 0;
+            margin: 2rem 0;
+            flex-wrap: wrap;
         }
         
-        .social-card {
-            background: rgba(20, 20, 20, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            padding: 1.2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-radius: 3px;
-        }
-        
-        .social-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-        
-        .social-card i {
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-            color: var(--gold);
-        }
-        
-        .social-card a {
+        .nav-pages a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-pages a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        
+        /* Contenido de subpáginas (oculto por defecto) */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .page.active {
             display: block;
         }
         
-        section {
-            margin-bottom: 4rem;
-        }
+        /* Resto de estilos (social grid, gallery, etc.) */
+        /* ... (Mantén todos los estilos anteriores de .social-grid, .gallery, etc.) ... */
         
-        h2 {
-            font-size: 1.6rem;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            color: var(--gold);
-            position: relative;
+        /* Añade este estilo para el botón de volver */
+        .back-btn {
             display: inline-block;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
-        }
-        
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .highlight {
-            display: inline-block;
-            padding: 0.3rem 0.6rem;
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 2px solid var(--gold);
+            margin: 2rem 0;
             color: var(--gold);
+            text-decoration: none;
             font-size: 0.9rem;
-            margin: 0.5rem 0;
-        }
-        
-        /* Sección Álbum */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .gallery-item {
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            position: relative;
-            border-radius: 3px;
-            transition: all 0.5s ease;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .youtube-container {
-            margin: 3rem auto;
-            max-width: 700px;
-        }
-        
-        .youtube-player {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .youtube-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        @media (max-width: 700px) {
-            .social-grid, .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-        }
-        
-        @media (max-width: 500px) {
-            .social-grid, .gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            body {
-                padding: 1.5rem;
-            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <!-- Reemplaza con tu foto de perfil -->
-        <img src="TU_FOTO_PERFIL.jpg" alt="Tomás Miguel" class="profile-pic">
-        <h1>KxN</h1>
-        <p class="tagline">DECONSTRUCCIÓN VOCAL</p>
-    </header>
-    
-    <section id="bio">
-        <h2>Tomás Miguel</h2>
-        <p><span class="highlight">24 de diciembre de 1999</span><br>
-        Santa Cruz de Tenerife, Islas Canarias</p>
+    <div class="container">
+        <header>
+            <img src="TU_FOTO_PERFIL.jpg" alt="Tomás Miguel" class="profile-pic">
+            <h1>KxN</h1>
+            <p class="tagline">DECONSTRUCCIÓN VOCAL</p>
+            
+            <div class="nav-pages">
+                <a href="#" onclick="showPage('home')">Inicio</a>
+                <a href="#" onclick="showPage('bio')">Biografía</a>
+                <a href="#" onclick="showPage('music')">Música</a>
+                <a href="#" onclick="showPage('gallery')">Álbum</a>
+                <a href="#" onclick="showPage('contact')">Contacto</a>
+            </div>
+        </header>
         
-        <p>Transformo canciones que amo en piezas únicas, donde mi voz se fusiona con tecnología para crear algo nuevo. Cada cover es un viaje personal entre lo orgánico y lo digital.</p>
+        <!-- Página de Inicio -->
+        <div id="home" class="page active">
+            <div class="social-grid">
+                <!-- Tus redes sociales aquí (igual que antes) -->
+            </div>
+            
+            <section>
+                <h2>Último Proyecto</h2>
+                <p>Explora mi última creación vocal donde fusiono lo clásico con lo digital.</p>
+                <a href="#" onclick="showPage('music')" class="back-btn">Ver Música →</a>
+            </section>
+        </div>
         
-        <p>No busco perfección, sino emociones auténticas envueltas en capas de autotune y efectos. Bienvenidos a mi evolución sonora.</p>
-    </section>
-    
-    <div class="social-grid">
-        <div class="social-card">
-            <i class="fab fa-youtube"></i>
-            <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank">YouTube</a>
+        <!-- Página de Biografía -->
+        <div id="bio" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">← Volver</a>
+            <h2>Tomás Miguel</h2>
+            <p><span class="highlight">24 de diciembre de 1999</span><br>
+            Santa Cruz de Tenerife, Islas Canarias</p>
+            
+            <p>Transformo canciones que amo en piezas únicas, donde mi voz se fusiona con tecnología para crear algo nuevo...</p>
+            <!-- Resto de tu biografía -->
         </div>
-        <div class="social-card">
-            <i class="fab fa-tiktok"></i>
-            <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank">TikTok</a>
+        
+        <!-- Página de Música -->
+        <div id="music" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">← Volver</a>
+            <h2>Último Cover</h2>
+            <div class="youtube-container">
+                <div class="youtube-player">
+                    <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
-        <div class="social-card">
-            <i class="fab fa-instagram"></i>
-            <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank">Instagram</a>
+        
+        <!-- Página de Álbum -->
+        <div id="gallery" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">← Volver</a>
+            <h2>Álbum Visual</h2>
+            <div class="gallery">
+                <!-- Tus imágenes aquí -->
+            </div>
         </div>
-        <div class="social-card">
-            <i class="fab fa-threads"></i>
-            <a href="https://www.threads.net/@kxnoficial" target="_blank">Threads</a>
-        </div>
-        <div class="social-card">
-            <i class="fab fa-facebook"></i>
-            <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank">Facebook</a>
-        </div>
-        <div class="social-card">
-            <i class="fab fa-twitter"></i>
-            <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank">X / Twitter</a>
-        </div>
-        <div class="social-card">
-            <i class="fas fa-circle"></i>
-            <a href="https://bsky.app/profiloficial.com" target="_blank">Bluesky</a>
-        </div>
-        <div class="social-card">
-            <i class="fas fa-music"></i>
-            <a href="https://www.bandlab.com/kxnoficial" target="_blank">BandLab</a>
+        
+        <!-- Página de Contacto -->
+        <div id="contact" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">← Volver</a>
+            <h2>Colaboraciones</h2>
+            <form>
+                <!-- Tu formulario de contacto aquí -->
+            </form>
         </div>
     </div>
-    
-    <section id="music">
-        <h2>Último Cover</h2>
-        <div class="youtube-container">
-            <div class="youtube-player">
-                <!-- Reemplaza con tu ID de YouTube -->
-                <iframe 
-                    src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
-    
-    <section id="album">
-        <h2>Álbum Visual</h2>
-        <p>Instantáneas de mi proceso creativo y momentos detrás de cámaras.</p>
+
+    <script>
+        // Sistema de subpáginas
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
         
-        <div class="gallery">
-            <!-- Añade tus imágenes aquí -->
-            <div class="gallery-item">
-                <img src="foto1.jpg" alt="Sesión de grabación">
-            </div>
-            <div class="gallery-item">
-                <img src="foto2.jpg" alt="En el estudio">
-            </div>
-            <div class="gallery-item">
-                <img src="foto3.jpg" alt="Concierto">
-            </div>
-            <!-- Añade más imágenes según necesites -->
-        </div>
-    </section>
-    
-    <footer>
-        <p>KxN © 2024 | Arte Vocal Experimental</p>
-        <p>Santa Cruz de Tenerife, Islas Canarias</p>
-    </footer>
+        // Efecto de partículas interactivas (opcional)
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.createElement('div');
+            particles.style.position = 'fixed';
+            particles.style.width = '2px';
+            particles.style.height = '2px';
+            particles.style.backgroundColor = 'rgba(212, 175, 55, 0.5)';
+            particles.style.borderRadius = '50%';
+            particles.style.left = e.clientX + 'px';
+            particles.style.top = e.clientY + 'px';
+            particles.style.pointerEvents = 'none';
+            particles.style.zIndex = '-1';
+            document.body.appendChild(particles);
+            
+            setTimeout(() => {
+                particles.style.transform = 'scale(0)';
+                particles.style.opacity = '0';
+                setTimeout(() => particles.remove(), 500);
+            }, 50);
+        });
+    </script>
 </body>
 </html>
