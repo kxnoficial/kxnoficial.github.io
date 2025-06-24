@@ -3,75 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Arte Vocal de Vanguardia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>KxN | Deconstrucción Vocal</title>
     <style>
-        /* [Todos los estilos CSS anteriores se mantienen igual] */
-        /* Solo añado este nuevo estilo para el dato de nacimiento */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -0.05em;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .social-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-links strong {
+            color: var(--gold);
+            font-weight: normal;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
         .birthday {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            padding: 0.3rem 0.6rem;
             background: rgba(212, 175, 55, 0.1);
-            border-left: 3px solid var(--gold);
+            border-left: 2px solid var(--gold);
             font-size: 0.9rem;
+            color: var(--gold);
+        }
+        
+        .youtube-player {
+            margin: 3rem 0;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .youtube-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+            margin: 3rem 0;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                letter-spacing: 0.3em;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="particles"></div>
-    
     <header>
-        <h1 class="brand-name">KxN</h1>
+        <h1>KxN</h1>
         <p class="tagline">ARTE VOCAL DE VANGUARDIA</p>
         
         <div class="social-links">
-            <a href="https://youtube.com/@kxnoficial?si=amgkIwPj1ZGP0nf-" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://www.bandlab.com/kxnoficial" target="_blank"><i class="fas fa-music"></i> BandLab</a>
-            <a href="https://www.tiktok.com/@kxnoficial" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://www.instagram.com/kxnoficial" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://x.com/kxnoficial" target="_blank"><i class="fab fa-twitter"></i> X</a>
+            <a href="https://youtube.com/@kxnoficial" target="_blank">YouTube</a>
+            <a href="https://www.bandlab.com/kxnoficial" target="_blank"><strong>BandLab</strong></a>
+            <a href="https://www.tiktok.com/@kxnoficial" target="_blank">TikTok</a>
+            <a href="https://www.instagram.com/kxnoficial" target="_blank">Instagram</a>
         </div>
-        
-        <nav>
-            <a href="#bio">Biografía</a>
-            <a href="#music">Música</a>
-            <a href="#gallery">Universo Visual</a>
-            <a href="#contact">Contacto</a>
-        </nav>
     </header>
     
-    <main>
-        <section id="bio">
-            <h2>Tomás Miguel</h2>
-            <div class="bio-text">
-                <p>Nací un <span class="birthday">viernes 24 de diciembre de 1999</span> en Santa Cruz de Tenerife (Islas Canarias), donde el Atlántico y los volcanes me enseñaron que los límites solo existen para ser reinventados.</p>
-                
-                <p>Como <strong>KxN</strong>, exploro la voz humana a través del autotune y efectos digitales, transformando covers en piezas únicas donde lo orgánico y lo artificial dialogan. Mi proceso es artesanal: cada distorsión es una decisión estética consciente.</p>
-                
-                <p>Esta plataforma es mi laboratorio sonoro. No busco perfección, sino emociones crudas envueltas en capas digitales. Bienvenid@s a mi evolución constante.</p>
-            </div>
-        </section>
+    <section id="bio">
+        <h2>Tomás Miguel</h2>
+        <p><span class="birthday">Viernes 24 de diciembre de 1999</span><br>
+        Santa Cruz de Tenerife, Islas Canarias</p>
         
-        <section id="music">
-            <h2>Última Experimentación</h2>
-            <div class="youtube-player">
-                <!-- Reemplaza "TU_ID_DE_VIDEO" por tu ID real -->
-                <iframe 
-                    src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-                <p class="player-caption">Suscríbete en <a href="https://youtube.com/@kxnoficial" target="_blank" style="color: var(--gold);">YouTube</a> y <a href="https://www.bandlab.com/kxnoficial" target="_blank" style="color: var(--gold);">BandLab</a></p>
-            </div>
-        </section>
+        <p>Proyecto amateur de experimentación vocal donde el autotune trasciende su función técnica para convertirse en instrumento de expresión. Cada distorsión es una decisión estética consciente.</p>
         
-        <!-- [Las secciones de Gallery y Contact se mantienen igual que antes] -->
-    </main>
+        <p>Esta es mi evolución sonora: cruda, digital y en constante transformación.</p>
+    </section>
     
-    <footer>
-        <p>KxN © 2024 | Tomás Miguel - Santa Cruz de Tenerife</p>
-        <p>"El arte no reproduce lo visible, hace visible lo invisible"</p>
-    </footer>
+    <hr>
+    
+    <section id="music">
+        <h2>Última creación</h2>
+        <div class="youtube-player">
+            <!-- Reemplaza con tu ID de YouTube -->
+            <iframe 
+                src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
 </body>
 </html>
