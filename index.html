@@ -480,6 +480,80 @@
             padding-top: 1rem;
             border-top: 1px solid rgba(212,175,55,0.2);
         }
+
+        /* Estilos para la sección de videos */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #000;
+        }
+        
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .video-info h3 {
+            color: var(--gold);
+            margin: 0.5rem 0;
+            font-weight: 300;
+        }
+        
+        .video-info p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .video-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .video-filter button {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-light);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .video-filter button:hover, .video-filter button.active {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -541,188 +615,4 @@
                         <p><span style="color: var(--gold);">24 de diciembre de 1999</span><br>
                         Santa Cruz de Tenerife, Islas Canarias</p>
                         
-                        <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí. Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</p>
-                        
-                        <p>Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente. Me gusta jugar con la voz y buscar la esencia original.</p>
-                        
-                        <p>Mis covers los grabo en mi cuarto. No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-                        
-                        <h3>El Significado de KxN</h3>
-                        <p>Mi nombre artístico es KxN.</p>
-                        <p>La K representa la palabra "Karma". Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción. El karma en la música significa que todo lo que pones en tu arte vuelve a ti, y eso guía mi forma de crear y compartir.</p>
-                        <p>La N simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.</p>
-                        <p>La x en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología. Es ahí donde mi voz se mezcla con la tecnología para crear algo único.</p>
-                        <p>Elegí KxN porque refleja cómo veo la música: como un ciclo de energía, emoción y técnica que se cruzan para dar vida a algo nuevo y auténtico.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="music" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Último Cover</h2>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2rem 0;">
-                    <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
-                </div>
-                
-                <h2 style="margin-top: 3rem;">Discografía</h2>
-                <p>Explora mi colección de covers y trabajos originales donde aplico mi técnica de deconstrucción vocal.</p>
-            </div>
-        </div>
-        
-        <div id="gallery" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Álbum Visual</h2>
-                <p>Una colección de imágenes que capturan la esencia de mi proceso creativo y presentaciones.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 1</div>
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 2</div>
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 3</div>
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 4</div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="contact" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Solicita Tu Canción</h2>
-                <p>¿Tienes una canción que te gustaría que interprete? Completa el siguiente formulario y hazme saber tus peticiones. Estaré encantado de considerar tu sugerencia.</p>
-                
-                <form class="contact-form" id="songRequestForm" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
-                    <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
-                    <input type="hidden" name="_template" value="box">
-                    
-                    <div class="form-group">
-                        <label for="name">Tu Nombre</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Tu Correo Electrónico</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="song">Canción que te gustaría que cante</label>
-                        <input type="text" id="song" name="song" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="artist">Artista Original</label>
-                        <input type="text" id="artist" name="artist" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">¿Por qué te gustaría escuchar mi versión de esta canción? (Opcional)</label>
-                        <textarea id="message" name="message" class="form-control"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Enviar Solicitud</button>
-                </form>
-                
-                <div style="text-align: center; margin-top: 3rem;">
-                    <h3>Otras Formas de Contacto</h3>
-                    <p>También puedes contactarme directamente a través de mis redes sociales.</p>
-                    <div class="social-links" style="justify-content: center; margin-top: 1rem;">
-                        <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                        <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
-                        <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer style="margin-top: 4rem; padding: 2rem 0; text-align: center; border-top: 1px solid var(--gold-light); background: rgba(0,0,0,0.3);">
-            <div style="max-width: 600px; margin: 0 auto; padding: 0 1rem;">
-                <p style="color: var(--gold); font-size: 0.9rem; letter-spacing: 1px;">
-                    <i class="fas fa-copyright" style="margin-right: 5px;"></i> 
-                    <span id="current-year"></span> KxN (Tomás Miguel Beby Díaz) - Todos los derechos reservados
-                </p>
-                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; line-height: 1.6;">
-                    <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre KxN. 
-                    El nombre artístico "KxN" es una marca de facto en uso desde <span id="first-use-year"></span> y representa la identidad artística de su creador.
-                    Queda prohibido cualquier uso no autorizado del nombre, contenido o diseño de este sitio.
-                </p>
-                <p style="font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1rem;">
-                    <i class="fas fa-shield-alt" style="margin-right: 5px;"></i>
-                    Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.
-                </p>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        // Sistema de subpáginas
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-            
-            document.querySelector('.container').classList.remove('shine-effect');
-            void document.querySelector('.container').offsetWidth;
-            document.querySelector('.container').classList.add('shine-effect');
-        }
-        
-        // Efecto de diamantes al mover el mouse
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.7) {
-                const diamond = document.createElement('div');
-                diamond.className = 'diamond-effect';
-                diamond.style.width = `${Math.random() * 10 + 5}px`;
-                diamond.style.height = diamond.style.width;
-                diamond.style.left = `${e.clientX}px`;
-                diamond.style.top = `${e.clientY}px`;
-                diamond.style.transform = `rotate(${Math.random() * 360}deg)`;
-                diamond.style.background = `linear-gradient(45deg, transparent, ${Math.random() > 0.5 ? 'var(--gold)' : 'var(--diamond)'}, transparent)`;
-                
-                document.body.appendChild(diamond);
-                
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = 1 + Math.random() * 2;
-                const distance = 50 + Math.random() * 100;
-                
-                let posX = e.clientX;
-                let posY = e.clientY;
-                let opacity = 1;
-                
-                const animate = () => {
-                    posX += Math.cos(angle) * velocity;
-                    posY += Math.sin(angle) * velocity;
-                    opacity -= 0.01;
-                    
-                    diamond.style.left = `${posX}px`;
-                    diamond.style.top = `${posY}px`;
-                    diamond.style.opacity = opacity;
-                    
-                    if (opacity > 0) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        diamond.remove();
-                    }
-                };
-                
-                animate();
-            }
-        });
-        
-        // Manejo del formulario
-        document.getElementById('songRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por tu solicitud! Me pondré en contacto contigo pronto.');
-            this.submit();
-        });
-
-        // Mostrar el año actual y año de primer uso
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        document.getElementById('first-use-year').textContent = '2023'; // Cambia este año al correcto
-    </script>
-</body>
-</html>
+                        <p>Desde 2008, cuando descubrí a Lady G
