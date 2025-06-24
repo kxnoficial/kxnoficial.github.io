@@ -220,6 +220,31 @@
             margin-bottom: 2rem;
         }
         
+        /* Reproductor de YouTube personalizado */
+        .youtube-player {
+            max-width: 800px;
+            margin: 4rem auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.3);
+        }
+        
+        .youtube-player iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+        
+        .player-caption {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: rgba(245, 245, 245, 0.6);
+        }
+        
         /* Galería de lujo */
         .gallery {
             display: grid;
@@ -377,6 +402,10 @@
             h2 {
                 font-size: 2rem;
             }
+            
+            .youtube-player iframe {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -391,14 +420,15 @@
             <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
             <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
             <a href="https://www.threads.net/@kxnoficial" target="_blank"><i class="fab fa-threads"></i> Threads</a>
+            <a href="https://www.bandlab.com/kxnoficial" target="_blank"><i class="fas fa-music"></i> BandLab</a>
             <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
             <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank"><i class="fab fa-twitter"></i> X</a>
-            <a href="https://bsky.app/profiloficial.com" target="_blank"><i class="fas fa-circle"></i> Bluesky</a>
         </div>
         
         <nav>
             <a href="#bio">Manifiesto</a>
-            <a href="#gallery">Universo Sonoro</a>
+            <a href="#music">Exploración Sonora</a>
+            <a href="#gallery">Universo Visual</a>
             <a href="#contact">Colaboraciones</a>
         </nav>
     </header>
@@ -410,8 +440,20 @@
                 <p>KxN es un proyecto de experimentación vocal donde el autotune trasciende su función técnica para convertirse en instrumento de expresión pura. Cada interpretación es un viaje a través de capas de texturas digitales que redefinen los límites de la voz humana.</p>
                 
                 <p>Lo que comenzó como una exploración personal se ha transformado en un lenguaje único, donde covers tradicionales adquieren nueva vida a través de procesamientos innovadores. El resultado: piezas que oscilan entre lo familiar y lo futurista.</p>
-                
-                <p>Este espacio celebra la reinvención constante. No es música, es arte sonoro en evolución. Cada distorsión, cada efecto, es una decisión estética consciente que desafía convenciones y propone nuevas formas de experiencia auditiva.</p>
+            </div>
+        </section>
+        
+        <!-- Nueva sección para el reproductor de YouTube -->
+        <section id="music">
+            <h2>Exploración Sonora</h2>
+            <div class="youtube-player">
+                <!-- Reemplaza "TU_ID_DE_VIDEO" con el ID de tu video de YouTube -->
+                <iframe 
+                    src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?autoplay=0&controls=1&modestbranding=1&rel=0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <p class="player-caption">Última experimentación vocal | <a href="https://www.bandlab.com/kxnoficial" target="_blank" style="color: var(--gold);">Más en BandLab</a></p>
             </div>
         </section>
         
@@ -426,15 +468,6 @@
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Detalle técnico">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Equipo de audio">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sesión nocturna">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Ambiente musical">
                 </div>
             </div>
         </section>
