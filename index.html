@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Arte Vocal Experimental</title>
+    <title>KxN | Experimentación Vocal con Autotune</title>
     <style>
         :root {
             --black: #000000;
             --white: #FFFFFF;
             --gray: #F2F2F2;
-            --gold: #C6A969;
+            --accent: #FF6B6B;
         }
         
         * {
@@ -22,9 +22,8 @@
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--white);
             color: var(--black);
-            line-height: 1.8;
+            line-height: 1.6;
             font-weight: 300;
-            overflow-x: hidden;
         }
         
         .background-pattern {
@@ -33,49 +32,56 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="%23F2F2F2" stroke-width="0.5"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 50 Q25 25 50 50 T100 50" fill="none" stroke="%23F2F2F2" stroke-width="0.5"/></svg>');
             background-size: 120px 120px;
             z-index: -1;
-            opacity: 0.15;
+            opacity: 0.1;
         }
         
         header {
             padding: 8vh 5vw;
             text-align: center;
-            border-bottom: 1px solid var(--gray);
         }
         
         .brand-name {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 300;
-            letter-spacing: -0.05em;
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .brand-name::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--black);
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            color: var(--accent);
         }
         
         .tagline {
-            font-size: 1.2rem;
-            letter-spacing: 0.5em;
+            font-size: 1rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
         }
         
         nav {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
         
         nav a {
@@ -84,7 +90,7 @@
             font-size: 0.9rem;
             letter-spacing: 0.1em;
             position: relative;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
         
         nav a::after {
@@ -94,7 +100,7 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--black);
+            background: var(--accent);
             transition: width 0.3s ease;
         }
         
@@ -103,58 +109,40 @@
         }
         
         main {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 8vh 5vw;
+            padding: 5vh 5vw;
         }
         
         section {
-            margin-bottom: 8rem;
+            margin-bottom: 5rem;
         }
         
         h2 {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 3rem;
-            letter-spacing: 0.1em;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 1px;
-            background: var(--black);
-        }
-        
-        .bio-text {
-            columns: 2;
-            column-gap: 4rem;
-            margin-bottom: 3rem;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+            color: var(--accent);
         }
         
         .bio-text p {
             margin-bottom: 1.5rem;
             text-align: justify;
-            hyphens: auto;
         }
         
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .gallery-item {
             aspect-ratio: 1/1;
             background: var(--gray);
-            position: relative;
             overflow: hidden;
+            border-radius: 4px;
         }
         
         .gallery-item img {
@@ -168,102 +156,61 @@
             transform: scale(1.05);
         }
         
-        .request-form {
-            max-width: 600px;
+        .contact-form {
+            max-width: 500px;
             margin: 0 auto;
         }
         
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
-            letter-spacing: 0.1em;
         }
         
-        input, textarea, select {
+        input, textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             border: 1px solid var(--gray);
-            background: var(--white);
             font-family: inherit;
             font-size: 1rem;
-            transition: border 0.3s ease;
-        }
-        
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--black);
         }
         
         textarea {
-            min-height: 150px;
-            resize: vertical;
+            min-height: 120px;
         }
         
         .submit-btn {
-            background: var(--black);
+            background: var(--accent);
             color: var(--white);
             border: none;
-            padding: 1rem 2rem;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
+            padding: 0.8rem 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         
         .submit-btn:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-        
-        .trademark-section {
-            margin-top: 10rem;
-            padding: 3rem 0;
-            border-top: 1px solid var(--gray);
-            border-bottom: 1px solid var(--gray);
-        }
-        
-        .trademark-text {
-            font-size: 0.8rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        
-        .trademark-text p {
-            margin-bottom: 1rem;
+            opacity: 0.9;
         }
         
         footer {
             text-align: center;
-            padding: 5rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid var(--gray);
             font-size: 0.8rem;
-            letter-spacing: 0.1em;
+            color: #888;
         }
         
         @media (max-width: 768px) {
             .brand-name {
-                font-size: 3rem;
-            }
-            
-            .tagline {
-                letter-spacing: 0.3em;
-            }
-            
-            .bio-text {
-                columns: 1;
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
+                font-size: 2.5rem;
             }
             
             nav {
-                gap: 1.5rem;
-                flex-wrap: wrap;
+                gap: 1rem;
             }
         }
     </style>
@@ -273,59 +220,55 @@
     
     <header>
         <h1 class="brand-name">KxN</h1>
-        <p class="tagline">Arte Vocal Experimental</p>
+        <p class="tagline">Experimentación Vocal con Autotune</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/tu_usuario" target="_blank">Instagram</a>
+            <a href="https://youtube.com/tu_canal" target="_blank">YouTube</a>
+            <a href="https://tiktok.com/@tu_usuario" target="_blank">TikTok</a>
+            <a href="https://soundcloud.com/tu_usuario" target="_blank">SoundCloud</a>
+        </div>
+        
         <nav>
-            <a href="#bio">Biografía</a>
-            <a href="#gallery">Galería</a>
-            <a href="#request">Comisiones</a>
-            <a href="#trademark">Protección de Marca</a>
+            <a href="#bio">Sobre mí</a>
+            <a href="#gallery">Covers</a>
+            <a href="#contact">Contacto</a>
         </nav>
     </header>
     
     <main>
         <section id="bio">
-            <h2>Biografía</h2>
+            <h2>Sobre mí</h2>
             <div class="bio-text">
-                <p>KxN (nacido el 24 de diciembre de 1999) es un artista vocal experimental que ha redefinido los límites de la interpretación musical contemporánea. Con una aproximación radicalmente minimalista al arte del cover, KxN descompone y reconstruye obras canónicas a través de un prisma de innovación técnica y pureza expresiva.</p>
+                <p>Soy KxN, un cantante amateur apasionado por la experimentación vocal a través del autotune. Lo que comenzó como un simple hobby se ha convertido en mi forma favorita de expresión artística.</p>
                 
-                <p>Su metodología se caracteriza por un riguroso proceso de deconstrucción vocal, donde los elementos esenciales de cada pieza son aislados y sometidos a un meticuloso examen antes de ser reensamblados en interpretaciones que trascienden lo meramente musical para convertirse en declaraciones artísticas autónomas.</p>
+                <p>Mis covers son reinterpretaciones personales donde exploro los límites de mi voz mediante efectos digitales. Cada pieza es un ejercicio de creatividad donde juego con texturas sonoras y atmósferas únicas.</p>
                 
-                <p>El trabajo de KxN opera en la intersección entre la tradición vocal clásica y la vanguardia experimental, empleando efectos de voz no como ornamentos, sino como herramientas fundamentales para la exploración de nuevas texturas sonoras y dimensiones expresivas.</p>
-                
-                <p>Actualmente desarrolla su obra desde un espacio de creación privado, manteniendo un deliberado distanciamiento de los circuitos comerciales tradicionales para preservar la integridad de su proceso creativo.</p>
+                <p>No soy un profesional, solo alguien que disfruta transformando canciones conocidas dándoles mi toque personal a través de la tecnología vocal. Comparto mi trabajo en redes sociales simplemente por el placer de crear y conectar con otros entusiastas de la música.</p>
             </div>
         </section>
         
         <section id="gallery">
-            <h2>Documentación Visual</h2>
+            <h2>Mis Covers</h2>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proceso creativo de KxN">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="KxN trabajando en música">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Estudio de grabación">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Equipo de grabación">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sesión de trabajo">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Equipo técnico">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Detalle de micrófono">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Espacio creativo">
+                    <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sesión creativa">
                 </div>
             </div>
         </section>
         
-        <section id="request">
-            <h2>Comisiones</h2>
-            <div class="request-form">
-                <form action="https://formspree.io/f/atlantiselimperioperdido@outlook.com" method="POST">
+        <section id="contact">
+            <h2>Contacto</h2>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/tucorreo@example.com" method="POST">
                     <div class="form-group">
-                        <label for="name">Nombre completo</label>
+                        <label for="name">Nombre</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
@@ -335,52 +278,19 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="song">Obra solicitada</label>
-                        <input type="text" id="song" name="song" required>
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="concept">Concepto artístico deseado</label>
-                        <textarea id="concept" name="concept" required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="budget">Presupuesto estimado (USD)</label>
-                        <select id="budget" name="budget">
-                            <option value="5000">$5,000 - $10,000</option>
-                            <option value="10000">$10,000 - $15,000</option>
-                            <option value="15000">$15,000+</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Enviar solicitud</button>
+                    <button type="submit" class="submit-btn">Enviar mensaje</button>
                 </form>
-            </div>
-        </section>
-        
-        <section id="trademark" class="trademark-section">
-            <h2>Protección de Marca</h2>
-            <div class="trademark-text">
-                <p>La denominación "KxN" constituye una marca artística registrada y protegida por las leyes internacionales de propiedad intelectual. Su uso está estrictamente reservado para identificar las creaciones artísticas y actividades profesionales del artista nacido el 24 de diciembre de 1999.</p>
-                
-                <p>El nombre "KxN" y todas las creaciones asociadas están protegidos bajo el Convenio de Berna para la Protección de las Obras Literarias y Artísticas, el Tratado de la OMPI sobre Derecho de Autor y las directivas de la UE sobre derechos de autor en el mercado único digital.</p>
-                
-                <p>Cualquier uso no autorizado de la marca "KxN", incluyendo pero no limitado a su reproducción, imitación, traducción o adaptación en cualquier medio o formato, está expresamente prohibido sin el consentimiento por escrito del titular de los derechos.</p>
-                
-                <p>La marca "KxN" ha desarrollado un reconocimiento de marca secundario a través de su uso exclusivo y continuado en el ámbito de la interpretación vocal experimental. Este reconocimiento otorga derechos adicionales de protección contra la dilución de marca según la Ley de Marcas Federal de EE.UU. (15 U.S.C. § 1125(c)) y regulaciones equivalentes en otras jurisdicciones.</p>
-                
-                <p>Los elementos distintivos de la presentación visual de la marca "KxN", incluyendo su tipografía específica, tratamiento gráfico y combinación de caracteres, están protegidos como diseño comercial en múltiples jurisdicciones internacionales.</p>
-                
-                <p>Para solicitudes de licencia o colaboraciones autorizadas, utilice exclusivamente el formulario de comisiones proporcionado en este sitio web. Todas las comunicaciones serán filtradas por nuestro departamento legal antes de cualquier consideración artística.</p>
-                
-                <p>Las infracciones a estos derechos serán perseguidas mediante acciones legales que pueden incluir, pero no se limitan a, demandas por daños y perjuicios, órdenes de cesación e indemnizaciones por pérdida de valor de marca.</p>
             </div>
         </section>
     </main>
     
     <footer>
-        <p>© 2024 KxN. Todos los derechos reservados.</p>
-        <p>El contenido de este sitio está protegido por las leyes internacionales de derechos de autor.</p>
+        <p>KxN - Experimentación Vocal con Autotune</p>
+        <p>© 2024 | Todos los contenidos son creaciones originales basadas en reinterpretaciones personales</p>
     </footer>
 </body>
 </html>
