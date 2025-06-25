@@ -1,618 +1,362 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Tomás Miguel Beby Díaz - Sitio Oficial</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --black: #000000;
-            --white: #FFFFFF;
-            --gold: #D4AF37;
-            --gold-light: rgba(212, 175, 55, 0.3);
-            --diamond: rgba(185, 242, 255, 0.8);
-        }
-        
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,30,0.95) 100%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 Q50,70 30,50 Z" fill="%23D4AF37" opacity="0.05"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="8" y="0" width="4" height="4" transform="rotate(45 10 10)" fill="%23B9F2FF" opacity="0.3"/></svg>');
-            z-index: -2;
-            animation: drift 40s linear infinite;
-        }
-        
-        @keyframes drift {
-            0% { background-position: 0 0, 0 0, 0 0; }
-            100% { background-position: 0 0, 100% 100%, 200% 200%; }
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            min-height: 100vh;
-            border-left: 1px solid var(--gold-light);
-            border-right: 1px solid var(--gold-light);
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
-        }
-        
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid transparent;
-            margin: 0 auto 1.5rem;
-            display: block;
-            animation: float 6s ease-in-out infinite;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-            position: relative;
-            background: linear-gradient(45deg, var(--black), var(--black)) padding-box,
-                        linear-gradient(135deg, var(--gold), var(--diamond), var(--gold)) border-box;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        h1 {
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: -0.03em;
-            margin: 0.5rem 0;
-            background: linear-gradient(to right, var(--gold), var(--diamond), var(--white));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .tagline {
-            font-size: 0.9rem;
-            letter-spacing: 0.5em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .tagline::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .social-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .social-links a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .social-links a:hover {
-            color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .social-links a:hover::before {
-            left: 100%;
-        }
-        
-        .nav-pages {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .nav-pages a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.8rem 1.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
-        }
-        
-        .nav-pages a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .nav-pages a:hover {
-            color: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-        
-        .nav-pages a:hover::before {
-            left: 100%;
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--gold-light);
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-form::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--gold), var(--diamond), var(--gold));
-            background-size: 200% 200%;
-            animation: gradient 5s ease infinite;
-            border-radius: 6px;
-            opacity: 0.3;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--gold-light);
-            color: var(--white);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--gold), var(--diamond));
-            color: var(--black);
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .submit-btn:hover {
-            background: linear-gradient(to right, var(--diamond), var(--gold));
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .submit-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-        
-        .social-section {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem 0;
-            position: relative;
-        }
-        
-        .social-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-        }
-        
-        .social-section h3 {
-            color: var(--gold);
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-        
-        .back-btn {
-            display: inline-block;
-            margin: 2rem 0;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.9rem;
-            position: relative;
-            padding-left: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn::before {
-            content: "←";
-            position: absolute;
-            left: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            color: var(--diamond);
-            padding-left: 2rem;
-        }
-        
-        .diamond-effect {
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        .page-content {
-            padding: 1rem 0;
-            line-height: 1.8;
-        }
-        
-        .page-content h2 {
-            color: var(--gold);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .page-content h2::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 1px;
-            background: var(--gold);
-        }
-        
-        @keyframes shine {
-            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
-            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
-        }
-        
-        .shine-effect {
-            animation: shine 2s ease-in-out;
-        }
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Dimension by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-        .bio-photo-frame {
-            padding: 15px;
-            background: linear-gradient(135deg, var(--gold), var(--diamond), var(--gold));
-            border-radius: 5px;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-            margin-bottom: 2rem;
-            position: relative;
-            max-width: 350px;
-        }
-        
-        .bio-photo-frame::before, .bio-photo-frame::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: var(--gold);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-        
-        .bio-photo-frame::before {
-            top: -10px;
-            left: -10px;
-        }
-        
-        .bio-photo-frame::after {
-            bottom: -10px;
-            right: -10px;
-            background: var(--diamond);
-        }
-        
-        .bio-photo-inner {
-            border: 5px solid var(--black);
-            padding: 5px;
-            background: var(--black);
-        }
-        
-        .bio-photo {
-            width: 100%;
-            height: auto;
-            display: block;
-            border: 1px solid var(--gold-light);
-        }
-        
-        .bio-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: flex-start;
-        }
-        
-        .bio-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .legal-notice {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.5);
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(212,175,55,0.2);
-        }
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-        /* Estilos para la sección de videos */
-        .video-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            border: 1px solid var(--gold-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: #000;
-        }
-        
-        .video-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-info {
-            padding: 1rem 0;
-            text-align: center;
-        }
-        
-        .video-info h3 {
-            color: var(--gold);
-            margin: 0.5rem 0;
-            font-weight: 300;
-        }
-        
-        .video-info p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-        }
-        
-        .video-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .video-filter button {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold-light);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .video-filter button:hover, .video-filter button.active {
-            background: var(--gold);
-            color: var(--black);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-        }
-    </style>
-</head>
-<body>
-    <div class="container shine-effect">
-        <header>
-            <img src="IMG-20250624-WA0008.jpg" alt="Tomás Miguel" class="profile-pic">
-            <h1>KxN</h1>
-            <p class="tagline">TOMÁS MIGUEL BEBY DÍAZ</p>
-            
-            <div class="social-section">
-                <h3>Conéctate Conmigo</h3>
-                <div class="social-links">
-                    <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                    <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
-                    <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="nav-pages">
-                <a href="#" onclick="showPage('home')">Inicio</a>
-                <a href="#" onclick="showPage('bio')">Biografía</a>
-                <a href="#" onclick="showPage('music')">Música</a>
-                <a href="#" onclick="showPage('gallery')">Álbum</a>
-                <a href="#" onclick="showPage('contact')">Contacto</a>
-            </div>
-        </header>
-        
-        <div id="home" class="page active">
-            <div class="page-content">
-                <section>
-                    <h2>Último Proyecto</h2>
-                    <p>Explora mi última creación vocal donde fusiono lo clásico con lo digital, transformando canciones conocidas en experiencias auditivas únicas.</p>
-                    <a href="#" onclick="showPage('music')" class="back-btn">Ver Música</a>
-                </section>
-                
-                <section style="margin-top: 3rem;">
-                    <h2>Solicita Tu Canción</h2>
-                    <p>¿Tienes una canción que te gustaría escuchar en mi estilo? Hazme saber tus peticiones a través de nuestro formulario de contacto.</p>
-                    <a href="#" onclick="showPage('contact')" class="back-btn">Ir al Formulario</a>
-                </section>
-            </div>
-        </div>
-        
-        <div id="bio" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <div class="bio-content">
-                    <div class="bio-photo-frame">
-                        <div class="bio-photo-inner">
-                            <img src="IMG_20250624_201119.jpg" alt="Tomás Miguel en el estudio" class="bio-photo">
-                        </div>
-                    </div>
-                    
-                    <div class="bio-text">
-                        <h2>Tomás Miguel Beby Díaz</h2>
-                        <p><span style="color: var(--gold);">24 de diciembre de 1999</span><br>
-                        Santa Cruz de Tenerife, Islas Canarias</p>
-                        
-                        <p>Desde 2008, cuando descubrí a Lady G
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Dimension</h1>
+								<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
+								for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">Intro</a></li>
+								<li><a href="#work">Work</a></li>
+								<li><a href="#about">About</a></li>
+								<li><a href="#contact">Contact</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Intro</h2>
+								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+							</article>
+
+						<!-- Work -->
+							<article id="work">
+								<h2 class="major">Work</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+							</article>
+
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">About</h2>
+								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+							</article>
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</article>
+
+						<!-- Elements -->
+							<article id="elements">
+								<h2 class="major">Elements</h2>
+
+								<section>
+									<h3 class="major">Text</h3>
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<hr />
+									<h2>Heading Level 2</h2>
+									<h3>Heading Level 3</h3>
+									<h4>Heading Level 4</h4>
+									<h5>Heading Level 5</h5>
+									<h6>Heading Level 6</h6>
+									<hr />
+									<h4>Blockquote</h4>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<h4>Preformatted</h4>
+									<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+								</section>
+
+								<section>
+									<h3 class="major">Lists</h3>
+
+									<h4>Unordered</h4>
+									<ul>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Alternate</h4>
+									<ul class="alt">
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Ordered</h4>
+									<ol>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis viverra.</li>
+										<li>Felis enim feugiat.</li>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis lorem.</li>
+										<li>Felis enim et feugiat.</li>
+									</ol>
+									<h4>Icons</h4>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+
+									<h4>Actions</h4>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Table</h3>
+									<h4>Default</h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+
+									<h4>Alternate</h4>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</section>
+
+								<section>
+									<h3 class="major">Buttons</h3>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Primary</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+									</ul>
+									<ul class="actions">
+										<li><span class="button primary disabled">Disabled</span></li>
+										<li><span class="button disabled">Disabled</span></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Form</h3>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="demo-name">Name</label>
+												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+											</div>
+											<div class="field half">
+												<label for="demo-email">Email</label>
+												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
+											</div>
+											<div class="field">
+												<label for="demo-category">Category</label>
+												<select name="demo-category" id="demo-category">
+													<option value="">-</option>
+													<option value="1">Manufacturing</option>
+													<option value="1">Shipping</option>
+													<option value="1">Administration</option>
+													<option value="1">Human Resources</option>
+												</select>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+												<label for="demo-priority-low">Low</label>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-high" name="demo-priority">
+												<label for="demo-priority-high">High</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-copy" name="demo-copy">
+												<label for="demo-copy">Email me a copy</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-human" name="demo-human" checked>
+												<label for="demo-human">Not a robot</label>
+											</div>
+											<div class="field">
+												<label for="demo-message">Message</label>
+												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send Message" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
