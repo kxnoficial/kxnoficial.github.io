@@ -575,62 +575,108 @@
             </div>
         </div>
         
-        <!-- Página de Contacto con Formulario -->
-        <div id="contact" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Solicita Tu Canción</h2>
-                <p>¿Tienes una canción que te gustaría que interprete? Completa el siguiente formulario y hazme saber tus peticiones. Estaré encantado de considerar tu sugerencia.</p>
-                
-                <form class="contact-form" id="songRequestForm" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
-                    <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
-                    <input type="hidden" name="_template" value="box">
-                    
-                    <div class="form-group">
-                        <label for="name">Tu Nombre</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Tu Correo Electrónico</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="song">Canción que te gustaría que cante</label>
-                        <input type="text" id="song" name="song" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="artist">Artista Original</label>
-                        <input type="text" id="artist" name="artist" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">¿Por qué te gustaría escuchar mi versión de esta canción? (Opcional)</label>
-                        <textarea id="message" name="message" class="form-control"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Enviar Solicitud</button>
-                </form>
-                
-                <div style="text-align: center; margin-top: 3rem;">
-                    <h3>Otras Formas de Contacto</h3>
-                    <p>También puedes contactarme directamente a través de mis redes sociales.</p>
-                    <div class="social-links" style="justify-content: center; margin-top: 1rem;">
-                        <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                        <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
-                        <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+        <!-- Página de Acerca de -->
+<div id="about" class="page">
+    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+    <div class="page-content">
+        <h2>Acerca de KxN</h2>
+        
+        <!-- Filosofía Artística -->
+        <div style="background: rgba(212, 175, 55, 0.1); padding: 1.5rem; border-left: 3px solid var(--gold); margin-bottom: 2rem;">
+            <h3 style="color: var(--diamond); margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-atom" style="color: var(--gold);"></i>
+                Mi Filosofía Creativa
+            </h3>
+            <p>Creo en la música como un lenguaje universal que transforma emociones. Cada cover que realizo es un diálogo entre:</p>
+            <ul style="padding-left: 1.5rem;">
+                <li>La esencia original de la canción</li>
+                <li>Mi interpretación vocal única</li>
+                <li>Técnicas de producción innovadoras</li>
+            </ul>
+        </div>
+
+        <!-- Proceso Creativo -->
+        <h3 style="color: var(--gold); border-bottom: 1px solid var(--gold-light); padding-bottom: 0.5rem;">
+            <i class="fas fa-microphone-alt" style="margin-right: 10px;"></i>
+            ¿Cómo Trabajo?
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 5px;">
+                <h4 style="color: var(--diamond); margin-top: 0;">1. Selección</h4>
+                <p>Elijo canciones que resuenen emocionalmente conmigo, generalmente pop y baladas con carga dramática.</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 5px;">
+                <h4 style="color: var(--diamond); margin-top: 0;">2. Deconstrucción</h4>
+                <p>Analizo la estructura armónica y melódica para identificar oportunidades de reinvención.</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 5px;">
+                <h4 style="color: var(--diamond); margin-top: 0;">3. Producción</h4>
+                <p>Uso herramientas digitales para crear atmósferas sonoras que complementen mi voz.</p>
+            </div>
+        </div>
+
+        <!-- Equipo (aunque trabajes solo) -->
+        <h3 style="color: var(--gold); margin-top: 2.5rem;">
+            <i class="fas fa-user-astronaut" style="margin-right: 10px;"></i>
+            Mi Estudio
+        </h3>
+        <p>Aunque no tengo un estudio profesional, he creado un espacio acústicamente tratado en mi habitación con:</p>
+        <ul style="columns: 2; list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-right: 8px;"></i> Micrófono ST-55</li>
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-right: 8px;"></i> Interface Focusrite</li>
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-right: 8px;"></i> Ableton Live 11</li>
+            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-right: 8px;"></i> Auriculares Sennheiser</li>
+        </ul>
+
+        <!-- Declaración Legal (versión simplificada) -->
+        <div style="margin-top: 3rem; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--gold-light);">
+            <h3 style="color: var(--gold); margin-top: 0;">
+                <i class="fas fa-balance-scale" style="margin-right: 10px;"></i>
+                Contexto Legal
+            </h3>
+            <p><strong>KxN</strong> es una identidad artística utilizada ininterrumpidamente desde 2023. Todos los covers son interpretaciones vocales originales sobre instrumentales ajenas, bajo el principio de <strong>fair use</strong> para fines artísticos no comerciales.</p>
+            
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="#" onclick="showLegalDeclaration()" style="color: var(--gold); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fas fa-file-contract"></i> Ver declaración completa
+                </a>
+            </div>
+        </div>
+
+        <!-- Redes Sociales -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <h3>Conéctate Conmigo</h3>
+            <div class="social-links" style="justify-content: center; margin-top: 1rem;">
+                <a href="https://wktok.com/@kxnoficial" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/kxnoficial" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@kxnoficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
+<!-- Declaración Legal Completa (oculta inicialmente) -->
+<div id="legalDeclaration" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem; overflow-y: auto;">
+    <div style="max-width: 800px; margin: 2rem auto; background: rgba(20,20,30,0.95); padding: 2rem; border: 1px solid var(--gold); position: relative;">
+        <button onclick="hideLegalDeclaration()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer;">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Aquí pegarías tu declaración legal completa -->
+        <h2 style="color: var(--gold); text-align: center;">DECLARACIÓN DE AUTORÍA</h2>
+        <!-- ... (todo el contenido de tu declaración legal) ... -->
+    </div>
+</div>
+
+<script>
+    // Función para mostrar/ocultar declaración legal
+    function showLegalDeclaration() {
+        document.getElementById('legalDeclaration').style.display = 'block';
+    }
+    function hideLegalDeclaration() {
+        document.getElementById('legalDeclaration').style.display = 'none';
+    }
+</script>
         // Sistema de subpáginas
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
