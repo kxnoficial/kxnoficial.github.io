@@ -3,96 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Tomás Miguel Beby Díaz</title>
-    <meta name="description" content="Cantante y artista musical. Versiones únicas fusionando voz y tecnología">
+    <title>KxN | Tomás Miguel Beby Díaz - Sitio Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --black: #111;
-            --white: #f1f1f1;
-            --gold: #daa520;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+            --gold-light: rgba(212, 175, 55, 0.3);
+            --diamond: rgba(185, 242, 255, 0.8);
         }
         
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background: var(--black);
+            background-color: var(--black);
             color: var(--white);
-            line-height: 1.6;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,30,0.95) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 Q50,70 30,50 Z" fill="%23D4AF37" opacity="0.05"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="8" y="0" width="4" height="4" transform="rotate(45 10 10)" fill="%23B9F2FF" opacity="0.3"/></svg>');
+            z-index: -2;
+            animation: drift 40s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 0 0, 100% 100%, 200% 200%; }
+        }
+        
+        .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            border-left: 1px solid var(--gold-light);
+            border-right: 1px solid var(--gold-light);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
+        }
+        
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid transparent;
+            margin: 0 auto 1.5rem;
+            display: block;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            position: relative;
+            background: linear-gradient(45deg, var(--black), var(--black)) padding-box,
+                        linear-gradient(135deg, var(--gold), var(--diamond), var(--gold)) border-box;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--gold);
-            margin: 0 auto 20px;
+            margin-bottom: 3rem;
+            position: relative;
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin: 10px 0;
-            color: var(--gold);
+            font-size: 4rem;
             font-weight: 300;
+            letter-spacing: -0.03em;
+            margin: 0.5rem 0;
+            background: linear-gradient(to right, var(--gold), var(--diamond), var(--white));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         
         .tagline {
-            letter-spacing: 3px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5em;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            margin-bottom: 30px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
         }
         
-        nav {
+        .tagline::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .social-links {
             display: flex;
             justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
         }
         
-        nav a {
+        .social-links a {
             color: var(--white);
             text-decoration: none;
-            padding: 8px 15px;
-            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
-        nav a:hover {
-            border-color: var(--gold);
+        .social-links a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .social-links a:hover {
             color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
         
-        section {
-            margin-bottom: 50px;
+        .social-links a:hover::before {
+            left: 100%;
+        }
+        
+        .nav-pages {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-pages a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .nav-pages a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-pages a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .nav-pages a:hover::before {
+            left: 100%;
+        }
+        
+        .page {
             display: none;
-        }
-        
-        section.active {
-            display: block;
             animation: fadeIn 0.5s ease;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gold-light);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--gold), var(--diamond), var(--gold));
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+            border-radius: 6px;
+            opacity: 0.3;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--gold-light);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--gold), var(--diamond));
+            color: var(--black);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--diamond), var(--gold));
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .social-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .social-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .social-section h3 {
+            color: var(--gold);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin: 2rem 0;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn::before {
+            content: "←";
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: var(--diamond);
+            padding-left: 2rem;
+        }
+        
+        .diamond-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .page-content {
+            padding: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .page-content h2 {
+            color: var(--gold);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-content h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+        }
+        
+        @keyframes shine {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        .shine-effect {
+            animation: shine 2s ease-in-out;
+        }
+
+        .bio-photo-frame {
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--diamond), var(--gold));
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            margin-bottom: 2rem;
+            position: relative;
+            max-width: 350px;
+        }
+        
+        .bio-photo-frame::before, .bio-photo-frame::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .bio-photo-frame::before {
+            top: -10px;
+            left: -10px;
+        }
+        
+        .bio-photo-frame::after {
+            bottom: -10px;
+            right: -10px;
+            background: var(--diamond);
+        }
+        
+        .bio-photo-inner {
+            border: 5px solid var(--black);
+            padding: 5px;
+            background: var(--black);
+        }
+        
+        .bio-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--gold-light);
+        }
+        
+        .bio-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .bio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .legal-notice {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(212,175,55,0.2);
+        }
+
+        /* Estilos para la sección de videos */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
-            margin: 20px 0;
+            height: 0;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #000;
+        }
+        
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
         }
         
         .video-container iframe {
@@ -104,162 +515,104 @@
             border: none;
         }
         
-        .bio-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: flex-start;
+        .video-info {
+            padding: 1rem 0;
+            text-align: center;
         }
         
-        .bio-photo {
-            flex: 1;
-            min-width: 250px;
+        .video-info h3 {
+            color: var(--gold);
+            margin: 0.5rem 0;
+            font-weight: 300;
         }
         
-        .bio-photo img {
-            width: 100%;
-            height: auto;
-            border: 1px solid rgba(255,255,255,0.1);
+        .video-info p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
         }
         
-        .bio-text {
-            flex: 2;
-            min-width: 300px;
-        }
-        
-        .social-links {
+        .video-filter {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         
-        .social-links a {
+        .video-filter button {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-light);
             color: var(--white);
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        .social-links a:hover {
-            color: var(--gold);
-        }
-        
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--white);
-        }
-        
-        form button {
+        .video-filter button:hover, .video-filter button.active {
             background: var(--gold);
             color: var(--black);
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-        
-        form button:hover {
-            opacity: 0.9;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="IMG-20250624-WA0008.jpg" alt="Tomás Miguel" class="profile-pic">
-        <h1>KxN</h1>
-        <p class="tagline">TOMÁS MIGUEL BEBY DÍAZ</p>
-        
-        <nav>
-            <a href="#" onclick="showSection('home')">Inicio</a>
-            <a href="#" onclick="showSection('bio')">Biografía</a>
-            <a href="#" onclick="showSection('music')">Música</a>
-            <a href="#" onclick="showSection('contact')">Contacto</a>
-        </nav>
-    </header>
-    
-    <section id="home" class="active">
-        <h2>Último Proyecto</h2>
-        <p>Explora mi última creación vocal fusionando tecnología y arte musical.</p>
-        
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/MB9Y_j7wPio" loading="lazy" allowfullscreen></iframe>
-        </div>
-        
-        <div class="social-links">
-            <a href="https://www.instagram.com/kxnoficial" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@kxnoficial" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/kxnoficial" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-    </section>
-    
-    <section id="bio">
-        <div class="bio-content">
-            <div class="bio-photo">
-                <img src="IMG_20250624_201119.jpg" alt="Tomás Miguel en el estudio">
+    <div class="container shine-effect">
+        <header>
+            <img src="IMG-20250624-WA0008.jpg" alt="Tomás Miguel" class="profile-pic">
+            <h1>KxN</h1>
+            <p class="tagline">TOMÁS MIGUEL BEBY DÍAZ</p>
+            
+            <div class="social-section">
+                <h3>Conéctate Conmigo</h3>
+                <div class="social-links">
+                    <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                    <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
+                    <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
-            <div class="bio-text">
-                <h2>Biografía</h2>
-                <p><strong>Nombre:</strong> Tomás Miguel Beby Díaz<br>
-                <strong>Nacimiento:</strong> 24 de diciembre de 1999<br>
-                <strong>Origen:</strong> Santa Cruz de Tenerife, Islas Canarias</p>
+            
+            <div class="nav-pages">
+                <a href="#" onclick="showPage('home')">Inicio</a>
+                <a href="#" onclick="showPage('bio')">Biografía</a>
+                <a href="#" onclick="showPage('music')">Música</a>
+                <a href="#" onclick="showPage('gallery')">Álbum</a>
+                <a href="#" onclick="showPage('contact')">Contacto</a>
+            </div>
+        </header>
+        
+        <div id="home" class="page active">
+            <div class="page-content">
+                <section>
+                    <h2>Último Proyecto</h2>
+                    <p>Explora mi última creación vocal donde fusiono lo clásico con lo digital, transformando canciones conocidas en experiencias auditivas únicas.</p>
+                    <a href="#" onclick="showPage('music')" class="back-btn">Ver Música</a>
+                </section>
                 
-                <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, supe que quería ser cantante. Transformo canciones en versiones propias donde mi voz se mezcla con tecnología para crear algo diferente.</p>
-                
-                <h3>El Significado de KxN</h3>
-                <p><strong>K</strong> representa "Karma" - la energía musical que damos y recibimos.<br>
-                <strong>N</strong> simboliza la "Nota" - base de toda melodía.<br>
-                <strong>x</strong> es el punto donde convergen emoción y técnica.</p>
+                <section style="margin-top: 3rem;">
+                    <h2>Solicita Tu Canción</h2>
+                    <p>¿Tienes una canción que te gustaría escuchar en mi estilo? Hazme saber tus peticiones a través de nuestro formulario de contacto.</p>
+                    <a href="#" onclick="showPage('contact')" class="back-btn">Ir al Formulario</a>
+                </section>
             </div>
         </div>
-    </section>
-    
-    <section id="music">
-        <h2>Música</h2>
         
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/MB9Y_j7wPio" loading="lazy" allowfullscreen></iframe>
-        </div>
-        
-        <p style="text-align: center; margin-top: 30px;">
-            <a href="https://youtube.com/@kxnoficial" target="_blank" style="color: var(--gold); text-decoration: none;">
-                Ver más en mi canal de YouTube →
-            </a>
-        </p>
-    </section>
-    
-    <section id="contact">
-        <h2>Contacto</h2>
-        
-        <form>
-            <input type="text" placeholder="Nombre" required>
-            <input type="email" placeholder="Email" required>
-            <input type="text" placeholder="Asunto" required>
-            <textarea placeholder="Mensaje" rows="5" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
-    <script>
-        // Función minimalista para cambiar secciones
-        function showSection(sectionId) {
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Carga diferida para iconos de redes sociales
-        const socialIcons = document.createElement('link');
-        socialIcons.rel = 'stylesheet';
-        socialIcons.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-        document.head.appendChild(socialIcons);
-    </script>
-</body>
-</html>
+        <div id="bio" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+            <div class="page-content">
+                <div class="bio-content">
+                    <div class="bio-photo-frame">
+                        <div class="bio-photo-inner">
+                            <img src="IMG_20250624_201119.jpg" alt="Tomás Miguel en el estudio" class="bio-photo">
+                        </div>
+                    </div>
+                    
+                    <div class="bio-text">
+                        <h2>Tomás Miguel Beby Díaz</h2>
+                        <p><span style="color: var(--gold);">24 de diciembre de 1999</span><br>
+                        Santa Cruz de Tenerife, Islas Canarias</p>
+                        
+                        <p>Desde 2008, cuando descubrí a Lady G
