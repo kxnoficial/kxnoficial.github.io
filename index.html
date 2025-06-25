@@ -521,15 +521,174 @@
         <!-- Página de Biografía -->
         <!-- Página de Biografía - Versión Premium -->
 <div id="bio" class="page">
+    <!-- Página de Contacto - Versión Premium con Formulario de Solicitud de Canción -->
+<div id="contact" class="page">
     <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
     <div class="page-content">
-        <div class="bio-content">
-            <!-- Marco de foto con diamantes -->
-            <div class="bio-photo-frame">
-                <div class="bio-photo-inner">
-                    <img src="IMG_20250624_201119.jpg" alt="Tomás Miguel en el estudio" class="bio-photo">
-                </div>
+        <h2 style="display: flex; align-items: center; gap: 15px; margin-bottom: 1rem;">
+            <i class="fas fa-music" style="color: var(--gold);"></i>
+            <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">Solicita Tu Canción</span>
+        </h2>
+        
+        <p style="max-width: 700px; margin: 0 auto 2rem auto; text-align: center; color: rgba(255,255,255,0.8);">
+            ¿Tienes una canción que te gustaría escuchar en mi estilo? Completa este formulario y hazme saber tu petición. 
+            Selecciona entre las opciones disponibles o sugiéreme algo nuevo. ¡Haré mi mejor esfuerzo para interpretarla!
+        </p>
+        
+        <!-- Formulario de Contacto Elegante -->
+        <form id="songRequestForm" class="contact-form" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
+            <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_next" value="https://tupagina.com/gracias.html"> <!-- Reemplaza con tu URL de éxito -->
+            <input type="hidden" name="_captcha" value="false">
+            
+            <!-- Marco decorativo superior -->
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                <div style="width: 30%; height: 1px; background: linear-gradient(to right, transparent, var(--gold));"></div>
+                <i class="fas fa-music" style="color: var(--gold);"></i>
+                <div style="width: 30%; height: 1px; background: linear-gradient(to left, transparent, var(--gold));"></div>
             </div>
+            
+            <div class="form-group">
+                <label for="name"><i class="fas fa-user" style="margin-right: 8px;"></i> Tu Nombre</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="¿Cómo te llamas?">
+            </div>
+            
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope" style="margin-right: 8px;"></i> Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="tu@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="song-type"><i class="fas fa-headphones" style="margin-right: 8px;"></i> Tipo de Solicitud</label>
+                <select id="song-type" name="song-type" class="form-control" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="cover">Quiero un cover de una canción existente</option>
+                    <option value="original">Me gustaría escuchar algo original tuyo</option>
+                    <option value="suggestion">Tengo una sugerencia especial</option>
+                </select>
+            </div>
+            
+            <!-- Campo dinámico basado en selección -->
+            <div class="form-group" id="song-selection-group" style="display: none;">
+                <label for="song-selection"><i class="fas fa-list-ol" style="margin-right: 8px;"></i> Selecciona una Canción</label>
+                <select id="song-selection" name="song-selection" class="form-control">
+                    <option value="" disabled selected>Elige de mi lista</option>
+                    <option value="Lady Gaga - Bad Romance">Lady Gaga - Bad Romance</option>
+                    <option value="Dua Lipa - Don't Start Now">Dua Lipa - Don't Start Now</option>
+                    <option value="The Weeknd - Blinding Lights">The Weeknd - Blinding Lights</option>
+                    <option value="Adele - Rolling in the Deep">Adele - Rolling in the Deep</option>
+                    <option value="Bruno Mars - 24K Magic">Bruno Mars - 24K Magic</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="custom-song-group" style="display: none;">
+                <label for="custom-song"><i class="fas fa-edit" style="margin-right: 8px;"></i> Nombre de la Canción</label>
+                <input type="text" id="custom-song" name="custom-song" class="form-control" placeholder="Artista - Nombre de la canción">
+                <small style="display: block; margin-top: 5px; color: var(--gold-light); font-size: 0.8rem;">Ejemplo: Madonna - Like a Prayer</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="message"><i class="fas fa-comment" style="margin-right: 8px;"></i> Mensaje Adicional</label>
+                <textarea id="message" name="message" class="form-control" placeholder="¿Cómo te gustaría que sonara? ¿Algún estilo especial que prefieras?"></textarea>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 2rem;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" name="subscribe" id="subscribe" style="margin-right: 10px; accent-color: var(--gold);">
+                    <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Me gustaría recibir actualizaciones sobre nuevos covers y proyectos</span>
+                </label>
+            </div>
+            
+            <!-- Marco decorativo inferior -->
+            <div style="display: flex; justify-content: space-between; margin: 1.5rem 0;">
+                <div style="width: 30%; height: 1px; background: linear-gradient(to right, transparent, var(--diamond));"></div>
+                <i class="far fa-star" style="color: var(--diamond);"></i>
+                <div style="width: 30%; height: 1px; background: linear-gradient(to left, transparent, var(--diamond));"></div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Enviar Solicitud
+            </button>
+        </form>
+        
+        <!-- Notas adicionales -->
+        <div style="max-width: 600px; margin: 2rem auto 0 auto; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+            <p>
+                <i class="fas fa-info-circle" style="color: var(--gold-light); margin-right: 5px;"></i>
+                Recibirás una confirmación por correo electrónico. Por favor, revisa tu carpeta de spam si no ves mi respuesta.
+            </p>
+            <p style="margin-top: 0.5rem;">
+                <i class="fas fa-clock" style="color: var(--gold-light); margin-right: 5px;"></i>
+                El tiempo de respuesta puede variar dependiendo del número de solicitudes. ¡Gracias por tu paciencia y apoyo!
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Manejo dinámico del formulario
+    document.getElementById('song-type').addEventListener('change', function() {
+        const songSelectionGroup = document.getElementById('song-selection-group');
+        const customSongGroup = document.getElementById('custom-song-group');
+        
+        if (this.value === 'cover') {
+            songSelectionGroup.style.display = 'block';
+            customSongGroup.style.display = 'none';
+            document.getElementById('song-selection').required = true;
+            document.getElementById('custom-song').required = false;
+        } else if (this.value === 'suggestion') {
+            songSelectionGroup.style.display = 'none';
+            customSongGroup.style.display = 'block';
+            document.getElementById('song-selection').required = false;
+            document.getElementById('custom-song').required = true;
+        } else {
+            songSelectionGroup.style.display = 'none';
+            customSongGroup.style.display = 'none';
+            document.getElementById('song-selection').required = false;
+            document.getElementById('custom-song').required = false;
+        }
+    });
+    
+    // Validación y envío del formulario
+    document.getElementById('songRequestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validación adicional
+        const songType = document.getElementById('song-type').value;
+        const songSelection = document.getElementById('song-selection');
+        const customSong = document.getElementById('custom-song');
+        
+        if (songType === 'cover' && !songSelection.value) {
+            alert('Por favor selecciona una canción de la lista o elige otra opción.');
+            return;
+        }
+        
+        if (songType === 'suggestion' && !customSong.value.trim()) {
+            alert('Por favor ingresa el nombre de la canción que te gustaría sugerir.');
+            return;
+        }
+        
+        // Mostrar animación de carga
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i> Enviando...';
+        submitBtn.disabled = true;
+        
+        // Simular envío (en producción esto sería manejado por FormSubmit)
+        setTimeout(() => {
+            // Aquí podrías redirigir a una página de gracias o mostrar un mensaje
+            alert('¡Gracias por tu solicitud! Me pondré en contacto contigo pronto.');
+            
+            // Resetear formulario
+            this.reset();
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Enviar Solicitud';
+            submitBtn.disabled = false;
+            
+            // En un entorno real, aquí se enviaría el formulario
+            // this.submit();
+        }, 1500);
+    });
+</script>
             
             <div class="bio-text">
                 <!-- Título con efecto dorado -->
