@@ -644,61 +644,109 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Página de Contacto con Formulario -->
-        <div id="contact" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Solicita Tu Canción</h2>
-                <p>¿Tienes una canción que te gustaría que interprete? Completa el siguiente formulario y hazme saber tus peticiones. Estaré encantado de considerar tu sugerencia.</p>
-                
-                <form class="contact-form" id="songRequestForm" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
-                    <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
-                    <input type="hidden" name="_template" value="box">
-                    
-                    <div class="form-group">
-                        <label for="name">Tu Nombre</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Tu Correo Electrónico</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="song">Canción que te gustaría que cante</label>
-                        <input type="text" id="song" name="song" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="artist">Artista Original</label>
-                        <input type="text" id="artist" name="artist" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">¿Por qué te gustaría escuchar mi versión de esta canción? (Opcional)</label>
-                        <textarea id="message" name="message" class="form-control"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Enviar Solicitud</button>
-                </form>
-                
-                <div style="text-align: center; margin-top: 3rem;">
-                    <h3>Otras Formas de Contacto</h3>
-                    <p>También puedes contactarme directamente a través de mis redes sociales.</p>
-                    <div class="social-links" style="justify-content: center; margin-top: 1rem;">
-                        <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                        <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
-                        <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
+        <!-- Página de Música - Versión para Covers -->
+<div id="music" class="page">
+    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+    <div class="page-content">
+        <h2 style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
+            <i class="fas fa-microphone-alt" style="color: var(--gold);"></i>
+            <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">Mis Covers</span>
+        </h2>
+
+        <!-- Video destacado -->
+        <div style="background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden; border: 1px solid var(--gold-light); margin-bottom: 3rem;">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                <iframe 
+                    src="https://www.youtube.com/embed/TU_ID_VIDEO_DESTACADO" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div style="padding: 1.5rem;">
+                <h3 style="color: var(--diamond); margin-top: 0;">Último Cover: <span style="color: var(--gold);">[Nombre de la Canción]</span></h3>
+                <p>Una reinterpretación personal donde fusiono [describe tu estilo, ej: "mi voz estratificada con atmósferas electrónicas"]</p>
+                <div style="display: flex; gap: 15px; margin-top: 1rem;">
+                    <a href="ENLACE_YT" target="_blank" style="background: var(--gold); color: black; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-youtube"></i> Ver en YouTube
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Colección de Covers -->
+        <h3 style="color: var(--gold); border-bottom: 1px solid var(--gold-light); padding-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-layer-group" style="font-size: 1.1rem;"></i>
+            Colección de Covers
+        </h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <!-- Cover 1 -->
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; border: 1px solid var(--gold-light); transition: all 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(212, 175, 55, 0.1);">
+                    <img src="PORTADA_COVER_1.jpg" alt="Cover de [Canción]" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <span style="color: white; font-weight: bold;">[Duración]</span>
+                    </div>
+                </div>
+                <div style="padding: 1.2rem;">
+                    <h4 style="color: var(--diamond); margin-top: 0; margin-bottom: 0.5rem;">"[Nombre del Cover]"</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1rem;">Original de <strong>[Artista]</strong></p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="ENLACE_YT" target="_blank" style="color: var(--gold); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-play"></i> Escuchar
+                        </a>
+                        <span style="color: var(--gold-light);">|</span>
+                        <a href="#" style="color: var(--gold-light); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="far fa-heart"></i> Favorito
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cover 2 -->
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; border: 1px solid var(--diamond); transition: all 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(185, 242, 255, 0.1);">
+                    <img src="PORTADA_COVER_2.jpg" alt="Cover de [Canción]" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <span style="color: white; font-weight: bold;">[Duración]</span>
+                    </div>
+                </div>
+                <div style="padding: 1.2rem;">
+                    <h4 style="color: var(--diamond); margin-top: 0; margin-bottom: 0.5rem;">"[Nombre del Cover]"</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1rem;">Original de <strong>[Artista]</strong></p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="ENLACE_YT" target="_blank" style="color: var(--gold); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-play"></i> Escuchar
+                        </a>
+                        <span style="color: var(--gold-light);">|</span>
+                        <a href="#" style="color: var(--gold-light); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="far fa-heart"></i> Favorito
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plantilla para nuevo cover -->
+            <div style="background: rgba(0,0,0,0.2); border: 2px dashed var(--gold-light); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
+                <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--gold-light); margin-bottom: 1rem;"></i>
+                <h4 style="color: var(--gold); margin: 0 0 0.5rem 0;">Próximo Cover</h4>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0;">¿Qué canción te gustaría escuchar?</p>
+                <a href="#" onclick="showPage('contact')" style="color: var(--gold); text-decoration: none; font-size: 0.9rem; margin-top: 1rem; display: inline-flex; align-items: center; gap: 5px;">
+                    <i class="fas fa-music"></i> Sugiéreme
+                </a>
+            </div>
+        </div>
+
+        <!-- Nota sobre los covers -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(212, 175, 55, 0.05); border-left: 3px solid var(--gold);">
+            <h4 style="color: var(--gold); margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-exclamation-circle"></i>
+                Sobre mis versiones
+            </h4>
+            <p style="margin-bottom: 0;">Estos covers son interpretaciones vocales personales. Todos los derechos de las canciones originales pertenecen a sus respectivos artistas y sellos discográficos. Realizados bajo el concepto de <strong>fair use</strong> para fines artísticos sin ánimo de lucro.</p>
+        </div>
     </div>
+</div>
 
     <script>
         // Sistema de subpáginas
