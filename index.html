@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Minimalista</title>
+  <title>KxN - Página Minimalista</title>
   <style>
     /* Reset básico */
     * {
@@ -18,6 +18,9 @@
       color: #222;
       line-height: 1.6;
       scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -34,8 +37,15 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 1.4rem;
       font-weight: bold;
+    }
+
+    .logo-img {
+      height: 30px;
     }
 
     .menu-toggle {
@@ -71,8 +81,13 @@
       display: flex;
     }
 
+    main {
+      flex: 1;
+      padding-top: 70px;
+    }
+
     section {
-      padding: 100px 2rem;
+      padding: 80px 2rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -137,16 +152,91 @@
       background: #444;
     }
 
-    /* Espaciado para compensar header fijo */
-    .spacer {
-      height: 70px;
+    /* Footer profesional */
+    footer {
+      background: #222;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid #444;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo-img {
+      height: 40px;
+    }
+
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .legal-text {
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #ddd;
+    }
+
+    @media (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
+      }
+      
+      .footer-logo {
+        margin-bottom: 0;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">Mi Sitio</div>
+    <div class="logo">
+      <img src="https://via.placeholder.com/30" alt="Logo KxN" class="logo-img">
+      <span>KxN</span>
+    </div>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <nav id="nav-menu">
       <a href="#inicio">Inicio</a>
@@ -156,52 +246,75 @@
     </nav>
   </header>
 
-  <div class="spacer"></div>
+  <main>
+    <section id="inicio">
+      <h1>Bienvenido a KxN</h1>
+      <p style="text-align: center;">Diseño limpio, contenido claro y navegación sencilla.</p>
+    </section>
 
-  <section id="inicio">
-    <h1>Bienvenido a Mi Sitio</h1>
-    <p style="text-align: center;">Diseño limpio, contenido claro y navegación sencilla.</p>
-  </section>
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <div class="cards">
+        <div class="card">
+          💡 <br/>
+          <strong>Creatividad</strong>
+          <p>Ideas frescas para tus proyectos.</p>
+        </div>
+        <div class="card">
+          ⚙️ <br/>
+          <strong>Desarrollo</strong>
+          <p>Webs modernas y funcionales.</p>
+        </div>
+        <div class="card">
+          📈 <br/>
+          <strong>Estrategia</strong>
+          <p>Optimiza tu presencia online.</p>
+        </div>
+      </div>
+    </section>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="cards">
-      <div class="card">
-        💡 <br/>
-        <strong>Creatividad</strong>
-        <p>Ideas frescas para tus proyectos.</p>
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/400x300" alt="Proyecto 1">
+        <img src="https://via.placeholder.com/400x300" alt="Proyecto 2">
+        <img src="https://via.placeholder.com/400x300" alt="Proyecto 3">
       </div>
-      <div class="card">
-        ⚙️ <br/>
-        <strong>Desarrollo</strong>
-        <p>Webs modernas y funcionales.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form>
+        <input type="text" placeholder="Tu nombre" required />
+        <input type="email" placeholder="Tu correo" required />
+        <textarea rows="5" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="https://via.placeholder.com/40" alt="Logo KxN" class="footer-logo-img">
+          <span class="footer-logo-text">KxN</span>
+        </div>
+        <div class="copyright">
+          © 2025 KxN (Tomás Miguel Beby Díaz) - Todos los derechos reservados
+        </div>
       </div>
-      <div class="card">
-        📈 <br/>
-        <strong>Estrategia</strong>
-        <p>Optimiza tu presencia online.</p>
+      
+      <div class="legal-info">
+        <div class="legal-text">
+          Aviso Legal: Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre KxN. El nombre artístico "KxN" es una marca de facto en uso desde 2023 y representa la identidad artística de su creador. Queda prohibido cualquier uso no autorizado del nombre, contenido o diseño de este sitio.
+        </div>
+        <div class="legal-text">
+          Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.
+        </div>
       </div>
     </div>
-  </section>
-
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/400x300" alt="Proyecto 1">
-      <img src="https://via.placeholder.com/400x300" alt="Proyecto 2">
-      <img src="https://via.placeholder.com/400x300" alt="Proyecto 3">
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form>
-      <input type="text" placeholder="Tu nombre" required />
-      <input type="email" placeholder="Tu correo" required />
-      <textarea rows="5" placeholder="Tu mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
+  </footer>
 
   <script>
     function toggleMenu() {
