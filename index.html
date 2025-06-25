@@ -681,7 +681,18 @@
         
         <form class="contact-form" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
             <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
+<!-- Página de Contacto Funcional -->
+<div id="contact" class="page">
+    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+    <div class="page-content">
+        <h2 style="text-align: center; margin-bottom: 2rem;">
+            <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">Solicita Tu Canción</span>
+        </h2>
+        
+        <form class="contact-form" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
+            <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
             <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_next" value="#contact"> <!-- Esto hará que se recargue la misma página -->
             
             <div class="form-group">
                 <label for="name"><i class="fas fa-user" style="margin-right: 8px;"></i> Tu Nombre</label>
@@ -694,13 +705,13 @@
             </div>
             
             <div class="form-group">
-                <label for="song"><i class="fas fa-music" style="margin-right: 8px;"></i> Canción que quieres</label>
+                <label for="song"><i class="fas fa-music" style="margin-right: 8px;"></i> Canción que deseas</label>
                 <input type="text" id="song" name="song" class="form-control" required placeholder="Ej: Lady Gaga - Bad Romance">
             </div>
             
             <div class="form-group">
-                <label for="message"><i class="fas fa-comment" style="margin-right: 8px;"></i> Mensaje (opcional)</label>
-                <textarea id="message" name="message" class="form-control" rows="4" placeholder="¿Algún estilo especial que prefieras?"></textarea>
+                <label for="message"><i class="fas fa-comment" style="margin-right: 8px;"></i> Detalles (opcional)</label>
+                <textarea id="message" name="message" class="form-control" rows="4" placeholder="¿Alguna versión especial que prefieras?"></textarea>
             </div>
             
             <button type="submit" class="submit-btn" style="margin-top: 1.5rem;">
@@ -708,11 +719,51 @@
             </button>
         </form>
         
-        <p style="text-align: center; margin-top: 2rem; color: var(--gold-light); font-size: 0.9rem;">
-            <i class="fas fa-info-circle"></i> Recibirás confirmación por email
-        </p>
+        <div id="form-success" style="display: none; text-align: center; margin-top: 2rem; color: var(--gold);">
+            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <h3>¡Solicitud enviada con éxito!</h3>
+            <p>Gracias por tu petición. Me pondré en contacto contigo pronto.</p>
+        </div>
     </div>
 </div>
+
+<script>
+    // Manejo del formulario
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validación básica
+        if (!this.name.value || !this.email.value || !this.song.value) {
+            alert('Por favor completa los campos requeridos');
+            return;
+        }
+        
+        // Mostrar animación de carga
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i> Enviando...';
+        submitBtn.disabled = true;
+        
+        // Envío real del formulario
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Mostrar mensaje de éxito
+                this.style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+            } else {
+                throw new Error('Error en el envío');
+            }
+        })
+        .catch(error => {
+            alert('Hubo un error al enviar tu solicitud. Por favor inténtalo de nuevo más tarde.');
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Enviar Solicitud';
+            submitBtn.disabled = false;
+        });
+    });
+</script>
             
             <div class="bio-text">
                 <!-- Título con efecto dorado -->
