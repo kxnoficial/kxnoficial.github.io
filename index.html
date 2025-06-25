@@ -3,531 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Vocal Artist</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>KxN | Artista Vocal</title>
     <style>
+        /* Estilo minimalista tipo "The Card" */
         :root {
-            --bg: #f8f5f2;
-            --text: #1a1a1a;
-            --accent: #c19a6b;
-            --light-accent: #e8d9c5;
-            --nav-width: 280px;
-            --transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            --primary: #1a1a1a;
+            --secondary: #333;
+            --accent: #c19a6b; /* dorado moderno */
+            --text: #f5f5f5;
+            --bg: #0a0a0a; /* fondo oscuro premium */
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        
         body {
-            font-family: 'Aeonik', 'Helvetica Neue', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
             display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
+            text-align: center;
         }
-
-        /* Navegación de lujo */
-        nav {
-            width: var(--nav-width);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background-color: var(--bg);
-            border-right: 1px solid var(--light-accent);
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 100;
+        
+        .card {
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
         }
-
-        .nav-header {
-            margin-bottom: 60px;
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
-
-        .nav-header h1 {
-            font-size: 24px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            color: var(--accent);
-        }
-
-        .nav-header p {
-            font-size: 14px;
-            opacity: 0.7;
-            font-weight: 300;
-        }
-
-        .nav-links {
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 1px;
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin: 0 auto 1.5rem;
             display: block;
-            transition: var(--transition);
-            position: relative;
         }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent);
-            transition: var(--transition);
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .nav-links a.active {
+        
+        .tagline {
             color: var(--accent);
-            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
-
-        .nav-footer {
-            margin-top: auto;
-            padding-top: 40px;
-            border-top: 1px solid var(--light-accent);
+        
+        .bio {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
-
+        
         .social-links {
             display: flex;
-            gap: 15px;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
-
-        .social-links a {
+        
+        .social-link {
             color: var(--text);
-            font-size: 14px;
-            transition: var(--transition);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
-
-        .social-links a:hover {
+        
+        .social-link:hover {
             color: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: #d4b483;
             transform: translateY(-2px);
         }
-
-        /* Contenido principal */
-        main {
-            flex: 1;
-            margin-left: var(--nav-width);
-            padding: 80px;
-        }
-
-        section {
-            min-height: 100vh;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            padding-top: 40px;
-        }
-
-        section.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 42px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .section-header p {
-            font-size: 16px;
-            max-width: 600px;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* Home */
-        .hero {
-            height: calc(100vh - 160px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hero h1 {
-            font-size: 64px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .hero .divider {
-            width: 80px;
-            height: 1px;
-            background-color: var(--accent);
-            margin: 40px 0;
-        }
-
-        /* Bio */
-        .bio-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .bio-text p {
-            margin-bottom: 20px;
-            font-weight: 300;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .bio-image {
-            background-color: var(--light-accent);
-            height: 500px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bio-image:after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: -20px;
-            bottom: -20px;
+        
+        .video-btn {
+            background: transparent;
             border: 1px solid var(--accent);
-            z-index: -1;
-        }
-
-        /* Videos */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 30px;
-        }
-
-        .video-item {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-item iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Contacto */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .contact-card {
-            padding: 30px;
-            border: 1px solid var(--light-accent);
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            background-color: white;
-        }
-
-        .contact-card h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: 400;
             color: var(--accent);
         }
-
-        .contact-card p {
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        /* Efectos de lujo */
-        .luxury-divider {
-            width: 100%;
-            height: 1px;
-            background-color: var(--light-accent);
-            margin: 60px 0;
-            position: relative;
-        }
-
-        .luxury-divider:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 80px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            main {
-                padding: 60px;
+        
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.5rem;
             }
-
-            .bio-content {
-                grid-template-columns: 1fr;
-            }
-
-            .bio-image {
-                height: 400px;
-                order: -1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            nav {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 30px;
-                border-right: none;
-                border-bottom: 1px solid var(--light-accent);
-            }
-
-            .nav-header {
-                margin-bottom: 30px;
-            }
-
-            .nav-links {
-                display: flex;
-                gap: 20px;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-
-            .nav-links li {
-                margin-bottom: 0;
-                flex-shrink: 0;
-            }
-
-            .nav-footer {
-                display: none;
-            }
-
-            main {
-                margin-left: 0;
-                padding: 40px 30px;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
+            
+            h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navegación de lujo -->
-    <nav>
-        <div class="nav-header">
-            <h1>KxN</h1>
-            <p>Vocal Artist</p>
+    <div class="card">
+        <!-- Reemplaza con tu foto -->
+        <img src="tu-foto-perfil.jpg" alt="KxN" class="profile-img">
+        
+        <h1>KxN</h1>
+        <p class="tagline">Artista Vocal · Covers & Música</p>
+        
+        <p class="bio">
+            Cantante amateur apasionado por reinterpretar canciones con un toque personal. 
+            Exploro diferentes géneros para conectar con emociones a través de mi voz.
+        </p>
+        
+        <div class="social-links">
+            <!-- Actualiza con tus enlaces reales -->
+            <a href="[YOUTUBE_URL]" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="[INSTAGRAM_URL]" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="[TIKTOK_URL]" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="[SPOTIFY_URL]" target="_blank" class="social-link"><i class="fab fa-spotify"></i></a>
         </div>
+        
+        <a href="mailto:atlantiselimperioperdido@outlook.com" class="btn">Contacto</a>
+        <a href="#videos" class="btn video-btn">Ver Videos</a>
+    </div>
 
-        <ul class="nav-links">
-            <li><a href="#" class="active" data-section="home">Home</a></li>
-            <li><a href="#" data-section="bio">Biografía</a></li>
-            <li><a href="#" data-section="videos">Videos</a></li>
-            <li><a href="#" data-section="contact">Contacto</a></li>
-        </ul>
-
-        <div class="nav-footer">
-            <div class="luxury-divider"></div>
-            <div class="social-links">
-                <!-- Ordenadas por relevancia para artistas -->
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-spotify"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Contenido principal -->
-    <main>
-        <!-- Home -->
-        <section id="home" class="active">
-            <div class="hero">
-                <h1>La voz que <br>transforma emociones</h1>
-                <div class="divider"></div>
-                <p>Interpretaciones únicas que capturan la esencia de cada canción. Covers con alma y técnica vocal en constante evolución.</p>
-            </div>
-        </section>
-
-        <!-- Biografía -->
-        <section id="bio">
-            <div class="section-header">
-                <h2>Biografía</h2>
-                <p>La historia detrás de la voz y el camino recorrido hasta hoy.</p>
-            </div>
-
-            <div class="bio-content">
-                <div class="bio-text">
-                    <p>KxN es un artista vocal emergente cuya pasión por la música trasciende géneros y estilos. Con una formación autodidacta y oído absoluto, ha desarrollado una técnica vocal distintiva que combina potencia y delicadeza.</p>
-                    <p>Desde temprana edad, encontró en la música un lenguaje universal para expresar emociones complejas. Sus interpretaciones no son simples covers, sino reinvenciones personales que respetan la esencia original mientras añaden matices únicos.</p>
-                    <p>Actualmente está enfocado en perfeccionar su arte mientras comparte su proceso creativo con una comunidad creciente de amantes de la buena música.</p>
-                </div>
-                <div class="bio-image">
-                    <!-- Aquí iría tu foto -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Videos -->
-        <section id="videos">
-            <div class="section-header">
-                <h2>Videos</h2>
-                <p>Selección de mis interpretaciones más recientes y destacadas.</p>
-            </div>
-
-            <div class="video-grid">
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/EXAMPLE1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/EXAMPLE2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/EXAMPLE3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/EXAMPLE4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contacto -->
-        <section id="contact">
-            <div class="section-header">
-                <h2>Contacto</h2>
-                <p>Colaboraciones, preguntas o simplemente compartir tu aprecio por la música.</p>
-            </div>
-
-            <div class="contact-info">
-                <div class="contact-card">
-                    <h3>Representación</h3>
-                    <p>Para oportunidades profesionales, giras o colaboraciones.</p>
-                    <p>management@kxnofficial.com</p>
-                </div>
-                <div class="contact-card">
-                    <h3>Prensa</h3>
-                    <p>Medios y cobertura de prensa.</p>
-                    <p>press@kxnofficial.com</p>
-                </div>
-                <div class="contact-card">
-                    <h3>General</h3>
-                    <p>Todas las demás consultas.</p>
-                    <p>hello@kxnofficial.com</p>
-                </div>
-                <div class="contact-card">
-                    <h3>Redes Sociales</h3>
-                    <p>Sigue mi journey musical diario.</p>
-                    <p>@kxnofficial en todas las plataformas</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Navegación entre secciones
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remover clase active de todos los links
-                document.querySelectorAll('.nav-links a').forEach(el => {
-                    el.classList.remove('active');
-                });
-                
-                // Añadir clase active al link clickeado
-                this.classList.add('active');
-                
-                // Ocultar todas las secciones
-                document.querySelectorAll('section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Mostrar la sección correspondiente
-                const sectionId = this.getAttribute('data-section');
-                document.getElementById(sectionId).classList.add('active');
-            });
-        });
-
-        // Efecto de carga suave
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-        });
-
-        // Efectos de hover para tarjetas de contacto
-        const contactCards = document.querySelectorAll('.contact-card');
-        contactCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                contactCards.forEach(c => {
-                    if (c !== card) {
-                        c.style.opacity = '0.6';
-                    }
-                });
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                contactCards.forEach(c => {
-                    c.style.opacity = '1';
-                });
-            });
-        });
-    </script>
+    <!-- Font Awesome para íconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
