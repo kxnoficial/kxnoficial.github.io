@@ -1,348 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Tomás Miguel Beby Díaz</title>
-    <meta name="description" content="Página oficial de KxN - Tomás Miguel Beby Díaz. Música, biografía y contacto.">
-    <style>
-        :root {
-            --black: #000;
-            --white: #fff;
-            --gold: #D4AF37;
-            --gold-light: rgba(212, 175, 55, 0.3);
-            --diamond: rgba(185, 242, 255, 0.8);
-            --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            --font-menu: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-        }
-        
-        body {
-            font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
-            background: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        /* Menú lateral premium */
-        #menu-toggle { display: none; }
-        .menu-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            cursor: pointer;
-            color: var(--gold);
-            font-size: 28px;
-            transition: transform 0.3s;
-        }
-        #menu-toggle:checked + .menu-btn { transform: rotate(90deg); }
-        
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 280px;
-            height: 100vh;
-            background: rgba(0,0,0,0.95);
-            border-left: 1px solid var(--gold);
-            box-shadow: -5px 0 30px rgba(212, 175, 55, 0.2);
-            transition: right 0.4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-            z-index: 99;
-            padding: 80px 30px 30px;
-            overflow-y: auto;
-        }
-        
-        .side-menu a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            font-family: var(--font-menu);
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 12px 0;
-            margin: 5px 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s;
-            letter-spacing: 1px;
-        }
-        
-        .side-menu a:hover {
-            color: var(--gold);
-            padding-left: 10px;
-            border-bottom-color: var(--gold);
-        }
-        
-        #menu-toggle:checked ~ .side-menu { right: 0; }
-        
-        /* Contenido principal */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            transition: transform 0.4s;
-        }
-        #menu-toggle:checked ~ .container { transform: translateX(-20px); }
-        
-        /* Header estilizado */
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid transparent;
-            margin: 0 auto;
-            display: block;
-            background: linear-gradient(var(--black), var(--black)) padding-box,
-                        linear-gradient(135deg, var(--gold), var(--diamond), var(--gold)) border-box;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            text-align: center;
-            background: linear-gradient(to right, var(--gold), var(--diamond));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin: 15px 0 5px;
-            font-weight: 300;
-            letter-spacing: -1px;
-        }
-        
-        .tagline {
-            text-align: center;
-            letter-spacing: 4px;
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .tagline::after {
-            content: "";
-            display: block;
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            margin: 10px auto 0;
-        }
-        
-        /* Secciones de contenido */
-        .page-content {
-            padding: 20px 0;
-        }
-        
-        h2 {
-            color: var(--gold);
-            font-weight: 400;
-            font-size: 1.8rem;
-            margin-top: 30px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--gold);
-        }
-        
-        /* Footer premium */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
-            font-size: 0.8rem;
-            border-top: 1px solid var(--gold-light);
-            position: relative;
-        }
-        
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: var(--gold);
-        }
-        
-        .legal-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .legal-icon {
-            width: 28px;
-            height: 28px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Minimalista</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background: white;
+      color: #222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background: white;
+      border: 1px solid #ddd;
+      display: none;
+      flex-direction: column;
+      min-width: 150px;
+    }
+
+    nav a {
+      padding: 1rem;
+      text-decoration: none;
+      color: #222;
+      border-bottom: 1px solid #eee;
+    }
+
+    nav a:hover {
+      background: #f7f7f7;
+    }
+
+    .show {
+      display: flex;
+    }
+
+    section {
+      padding: 100px 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background: #fafafa;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea, button {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background: #222;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #444;
+    }
+
+    /* Espaciado para compensar header fijo */
+    .spacer {
+      height: 70px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Menú móvil -->
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-btn">☰</label>
-    
-    <nav class="side-menu">
-        <a href="#" onclick="showPage('home')">Inicio</a>
-        <a href="#" onclick="showPage('bio')">Biografía</a>
-        <a href="#" onclick="showPage('music')">Música</a>
-        <a href="#" onclick="showPage('gallery')">Galería</a>
-        <a href="#" onclick="showPage('contact')">Contacto</a>
-        
-        <div style="margin-top: 40px;">
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
-                <a href="https://wktok.com/@kxnoficial" target="_blank" style="font-size: 1.4rem; color: var(--gold);"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/kxnoficial" target="_blank" style="font-size: 1.4rem; color: var(--gold);"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" style="font-size: 1.4rem; color: var(--gold);"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/kxnoficial" target="_blank" style="font-size: 1.4rem; color: var(--gold);"><i class="fab fa-twitter"></i></a>
-                <a href="https://youtube.com/@kxnoficial" target="_blank" style="font-size: 1.4rem; color: var(--gold);"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p style="font-size: 0.7rem; color: var(--gold-light);">kxnoficial.com</p>
-        </div>
+
+  <header>
+    <div class="logo">Mi Sitio</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="nav-menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
     </nav>
+  </header>
 
-    <div class="container">
-        <header>
-            <img src="IMG-20250624-WA0008.jpg" alt="Tomás Miguel" class="profile-pic" loading="lazy">
-            <h1>KxN</h1>
-            <p class="tagline">TOMÁS MIGUEL BEBY DÍAZ</p>
-        </header>
+  <div class="spacer"></div>
 
-        <!-- Páginas -->
-        <div id="home" class="page active">
-            <div class="page-content">
-                <section>
-                    <h2>Último Proyecto</h2>
-                    <p>Explora mi última creación vocal donde fusiono lo clásico con lo digital, transformando canciones conocidas en experiencias auditivas únicas.</p>
-                    <a href="#" onclick="showPage('music')" style="color: var(--gold); text-decoration: none; display: inline-block; margin-top: 15px;">→ Ver Música</a>
-                </section>
-                
-                <section style="margin-top: 40px;">
-                    <h2>Solicita Tu Canción</h2>
-                    <p>¿Tienes una canción que te gustaría escuchar en mi estilo? Hazme saber tus peticiones a través de nuestro formulario de contacto.</p>
-                    <a href="#" onclick="showPage('contact')" style="color: var(--gold); text-decoration: none; display: inline-block; margin-top: 15px;">→ Ir al Formulario</a>
-                </section>
-            </div>
-        </div>
-        
-        <!-- Biografía -->
-        <div id="bio" class="page">
-            <a href="#" onclick="showPage('home')" style="color: var(--gold); text-decoration: none; display: inline-block; margin-bottom: 20px;">← Volver</a>
-            <div class="page-content">
-                <h2>Biografía</h2>
-                <p><strong style="color: var(--gold);">24 de diciembre de 1999</strong><br>
-                Santa Cruz de Tenerife, Islas Canarias</p>
-                
-                <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí. Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es.</p>
-                
-                <p>Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente. Mis covers los grabo en mi cuarto, poniendo todo mi empeño para ofrecer lo mejor con los recursos que tengo.</p>
-                
-                <div style="margin: 30px 0; padding: 15px; border-left: 2px solid var(--gold);">
-                    <p style="font-style: italic; color: var(--diamond);">"KxN representa el vínculo entre lo que soy, lo que siento y lo que quiero compartir con el mundo a través de la música."</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Música -->
-        <div id="music" class="page">
-            <a href="#" onclick="showPage('home')" style="color: var(--gold); text-decoration: none; display: inline-block; margin-bottom: 20px;">← Volver</a>
-            <div class="page-content">
-                <h2>Último Cover</h2>
-                <div style="position: relative; padding-bottom: 56.25%; margin: 25px 0; background: #000;">
-                    <iframe src="https://www.youtube.com/embed/MB9Y_j7wPio?modestbranding=1&rel=0" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                            allowfullscreen loading="lazy"></iframe>
-                </div>
-                
-                <h2 style="margin-top: 40px;">Discografía</h2>
-                <p>Explora mi colección de covers y trabajos originales donde aplico mi técnica de deconstrucción vocal.</p>
-            </div>
-        </div>
-        
-        <!-- Galería -->
-        <div id="gallery" class="page">
-            <a href="#" onclick="showPage('home')" style="color: var(--gold); text-decoration: none; display: inline-block; margin-bottom: 20px;">← Volver</a>
-            <div class="page-content">
-                <h2>Álbum Visual</h2>
-                <p>Una colección de imágenes que capturan momentos de mi proceso creativo.</p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin: 25px 0;">
-                    <div style="aspect-ratio: 1; background: rgba(212, 175, 55, 0.05); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Foto 1</div>
-                    <div style="aspect-ratio: 1; background: rgba(212, 175, 55, 0.05); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Foto 2</div>
-                    <div style="aspect-ratio: 1; background: rgba(212, 175, 55, 0.05); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Foto 3</div>
-                    <div style="aspect-ratio: 1; background: rgba(212, 175, 55, 0.05); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Foto 4</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Contacto -->
-        <div id="contact" class="page">
-            <a href="#" onclick="showPage('home')" style="color: var(--gold); text-decoration: none; display: inline-block; margin-bottom: 20px;">← Volver</a>
-            <div class="page-content">
-                <h2>Solicita Tu Canción</h2>
-                <p>Completa el formulario para enviarme tus peticiones musicales.</p>
-                
-                <form style="max-width: 500px; margin: 30px auto;">
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--gold);">Tu Nombre</label>
-                        <input type="text" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid var(--gold-light); color: var(--white);">
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--gold);">Tu Email</label>
-                        <input type="email" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid var(--gold-light); color: var(--white);">
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--gold);">Canción solicitada</label>
-                        <input type="text" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid var(--gold-light); color: var(--white);">
-                    </div>
-                    
-                    <button type="submit" style="background: var(--gold); color: #000; border: none; padding: 12px 25px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.3s;">Enviar Solicitud</button>
-                </form>
-            </div>
-        </div>
+  <section id="inicio">
+    <h1>Bienvenido a Mi Sitio</h1>
+    <p style="text-align: center;">Diseño limpio, contenido claro y navegación sencilla.</p>
+  </section>
 
-        <footer>
-            <div class="legal-icons">
-                <div class="legal-icon">©</div>
-                <div class="legal-icon">℗</div>
-            </div>
-            <p>2025 KxN (Tomás Miguel Beby Díaz)</p>
-            <p style="font-size: 0.7rem; margin-top: 5px; color: rgba(255,255,255,0.6);">Todos los derechos reservados</p>
-        </footer>
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="cards">
+      <div class="card">
+        💡 <br/>
+        <strong>Creatividad</strong>
+        <p>Ideas frescas para tus proyectos.</p>
+      </div>
+      <div class="card">
+        ⚙️ <br/>
+        <strong>Desarrollo</strong>
+        <p>Webs modernas y funcionales.</p>
+      </div>
+      <div class="card">
+        📈 <br/>
+        <strong>Estrategia</strong>
+        <p>Optimiza tu presencia online.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Scripts optimizados -->
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            document.getElementById('menu-toggle').checked = false;
-            window.scrollTo(0, 0);
-        }
-    </script>
-    <!-- Carga diferida de Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/400x300" alt="Proyecto 1">
+      <img src="https://via.placeholder.com/400x300" alt="Proyecto 2">
+      <img src="https://via.placeholder.com/400x300" alt="Proyecto 3">
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form>
+      <input type="text" placeholder="Tu nombre" required />
+      <input type="email" placeholder="Tu correo" required />
+      <textarea rows="5" placeholder="Tu mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('show');
+    }
+  </script>
+
 </body>
 </html>
