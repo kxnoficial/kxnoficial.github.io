@@ -1,56 +1,648 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- ... (todo el head se mantiene igual) ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KxN | Tomás Miguel Beby Díaz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+            --gold-light: rgba(212, 175, 55, 0.3);
+            --diamond: rgba(185, 242, 255, 0.8);
+        }
+        
+        /* Fondo en movimiento de lujo */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,30,0.95) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 Q50,70 30,50 Z" fill="%23D4AF37" opacity="0.05"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="8" y="0" width="4" height="4" transform="rotate(45 10 10)" fill="%23B9F2FF" opacity="0.3"/></svg>');
+            z-index: -2;
+            animation: drift 40s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 0 0, 100% 100%, 200% 200%; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            border-left: 1px solid var(--gold-light);
+            border-right: 1px solid var(--gold-light);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Foto de perfil flotante con marco de lujo */
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid transparent;
+            margin: 0 auto 1.5rem;
+            display: block;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            position: relative;
+            background: linear-gradient(45deg, var(--black), var(--black)) padding-box,
+                        linear-gradient(135deg, var(--gold), var(--diamond), var(--gold)) border-box;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            margin: 0.5rem 0;
+            background: linear-gradient(to right, var(--gold), var(--diamond), var(--white));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tagline::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        /* Redes sociales estilo lujoso */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .social-links a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .social-links a:hover::before {
+            left: 100%;
+        }
+        
+        /* Navegación entre subpáginas de lujo */
+        .nav-pages {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-pages a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .nav-pages a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-pages a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .nav-pages a:hover::before {
+            left: 100%;
+        }
+        
+        /* Contenido de subpáginas (oculto por defecto) */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Estilos para el formulario de contacto de lujo */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gold-light);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--gold), var(--diamond), var(--gold));
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+            border-radius: 6px;
+            opacity: 0.3;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--gold-light);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--gold), var(--diamond));
+            color: var(--black);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--diamond), var(--gold));
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Estilos para la sección de redes sociales */
+        .social-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .social-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .social-section h3 {
+            color: var(--gold);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+        
+        /* Botón de volver con estilo de lujo */
+        .back-btn {
+            display: inline-block;
+            margin: 2rem 0;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn::before {
+            content: "←";
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: var(--diamond);
+            padding-left: 2rem;
+        }
+        
+        /* Efectos de diamantes */
+        .diamond-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        /* Estilos para el contenido de las páginas */
+        .page-content {
+            padding: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .page-content h2 {
+            color: var(--gold);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-content h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+        }
+        
+        /* Efecto de brillo al cargar la página */
+        @keyframes shine {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        .shine-effect {
+            animation: shine 2s ease-in-out;
+        }
+
+        /* Estilo para el marco de foto en biografía */
+        .bio-photo-frame {
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--diamond), var(--gold));
+            border-radius: 5px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            margin-bottom: 2rem;
+            position: relative;
+            max-width: 350px;
+        }
+        
+        .bio-photo-frame::before, .bio-photo-frame::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .bio-photo-frame::before {
+            top: -10px;
+            left: -10px;
+        }
+        
+        .bio-photo-frame::after {
+            bottom: -10px;
+            right: -10px;
+            background: var(--diamond);
+        }
+        
+        .bio-photo-inner {
+            border: 5px solid var(--black);
+            padding: 5px;
+            background: var(--black);
+        }
+        
+        .bio-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--gold-light);
+        }
+        
+        .bio-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .bio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+    </style>
 </head>
 <body>
     <div class="container shine-effect">
-        <!-- ... (header y páginas home, bio, music se mantienen igual) ... -->
-
-        <!-- Página de Álbum CORREGIDA -->
+        <header>
+            <img src="IMG-20250624-WA0008.jpg" alt="Tomás Miguel" class="profile-pic">
+            <h1>KxN</h1>
+            <p class="tagline">TOMÁS MIGUEL BEBY DÍAZ</p>
+            
+            <!-- Redes Sociales -->
+            <div class="social-section">
+                <h3>Conéctate Conmigo</h3>
+                <div class="social-links">
+                    <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                    <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
+                    <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="nav-pages">
+                <a href="#" onclick="showPage('home')">Inicio</a>
+                <a href="#" onclick="showPage('bio')">Biografía</a>
+                <a href="#" onclick="showPage('music')">Música</a>
+                <a href="#" onclick="showPage('gallery')">Álbum</a>
+                <a href="#" onclick="showPage('contact')">Contacto</a>
+            </div>
+        </header>
+        
+        <!-- Página de Inicio -->
+        <div id="home" class="page active">
+            <div class="page-content">
+                <section>
+                    <h2>Último Proyecto</h2>
+                    <p>Explora mi última creación vocal donde fusiono lo clásico con lo digital, transformando canciones conocidas en experiencias auditivas únicas.</p>
+                    <a href="#" onclick="showPage('music')" class="back-btn">Ver Música</a>
+                </section>
+                
+                <section style="margin-top: 3rem;">
+                    <h2>Solicita Tu Canción</h2>
+                    <p>¿Tienes una canción que te gustaría escuchar en mi estilo? Hazme saber tus peticiones a través de nuestro formulario de contacto.</p>
+                    <a href="#" onclick="showPage('contact')" class="back-btn">Ir al Formulario</a>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Página de Biografía -->
+        <div id="bio" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+            <div class="page-content">
+                <div class="bio-content">
+                    <div class="bio-photo-frame">
+                        <div class="bio-photo-inner">
+                            <img src="IMG_20250624_201119.jpg" alt="Tomás Miguel en el estudio" class="bio-photo">
+                        </div>
+                    </div>
+                    
+                    <div class="bio-text">
+                        <h2>Tomás Miguel Beby Díaz</h2>
+                        <p><span style="color: var(--gold);">24 de diciembre de 1999</span><br>
+                        Santa Cruz de Tenerife, Islas Canarias</p>
+                        
+                        <p>Transformo canciones que amo en piezas únicas, donde mi voz se fusiona con tecnología para crear algo nuevo y emocionante. Mi enfoque en la deconstrucción vocal me permite explorar los límites de la interpretación musical.</p>
+                    </div>
+                </div>
+                
+                <p>Cada cover que realizo es un viaje personal, una reinvención que respeta el original mientras aporta mi visión artística. La tecnología es mi aliada, permitiéndome manipular y enriquecer mi voz para crear texturas sonoras innovadoras.</p>
+                
+                <p>Mi proceso creativo comienza con una conexión emocional con la canción, seguida de un análisis técnico para identificar oportunidades de reinvención. El resultado es una interpretación que honra al artista original mientras lleva la pieza a territorios inexplorados.</p>
+            </div>
+        </div>
+        
+        <!-- Página de Música -->
+        <div id="music" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+            <div class="page-content">
+                <h2>Último Cover</h2>
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2rem 0;">
+                    <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                </div>
+                
+                <h2 style="margin-top: 3rem;">Discografía</h2>
+                <p>Explora mi colección de covers y trabajos originales donde aplico mi técnica de deconstrucción vocal.</p>
+                <!-- Aquí podrías añadir una lista de reproducción o más videos -->
+            </div>
+        </div>
+        
+        <!-- Página de Álbum -->
         <div id="gallery" class="page">
             <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
             <div class="page-content">
                 <h2>Álbum Visual</h2>
-                <p>Una colección de imágenes que capturan mi proceso creativo.</p>
+                <p>Una colección de imágenes que capturan la esencia de mi proceso creativo y presentaciones.</p>
+                <!-- Aquí podrías añadir tu galería de imágenes -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 1</div>
+                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 2</div>
+                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 3</div>
+                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 4</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Página de Contacto con Formulario -->
+        <div id="contact" class="page">
+            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+            <div class="page-content">
+                <h2>Solicita Tu Canción</h2>
+                <p>¿Tienes una canción que te gustaría que interprete? Completa el siguiente formulario y hazme saber tus peticiones. Estaré encantado de considerar tu sugerencia.</p>
                 
-                <!-- GALERÍA DE FOTOS -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                    <!-- EJEMPLO DE FOTO 1 - REPITE ESTE BLOQUE PARA CADA IMAGEN -->
-                    <div style="position: relative; overflow: hidden; border-radius: 5px; border: 1px solid var(--gold-light); aspect-ratio: 1/1;">
-                        <img 
-                            src="tu_foto_1.jpg" 
-                            alt="Descripción de la foto 1"
-                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.03)'"
-                            onmouseout="this.style.transform='scale(1)'"
-                        >
-                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 1rem; color: white; text-align: center;">
-                            <small>Título foto 1</small>
-                        </div>
+                <form class="contact-form" id="songRequestForm" action="https://formsubmit.co/atlantiselimperioperdido@outlook.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nueva solicitud de canción - KxN">
+                    <input type="hidden" name="_template" value="box">
+                    
+                    <div class="form-group">
+                        <label for="name">Tu Nombre</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     
-                    <!-- FOTO 2 -->
-                    <div style="position: relative; overflow: hidden; border-radius: 5px; border: 1px solid var(--gold-light); aspect-ratio: 1/1;">
-                        <img 
-                            src="tu_foto_2.jpg" 
-                            alt="Descripción de la foto 2"
-                            style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.03)'"
-                            onmouseout="this.style.transform='scale(1)'"
-                        >
-                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 1rem; color: white; text-align: center;">
-                            <small>Título foto 2</small>
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Tu Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="song">Canción que te gustaría que cante</label>
+                        <input type="text" id="song" name="song" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="artist">Artista Original</label>
+                        <input type="text" id="artist" name="artist" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">¿Por qué te gustaría escuchar mi versión de esta canción? (Opcional)</label>
+                        <textarea id="message" name="message" class="form-control"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Solicitud</button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <h3>Otras Formas de Contacto</h3>
+                    <p>También puedes contactarme directamente a través de mis redes sociales.</p>
+                    <div class="social-links" style="justify-content: center; margin-top: 1rem;">
+                        <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                        <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
+                        <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Página de Contacto (se mantiene igual) ... -->
     </div>
 
-    <!-- Añade estos scripts al final, antes de </body> -->
     <script>
         // Sistema de subpáginas
         function showPage(pageId) {
@@ -60,20 +652,65 @@
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
             
+            // Efecto de brillo al cambiar de página
             document.querySelector('.container').classList.remove('shine-effect');
-            void document.querySelector('.container').offsetWidth;
+            void document.querySelector('.container').offsetWidth; // Trigger reflow
             document.querySelector('.container').classList.add('shine-effect');
         }
         
-        // Efecto de diamantes (código completo se mantiene igual)
-        document.addEventListener('mousemove', function(e) {
-            // ... (código completo del efecto diamantes)
+        // Efecto de diamantes al mover el mouse
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.7) {
+                const diamond = document.createElement('div');
+                diamond.className = 'diamond-effect';
+                diamond.style.width = `${Math.random() * 10 + 5}px`;
+                diamond.style.height = diamond.style.width;
+                diamond.style.left = `${e.clientX}px`;
+                diamond.style.top = `${e.clientY}px`;
+                diamond.style.transform = `rotate(${Math.random() * 360}deg)`;
+                diamond.style.background = `linear-gradient(45deg, transparent, ${Math.random() > 0.5 ? 'var(--gold)' : 'var(--diamond)'}, transparent)`;
+                
+                document.body.appendChild(diamond);
+                
+                // Animación
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 1 + Math.random() * 2;
+                const distance = 50 + Math.random() * 100;
+                
+                let posX = e.clientX;
+                let posY = e.clientY;
+                let opacity = 1;
+                
+                const animate = () => {
+                    posX += Math.cos(angle) * velocity;
+                    posY += Math.sin(angle) * velocity;
+                    opacity -= 0.01;
+                    
+                    diamond.style.left = `${posX}px`;
+                    diamond.style.top = `${posY}px`;
+                    diamond.style.opacity = opacity;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        diamond.remove();
+                    }
+                };
+                
+                animate();
+            }
         });
-
+        
         // Manejo del formulario
         document.getElementById('songRequestForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Aquí podrías añadir validación adicional si lo deseas
+            
+            // Mostrar mensaje de éxito
             alert('¡Gracias por tu solicitud! Me pondré en contacto contigo pronto.');
+            
+            // Enviar el formulario
             this.submit();
         });
     </script>
