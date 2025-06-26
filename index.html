@@ -14,6 +14,8 @@
       --white: #ffffff;
       --gold: #d4af37;
       --diamond: #b9f2ff;
+      --dark-gold: #a88325;
+      --light-diamond: #ddf8ff;
     }
     * {
       box-sizing: border-box;
@@ -26,7 +28,10 @@
       color: var(--white);
       line-height: 1.6;
       scroll-behavior: smooth;
-      background-image: radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%),
+        linear-gradient(to bottom, rgba(11, 11, 11, 0.8), rgba(11, 11, 11, 1));
+      overflow-x: hidden;
     }
     header {
       text-align: center;
@@ -34,6 +39,11 @@
       background: linear-gradient(to bottom, #000, #111);
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     header::before {
       content: "";
@@ -44,12 +54,20 @@
       height: 100%;
       background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
       pointer-events: none;
+      animation: pulse 8s infinite alternate;
+    }
+    .header-content {
+      position: relative;
+      z-index: 10;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.5s;
     }
     .header-image {
       display: block;
       margin: 0 auto 1.5rem;
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       border: 4px solid var(--gold);
       object-fit: cover;
@@ -57,14 +75,15 @@
       z-index: 2;
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
       transition: transform 0.5s, box-shadow 0.5s;
+      animation: float 6s ease-in-out infinite;
     }
     .header-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 50px rgba(185, 242, 255, 0.4);
     }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 4.5rem;
       background: linear-gradient(to right, var(--gold), var(--diamond));
       -webkit-background-clip: text;
       color: transparent;
@@ -73,41 +92,54 @@
       position: relative;
       z-index: 2;
       letter-spacing: 2px;
+      animation: glow 3s infinite alternate;
     }
     .real-name {
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: #aaa;
       font-weight: 300;
       position: relative;
       z-index: 2;
+      margin-top: 0.5rem;
+      animation: fadeIn 2s ease forwards 1.5s;
+      opacity: 0;
     }
     .tagline {
-      font-size: 1rem;
-      letter-spacing: 3px;
+      font-size: 1.2rem;
+      letter-spacing: 4px;
       color: #aaa;
       position: relative;
       z-index: 2;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
+      animation: fadeIn 2s ease forwards 1.8s;
+      opacity: 0;
+      text-transform: uppercase;
+      font-weight: 300;
     }
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin: 3rem 0 1rem;
       position: relative;
       z-index: 2;
+      animation: fadeIn 2s ease forwards 2s;
+      opacity: 0;
     }
     nav a {
       color: var(--gold);
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
-      padding: 0.5rem 1rem;
+      padding: 0.8rem 1.8rem;
       border: 1px solid transparent;
       border-radius: 30px;
       position: relative;
       overflow: hidden;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      background: rgba(20, 20, 20, 0.6);
     }
     nav a::before {
       content: '';
@@ -122,47 +154,53 @@
     nav a:hover {
       color: var(--diamond);
       border-color: var(--diamond);
-      background: rgba(185, 242, 255, 0.1);
+      background: rgba(185, 242, 255, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     }
     nav a:hover::before {
       left: 100%;
     }
     section {
-      padding: 4rem 1rem;
-      max-width: 900px;
+      padding: 6rem 1rem;
+      max-width: 1200px;
       margin: auto;
       position: relative;
     }
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       color: var(--gold);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       text-align: center;
       position: relative;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     }
     h2::after {
       content: "";
       display: block;
-      width: 120px;
-      height: 4px;
+      width: 180px;
+      height: 5px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
-      margin: 1.5rem auto 0;
+      margin: 2rem auto 0;
       border-radius: 4px;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
     .bio {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
       background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
+      padding: 3.5rem;
+      border-radius: 20px;
       border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
       position: relative;
       overflow: hidden;
+      transform: translateY(30px);
+      opacity: 0;
     }
     .bio::before {
       content: "";
@@ -175,23 +213,32 @@
       z-index: -1;
       animation: rotate 20s linear infinite;
     }
+    .bio-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .bio-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 4px solid var(--gold);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+      transform: perspective(1000px) rotateY(-10deg);
+      transition: transform 0.5s;
+      animation: floatImage 8s ease-in-out infinite;
+    }
+    .bio-image-container:hover {
+      transform: perspective(1000px) rotateY(0deg) scale(1.03);
+    }
     .bio img {
       width: 100%;
-      max-width: 350px;
-      border: 4px solid var(--gold);
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      align-self: center;
-      animation: fadeInUp 1s ease forwards;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      display: block;
       transition: transform 0.5s;
     }
-    .bio img:hover {
-      transform: scale(1.03);
-    }
-    .bio p {
-      font-size: 1.05rem;
+    .bio-text {
+      font-size: 1.15rem;
       line-height: 1.8;
       position: relative;
       z-index: 2;
@@ -201,70 +248,109 @@
       font-weight: 700;
       font-style: italic;
       text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+      position: relative;
+    }
+    .highlight::before {
+      content: "❝";
+      position: absolute;
+      left: -25px;
+      top: -15px;
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.5;
     }
     .music-video {
       position: relative;
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
       transition: transform 0.3s;
+      transform: translateY(30px);
+      opacity: 0;
+      border: 3px solid var(--gold);
     }
     .music-video:hover {
-      transform: scale(1.02);
+      transform: scale(1.02) rotate(1deg);
+      box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
     }
     .music-video iframe {
       width: 100%;
-      height: 400px;
+      height: 500px;
       border: none;
-      animation: fadeIn 1.5s ease forwards;
       display: block;
     }
     form {
       display: grid;
-      gap: 1.2rem;
-      animation: fadeInUp 1s ease forwards;
+      gap: 1.5rem;
       background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
+      padding: 3rem;
+      border-radius: 20px;
       border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      max-width: 600px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+      max-width: 700px;
       margin: 0 auto;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    .form-group {
+      position: relative;
     }
     input, textarea {
-      padding: 1rem;
+      width: 100%;
+      padding: 1.2rem;
       background: rgba(0, 0, 0, 0.7);
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
       transition: all 0.3s;
-      border-radius: 8px;
-      font-size: 1rem;
+      border-radius: 10px;
+      font-size: 1.1rem;
+    }
+    label {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      color: #aaa;
+      transition: all 0.3s;
+      pointer-events: none;
+      font-size: 1.1rem;
     }
     input:focus, textarea:focus {
       border-color: var(--diamond);
       outline: none;
-      box-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
+      box-shadow: 0 0 20px rgba(185, 242, 255, 0.5);
       background: rgba(0, 0, 0, 0.9);
     }
+    input:focus + label, 
+    input:not(:placeholder-shown) + label,
+    textarea:focus + label,
+    textarea:not(:placeholder-shown) + label {
+      top: -0.8rem;
+      left: 0.8rem;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 0 0.5rem;
+      font-size: 0.9rem;
+      color: var(--diamond);
+    }
     button {
-      padding: 1.2rem;
+      padding: 1.3rem;
       background: linear-gradient(to right, var(--gold), var(--diamond));
       border: none;
       font-weight: bold;
       color: black;
       cursor: pointer;
       transition: all 0.3s;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
       margin-top: 1rem;
       text-transform: uppercase;
       font-weight: 700;
       position: relative;
       overflow: hidden;
+      animation: pulse 2s infinite;
     }
     button::after {
       content: '';
@@ -277,8 +363,9 @@
       transition: 0.5s;
     }
     button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.7);
+      animation: none;
     }
     button:hover::after {
       left: 100%;
@@ -289,14 +376,14 @@
       margin-top: 1.5rem;
       display: none;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       animation: pulse 2s infinite;
     }
     footer {
       background: #000;
       color: #ccc;
-      font-size: 0.95rem;
-      padding: 2.5rem 1rem;
+      font-size: 1.05rem;
+      padding: 3.5rem 1rem;
       text-align: center;
       line-height: 1.7;
       border-top: 1px solid rgba(212, 175, 55, 0.2);
@@ -308,46 +395,83 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 3px;
+      height: 4px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
     footer p {
-      margin-bottom: 1rem;
-      max-width: 800px;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
     footer i {
       color: var(--gold);
-      margin-right: 8px;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold);
+      font-size: 1.5rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .social-icons a:hover {
+      background: rgba(185, 242, 255, 0.2);
+      color: var(--diamond);
+      transform: translateY(-5px) rotate(10deg);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     }
 
     /* Carrusel mejorado */
     .carousel-container {
-      max-width: 800px;
-      margin: 3rem auto;
+      max-width: 1000px;
+      margin: 4rem auto;
       position: relative;
+      transform: translateY(30px);
+      opacity: 0;
     }
     .carousel {
       position: relative;
       overflow: hidden;
-      border-radius: 12px;
+      border-radius: 15px;
       border: 4px solid var(--gold);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-      height: 450px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+      height: 550px;
+      perspective: 1200px;
     }
     .carousel-images {
       display: flex;
       height: 100%;
-      transition: transform 0.7s ease-in-out;
+      transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
     .carousel-images img {
       width: 100%;
       flex-shrink: 0;
       object-fit: cover;
-      transition: opacity 0.5s ease;
+      transition: all 0.7s ease;
+      transform: scale(0.95);
+      opacity: 0.8;
+      filter: brightness(0.8);
+    }
+    .carousel-images img.active {
+      transform: scale(1);
       opacity: 1;
-      filter: none;
+      filter: brightness(1);
     }
     .carousel-buttons {
       position: absolute;
@@ -362,52 +486,54 @@
       background: rgba(0,0,0,0.8);
       border: 2px solid var(--gold);
       color: var(--gold);
-      font-size: 2rem;
+      font-size: 2.2rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
       pointer-events: auto;
       border-radius: 50%;
       transition: all 0.3s;
       user-select: none;
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 1.5rem;
+      margin: 0 2rem;
       z-index: 10;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     }
     .carousel-buttons button:hover {
       background: rgba(212, 175, 55, 0.3);
       color: var(--diamond);
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
 
     /* Indicadores del carrusel */
     .carousel-indicators {
       position: absolute;
-      bottom: 20px;
+      bottom: 25px;
       left: 0;
       right: 0;
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 15px;
       z-index: 10;
     }
     .indicator {
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: rgba(255,255,255,0.3);
       cursor: pointer;
       transition: all 0.3s;
       border: 1px solid transparent;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
     .indicator.active {
       background: var(--gold);
-      transform: scale(1.3);
+      transform: scale(1.4);
       border-color: var(--diamond);
-      box-shadow: 0 0 8px var(--gold);
+      box-shadow: 0 0 10px var(--gold);
     }
 
     /* Scroll to top button */
@@ -419,23 +545,25 @@
       color: var(--black);
       border: none;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 1.8rem;
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
       cursor: pointer;
       display: none;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.9);
       transition: all 0.4s;
       z-index: 1000;
       opacity: 0.9;
+      animation: pulse 2s infinite;
     }
     #scrollToTop:hover {
       background: var(--diamond);
-      transform: scale(1.1) rotate(360deg);
-      box-shadow: 0 0 25px rgba(185, 242, 255, 0.9);
+      transform: scale(1.15) rotate(360deg);
+      box-shadow: 0 0 30px rgba(185, 242, 255, 0.9);
       opacity: 1;
+      animation: none;
     }
 
     /* Animations */
@@ -471,6 +599,50 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px rgba(185, 242, 255, 0.3);
+      }
+      100% {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(185, 242, 255, 0.6);
+      }
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    @keyframes floatImage {
+      0%, 100% {
+        transform: perspective(1000px) rotateY(-10deg) translateY(0);
+      }
+      50% {
+        transform: perspective(1000px) rotateY(-10deg) translateY(-10px);
+      }
+    }
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
     
     /* Efecto de partículas */
     .particles {
@@ -489,6 +661,12 @@
       opacity: 0.6;
       animation: float 15s infinite linear;
     }
+    .particle:nth-child(3n) {
+      background: var(--diamond);
+    }
+    .particle:nth-child(5n) {
+      background: #ffffff;
+    }
     @keyframes float {
       0% {
         transform: translateY(0) translateX(0) rotate(0deg);
@@ -500,26 +678,98 @@
       }
     }
 
+    /* Audio Player */
+    .audio-player {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    .audio-player h3 {
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .track {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin: 1rem 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      border-left: 3px solid var(--gold);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .track:hover {
+      background: rgba(212, 175, 55, 0.1);
+      transform: translateX(10px);
+    }
+    .track i {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-right: 1rem;
+      width: 40px;
+      text-align: center;
+    }
+    .track-info {
+      flex: 1;
+    }
+    .track-title {
+      font-weight: bold;
+      color: var(--diamond);
+    }
+    .track-duration {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
     /* Responsive design */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 3.5rem;
+      }
+      .bio-content {
+        grid-template-columns: 1fr;
+      }
+      .bio-image-container {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+      .carousel {
+        height: 450px;
+      }
+    }
     @media (max-width: 768px) {
       header {
         padding: 3rem 1rem;
+        min-height: 90vh;
       }
       h1 {
+        font-size: 2.8rem;
+      }
+      h2 {
         font-size: 2.5rem;
       }
       nav {
         gap: 1rem;
       }
       nav a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
       }
       section {
-        padding: 3rem 1rem;
+        padding: 4rem 1rem;
       }
-      h2 {
-        font-size: 2rem;
+      .bio {
+        padding: 2rem;
       }
       .carousel {
         height: 350px;
@@ -530,226 +780,42 @@
       .carousel-buttons button {
         width: 50px;
         height: 50px;
-        margin: 0 0.8rem;
+        font-size: 1.8rem;
+        margin: 0 1rem;
       }
       footer {
-        padding: 2rem 1rem;
+        padding: 2.5rem 1rem;
+      }
+      .header-image {
+        width: 170px;
+        height: 170px;
+      }
+    }
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2.3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .tagline {
+        font-size: 1rem;
+      }
+      .header-image {
+        width: 150px;
+        height: 150px;
+      }
+      .carousel {
+        height: 250px;
+      }
+      .music-video iframe {
+        height: 250px;
+      }
+      form {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
-  
-  <header>
-    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Logo KxN" class="header-image" />
-    <h1>KxN</h1>
-    <div class="real-name">Tomás Miguel Beby Díaz</div>
-    <p class="tagline">Artista · Creador · Visionario</p>
-    <nav>
-      <a href="#bio">Biografía</a>
-      <a href="#musica">Música</a>
-      <a href="#galeria">Galería</a>
-      <a href="#contacto">Contacto</a>
-      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer">Blog 📝</a>
-    </nav>
-  </header>
-
-  <section id="bio">
-    <h2>Biografía</h2>
-    <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
-      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
-      <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
-      <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-      <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
-      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
-      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
-      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
-    </div>
-  </section>
-
-  <section id="musica">
-    <h2>Música</h2>
-    <div class="music-video">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="carousel-container">
-      <div class="carousel" aria-label="Galería de imágenes">
-        <div class="carousel-images">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="Foto artística de KxN" />
-        </div>
-        <div class="carousel-buttons">
-          <button id="prev" aria-label="Imagen anterior">&#10094;</button>
-          <button id="next" aria-label="Imagen siguiente">&#10095;</button>
-        </div>
-        <div class="carousel-indicators">
-          <div class="indicator active" data-index="0"></div>
-          <div class="indicator" data-index="1"></div>
-          <div class="indicator" data-index="2"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
-      <button type="submit">Enviar mensaje</button>
-      <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
-    </form>
-  </section>
-
-  <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-  </footer>
-
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    // Mostrar imagen actual
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-      
-      // Actualizar indicadores
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === index);
-      });
-    }
-
-    // Siguiente imagen
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    // Imagen anterior
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    // Eventos de botones
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    // Eventos de indicadores
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-    });
-
-    // Iniciar intervalo
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    
-    // Detener intervalo
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    // Reiniciar intervalo
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    // Pausar al pasar el ratón
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-
-    // Iniciar carrusel
-    showImage(0);
-    startInterval();
-
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = 'flex';
-      } else {
-        scrollBtn.style.display = 'none';
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Tamaño y posición aleatorios
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp 1s ease forwards`;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-</body>
-</html>
+  <div class="part
