@@ -469,85 +469,53 @@
       border: none;
     }
 
-    /* Events Section */
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    /* Events Section - UPDATED */
+    .no-events {
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
     }
-
-    .event-card {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .event-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
-    }
-
-    .event-image {
-      height: 200px;
-      overflow: hidden;
-    }
-
-    .event-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .event-card:hover .event-image img {
-      transform: scale(1.1);
-    }
-
-    .event-content {
-      padding: 1.5rem;
-    }
-
-    .event-date {
+    
+    .no-events-icon {
+      font-size: 5rem;
       color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      animation: pulse 2s infinite;
     }
-
-    .event-title {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
+    
+    .no-events h3 {
+      font-size: 2.2rem;
       color: var(--diamond);
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
-
-    .event-location {
-      display: flex;
+    
+    .no-events p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+    
+    .social-reminder {
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: #aaa;
-      margin-bottom: 1rem;
-    }
-
-    .event-btn {
-      display: inline-block;
-      padding: 0.7rem 1.5rem;
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold);
+      padding: 0.8rem 1.5rem;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold);
       border-radius: 30px;
-      font-weight: 600;
+      color: var(--gold);
       text-decoration: none;
       transition: var(--transition);
+      margin-top: 1rem;
     }
-
-    .event-btn:hover {
+    
+    .social-reminder:hover {
       background: var(--gold);
       color: var(--black);
+      transform: translateY(-3px);
     }
 
     /* Gallery Section */
@@ -825,12 +793,15 @@
     @keyframes pulse {
       0% {
         transform: scale(1);
+        opacity: 0.7;
       }
       50% {
-        transform: scale(1.05);
+        transform: scale(1.1);
+        opacity: 1;
       }
       100% {
         transform: scale(1);
+        opacity: 0.7;
       }
     }
 
@@ -881,6 +852,18 @@
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
       }
+      
+      .no-events {
+        padding: 3rem 1.5rem;
+      }
+      
+      .no-events-icon {
+        font-size: 4rem;
+      }
+      
+      .no-events h3 {
+        font-size: 1.8rem;
+      }
     }
 
     @media (max-width: 576px) {
@@ -909,6 +892,22 @@
       
       .section-content {
         padding: 1.5rem;
+      }
+      
+      .no-events {
+        padding: 2rem 1rem;
+      }
+      
+      .no-events-icon {
+        font-size: 3.5rem;
+      }
+      
+      .no-events h3 {
+        font-size: 1.6rem;
+      }
+      
+      .no-events p {
+        font-size: 1rem;
       }
     }
   </style>
@@ -939,432 +938,4 @@
       <a href="#bio">Biografía</a>
       <a href="#musica">Música</a>
       <a href="#eventos">Eventos</a>
-      <a href="#galeria">Galería</a>
-      <a href="#contacto">Contacto</a>
-      <a href="https://kxnoficial.blogspot.com" target="_blank">Blog</a>
-    </div>
-  </nav>
-  
-  <!-- Bio Section -->
-  <section id="bio">
-    <h2>Biografía</h2>
-    <div class="section-content">
-      <div class="bio-grid">
-        <div class="bio-image">
-          <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover">
-        </div>
-        
-        <div class="bio-text">
-          <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-          
-          <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es.</p>
-          
-          <p><span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
-          
-          <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
-          
-          <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo.</p>
-          
-          <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
-          La <strong>K</strong> representa la palabra "Karma". Para mí, la música es una energía que damos y recibimos.<br>
-          La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía.<br>
-          La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Music Section -->
-  <section id="musica">
-    <h2>Música</h2>
-    <div class="section-content">
-      <div class="music-container">
-        <div class="player-container">
-          <div class="player-header">
-            <div class="player-icon">
-              <i class="fas fa-music"></i>
-            </div>
-            <h3 class="player-title">Escucha mis covers</h3>
-          </div>
-          
-          <div class="player-controls">
-            <div class="control-btn">
-              <i class="fas fa-step-backward"></i>
-            </div>
-            <div class="control-btn play-btn">
-              <i class="fas fa-play"></i>
-            </div>
-            <div class="control-btn">
-              <i class="fas fa-step-forward"></i>
-            </div>
-          </div>
-          
-          <div class="playlist">
-            <div class="song active">
-              <div class="song-number">1</div>
-              <div class="song-info">
-                <div class="song-title">Poker Face (Cover)</div>
-                <div class="song-artist">KxN · Lady Gaga</div>
-              </div>
-              <div class="song-duration">3:45</div>
-            </div>
-            
-            <div class="song">
-              <div class="song-number">2</div>
-              <div class="song-info">
-                <div class="song-title">Bad Romance (Cover)</div>
-                <div class="song-artist">KxN · Lady Gaga</div>
-              </div>
-              <div class="song-duration">4:12</div>
-            </div>
-            
-            <div class="song">
-              <div class="song-number">3</div>
-              <div class="song-info">
-                <div class="song-title">Diamonds (Cover)</div>
-                <div class="song-artist">KxN · Rihanna</div>
-              </div>
-              <div class="song-duration">3:52</div>
-            </div>
-            
-            <div class="song">
-              <div class="song-number">4</div>
-              <div class="song-info">
-                <div class="song-title">Blinding Lights (Cover)</div>
-                <div class="song-artist">KxN · The Weeknd</div>
-              </div>
-              <div class="song-duration">3:28</div>
-            </div>
-            
-            <div class="song">
-              <div class="song-number">5</div>
-              <div class="song-info">
-                <div class="song-title">Vogue (Cover)</div>
-                <div class="song-artist">KxN · Madonna</div>
-              </div>
-              <div class="song-duration">4:18</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Events Section -->
-  <section id="eventos">
-    <h2>Próximos Eventos</h2>
-    <div class="section-content">
-      <div class="events-grid">
-        <div class="event-card">
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Concierto en Tenerife">
-          </div>
-          <div class="event-content">
-            <div class="event-date"><i class="far fa-calendar-alt"></i> 15 Julio, 2025</div>
-            <h3 class="event-title">Noche de Covers</h3>
-            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Sala Moon, Santa Cruz de Tenerife</div>
-            <a href="#" class="event-btn">Más información</a>
-          </div>
-        </div>
-        
-        <div class="event-card">
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Festival de Verano">
-          </div>
-          <div class="event-content">
-            <div class="event-date"><i class="far fa-calendar-alt"></i> 28 Julio, 2025</div>
-            <h3 class="event-title">Festival de Verano</h3>
-            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Playa de las Teresitas, Tenerife</div>
-            <a href="#" class="event-btn">Más información</a>
-          </div>
-        </div>
-        
-        <div class="event-card">
-          <div class="event-image">
-            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Concierto Acústico">
-          </div>
-          <div class="event-content">
-            <div class="event-date"><i class="far fa-calendar-alt"></i> 5 Agosto, 2025</div>
-            <h3 class="event-title">Sesión Acústica</h3>
-            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Café La Luna, La Laguna</div>
-            <a href="#" class="event-btn">Más información</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Gallery Section -->
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="section-content">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="KxN en estudio">
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">Sesión de Estudio</h3>
-            <p>Grabando nuevo material</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="KxN en concierto">
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">En Vivo</h3>
-            <p>Concierto en Sala Moon</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="KxN en sesión fotográfica">
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">Sesión Fotográfica</h3>
-            <p>Promocional 2025</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="KxN en backstage">
-          <div class="gallery-overlay">
-            <h3 class="gallery-title">Backstage</h3>
-            <p>Preparando el show</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Contact Section -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <div class="section-content">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-text">
-              <h3>Email</h3>
-              <p>kxn.oficial@contacto.com</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="contact-text">
-              <h3>Teléfono</h3>
-              <p>+34 612 345 678</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-text">
-              <h3>Ubicación</h3>
-              <p>Santa Cruz de Tenerife, España</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-calendar-check"></i>
-            </div>
-            <div class="contact-text">
-              <h3>Contrataciones</h3>
-              <p>contrataciones@kxn.com</p>
-            </div>
-          </div>
-        </div>
-        
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Asunto</label>
-            <input type="text" id="subject" name="subject" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          
-          <button type="submit" class="submit-btn">Enviar Mensaje</button>
-          <div class="confirmation" id="confirmationMessage">Gracias por tu mensaje. Te responderé pronto 🚀</div>
-        </form>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">KxN</div>
-      <div class="footer-text">
-        Transformando canciones en experiencias únicas desde Tenerife
-      </div>
-      
-      <div class="social-links">
-        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      </div>
-      
-      <div class="footer-legal">
-        <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-        <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz.</p>
-        <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025.</p>
-        <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-      </div>
-    </div>
-  </footer>
-  
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTop" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
-  
-  <script>
-    // Scroll to top button
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollToTopBtn.classList.add('visible');
-      } else {
-        scrollToTopBtn.classList.remove('visible');
-      }
-    });
-    
-    scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // Form submission
-    const contactForm = document.getElementById('contactForm');
-    const confirmationMessage = document.getElementById('confirmationMessage');
-    
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Simulate form submission
-      setTimeout(() => {
-        confirmationMessage.style.display = 'block';
-        contactForm.reset();
-        
-        // Hide confirmation after 5 seconds
-        setTimeout(() => {
-          confirmationMessage.style.display = 'none';
-        }, 5000);
-      }, 1000);
-    });
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      });
-    });
-    
-    // Music player functionality
-    const playBtn = document.querySelector('.play-btn');
-    const songs = document.querySelectorAll('.song');
-    let isPlaying = false;
-    
-    playBtn.addEventListener('click', () => {
-      isPlaying = !isPlaying;
-      
-      const playIcon = playBtn.querySelector('i');
-      playIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
-      
-      playBtn.style.background = isPlaying ? 
-        'rgba(212, 175, 55, 0.3)' : 'rgba(212, 175, 55, 0.2)';
-    });
-    
-    // Song selection
-    songs.forEach(song => {
-      song.addEventListener('click', () => {
-        songs.forEach(s => s.classList.remove('active'));
-        song.classList.add('active');
-        
-        if (!isPlaying) {
-          isPlaying = true;
-          const playIcon = playBtn.querySelector('i');
-          playIcon.className = 'fas fa-pause';
-          playBtn.style.background = 'rgba(212, 175, 55, 0.3)';
-        }
-      });
-    });
-    
-    // Next/previous buttons
-    const prevBtn = document.querySelector('.fa-step-backward').closest('.control-btn');
-    const nextBtn = document.querySelector('.fa-step-forward').closest('.control-btn');
-    
-    prevBtn.addEventListener('click', () => {
-      const activeSong = document.querySelector('.song.active');
-      const prevSong = activeSong.previousElementSibling || 
-                      activeSong.parentElement.lastElementChild;
-      
-      activeSong.classList.remove('active');
-      prevSong.classList.add('active');
-    });
-    
-    nextBtn.addEventListener('click', () => {
-      const activeSong = document.querySelector('.song.active');
-      const nextSong = activeSong.nextElementSibling || 
-                      activeSong.parentElement.firstElementChild;
-      
-      activeSong.classList.remove('active');
-      nextSong.classList.add('active');
-    });
-    
-    // Initialize animations
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section');
-      
-      sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      });
-      
-      setTimeout(() => {
-        sections.forEach((section, index) => {
-          setTimeout(() => {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-          }, 200 * index);
-        });
-      }, 500);
-    });
-  </script>
-</body>
-</html>
+      <
