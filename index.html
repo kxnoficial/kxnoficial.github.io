@@ -1,16 +1,159 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KxN | Tomás Miguel Beby Díaz</title>  <!-- SEO -->  <meta name="description" content="Página oficial de KxN (Tomás Miguel Beby Díaz), artista y creador musical de Tenerife. Conoce su historia, escucha su música y contáctalo." />
-  <meta property="og:title" content="KxN - Artista · Creador · Visionario" />
-  <meta property="og:image" content="https://i.postimg.cc/xCTVt6hn/IMG-20250624-211951-442.webp" />
-  <meta property="og:description" content="Sitio oficial de KxN. Conoce a Tomás Miguel Beby Díaz y su propuesta musical." />
-  <meta name="twitter:card" content="summary_large_image" />  <!-- Fuentes y Estilos -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>KxN | Tomás Miguel Beby Díaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* ... Estilos anteriores + mejoras (resumidos por claridad) ... */
-    /* Puedes usar el CSS del mensaje anterior completo aquí */
+    :root {
+      --black: #0b0b0b;
+      --white: #ffffff;
+      --gold: #d4af37;
+      --diamond: #b9f2ff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(to bottom, #000, #111);
+    }
+    .header-image {
+      display: block;
+      margin: 0 auto 1.5rem;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      object-fit: cover;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.2rem;
+    }
+    .real-name {
+      font-size: 0.9rem;
+      color: #aaa;
+      font-weight: 300;
+    }
+    .tagline {
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #aaa;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: var(--diamond);
+    }
+    section {
+      padding: 4rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .bio {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .bio img {
+      width: 100%;
+      max-width: 300px;
+      border: 4px solid var(--gold);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      align-self: center;
+    }
+    .highlight {
+      color: var(--gold);
+      font-weight: 700;
+      font-style: italic;
+    }
+    .music-video iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      border-radius: 8px;
+    }
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.8rem;
+      background: #000;
+      border: 1px solid var(--gold);
+      color: white;
+      font-family: inherit;
+    }
+    button {
+      padding: 1rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      border: none;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .confirmation {
+      color: var(--diamond);
+      font-weight: bold;
+      margin-top: 1rem;
+      display: none;
+    }
+    footer {
+      background: #000;
+      color: #ccc;
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    footer p {
+      margin-bottom: 0.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 <body>
@@ -23,40 +166,41 @@
       <a href="#bio">Biografía</a>
       <a href="#musica">Música</a>
       <a href="#galeria">Galería</a>
-      <a href="#colaboraciones">Colaboraciones</a>
-      <a href="#blog">Noticias</a>
       <a href="#contacto">Contacto</a>
+      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer">Blog 📝</a>
     </nav>
-  </header>  <section id="bio">
+  </header>
+
+  <section id="bio">
     <h2>Biografía</h2>
     <div class="bio">
       <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
       <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante...</p>
+      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
+      <p>Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente. Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+      <p>Mis covers los grabo en mi cuarto. No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
+      <p>Mi nombre artístico es <strong>KxN</strong>.<br>
+      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción. <br>
+      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar. <br>
+      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
     </div>
-  </section>  <section id="musica">
+  </section>
+
+  <section id="musica">
     <h2>Música</h2>
     <div class="music-video">
       <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=kxnoficial" allowfullscreen></iframe>
     </div>
-  </section>  <section id="galeria">
+  </section>
+
+  <section id="galeria">
     <h2>Galería</h2>
     <div class="gallery-grid">
-      <p>Próximamente</p>
+      <p style="text-align:center; width: 100%; color: #aaa;">Próximamente</p>
     </div>
-  </section>  <section id="colaboraciones">
-    <h2>Colaboraciones</h2>
-    <div class="collab">
-      <h3>Con Artista XYZ</h3>
-      <p>Proyecto especial de reinterpretación de temas clásicos con tintes electrónicos. Muy pronto disponible.</p>
-    </div>
-  </section>  <section id="blog">
-    <h2>Noticias / Actualizaciones</h2>
-    <div class="news-item">
-      <h3>Junio 2025 - Nuevo cover en camino</h3>
-      <p>Estoy trabajando en una versión muy especial de un clásico de los 2000. ¡Atentos a mi canal!</p>
-    </div>
-  </section>  <section id="contacto">
+  </section>
+
+  <section id="contacto">
     <h2>Contacto</h2>
     <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
       <input type="text" name="nombre" placeholder="Tu nombre" required>
@@ -65,20 +209,13 @@
       <button type="submit">Enviar mensaje</button>
       <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
     </form>
-  </section>  <footer>
-    <p>&copy; 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><strong>Aviso Legal:</strong> Este sitio y todo su contenido son propiedad exclusiva de su autor.</p>
-    <p><strong>KxN</strong> es una marca de facto en uso desde 2025.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor.</p>
-  </footer><button id="scrollTopBtn" title="Volver arriba">↑</button>
+  </section>
 
-  <script>
-    const btn = document.getElementById('scrollTopBtn');
-    window.onscroll = function () {
-      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    };
-    btn.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-  </script></body>
+  <footer>
+    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
+    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>.</p>
+    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
+    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
+  </footer>
+</body>
 </html>
