@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KxN | Tomás Miguel Beby Díaz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* Estilos generales */
     :root {
       --black: #0b0b0b;
       --white: #ffffff;
       --gold: #d4af37;
       --diamond: #b9f2ff;
-      --gray-light: #aaa;
-      --gray-dark: #666;
     }
     * {
       box-sizing: border-box;
@@ -29,13 +25,10 @@
       color: var(--white);
       line-height: 1.6;
       scroll-behavior: smooth;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
     header {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding: 4rem 1rem;
       background: linear-gradient(to bottom, #000, #111);
     }
     .profile {
@@ -43,113 +36,67 @@
       height: 150px;
       border-radius: 50%;
       border: 4px solid var(--gold);
-      margin: 0 auto 1rem;
+      margin: 0 auto 1.5rem;
       object-fit: cover;
     }
-    .artist-name {
+    h1 {
       font-family: 'Playfair Display', serif;
       font-size: 3rem;
       background: linear-gradient(to right, var(--gold), var(--diamond));
       -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.3rem;
-      font-weight: 700;
+      margin-bottom: 0.2rem;
     }
     .real-name {
-      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: #aaa;
       font-weight: 300;
-      font-size: 1rem;
-      color: var(--gray-light);
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
     }
     .tagline {
       font-size: 1rem;
       letter-spacing: 3px;
-      color: var(--gray-light);
-      margin-bottom: 2rem;
+      color: #aaa;
     }
     nav {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
+      margin: 2rem 0;
     }
     nav a {
       color: var(--gold);
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
     }
     nav a:hover {
       color: var(--diamond);
     }
     section {
-      padding: 3rem 1rem;
+      padding: 4rem 1rem;
       max-width: 900px;
       margin: auto;
-      flex-grow: 1;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       color: var(--gold);
       margin-bottom: 1.5rem;
-      border-bottom: 2px solid var(--gold);
-      padding-bottom: 0.3rem;
     }
     .bio {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 2rem;
-      align-items: flex-start;
-      color: var(--white);
-      font-size: 1.05rem;
-      line-height: 1.5;
     }
-    .bio img {
-      width: 300px;
-      border-radius: 8px;
-      border: 2px solid var(--gold);
-      flex-shrink: 0;
-    }
-    .bio-text p {
-      margin-bottom: 1rem;
-    }
-    .music-grid {
-      display: flex;
-      justify-content: center;
-    }
-    .music-card {
-      background: #111;
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--gold);
+    .music-video iframe {
       width: 100%;
-      max-width: 600px;
-      transition: transform 0.3s ease;
-      text-align: center;
-      color: var(--white);
-    }
-    .music-card:hover {
-      transform: translateY(-5px);
-    }
-    iframe {
-      width: 100%;
-      height: 340px;
-      border-radius: 8px;
+      height: 315px;
       border: none;
-      background: #000;
+      border-radius: 8px;
     }
     form {
       display: grid;
       gap: 1rem;
-      max-width: 600px;
-      margin: auto;
-      color: var(--white);
     }
     input, textarea {
       padding: 0.8rem;
@@ -157,14 +104,6 @@
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
-      font-size: 1rem;
-      border-radius: 4px;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--diamond);
     }
     button {
       padding: 1rem;
@@ -174,75 +113,36 @@
       color: black;
       cursor: pointer;
       transition: 0.3s;
-      border-radius: 4px;
-      font-size: 1.1rem;
     }
     button:hover {
       opacity: 0.9;
     }
-    .confirmation-message {
-      background-color: #4caf50;
-      color: white;
-      padding: 1rem;
-      border-radius: 6px;
-      text-align: center;
+    .confirmation {
+      color: var(--diamond);
       font-weight: bold;
       margin-top: 1rem;
       display: none;
     }
     footer {
-      text-align: center;
-      padding: 2rem 1rem;
       background: #000;
-      color: var(--gray-dark);
+      color: #ccc;
       font-size: 0.9rem;
-      border-top: 1px solid var(--gold);
-      margin-top: 3rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      line-height: 1.6;
     }
-    footer .legal {
-      max-width: 700px;
-      margin: 1rem auto 0;
-      font-size: 0.8rem;
-      line-height: 1.4;
-      color: var(--gray-dark);
-      text-align: justify;
-    }
-    footer .legal strong {
-      color: var(--gold);
-    }
-    .social-logos {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
-      color: var(--gold);
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .social-logos a {
-      color: var(--gold);
-      transition: color 0.3s ease;
-    }
-    .social-logos a:hover {
-      color: var(--diamond);
-    }
-    @media (max-width: 768px) {
-      .bio {
-        flex-direction: column;
-        text-align: center;
-      }
-      .bio img {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-      }
+    footer p {
+      margin-bottom: 0.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="https://via.placeholder.com/200" alt="Tomás" class="profile" />
-    <div class="artist-name">KxN</div>
+    <img src="https://via.placeholder.com/200" alt="KxN" class="profile" />
+    <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
     <nav>
@@ -251,78 +151,42 @@
       <a href="#galeria">Galería</a>
       <a href="#contacto">Contacto</a>
     </nav>
-  </header>
-
-  <section id="bio">
+  </header>  <section id="bio">
     <h2>Biografía</h2>
     <div class="bio">
-      <img src="https://via.placeholder.com/300x400" alt="Biografía" />
-      <div class="bio-text">
-        <p><strong>Tomás Miguel Beby Díaz</strong><br />24 de diciembre de 1999<br />Santa Cruz de Tenerife, Islas Canarias</p>
-        <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí. Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</p>
-        <p>Transformo canciones que me gustan en versiones propias y trato de crear mi propio estilo. Mi objetivo es llegar a la gente con honestidad y pasión.</p>
-      </div>
+      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
+      <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí. Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</p>
+      <p>Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente. Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+      <p>Mis covers los grabo en mi cuarto. No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
+      <p>Mi nombre artístico es <strong>KxN</strong>.<br>
+      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción. <br>
+      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar. <br>
+      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
     </div>
-  </section>
-
-  <section id="musica">
+  </section>  <section id="musica">
     <h2>Música</h2>
-    <div class="music-grid">
-      <div class="music-card">
-        <iframe id="yt-video" src="https://www.youtube.com/embed/3sFz67SmK7I" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div class="music-video">
+      <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=kxnoficial" allowfullscreen></iframe>
     </div>
-  </section>
-
-  <section id="galeria">
+  </section>  <section id="galeria">
     <h2>Galería</h2>
-    <p style="text-align:center; color: var(--gray-light);">Próximamente...</p>
-  </section>
-
-  <section id="contacto">
+    <div class="gallery-grid">
+      <p style="text-align:center; width: 100%; color: #aaa;">Próximamente</p>
+    </div>
+  </section>  <section id="contacto">
     <h2>Contacto</h2>
-    <form id="contact-form">
-      <input type="text" id="name" name="name" placeholder="Nombre completo" required />
-      <input type="email" id="email" name="email" placeholder="Correo electrónico" required />
-      <textarea id="message" name="message" rows="5" placeholder="Tu mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-      <div class="confirmation-message" id="confirmation-message">¡Gracias por tu mensaje! Te responderé pronto.</div>
+    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
+      <button type="submit">Enviar mensaje</button>
+      <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
     </form>
-  </section>
-
-  <footer>
-    <div class="social-logos">
-      <a href="https://www.instagram.com/kxn" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@kxn" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/kxn" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.twitter.com/kxn" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-    </div>
-    <div class="legal">
-      <p><strong>Derechos reservados © Tomás Miguel Beby Díaz, 2023.</strong> Todos los contenidos, imágenes y textos son propiedad exclusiva y están protegidos por leyes de propiedad intelectual. Queda prohibida la reproducción total o parcial sin autorización expresa.</p>
-    </div>
+  </section>  <footer>
+    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
+    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>.</p>
+    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
+    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
   </footer>
-
-  <script>
-    // Cargar el último video de YouTube (ejemplo) en el iframe
-    const videoIds = [
-      '3sFz67SmK7I', // Pon aquí el ID del video que quieres mostrar
-      'dQw4w9WgXcQ'  // Puedes agregar más IDs y cambiar la lógica si quieres
-    ];
-    const ytIframe = document.getElementById('yt-video');
-    // Por ejemplo, cargar el último (el primero en la lista)
-    ytIframe.src = `https://www.youtube.com/embed/${videoIds[0]}`;
-
-    // Manejo básico del formulario (sin backend)
-    const form = document.getElementById('contact-form');
-    const confirmation = document.getElementById('confirmation-message');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      // Aquí puedes agregar validación o envío con AJAX si quieres
-      confirmation.style.display = 'block';
-      form.reset();
-    });
-  </script>
-
 </body>
 </html>
