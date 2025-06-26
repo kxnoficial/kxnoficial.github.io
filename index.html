@@ -1,170 +1,249 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KxN | Tomás Miguel Beby Díaz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KxN | Tomás Miguel Beby Díaz - Artista Musical</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #0b0b0b;
-      --white: #ffffff;
+      --black: #0a0a0a;
+      --dark-gray: #1a1a1a;
+      --light-gray: #f5f5f5;
       --gold: #d4af37;
+      --gold-light: #e6c85d;
       --diamond: #b9f2ff;
+      --diamond-light: #d9f7ff;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: var(--black);
-      color: var(--white);
+      color: var(--light-gray);
       line-height: 1.6;
-      scroll-behavior: smooth;
-      background-image: radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.1) 0%, rgba(10, 10, 10, 1) 90%),
+        linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9));
+      background-attachment: fixed;
     }
+
+    /* Header & Navigation */
     header {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(to bottom, #000, #111);
       position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(20,20,20,0.7) 100%);
     }
-    header::before {
-      content: "";
+
+    .header-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      z-index: 1;
       pointer-events: none;
     }
-    .header-image {
-      display: block;
-      margin: 0 auto 1.5rem;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid var(--gold);
-      object-fit: cover;
+
+    .header-content {
       position: relative;
-      z-index: 2;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-      transition: transform 0.5s, box-shadow 0.5s;
+      z-index: 3;
+      max-width: 900px;
+      margin: 0 auto;
     }
+
+    .header-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid var(--gold);
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+      transition: var(--transition);
+    }
+
     .header-image:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
     }
+
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 3.8rem;
       background: linear-gradient(to right, var(--gold), var(--diamond));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
-      margin-bottom: 0.2rem;
-      text-shadow: 0 0 10px rgba(185, 242, 255, 0.3);
-      position: relative;
-      z-index: 2;
-      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(185, 242, 255, 0.4);
+      animation: titleGlow 3s infinite alternate;
     }
+
     .real-name {
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: #aaa;
-      font-weight: 300;
-      position: relative;
-      z-index: 2;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
     }
+
     .tagline {
-      font-size: 1rem;
+      font-size: 1.2rem;
       letter-spacing: 3px;
-      color: #aaa;
+      color: #ddd;
+      margin-bottom: 2rem;
       position: relative;
-      z-index: 2;
-      margin-top: 0.5rem;
+      padding-bottom: 1rem;
     }
+
+    .tagline::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      border-radius: 2px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--gold);
+      font-size: 1.5rem;
+      transition: var(--transition);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Navigation */
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.5rem;
-      margin: 2rem 0;
-      position: relative;
-      z-index: 2;
+      padding: 0 1rem;
     }
+
     nav a {
       color: var(--gold);
       text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      padding: 0.5rem 1rem;
-      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      padding: 0.5rem 1.2rem;
       border-radius: 30px;
       position: relative;
-      overflow: hidden;
     }
-    nav a::before {
+
+    nav a::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-      transition: 0.5s;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--diamond);
+      transition: var(--transition);
+      transform: translateX(-50%);
     }
+
     nav a:hover {
       color: var(--diamond);
-      border-color: var(--diamond);
-      background: rgba(185, 242, 255, 0.1);
     }
-    nav a:hover::before {
-      left: 100%;
+
+    nav a:hover::after {
+      width: 80%;
     }
+
+    /* Sections */
     section {
-      padding: 4rem 1rem;
-      max-width: 900px;
-      margin: auto;
-      position: relative;
+      padding: 6rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: var(--gold);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       text-align: center;
       position: relative;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      padding-bottom: 1.5rem;
     }
+
     h2::after {
       content: "";
       display: block;
-      width: 120px;
+      width: 150px;
       height: 4px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
       margin: 1.5rem auto 0;
       border-radius: 4px;
     }
-    .bio {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+
+    .section-content {
       background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
+      padding: 3rem;
+      border-radius: 20px;
       border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       position: relative;
       overflow: hidden;
     }
-    .bio::before {
+
+    .section-content::before {
       content: "";
       position: absolute;
       top: -50%;
@@ -175,133 +254,476 @@
       z-index: -1;
       animation: rotate 20s linear infinite;
     }
-    .bio img {
-      width: 100%;
-      max-width: 350px;
+
+    /* Bio Section */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .bio-image {
+      border-radius: 15px;
+      overflow: hidden;
       border: 4px solid var(--gold);
-      border-radius: 12px;
-      margin-bottom: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .bio-image img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      align-self: center;
-      animation: fadeInUp 1s ease forwards;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      transition: transform 0.5s;
+      transition: var(--transition);
     }
-    .bio img:hover {
-      transform: scale(1.03);
+
+    .bio-image:hover img {
+      transform: scale(1.05);
     }
-    .bio p {
-      font-size: 1.05rem;
+
+    .bio-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .bio-text p {
+      font-size: 1.1rem;
       line-height: 1.8;
-      position: relative;
-      z-index: 2;
     }
+
     .highlight {
       color: var(--gold);
-      font-weight: 700;
-      font-style: italic;
-      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-    }
-    .music-video {
+      font-weight: 600;
       position: relative;
-      max-width: 700px;
-      margin: 0 auto;
-      border-radius: 12px;
+      padding-left: 15px;
+    }
+
+    .highlight::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--diamond);
+    }
+
+    /* Music Section */
+    .music-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .player-container {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .player-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .player-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--black);
+    }
+
+    .player-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .player-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .control-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .control-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: scale(1.1);
+    }
+
+    .play-btn {
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
+      background: rgba(212, 175, 55, 0.2);
+    }
+
+    .playlist {
+      margin-top: 2rem;
+      max-height: 300px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .playlist::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .playlist::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .playlist::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      margin-bottom: 0.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .song:hover {
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .song.active {
+      background: rgba(212, 175, 55, 0.2);
+      border-left: 3px solid var(--diamond);
+    }
+
+    .song-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+
+    .song-info {
+      flex: 1;
+    }
+
+    .song-title {
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .song-artist {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .song-duration {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    .video-container {
+      border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s;
+      height: 100%;
     }
-    .music-video:hover {
-      transform: scale(1.02);
-    }
-    .music-video iframe {
+
+    .video-container iframe {
       width: 100%;
-      height: 400px;
+      height: 100%;
+      min-height: 400px;
       border: none;
-      animation: fadeIn 1.5s ease forwards;
-      display: block;
     }
+
+    /* Events Section */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .event-card {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .event-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .event-card:hover .event-image img {
+      transform: scale(1.1);
+    }
+
+    .event-content {
+      padding: 1.5rem;
+    }
+
+    .event-date {
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .event-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--diamond);
+    }
+
+    .event-location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    .event-btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .event-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      height: 280px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 1.5rem;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-title {
+      color: var(--diamond);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .contact-text h3 {
+      color: var(--diamond);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-text p {
+      color: #ccc;
+      font-size: 1.05rem;
+    }
+
     form {
       display: grid;
-      gap: 1.2rem;
-      animation: fadeInUp 1s ease forwards;
-      background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      max-width: 600px;
-      margin: 0 auto;
+      gap: 1.5rem;
     }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 500;
+      color: var(--gold);
+    }
+
     input, textarea {
       padding: 1rem;
       background: rgba(0, 0, 0, 0.7);
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
-      transition: all 0.3s;
-      border-radius: 8px;
       font-size: 1rem;
+      border-radius: 10px;
+      transition: var(--transition);
     }
+
     input:focus, textarea:focus {
       border-color: var(--diamond);
       outline: none;
-      box-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
-      background: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 15px rgba(185, 242, 255, 0.3);
     }
-    button {
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
       padding: 1.2rem;
-      background: linear-gradient(to right, var(--gold), var(--diamond));
+      background: linear-gradient(45deg, var(--gold), var(--diamond));
       border: none;
-      font-weight: bold;
-      color: black;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      color: var(--black);
       font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
       letter-spacing: 1px;
       margin-top: 1rem;
-      text-transform: uppercase;
-      font-weight: 700;
       position: relative;
       overflow: hidden;
     }
-    button::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: 0.5s;
+
+    .submit-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
     }
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
-    }
-    button:hover::after {
-      left: 100%;
-    }
+
     .confirmation {
       color: var(--diamond);
       font-weight: bold;
       margin-top: 1.5rem;
-      display: none;
       text-align: center;
       font-size: 1.2rem;
-      animation: pulse 2s infinite;
+      display: none;
     }
+
+    /* Footer */
     footer {
       background: #000;
       color: #ccc;
-      font-size: 0.95rem;
-      padding: 2.5rem 1rem;
+      padding: 3rem 1.5rem;
       text-align: center;
-      line-height: 1.7;
       border-top: 1px solid rgba(212, 175, 55, 0.2);
       position: relative;
     }
+
     footer::before {
       content: "";
       position: absolute;
@@ -311,131 +733,72 @@
       height: 3px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
     }
-    footer p {
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-bottom: 1rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    footer i {
-      color: var(--gold);
-      margin-right: 8px;
+      display: inline-block;
     }
 
-    /* Carrusel mejorado */
-    .carousel-container {
-      max-width: 800px;
-      margin: 3rem auto;
-      position: relative;
-    }
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 4px solid var(--gold);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-      height: 450px;
-    }
-    .carousel-images {
-      display: flex;
-      height: 100%;
-      transition: transform 0.7s ease-in-out;
-    }
-    .carousel-images img {
-      width: 100%;
-      flex-shrink: 0;
-      object-fit: cover;
-      transition: opacity 0.5s ease;
-      opacity: 1;
-      filter: none;
-    }
-    .carousel-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .carousel-buttons button {
-      background: rgba(0,0,0,0.8);
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      pointer-events: auto;
-      border-radius: 50%;
-      transition: all 0.3s;
-      user-select: none;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 1.5rem;
-      z-index: 10;
-    }
-    .carousel-buttons button:hover {
-      background: rgba(212, 175, 55, 0.3);
-      color: var(--diamond);
-      transform: scale(1.1);
+    .footer-text {
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
 
-    /* Indicadores del carrusel */
-    .carousel-indicators {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      z-index: 10;
+    .footer-legal {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .indicator {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: all 0.3s;
-      border: 1px solid transparent;
-    }
-    .indicator.active {
-      background: var(--gold);
-      transform: scale(1.3);
-      border-color: var(--diamond);
-      box-shadow: 0 0 8px var(--gold);
+
+    .footer-legal p {
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      color: #999;
     }
 
     /* Scroll to top button */
     #scrollToTop {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
-      background: var(--gold);
-      color: var(--black);
-      border: none;
-      border-radius: 50%;
+      bottom: 30px;
+      right: 30px;
       width: 60px;
       height: 60px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      display: none;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--black);
+      display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
-      transition: all 0.4s;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
       z-index: 1000;
-      opacity: 0.9;
+      border: none;
+      opacity: 0;
+      visibility: hidden;
     }
-    #scrollToTop:hover {
-      background: var(--diamond);
-      transform: scale(1.1) rotate(360deg);
-      box-shadow: 0 0 25px rgba(185, 242, 255, 0.9);
+
+    #scrollToTop.visible {
       opacity: 1;
+      visibility: visible;
+    }
+
+    #scrollToTop:hover {
+      transform: translateY(-5px) rotate(360deg);
+      background: var(--diamond);
     }
 
     /* Animations */
@@ -449,306 +812,558 @@
         transform: translateY(0);
       }
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    @keyframes pulse {
-      0% { 
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% { 
-        opacity: 0.8;
-        transform: scale(1.05);
-      }
-      100% { 
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    /* Efecto de partículas */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .particle {
-      position: absolute;
-      background: var(--gold);
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: float 15s infinite linear;
-    }
-    @keyframes float {
+
+    @keyframes titleGlow {
       0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.6;
+        text-shadow: 0 0 10px rgba(185, 242, 255, 0.4);
       }
       100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
-        opacity: 0;
+        text-shadow: 0 0 20px rgba(185, 242, 255, 0.8);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
       }
     }
 
     /* Responsive design */
-    @media (max-width: 768px) {
-      header {
-        padding: 3rem 1rem;
+    @media (max-width: 992px) {
+      .bio-grid,
+      .music-container,
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
+      
+      .bio-image {
+        height: 400px;
+      }
+      
       h1 {
-        font-size: 2.5rem;
+        font-size: 3.2rem;
       }
-      nav {
-        gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
       }
+      
+      h2 {
+        font-size: 2.4rem;
+      }
+      
+      .section-content {
+        padding: 2rem;
+      }
+      
+      .nav-container {
+        gap: 0.8rem;
+      }
+      
       nav a {
-        padding: 0.4rem 0.8rem;
+        padding: 0.5rem 1rem;
         font-size: 0.9rem;
       }
+    }
+
+    @media (max-width: 576px) {
       section {
-        padding: 3rem 1rem;
+        padding: 4rem 1rem;
       }
+      
+      h1 {
+        font-size: 2.4rem;
+      }
+      
       h2 {
         font-size: 2rem;
       }
-      .carousel {
-        height: 350px;
+      
+      .header-image {
+        width: 150px;
+        height: 150px;
       }
-      .music-video iframe {
-        height: 300px;
+      
+      .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
       }
-      .carousel-buttons button {
-        width: 50px;
-        height: 50px;
-        margin: 0 0.8rem;
-      }
-      footer {
-        padding: 2rem 1rem;
+      
+      .section-content {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
-  
+  <!-- Header Section -->
   <header>
-    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Logo KxN" class="header-image" />
-    <h1>KxN</h1>
-    <div class="real-name">Tomás Miguel Beby Díaz</div>
-    <p class="tagline">Artista · Creador · Visionario</p>
-    <nav>
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="KxN" class="header-image">
+      <h1>KxN</h1>
+      <div class="real-name">Tomás Miguel Beby Díaz</div>
+      <p class="tagline">Artista · Creador · Visionario</p>
+      
+      <div class="social-links">
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
       <a href="#bio">Biografía</a>
       <a href="#musica">Música</a>
+      <a href="#eventos">Eventos</a>
       <a href="#galeria">Galería</a>
       <a href="#contacto">Contacto</a>
-      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer">Blog 📝</a>
-    </nav>
-  </header>
-
+      <a href="https://kxnoficial.blogspot.com" target="_blank">Blog</a>
+    </div>
+  </nav>
+  
+  <!-- Bio Section -->
   <section id="bio">
     <h2>Biografía</h2>
-    <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
-      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
-      <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
-      <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-      <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
-      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
-      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
-      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
-    </div>
-  </section>
-
-  <section id="musica">
-    <h2>Música</h2>
-    <div class="music-video">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="carousel-container">
-      <div class="carousel" aria-label="Galería de imágenes">
-        <div class="carousel-images">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="Foto artística de KxN" />
+    <div class="section-content">
+      <div class="bio-grid">
+        <div class="bio-image">
+          <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover">
         </div>
-        <div class="carousel-buttons">
-          <button id="prev" aria-label="Imagen anterior">&#10094;</button>
-          <button id="next" aria-label="Imagen siguiente">&#10095;</button>
-        </div>
-        <div class="carousel-indicators">
-          <div class="indicator active" data-index="0"></div>
-          <div class="indicator" data-index="1"></div>
-          <div class="indicator" data-index="2"></div>
+        
+        <div class="bio-text">
+          <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
+          
+          <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es.</p>
+          
+          <p><span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
+          
+          <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+          
+          <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo.</p>
+          
+          <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
+          La <strong>K</strong> representa la palabra "Karma". Para mí, la música es una energía que damos y recibimos.<br>
+          La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía.<br>
+          La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico.</p>
         </div>
       </div>
     </div>
   </section>
-
+  
+  <!-- Music Section -->
+  <section id="musica">
+    <h2>Música</h2>
+    <div class="section-content">
+      <div class="music-container">
+        <div class="player-container">
+          <div class="player-header">
+            <div class="player-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <h3 class="player-title">Escucha mis covers</h3>
+          </div>
+          
+          <div class="player-controls">
+            <div class="control-btn">
+              <i class="fas fa-step-backward"></i>
+            </div>
+            <div class="control-btn play-btn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="control-btn">
+              <i class="fas fa-step-forward"></i>
+            </div>
+          </div>
+          
+          <div class="playlist">
+            <div class="song active">
+              <div class="song-number">1</div>
+              <div class="song-info">
+                <div class="song-title">Poker Face (Cover)</div>
+                <div class="song-artist">KxN · Lady Gaga</div>
+              </div>
+              <div class="song-duration">3:45</div>
+            </div>
+            
+            <div class="song">
+              <div class="song-number">2</div>
+              <div class="song-info">
+                <div class="song-title">Bad Romance (Cover)</div>
+                <div class="song-artist">KxN · Lady Gaga</div>
+              </div>
+              <div class="song-duration">4:12</div>
+            </div>
+            
+            <div class="song">
+              <div class="song-number">3</div>
+              <div class="song-info">
+                <div class="song-title">Diamonds (Cover)</div>
+                <div class="song-artist">KxN · Rihanna</div>
+              </div>
+              <div class="song-duration">3:52</div>
+            </div>
+            
+            <div class="song">
+              <div class="song-number">4</div>
+              <div class="song-info">
+                <div class="song-title">Blinding Lights (Cover)</div>
+                <div class="song-artist">KxN · The Weeknd</div>
+              </div>
+              <div class="song-duration">3:28</div>
+            </div>
+            
+            <div class="song">
+              <div class="song-number">5</div>
+              <div class="song-info">
+                <div class="song-title">Vogue (Cover)</div>
+                <div class="song-artist">KxN · Madonna</div>
+              </div>
+              <div class="song-duration">4:18</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Events Section -->
+  <section id="eventos">
+    <h2>Próximos Eventos</h2>
+    <div class="section-content">
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Concierto en Tenerife">
+          </div>
+          <div class="event-content">
+            <div class="event-date"><i class="far fa-calendar-alt"></i> 15 Julio, 2025</div>
+            <h3 class="event-title">Noche de Covers</h3>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Sala Moon, Santa Cruz de Tenerife</div>
+            <a href="#" class="event-btn">Más información</a>
+          </div>
+        </div>
+        
+        <div class="event-card">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Festival de Verano">
+          </div>
+          <div class="event-content">
+            <div class="event-date"><i class="far fa-calendar-alt"></i> 28 Julio, 2025</div>
+            <h3 class="event-title">Festival de Verano</h3>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Playa de las Teresitas, Tenerife</div>
+            <a href="#" class="event-btn">Más información</a>
+          </div>
+        </div>
+        
+        <div class="event-card">
+          <div class="event-image">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Concierto Acústico">
+          </div>
+          <div class="event-content">
+            <div class="event-date"><i class="far fa-calendar-alt"></i> 5 Agosto, 2025</div>
+            <h3 class="event-title">Sesión Acústica</h3>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Café La Luna, La Laguna</div>
+            <a href="#" class="event-btn">Más información</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery Section -->
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="section-content">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="KxN en estudio">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Sesión de Estudio</h3>
+            <p>Grabando nuevo material</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="KxN en concierto">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">En Vivo</h3>
+            <p>Concierto en Sala Moon</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="KxN en sesión fotográfica">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Sesión Fotográfica</h3>
+            <p>Promocional 2025</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="KxN en backstage">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Backstage</h3>
+            <p>Preparando el show</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
   <section id="contacto">
     <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
-      <button type="submit">Enviar mensaje</button>
-      <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
-    </form>
+    <div class="section-content">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Email</h3>
+              <p>kxn.oficial@contacto.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Teléfono</h3>
+              <p>+34 612 345 678</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Ubicación</h3>
+              <p>Santa Cruz de Tenerife, España</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="contact-text">
+              <h3>Contrataciones</h3>
+              <p>contrataciones@kxn.com</p>
+            </div>
+          </div>
+        </div>
+        
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Asunto</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">Enviar Mensaje</button>
+          <div class="confirmation" id="confirmationMessage">Gracias por tu mensaje. Te responderé pronto 🚀</div>
+        </form>
+      </div>
+    </div>
   </section>
-
+  
+  <!-- Footer -->
   <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-  </footer>
-
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    // Mostrar imagen actual
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
+    <div class="footer-content">
+      <div class="footer-logo">KxN</div>
+      <div class="footer-text">
+        Transformando canciones en experiencias únicas desde Tenerife
+      </div>
       
-      // Actualizar indicadores
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === index);
-      });
-    }
-
-    // Siguiente imagen
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    // Imagen anterior
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    // Eventos de botones
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    // Eventos de indicadores
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-    });
-
-    // Iniciar intervalo
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    
-    // Detener intervalo
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    // Reiniciar intervalo
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    // Pausar al pasar el ratón
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-
-    // Iniciar carrusel
-    showImage(0);
-    startInterval();
-
+      <div class="social-links">
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      
+      <div class="footer-legal">
+        <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
+        <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz.</p>
+        <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025.</p>
+        <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+  
+  <script>
     // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        scrollBtn.style.display = 'flex';
+        scrollToTopBtn.classList.add('visible');
       } else {
-        scrollBtn.style.display = 'none';
+        scrollToTopBtn.classList.remove('visible');
       }
     });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Tamaño y posición aleatorios
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
     
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp 1s ease forwards`;
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Simulate form submission
+      setTimeout(() => {
+        confirmationMessage.style.display = 'block';
+        contactForm.reset();
+        
+        // Hide confirmation after 5 seconds
+        setTimeout(() => {
+          confirmationMessage.style.display = 'none';
+        }, 5000);
+      }, 1000);
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Music player functionality
+    const playBtn = document.querySelector('.play-btn');
+    const songs = document.querySelectorAll('.song');
+    let isPlaying = false;
+    
+    playBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      
+      const playIcon = playBtn.querySelector('i');
+      playIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+      
+      playBtn.style.background = isPlaying ? 
+        'rgba(212, 175, 55, 0.3)' : 'rgba(212, 175, 55, 0.2)';
+    });
+    
+    // Song selection
+    songs.forEach(song => {
+      song.addEventListener('click', () => {
+        songs.forEach(s => s.classList.remove('active'));
+        song.classList.add('active');
+        
+        if (!isPlaying) {
+          isPlaying = true;
+          const playIcon = playBtn.querySelector('i');
+          playIcon.className = 'fas fa-pause';
+          playBtn.style.background = 'rgba(212, 175, 55, 0.3)';
         }
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
+    });
+    
+    // Next/previous buttons
+    const prevBtn = document.querySelector('.fa-step-backward').closest('.control-btn');
+    const nextBtn = document.querySelector('.fa-step-forward').closest('.control-btn');
+    
+    prevBtn.addEventListener('click', () => {
+      const activeSong = document.querySelector('.song.active');
+      const prevSong = activeSong.previousElementSibling || 
+                      activeSong.parentElement.lastElementChild;
+      
+      activeSong.classList.remove('active');
+      prevSong.classList.add('active');
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const activeSong = document.querySelector('.song.active');
+      const nextSong = activeSong.nextElementSibling || 
+                      activeSong.parentElement.firstElementChild;
+      
+      activeSong.classList.remove('active');
+      nextSong.classList.add('active');
+    });
+    
+    // Initialize animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+      
+      setTimeout(() => {
+        sections.forEach((section, index) => {
+          setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+          }, 200 * index);
+        });
+      }, 500);
     });
   </script>
 </body>
