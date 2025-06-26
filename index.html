@@ -1,675 +1,211 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KxN | Tomás Miguel Beby Díaz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black: #000000;
-            --white: #FFFFFF;
-            --gold: #D4AF37;
-            --gold-light: rgba(212, 175, 55, 0.3);
-            --diamond: rgba(185, 242, 255, 0.8);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        /* Reset y estilos base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-        
-        /* Fondo en movimiento de lujo */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,30,0.95) 100%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 Q50,70 30,50 Z" fill="%23D4AF37" opacity="0.05"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="8" y="0" width="4" height="4" transform="rotate(45 10 10)" fill="%23B9F2FF" opacity="0.3"/></svg>');
-            z-index: -2;
-            animation: drift 40s linear infinite;
-        }
-        
-        @keyframes drift {
-            0% { background-position: 0 0, 0 0, 0 0; }
-            100% { background-position: 0 0, 100% 100%, 200% 200%; }
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            min-height: 100vh;
-            border-left: 1px solid var(--gold-light);
-            border-right: 1px solid var(--gold-light);
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
-        }
-        
-        /* Cabecera */
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-top: 1rem;
-        }
-        
-        /* Foto de perfil flotante con marco de lujo */
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid transparent;
-            margin: 0 auto 1.5rem;
-            display: block;
-            animation: float 6s ease-in-out infinite;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-            position: relative;
-            background: linear-gradient(45deg, var(--black), var(--black)) padding-box,
-                        linear-gradient(135deg, var(--gold), var(--diamond), var(--gold)) border-box;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        
-        h1 {
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: -0.03em;
-            margin: 0.5rem 0;
-            background: linear-gradient(to right, var(--gold), var(--diamond), var(--white));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .tagline {
-            font-size: 0.9rem;
-            letter-spacing: 0.5em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
-            margin: 1rem 0 2rem;
-            display: block;
-        }
-            
-        /* Redes sociales estilo lujoso */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .social-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .social-links a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .social-links a:hover {
-            color: var(--gold);
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .social-links a:hover::before {
-            left: 100%;
-        }
-        
-        /* Navegación entre subpáginas de lujo */
-        .nav-pages {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .nav-pages a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 0.8rem 1.8rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
-            border-radius: 30px;
-        }
-        
-        .nav-pages a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .nav-pages a:hover {
-            color: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-        
-        .nav-pages a:hover::before {
-            left: 100%;
-        }
-        
-        /* Contenido de subpáginas */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        /* Contenido de las páginas */
-        .page-content {
-            padding: 1rem 0;
-            line-height: 1.8;
-        }
-        
-        .page-content h2 {
-            color: var(--gold);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-            font-size: 2.2rem;
-        }
-        
-        .page-content h2::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--gold);
-        }
-        
-        /* Estilo para el marco de foto en biografía */
-        .bio-photo-frame {
-            padding: 15px;
-            background: linear-gradient(135deg, var(--gold), var(--diamond), var(--gold));
-            border-radius: 5px;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-            margin-bottom: 2rem;
-            position: relative;
-            max-width: 350px;
-        }
-        
-        .bio-photo-frame::before, .bio-photo-frame::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: var(--gold);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
-        
-        .bio-photo-frame::before {
-            top: -10px;
-            left: -10px;
-        }
-        
-        .bio-photo-frame::after {
-            bottom: -10px;
-            right: -10px;
-            background: var(--diamond);
-        }
-        
-        .bio-photo-inner {
-            border: 5px solid var(--black);
-            padding: 5px;
-            background: var(--black);
-        }
-        
-        .bio-photo {
-            width: 100%;
-            height: auto;
-            display: block;
-            border: 1px solid var(--gold-light);
-        }
-        
-        .bio-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: flex-start;
-        }
-        
-        .bio-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        /* Botón de volver */
-        .back-btn {
-            display: inline-block;
-            margin: 0 0 2rem 0;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1rem;
-            position: relative;
-            padding-left: 1.8rem;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-        
-        .back-btn::before {
-            content: "←";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: var(--transition);
-        }
-        
-        .back-btn:hover {
-            color: var(--diamond);
-            padding-left: 2.2rem;
-        }
-        
-        /* Efecto de diamantes */
-        .diamond-effect {
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        /* Efecto de brillo al cargar la página */
-        @keyframes shine {
-            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
-            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
-        }
-        
-        .shine-effect {
-            animation: shine 2s ease-in-out;
-        }
-        
-        /* Sección de música */
-        .music-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .music-card {
-            background: rgba(0,0,0,0.3);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--gold-light);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .music-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
-        }
-        
-        .music-thumbnail {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: rgba(212, 175, 55, 0.1);
-        }
-        
-        .music-thumbnail img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .music-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 1rem;
-        }
-        
-        .music-info {
-            padding: 1.2rem;
-        }
-        
-        .music-info h4 {
-            color: var(--diamond);
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .music-info p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .music-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        /* Formulario de contacto */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--gold-light);
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-form::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--gold), var(--diamond), var(--gold));
-            background-size: 200% 200%;
-            animation: gradient 5s ease infinite;
-            border-radius: 6px;
-            opacity: 0.3;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--gold-light);
-            color: var(--white);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-            border-radius: 4px;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--gold), var(--diamond));
-            color: var(--black);
-            border: none;
-            padding: 1.1rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-            display: block;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        
-        .submit-btn:hover {
-            background: linear-gradient(to right, var(--diamond), var(--gold));
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        /* Mensaje de confirmación */
-        .confirmation-message {
-            display: none;
-            text-align: center;
-            padding: 3rem;
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .confirmation-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
-            position: relative;
-        }
-        
-        .confirmation-logo::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
-        }
-        
-        .confirmation-logo .logo-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--diamond));
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--black);
-            text-transform: uppercase;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .confirmation-message h3 {
-            color: var(--gold);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .confirmation-message p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .confirmation-btn {
-            display: inline-block;
-            background: linear-gradient(to right, var(--gold), var(--diamond));
-            color: var(--black);
-            padding: 0.9rem 2.2rem;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-        
-        .confirmation-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        /* Spinner de carga */
-        .spinner {
-            display: none;
-            margin: 20px auto;
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border-top: 5px solid var(--gold);
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Galería */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .gallery-item {
-            height: 250px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-light);
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-            transition: var(--transition);
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 0
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KxN | Tomás Miguel Beby Díaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --black: #0b0b0b;
+      --white: #ffffff;
+      --gold: #d4af37;
+      --diamond: #b9f2ff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(to bottom, #000, #111);
+    }
+    .profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      margin: 0 auto 1.5rem;
+      object-fit: cover;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .tagline {
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #aaa;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: var(--diamond);
+    }
+    section {
+      padding: 4rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .bio {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .bio img {
+      width: 250px;
+      border-radius: 8px;
+      border: 2px solid var(--gold);
+    }
+    .music-grid, .gallery-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .music-card, .gallery-card {
+      background: #111;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+    .music-card:hover, .gallery-card:hover {
+      transform: translateY(-5px);
+    }
+    .music-card img, .gallery-card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.8rem;
+      background: #000;
+      border: 1px solid var(--gold);
+      color: white;
+      font-family: inherit;
+    }
+    button {
+      padding: 1rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      border: none;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #000;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .bio {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
 <body>
-  <div class="container">
-    <header>
-      <img class="profile-pic" src="https://via.placeholder.com/200" alt="Foto de perfil">
-      <h1>Tomás Miguel Beby Díaz</h1>
-      <span class="tagline">Artista · Creador · Visionario</span>
-    </header>
-  </div>
+
+  <header>
+    <img src="https://via.placeholder.com/200" alt="Tomás" class="profile" />
+    <h1>Tomás Miguel Beby Díaz</h1>
+    <p class="tagline">Artista · Creador · Visionario</p>
+    <nav>
+      <a href="#bio">Biografía</a>
+      <a href="#musica">Música</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="bio">
+    <h2>Biografía</h2>
+    <div class="bio">
+      <img src="https://via.placeholder.com/300x400" alt="Biografía" />
+      <p>Soy Tomás Miguel Beby Díaz, también conocido como KxN. Nací para explorar la creatividad sin límites, cruzando las fronteras del arte, la música y la tecnología. Desde joven, sentí una profunda conexión con la expresión visual y sonora, que me llevó a desarrollar un estilo único y sofisticado. Mi objetivo es inspirar al mundo a través de experiencias inmersivas y elegantes, fusionando tradición y modernidad en cada proyecto.</p>
+    </div>
+  </section>
+
+  <section id="musica">
+    <h2>Música</h2>
+    <div class="music-grid">
+      <div class="music-card">
+        <img src="https://via.placeholder.com/400x250" alt="Álbum 1">
+        <h3>Álbum: Eternidad</h3>
+        <p>Disponible en Spotify y YouTube.</p>
+        <a href="https://open.spotify.com/" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="https://via.placeholder.com/400x300" alt="Obra 1">
+      </div>
+      <div class="gallery-card">
+        <img src="https://via.placeholder.com/400x300" alt="Obra 2">
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form action="https://formspree.io/f/YOUR_ID" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Tomás Miguel Beby Díaz | KxN
+  </footer>
+
 </body>
+</html>
