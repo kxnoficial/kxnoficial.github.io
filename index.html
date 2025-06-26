@@ -518,7 +518,6 @@
             </div>
         </div>
         
-        <!-- Página de Biografía -->
         <!-- Página de Biografía - Versión Premium -->
 <div id="bio" class="page">
     <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
@@ -806,18 +805,77 @@
             }
         });
         
-        // Manejo del formulario
-        document.getElementById('songRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        <!-- Página de Contacto para Artista Amateur -->
+<div id="contact" class="page">
+    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
+    <div class="page-content">
+        <h2 style="display: flex; align-items: center; gap: 15px;">
+            <i class="fas fa-envelope" style="color: var(--gold);"></i>
+            <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">Contáctame</span>
+        </h2>
+        
+        <div style="margin: 2rem 0; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border-left: 3px solid var(--gold);">
+            <h3 style="color: var(--diamond); margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-heart" style="color: var(--gold);"></i>
+                ¡Hablemos de música!
+            </h3>
+            <p>Me encantaría recibir tus comentarios, sugerencias de canciones para covers, o simplemente charlar sobre música. Aunque soy amateur, pongo todo mi empeño en cada proyecto.</p>
+        </div>
+        
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="name"><i class="fas fa-user" style="margin-right: 8px;"></i> Tu nombre</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
             
-            // Aquí podrías añadir validación adicional si lo deseas
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope" style="margin-right: 8px;"></i> Correo electrónico</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
             
-            // Mostrar mensaje de éxito
-            alert('¡Gracias por tu solicitud! Me pondré en contacto contigo pronto.');
+            <div class="form-group">
+                <label for="subject"><i class="fas fa-question-circle" style="margin-right: 8px;"></i> ¿Sobre qué quieres hablar?</label>
+                <select id="subject" class="form-control" required>
+                    <option value="" disabled selected>Elige un tema</option>
+                    <option value="suggestion">Sugerencia de canción para cover</option>
+                    <option value="feedback">Comentario sobre mis covers</option>
+                    <option value="collab">Posible colaboración</option>
+                    <option value="other">Otro tema</option>
+                </select>
+            </div>
             
-            // Enviar el formulario
-            this.submit();
-        });
-    </script>
+            <div class="form-group">
+                <label for="message"><i class="fas fa-comment" style="margin-right: 8px;"></i> Tu mensaje</label>
+                <textarea id="message" class="form-control" required placeholder="Cuéntame lo que quieras..."></textarea>
+            </div>
+            
+            <div style="margin: 1.5rem 0; font-size: 0.8rem; color: rgba(255,255,255,0.6);">
+                <p>Nota: Soy un artista amateur y no realizo trabajos profesionales remunerados. Todos mis covers son por pasión por la música y sin ánimo de lucro.</p>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Enviar Mensaje
+            </button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <h3 style="color: var(--gold); margin-bottom: 1rem;">Mis Redes Sociales</h3>
+            <p style="margin-bottom: 1.5rem;">También puedes contactarme a través de:</p>
+            
+            <div class="social-links" style="justify-content: center;">
+                <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gold-light);">
+                <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
+                Todos mis covers son interpretaciones personales sin fines comerciales
+            </p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
