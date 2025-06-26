@@ -258,7 +258,7 @@
 </head>
 <body>
   <header>
-    <img src="https://i.postimg.cc/xCTVt6hn/IMG-20250624-211951-442.webp" alt="Logo KxN" class="header-image" />
+    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Logo KxN" class="header-image" />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
@@ -289,98 +289,67 @@
   <section id="musica">
     <h2>Música</h2>
     <div class="music-video">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/tc0p_NyEY6g" title="KxN - Cover Oficial" allowfullscreen></iframe>
     </div>
   </section>
 
   <section id="galeria">
     <h2>Galería</h2>
-    <div class="carousel" aria-label="Galería de imágenes">
+    <div class="carousel" aria-label="Galería de imágenes de KxN">
       <div class="carousel-images">
-        <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="Foto artística de KxN 1" />
-        <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Foto artística de KxN 2" />
+        <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN en estudio" class="active" />
+        <img src="https://i.postimg.cc/Fs3L3s3T/IMG-20250613-202450.jpg" alt="KxN durante concierto" />
+        <img src="https://i.postimg.cc/HLVdxQ9c/IMG-20250613-203111.jpg" alt="KxN en sesión de grabación" />
       </div>
       <div class="carousel-buttons">
-        <button id="prev" aria-label="Imagen anterior">&#10094;</button>
-        <button id="next" aria-label="Imagen siguiente">&#10095;</button>
+        <button aria-label="Imagen anterior" id="prevBtn">&#10094;</button>
+        <button aria-label="Imagen siguiente" id="nextBtn">&#10095;</button>
       </div>
     </div>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
-      <button type="submit">Enviar mensaje</button>
-      <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
+    <form id="contactForm" action="#" method="POST" novalidate>
+      <input type="text" name="nombre" placeholder="Nombre" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="mensaje" rows="5" placeholder="Mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+      <div class="confirmation" id="confirmationMessage">¡Mensaje enviado! Gracias por contactar.</div>
     </form>
   </section>
 
+  <button id="scrollToTop" title="Volver arriba">&#8679;</button>
+
   <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
+    <p>&copy; 2025 KxN. Todos los derechos reservados.</p>
+    <p>Creado por Tomás Miguel Beby Díaz.</p>
   </footer>
 
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
   <script>
-    // Carrusel auto-slide con pausa al hover
+    // Carousel functionality
     const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
+    const images = document.querySelectorAll('.carousel-images img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 4000;
 
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
+    function updateCarousel() {
+      carouselImages.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+      images.forEach((img, idx) => {
+        img.classList.toggle('active', idx === currentIndex);
       });
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
     }
 
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+      updateCarousel();
+    });
 
     nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
+      currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+      updateCarousel();
     });
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    carouselImages.addEventListener('mouseenter', stopInterval);
-    carouselImages.addEventListener('mouseleave', startInterval);
-
-    showImage(0);
-    startInterval();
 
     // Scroll to top button
     const scrollBtn = document.getElementById('scrollToTop');
@@ -391,8 +360,24 @@
         scrollBtn.style.display = 'none';
       }
     });
+
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Form submission simulation
+    const form = document.getElementById('contactForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if(form.checkValidity()) {
+        confirmationMessage.style.display = 'block';
+        form.reset();
+        setTimeout(() => {
+          confirmationMessage.style.display = 'none';
+        }, 5000);
+      }
     });
   </script>
 </body>
