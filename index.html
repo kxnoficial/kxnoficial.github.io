@@ -213,6 +213,28 @@
     .carousel-buttons button:hover {
       background: rgba(0,0,0,0.8);
     }
+    
+    /* Indicadores del carrusel */
+    .carousel-indicators {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .indicator.active {
+      background: var(--gold);
+    }
 
     /* Scroll to top button */
     #scrollToTop {
@@ -258,7 +280,6 @@
 </head>
 <body>
   <header>
-    <!-- Imagen actualizada aquí -->
     <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Logo KxN" class="header-image" />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
@@ -300,11 +321,14 @@
       <div class="carousel-images">
         <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="Foto artística de KxN 1" />
         <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Foto artística de KxN 2" />
+        <!-- Imagen agregada al carrusel -->
+        <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Foto artística de KxN 3" />
       </div>
       <div class="carousel-buttons">
         <button id="prev" aria-label="Imagen anterior">&#10094;</button>
         <button id="next" aria-label="Imagen siguiente">&#10095;</button>
       </div>
+      <div class="carousel-indicators"></div>
     </div>
   </section>
 
@@ -334,9 +358,30 @@
     const images = carouselImages.querySelectorAll('img');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
     let currentIndex = 0;
     let slideInterval;
     const slideDuration = 4000;
+
+    // Crear indicadores
+    images.forEach((_, index) => {
+      const indicator = document.createElement('div');
+      indicator.classList.add('indicator');
+      if(index === 0) indicator.classList.add('active');
+      indicator.addEventListener('click', () => {
+        showImage(index);
+        resetInterval();
+      });
+      indicatorsContainer.appendChild(indicator);
+    });
+
+    const indicators = document.querySelectorAll('.indicator');
+
+    function updateIndicators(index) {
+      indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === index);
+      });
+    }
 
     function showImage(index) {
       if(index < 0) index = images.length - 1;
@@ -348,6 +393,7 @@
 
       carouselImages.style.transform = `translateX(${-index * 100}%)`;
       currentIndex = index;
+      updateIndicators(index);
     }
 
     function nextImage() {
