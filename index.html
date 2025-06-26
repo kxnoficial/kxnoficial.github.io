@@ -1,12 +1,19 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KxN | Tomás Miguel Beby Díaz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
   <style>
     :root {
       --black: #0b0b0b;
@@ -25,6 +32,7 @@
       color: var(--white);
       line-height: 1.6;
       scroll-behavior: smooth;
+      padding-bottom: 70px; /* espacio para footer fijo */
     }
     header {
       text-align: center;
@@ -113,7 +121,8 @@
       display: grid;
       gap: 1rem;
     }
-    input, textarea {
+    input,
+    textarea {
       padding: 0.8rem;
       background: #000;
       border: 1px solid var(--gold);
@@ -138,50 +147,62 @@
       margin-top: 1rem;
       display: none;
     }
-    footer {
-      background: #000;
+    footer.main-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      border-top: 2px solid var(--gold);
       color: #ccc;
       font-size: 0.9rem;
-      padding: 2rem 1rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-    footer p {
-      margin-bottom: 0.5rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .floating-social {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
+      padding: 0.8rem 1rem;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 999;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      flex-wrap: wrap;
     }
-    .floating-social a {
-      background-color: #0b0b0b;
-      color: var(--gold);
-      font-size: 1.2rem;
-      padding: 10px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
+    footer.main-footer p {
+      margin: 0;
+      flex: 1 1 300px;
       text-align: center;
-      width: 40px;
-      height: 40px;
-      transition: all 0.3s ease;
     }
-    .floating-social a:hover {
-      background-color: var(--gold);
-      color: black;
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex: 1 1 300px;
+      justify-content: center;
+    }
+    .social-links a {
+      color: var(--gold);
+      font-size: 1.4rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--diamond);
+    }
+    @media (max-width: 600px) {
+      footer.main-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        font-size: 0.85rem;
+      }
+      .social-links {
+        justify-content: center;
+        gap: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://i.postimg.cc/xCTVt6hn/IMG-20250624-211951-442.webp" alt="Logo KxN" class="header-image" />
+    <img
+      src="https://i.postimg.cc/xCTVt6hn/IMG-20250624-211951-442.webp"
+      alt="Logo KxN"
+      class="header-image"
+    />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
@@ -190,41 +211,117 @@
       <a href="#musica">Música</a>
       <a href="#galeria">Galería</a>
       <a href="#contacto">Contacto</a>
+      <a href="#colaboraciones">Colaboraciones</a>
+      <a href="#blog">Blog</a>
     </nav>
-  </header>  <section id="bio">
+  </header>
+
+  <section id="bio">
     <h2>Biografía</h2>
     <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
-      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante...</p>
+      <img
+        src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg"
+        alt="KxN grabando un cover"
+      />
+      <p>
+        <strong>Tomás Miguel Beby Díaz</strong><br />
+        24 de diciembre de 1999<br />
+        Santa Cruz de Tenerife, Islas Canarias
+      </p>
+      <p>
+        <span class="highlight"
+          >Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span
+        >
+        Desde ese momento tuve claro que quería ser cantante. He dejado de
+        compararme con otros y empecé a disfrutar de la música por lo que es.
+        <span class="highlight"
+          >Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span
+        >
+      </p>
+      <p>
+        Transformo canciones que me gustan en versiones propias, donde mi voz se
+        mezcla con tecnología para crear algo diferente. Me gusta jugar con la
+        voz y buscar nuevas formas de interpretar sin perder la esencia original.
+      </p>
+      <p>
+        Mis covers los grabo en mi cuarto. No tengo un estudio profesional, pero
+        le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé
+        y los recursos que tengo. Para mí, la música es un proceso personal de
+        aprendizaje y disfrute, y eso es lo que intento transmitir en cada
+        canción.
+      </p>
+      <p>
+        Mi nombre artístico es <strong>KxN</strong>.<br />
+        La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es
+        una energía que damos y recibimos, un ciclo constante de emociones y
+        conexiones que se reflejan en cada canción. <br />
+        La <strong>N</strong> simboliza la Nota, la base fundamental de toda
+        melodía y expresión musical que intento capturar y reinventar. <br />
+        La <strong>x</strong> en medio es el punto donde el karma y la nota se
+        encuentran, la unión entre lo emocional y lo técnico, entre lo humano y
+        la tecnología.
+      </p>
     </div>
-  </section>  <section id="musica">
+  </section>
+
+  <section id="musica">
     <h2>Música</h2>
     <div class="music-video">
-      <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=kxnoficial" allowfullscreen></iframe>
+      <iframe
+        src="https://www.youtube.com/embed?listType=user_uploads&list=kxnoficial"
+        allowfullscreen
+      ></iframe>
     </div>
-  </section>  <section id="galeria">
+  </section>
+
+  <section id="galeria">
     <h2>Galería</h2>
-    <p style="text-align:center; color: #aaa;">Próximamente</p>
-  </section>  <section id="contacto">
+    <div class="gallery-grid">
+      <p style="text-align:center; width: 100%; color: #aaa;">Próximamente</p>
+    </div>
+  </section>
+
+  <section id="colaboraciones">
+    <h2>Colaboraciones</h2>
+    <p style="max-width: 900px; margin: auto 1rem;">
+      Aquí puedes agregar información sobre tus colaboraciones, proyectos conjuntos, invitados especiales, etc.
+      <!-- Puedes añadir imágenes, enlaces o listas -->
+    </p>
+  </section>
+
+  <section id="blog">
+    <h2>Blog / Noticias</h2>
+    <div id="blog-posts" style="max-width: 900px; margin: auto 1rem;">
+      <p style="color: #aaa;">Aquí se cargarán tus últimas noticias y entradas del blog.</p>
+      <!-- Para contenido dinámico, conecta con alguna API o servicio externo -->
+    </div>
+  </section>
+
+  <section id="contacto">
     <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
+    <form
+      action="https://formspree.io/f/xrbkoowp"
+      method="POST"
+      onsubmit="document.querySelector('.confirmation').style.display = 'block';"
+    >
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="email" placeholder="Tu correo" required />
       <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
       <button type="submit">Enviar mensaje</button>
       <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
     </form>
-  </section>  <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva...</p>
-  </footer>  <!-- Botón flotante de redes sociales -->  <div class="floating-social">
-    <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xWe7xtch7O&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://x.com/kxnoficial?t=gIcBnficfegE30BfwYZ3fA&s=09" target="_blank"><i class="fab fa-x-twitter"></i></a>
-    <a href="https://bsky.app/profile/kxnoficial.com" target="_blank"><i class="fas fa-cloud"></i></a>
-    <a href="https://www.facebook.com/share/12K7u8aGx5L/" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.threads.net/@kxnoficial" target="_blank"><i class="fab fa-threads"></i></a>
-  </div>
+  </section>
+
+  <footer class="main-footer">
+    <p>© 2025 KxN (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
+    <div class="social-links" aria-label="Redes sociales">
+      <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xWe7xtch7O&_r=1" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://x.com/kxnoficial?t=gIcBnficfegE30BfwYZ3fA&s=09" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener" aria-label="Bluesky"><i class="fas fa-cloud"></i></a>
+      <a href="https://www.facebook.com/share/12K7u8aGx5L/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener" aria-label="Threads"><i class="fas fa-comment"></i></a>
+    </div>
+  </footer>
 </body>
 </html>
