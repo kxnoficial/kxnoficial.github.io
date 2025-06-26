@@ -32,7 +32,7 @@
       color: var(--white);
       line-height: 1.6;
       scroll-behavior: smooth;
-      padding-bottom: 70px; /* espacio para footer fijo */
+      /* No padding-bottom porque footer no es fijo */
     }
     header {
       text-align: center;
@@ -71,6 +71,7 @@
       justify-content: center;
       gap: 1.5rem;
       margin: 2rem 0;
+      flex-wrap: wrap;
     }
     nav a {
       color: var(--gold);
@@ -148,20 +149,16 @@
       display: none;
     }
     footer.main-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
       background: #111;
       border-top: 2px solid var(--gold);
       color: #ccc;
       font-size: 0.9rem;
-      padding: 0.8rem 1rem;
+      padding: 1rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1000;
       flex-wrap: wrap;
+      margin-top: 4rem;
     }
     footer.main-footer p {
       margin: 0;
@@ -192,6 +189,9 @@
       .social-links {
         justify-content: center;
         gap: 1.2rem;
+      }
+      nav {
+        gap: 1rem;
       }
     }
   </style>
