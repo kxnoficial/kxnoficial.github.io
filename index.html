@@ -31,6 +31,7 @@
       text-align: center;
       padding: 4rem 1rem;
       background: linear-gradient(to bottom, #000, #111);
+      position: relative;
     }
     .header-image {
       display: block;
@@ -40,6 +41,8 @@
       border-radius: 50%;
       border: 4px solid var(--gold);
       object-fit: cover;
+      animation: fadeInScale 1.2s ease forwards;
+      opacity: 0;
     }
     h1 {
       font-family: 'Playfair Display', serif;
@@ -48,16 +51,33 @@
       -webkit-background-clip: text;
       color: transparent;
       margin-bottom: 0.2rem;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
     }
     .real-name {
       font-size: 0.9rem;
       color: #aaa;
       font-weight: 300;
+      animation: fadeIn 1.8s ease forwards;
+      opacity: 0;
     }
     .tagline {
-      font-size: 1rem;
-      letter-spacing: 3px;
       color: #aaa;
+      font-weight: 300;
+      letter-spacing: 3px;
+      margin-top: 0.4rem;
+      font-style: italic;
+      min-height: 1.4em;
+      animation: fadeIn 2.1s ease forwards;
+      opacity: 0;
+    }
+    #dynamic-text {
+      color: var(--gold);
+      font-weight: 700;
+      font-style: italic;
+      display: inline-block;
+      min-width: 180px;
+      transition: opacity 0.5s ease-in-out;
     }
     nav {
       display: flex;
@@ -65,6 +85,8 @@
       flex-wrap: wrap;
       gap: 1.5rem;
       margin: 2rem 0;
+      animation: fadeIn 2.4s ease forwards;
+      opacity: 0;
     }
     nav a {
       color: var(--gold);
@@ -99,7 +121,8 @@
       margin-bottom: 1rem;
       object-fit: cover;
       align-self: center;
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeInScale 1s ease forwards;
+      opacity: 0;
     }
     .highlight {
       color: var(--gold);
@@ -111,12 +134,12 @@
       height: 315px;
       border: none;
       border-radius: 8px;
-      animation: fadeIn 1.5s ease forwards;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
     }
     form {
       display: grid;
       gap: 1rem;
-      animation: fadeInUp 1s ease forwards;
     }
     input, textarea {
       padding: 0.8rem;
@@ -124,11 +147,6 @@
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
-      transition: border-color 0.3s;
-    }
-    input:focus, textarea:focus {
-      border-color: var(--diamond);
-      outline: none;
     }
     button {
       padding: 1rem;
@@ -137,7 +155,7 @@
       font-weight: bold;
       color: black;
       cursor: pointer;
-      transition: opacity 0.3s;
+      transition: 0.3s;
     }
     button:hover {
       opacity: 0.9;
@@ -171,23 +189,18 @@
       overflow: hidden;
       border-radius: 12px;
       border: 4px solid var(--gold);
-      box-shadow: 0 0 10px var(--gold);
+      box-shadow: 0 0 15px var(--gold);
     }
     .carousel-images {
       display: flex;
-      transition: transform 0.7s ease-in-out;
+      transition: transform 0.5s ease-in-out;
     }
     .carousel-images img {
       width: 100%;
       flex-shrink: 0;
       object-fit: cover;
-      opacity: 0.5;
-      transition: opacity 0.5s ease;
-      filter: grayscale(40%);
-    }
-    .carousel-images img.active {
-      opacity: 1;
-      filter: none;
+      user-select: none;
+      pointer-events: none;
     }
     .carousel-buttons {
       position: absolute;
@@ -215,44 +228,41 @@
     }
 
     /* Scroll to top button */
-    #scrollToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--gold);
-      color: var(--black);
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
-      cursor: pointer;
+    #scrollTopBtn {
       display: none;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 10px var(--gold);
-      transition: background-color 0.3s, transform 0.3s;
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
       z-index: 1000;
+      background: var(--gold);
+      color: black;
+      border: none;
+      padding: 1rem 1.2rem;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: opacity 0.3s ease;
     }
-    #scrollToTop:hover {
+    #scrollTopBtn:hover {
       background: var(--diamond);
-      transform: scale(1.1);
+      color: black;
     }
 
     /* Animations */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
+    @keyframes fadeIn {
+      to {
         opacity: 1;
-        transform: translateY(0);
       }
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .header-image {
+      transform: scale(0.85);
     }
   </style>
 </head>
@@ -261,7 +271,9 @@
     <img src="https://i.postimg.cc/xCTVt6hn/IMG-20250624-211951-442.webp" alt="Logo KxN" class="header-image" />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
-    <p class="tagline">Artista · Creador · Visionario</p>
+    <p class="tagline">
+      <span id="dynamic-text"></span>
+    </p>
     <nav>
       <a href="#bio">Biografía</a>
       <a href="#musica">Música</a>
@@ -322,78 +334,4 @@
     <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
     <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
     <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-  </footer>
-
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Carrusel auto-slide con pausa al hover
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 4000;
-
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-    }
-
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    carouselImages.addEventListener('mouseenter', stopInterval);
-    carouselImages.addEventListener('mouseleave', startInterval);
-
-    showImage(0);
-    startInterval();
-
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = 'flex';
-      } else {
-        scrollBtn.style.display = 'none';
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
-</body>
-</html>
+    <p><i class="fas fa-lock"></
