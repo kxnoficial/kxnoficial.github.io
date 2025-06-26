@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KxN | Tomás Miguel Beby Díaz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
@@ -26,10 +26,13 @@
       color: var(--white);
       line-height: 1.6;
       scroll-behavior: smooth;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 4rem 1rem 2rem;
       background: linear-gradient(to bottom, #000, #111);
     }
     .profile {
@@ -46,24 +49,34 @@
       background: linear-gradient(to right, var(--gold), var(--diamond));
       -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+      line-height: 1;
+    }
+    .real-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: #aaa;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
     }
     .tagline {
       font-size: 1rem;
       letter-spacing: 3px;
       color: #aaa;
+      margin-bottom: 1rem;
     }
     nav {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin-bottom: 3rem;
     }
     nav a {
       color: var(--gold);
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      font-size: 1rem;
     }
     nav a:hover {
       color: var(--diamond);
@@ -72,28 +85,34 @@
       padding: 4rem 1rem;
       max-width: 900px;
       margin: auto;
+      flex-grow: 1;
     }
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       color: var(--gold);
       margin-bottom: 1.5rem;
+      text-align: center;
     }
     .bio {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #ddd;
     }
     .bio img {
-      width: 250px;
+      width: 300px;
       border-radius: 8px;
       border: 2px solid var(--gold);
+      flex-shrink: 0;
     }
     .music-grid, .gallery-grid {
       display: grid;
       gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .music-card, .gallery-card {
       background: #111;
@@ -101,17 +120,35 @@
       border-radius: 8px;
       border: 1px solid var(--gold);
       transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      font-weight: 500;
     }
     .music-card:hover, .gallery-card:hover {
       transform: translateY(-5px);
     }
-    .music-card img, .gallery-card img {
+    .music-card iframe {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      border: none;
+    }
+    .music-card h3 {
+      margin-top: 0.8rem;
+      color: var(--gold);
+    }
+    .gallery-card img {
       width: 100%;
       border-radius: 5px;
+      object-fit: cover;
     }
     form {
       display: grid;
       gap: 1rem;
+      max-width: 600px;
+      margin: auto;
     }
     input, textarea {
       padding: 0.8rem;
@@ -119,6 +156,15 @@
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
+      border-radius: 4px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--diamond);
+      background: #111;
     }
     button {
       padding: 1rem;
@@ -127,6 +173,8 @@
       font-weight: bold;
       color: black;
       cursor: pointer;
+      font-size: 1.1rem;
+      border-radius: 5px;
       transition: 0.3s;
     }
     button:hover {
@@ -134,15 +182,71 @@
     }
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       background: #000;
       color: #666;
       font-size: 0.9rem;
+      user-select: none;
     }
+
+    /* Confirmación de formulario */
+    #confirmation-message {
+      background-color: #2b2b2b;
+      border: 1px solid var(--gold);
+      padding: 1rem 1.5rem;
+      color: var(--gold);
+      font-weight: 600;
+      border-radius: 5px;
+      max-width: 600px;
+      margin: 1rem auto 0;
+      text-align: center;
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .bio {
         flex-direction: column;
         text-align: center;
+      }
+      .bio img {
+        width: 80%;
+      }
+    }
+
+    /* Footer legal profesional */
+    #legal-notice {
+      background: #111;
+      color: #bbb;
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+      user-select: text;
+    }
+    .legal-container p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .legal-container p strong {
+      color: var(--gold);
+    }
+    .legal-container p em {
+      font-style: italic;
+      color: var(--diamond);
+    }
+    .legal-container p i {
+      color: var(--gold);
+      margin-right: 8px;
+      min-width: 18px;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      #legal-notice {
+        font-size: 0.85rem;
+        padding: 1.5rem 1rem;
       }
     }
   </style>
@@ -151,7 +255,8 @@
 
   <header>
     <img src="https://via.placeholder.com/200" alt="Tomás" class="profile" />
-    <h1>Tomás Miguel Beby Díaz</h1>
+    <h1>KxN</h1>
+    <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
     <nav>
       <a href="#bio">Biografía</a>
@@ -165,7 +270,13 @@
     <h2>Biografía</h2>
     <div class="bio">
       <img src="https://via.placeholder.com/300x400" alt="Biografía" />
-      <p>Soy Tomás Miguel Beby Díaz, también conocido como KxN. Nací para explorar la creatividad sin límites, cruzando las fronteras del arte, la música y la tecnología. Desde joven, sentí una profunda conexión con la expresión visual y sonora, que me llevó a desarrollar un estilo único y sofisticado. Mi objetivo es inspirar al mundo a través de experiencias inmersivas y elegantes, fusionando tradición y modernidad en cada proyecto.</p>
+      <p>
+        Mi nombre artístico es <strong>KxN</strong>.<br><br>
+        La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción. El karma en la música significa que todo lo que pones en tu arte vuelve a ti, y eso guía mi forma de crear y compartir.<br><br>
+        La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br><br>
+        La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología. Es ahí donde mi voz se mezcla con la tecnología para crear algo único.<br><br>
+        Elegí <strong>KxN</strong> porque refleja cómo veo la música: como un ciclo de energía, emoción y técnica que se cruzan para dar vida a algo nuevo y auténtico.
+      </p>
     </div>
   </section>
 
@@ -173,10 +284,12 @@
     <h2>Música</h2>
     <div class="music-grid">
       <div class="music-card">
-        <img src="https://via.placeholder.com/400x250" alt="Álbum 1">
-        <h3>Álbum: Eternidad</h3>
-        <p>Disponible en Spotify y YouTube.</p>
-        <a href="https://open.spotify.com/" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
+        <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video 1" allowfullscreen></iframe>
+        <h3>Video: Cover en Vivo</h3>
+      </div>
+      <div class="music-card">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 2" allowfullscreen></iframe>
+        <h3>Video: Interpretación Original</h3>
       </div>
     </div>
   </section>
@@ -185,27 +298,74 @@
     <h2>Galería</h2>
     <div class="gallery-grid">
       <div class="gallery-card">
-        <img src="https://via.placeholder.com/400x300" alt="Obra 1">
+        <img src="https://via.placeholder.com/400x300" alt="Obra 1" />
       </div>
       <div class="gallery-card">
-        <img src="https://via.placeholder.com/400x300" alt="Obra 2">
+        <img src="https://via.placeholder.com/400x300" alt="Obra 2" />
       </div>
     </div>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <form action="https://formspree.io/f/YOUR_ID" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
+    <form id="contact-form" action="https://formspree.io/f/xrbkoowp" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="email" placeholder="Tu correo" required />
       <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
       <button type="submit">Enviar mensaje</button>
     </form>
+    <div id="confirmation-message">¡Gracias por tu mensaje! Te responderé pronto.</div>
   </section>
 
   <footer>
     &copy; 2025 Tomás Miguel Beby Díaz | KxN
   </footer>
 
+  <section id="legal-notice">
+    <div class="legal-container">
+      <p><strong>2025 KxN (Tomás Miguel Beby Díaz)</strong> - Todos los derechos reservados</p>
+      <p>
+        <i class="fas fa-gavel"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <em>KxN</em>. El nombre artístico <em>"KxN"</em> es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Queda prohibido cualquier uso no autorizado del nombre, contenido o diseño de este sitio.
+      </p>
+      <p>
+        <i class="fas fa-shield-alt"></i> Sitio protegido por derechos de autor y leyes internacionales de propiedad intelectual.
+      </p>
+      <p>
+        <i class="fas fa-balance-scale"></i> Cualquier reproducción, distribución o uso indebido de los contenidos será sancionado conforme a la legislación vigente.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Confirmación visual formulario
+    const form = document.getElementById('contact-form');
+    const confirmation = document.getElementById('confirmation-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        if (response.ok) {
+          confirmation.style.display = 'block';
+          form.reset();
+          setTimeout(() => {
+            confirmation.style.display = 'none';
+          }, 6000);
+        } else {
+          alert('Hubo un problema enviando tu mensaje. Por favor, intenta más tarde.');
+        }
+      } catch (error) {
+        alert('Error al enviar el formulario. Revisa tu conexión.');
+      }
+    });
+  </script>
 </body>
 </html>
