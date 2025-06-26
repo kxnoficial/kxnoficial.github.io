@@ -105,14 +105,6 @@
       font-weight: 700;
       font-style: italic;
     }
-    /* Destacados en biografía */
-    .bio p strong,
-    .bio p .highlight,
-    .bio p em {
-      color: var(--gold);
-      font-weight: 700;
-      font-style: italic;
-    }
     .music-video iframe {
       width: 100%;
       height: 315px;
@@ -162,65 +154,55 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     /* Carrusel */
     .carousel-container {
       position: relative;
-      max-width: 900px;
-      margin: auto;
-      display: flex;
-      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      overflow: hidden;
     }
-
     .carousel {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-      scroll-behavior: smooth;
-      flex: 1;
+      overflow: hidden;
     }
-
     .carousel-track {
       display: flex;
-      gap: 1rem;
+      transition: transform 0.4s ease-in-out;
     }
-
     .carousel-track img {
-      scroll-snap-align: center;
-      flex-shrink: 0;
-      width: 300px;
-      height: auto;
+      width: 100%;
+      max-width: 600px;
       border-radius: 12px;
-      border: 3px solid var(--gold);
+      border: 4px solid var(--gold);
       object-fit: cover;
-      transition: transform 0.3s ease;
-      cursor: pointer;
+      user-select: none;
+      pointer-events: none;
     }
-
-    .carousel-track img:hover {
-      transform: scale(1.05);
-    }
-
     .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       background: var(--gold);
       border: none;
       color: black;
       font-size: 2rem;
+      font-weight: bold;
       padding: 0.3rem 0.8rem;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 50%;
+      opacity: 0.8;
+      transition: opacity 0.3s;
       user-select: none;
-      transition: background-color 0.3s ease;
+      z-index: 10;
     }
-
     .carousel-button:hover {
-      background: var(--diamond);
+      opacity: 1;
     }
-
-    .carousel-button:disabled {
-      background: #555;
-      cursor: default;
+    .carousel-button.prev {
+      left: 10px;
+    }
+    .carousel-button.next {
+      right: 10px;
     }
   </style>
 </head>
@@ -245,12 +227,12 @@
       <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
       <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
       <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
-      <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+      <p><span class="highlight">Transformo canciones que me gustan en versiones propias,</span> donde mi voz se mezcla con tecnología para crear algo diferente. Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
       <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-      <p>Mi nombre artístico es <strong>KxN</strong>.<br>
-      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
-      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
-      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
+      <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
+      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
+      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
+      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
     </div>
   </section>
 
@@ -263,12 +245,12 @@
 
   <section id="galeria">
     <h2>Galería</h2>
-    <div class="carousel-container">
+    <div class="carousel-container" aria-label="Carrusel de imágenes">
       <button class="carousel-button prev" aria-label="Imagen anterior">&lt;</button>
       <div class="carousel">
         <div class="carousel-track">
           <img src="https://i.postimg.cc/D0qXcQNQ/Polish-20250623-124942947.jpg" alt="Imagen de KxN" />
-          <!-- Puedes añadir más imágenes aquí -->
+          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Otra imagen de KxN" />
         </div>
       </div>
       <button class="carousel-button next" aria-label="Imagen siguiente">&gt;</button>
@@ -288,25 +270,47 @@
 
   <footer>
     <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. Mi voz es propia; sin embargo, las instrumentales utilizadas pertenecen a otros artistas y sólo la voz me pertenece.</p>
+    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. Mi voz es de mi autoría, mientras que las instrumentales son propiedad de otros artistas.</p>
     <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
     <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
   </footer>
 
   <script>
-    const carousel = document.querySelector('.carousel');
-    const prevButton = document.querySelector('.carousel-button.prev');
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
     const nextButton = document.querySelector('.carousel-button.next');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const slideWidth = slides[0].getBoundingClientRect().width;
 
-    // Calcula el ancho visible para el scroll
-    const scrollAmount = carousel.offsetWidth;
+    let currentIndex = 0;
 
-    prevButton.addEventListener('click', () => {
-      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
+    function updateCarousel() {
+      track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    }
 
     nextButton.addEventListener('click', () => {
-      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      currentIndex++;
+      if (currentIndex >= slides.length) {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    });
+
+    prevButton.addEventListener('click', () => {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+      }
+      updateCarousel();
+    });
+
+    // Ajustar tamaño si la ventana cambia para mantener el slideWidth actualizado
+    window.addEventListener('resize', () => {
+      const newSlideWidth = slides[0].getBoundingClientRect().width;
+      if (newSlideWidth !== slideWidth) {
+        slideWidth = newSlideWidth;
+        updateCarousel();
+      }
     });
   </script>
 </body>
