@@ -500,7 +500,60 @@
       }
     }
 
-    /* Responsive design */
+    /* Nuevos estilos para redes sociales */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+    }
+    .social-icons a {
+      color: var(--gold);
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+    .social-icons a:hover {
+      color: var(--diamond);
+      transform: translateY(-5px) scale(1.2);
+      text-shadow: 0 0 15px rgba(185, 242, 255, 0.7);
+    }
+    .social-icons a::after {
+      content: attr(aria-label);
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--diamond);
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .social-icons a:hover::after {
+      opacity: 1;
+    }
+    
+    /* Ajustes para la sección de biografía */
+    .bio .social-icons {
+      margin-top: 2rem;
+    }
+    .bio .social-icons a {
+      font-size: 1.5rem;
+    }
+    
+    /* Ajustes responsive */
     @media (max-width: 768px) {
       header {
         padding: 3rem 1rem;
@@ -535,6 +588,12 @@
       footer {
         padding: 2rem 1rem;
       }
+      .social-icons {
+        gap: 1.2rem;
+      }
+      .social-icons a {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -553,6 +612,28 @@
       <a href="#contacto">Contacto</a>
       <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer">Blog 📝</a>
     </nav>
+    
+    <!-- Redes sociales en el header -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+        <i class="fab fa-threads"></i>
+      </a>
+      <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+        <i class="fas fa-cloud"></i>
+      </a>
+      <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </div>
   </header>
 
   <section id="bio">
@@ -567,6 +648,28 @@
       La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
       La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
       La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
+      
+      <!-- Redes sociales en biografía -->
+      <div class="social-icons">
+        <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+          <i class="fab fa-threads"></i>
+        </a>
+        <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+          <i class="fas fa-cloud"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -584,172 +687,4 @@
         <div class="carousel-images">
           <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="Foto artística de KxN" />
           <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="Foto artística de KxN" />
-        </div>
-        <div class="carousel-buttons">
-          <button id="prev" aria-label="Imagen anterior">&#10094;</button>
-          <button id="next" aria-label="Imagen siguiente">&#10095;</button>
-        </div>
-        <div class="carousel-indicators">
-          <div class="indicator active" data-index="0"></div>
-          <div class="indicator" data-index="1"></div>
-          <div class="indicator" data-index="2"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
-      <button type="submit">Enviar mensaje</button>
-      <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
-    </form>
-  </section>
-
-  <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-  </footer>
-
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    // Mostrar imagen actual
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-      
-      // Actualizar indicadores
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === index);
-      });
-    }
-
-    // Siguiente imagen
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    // Imagen anterior
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    // Eventos de botones
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    // Eventos de indicadores
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-    });
-
-    // Iniciar intervalo
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    
-    // Detener intervalo
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    // Reiniciar intervalo
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    // Pausar al pasar el ratón
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-
-    // Iniciar carrusel
-    showImage(0);
-    startInterval();
-
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = 'flex';
-      } else {
-        scrollBtn.style.display = 'none';
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Tamaño y posición aleatorios
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp 1s ease forwards`;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-</body>
-</html>
+     
