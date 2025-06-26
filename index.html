@@ -4,27 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KxN | Tomás Miguel Beby Díaz</title>
-
-  <!-- SEO Básico -->
-  <meta name="description" content="Sitio oficial de KxN (Tomás Miguel Beby Díaz), artista y creador musical desde Santa Cruz de Tenerife. Música innovadora y versiones únicas.">
-  <meta name="keywords" content="KxN, Tomás Miguel Beby Díaz, música, covers, artista, Santa Cruz de Tenerife, Canarias">
-  <meta name="author" content="Tomás Miguel Beby Díaz">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="KxN | Tomás Miguel Beby Díaz" />
-  <meta property="og:description" content="Artista y creador musical desde Santa Cruz de Tenerife. Música innovadora y versiones únicas." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.kxnoficial.com/" />
-  <meta property="og:image" content="https://www.kxnoficial.com/imagen-kxn.jpg" />
-  <meta property="og:image:alt" content="Logo de KxN - Tomás Miguel Beby Díaz" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KxN | Tomás Miguel Beby Díaz" />
-  <meta name="twitter:description" content="Artista y creador musical desde Santa Cruz de Tenerife. Música innovadora y versiones únicas." />
-  <meta name="twitter:image" content="https://www.kxnoficial.com/imagen-kxn.jpg" />
-  <meta name="twitter:image:alt" content="Logo de KxN - Tomás Miguel Beby Díaz" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -105,16 +84,26 @@
       color: var(--gold);
       margin-bottom: 1.5rem;
     }
-    .bio {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+    .bio img {
+      border: 3px solid var(--gold);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      margin-bottom: 2rem;
+      transition: transform 0.4s ease;
+      max-width: 100%;
+      height: auto;
     }
-    .music-video iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-      border-radius: 8px;
+    .bio img:hover {
+      transform: scale(1.02);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-in-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     form {
       display: grid;
@@ -177,15 +166,30 @@
 
   <section id="bio">
     <h2>Biografía</h2>
-    <div class="bio">
-      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí. Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</p>
-      <p>Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente. Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
-      <p>Mis covers los grabo en mi cuarto. No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-      <p>Mi nombre artístico es <strong>KxN</strong>.<br>
-      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción. <br>
-      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar. <br>
-      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
+    <div class="bio fade-in">
+      <div style="text-align:center;">
+        <img src="https://postimg.cc/yWRPmzTx" alt="KxN grabando un cover" />
+      </div>
+
+      <p><strong>Mi nombre es Tomás Miguel Beby Díaz</strong> y nací el <strong>24 de diciembre de 1999</strong> en <strong>Santa Cruz de Tenerife</strong>, Islas Canarias.</p>
+
+      <p><span style="color: var(--diamond); font-weight: bold;">Todo empezó en 2008</span>, cuando descubrí por casualidad a <em>Lady Gaga</em> en YouTube. Ese momento lo cambió todo. 💡</p>
+
+      <p><strong>Desde entonces supe que quería ser cantante</strong>. Aprendí que <em>la música no es una competencia</em>, sino una forma de vida.<br>Siempre habrá quien cante mejor, pero lo importante es <span style="color: var(--gold); font-weight: bold;">superarte a ti mismo</span>.</p>
+
+      <p>Transformo canciones que amo en versiones personales. <strong>Juego con mi voz, la tecnología y la emoción</strong> para crear algo único, sin perder el alma del tema original.</p>
+
+      <p><em>Grabo en mi cuarto</em>, sin estudio profesional, pero con <strong>pasión, creatividad y muchas ganas</strong>. Uso lo que tengo y <span style="color: var(--diamond); font-weight: bold;">doy siempre lo mejor de mí</span>.</p>
+
+      <p><strong>Mi nombre artístico es KxN</strong>, y representa más de lo que parece:</p>
+
+      <ul style="margin-left: 1.2rem; line-height: 1.8;">
+        <li><strong>K</strong> = <span style="color: var(--gold);">Karma</span>: la energía que das y recibes a través de la música.</li>
+        <li><strong>N</strong> = <span style="color: var(--diamond);">Nota</span>: la base de cada melodía, mi esencia musical.</li>
+        <li><strong>x</strong> = <em>el punto de encuentro entre ambos</em>: <strong>la fusión entre lo humano y lo digital</strong>.</li>
+      </ul>
+
+      <p style="margin-top:1.5rem;">La música para mí no es solo arte. Es identidad, evolución y energía compartida. ✨</p>
     </div>
   </section>
 
@@ -220,5 +224,14 @@
     <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
     <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
   </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const bio = document.querySelector('.bio');
+      setTimeout(() => {
+        bio.classList.add('visible');
+      }, 300);
+    });
+  </script>
 </body>
 </html>
