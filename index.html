@@ -14,6 +14,7 @@
       --white: #ffffff;
       --gold: #d4af37;
       --diamond: #b9f2ff;
+      --gold-hover: #f0d070;
     }
     * {
       box-sizing: border-box;
@@ -31,6 +32,7 @@
       text-align: center;
       padding: 4rem 1rem;
       background: linear-gradient(to bottom, #000, #111);
+      position: relative;
     }
     .header-image {
       display: block;
@@ -40,6 +42,7 @@
       border-radius: 50%;
       border: 4px solid var(--gold);
       object-fit: cover;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
     }
     h1 {
       font-family: 'Playfair Display', serif;
@@ -48,17 +51,72 @@
       -webkit-background-clip: text;
       color: transparent;
       margin-bottom: 0.2rem;
+      letter-spacing: 1px;
     }
     .real-name {
       font-size: 0.9rem;
       color: #aaa;
       font-weight: 300;
+      margin-bottom: 0.5rem;
     }
     .tagline {
       font-size: 1rem;
       letter-spacing: 3px;
       color: #aaa;
+      margin-bottom: 1.5rem;
     }
+    
+    /* Nueva sección de redes sociales */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      margin: 1.5rem 0 2rem;
+      flex-wrap: wrap;
+    }
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .social-icons a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--diamond));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    .social-icons a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+    .social-icons a:hover::before {
+      opacity: 1;
+    }
+    .social-icons a:hover i {
+      color: var(--black);
+    }
+    .social-icons a i {
+      transition: color 0.3s ease;
+    }
+    
     nav {
       display: flex;
       justify-content: center;
@@ -71,9 +129,24 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--diamond);
+      transition: width 0.3s ease;
     }
     nav a:hover {
       color: var(--diamond);
+    }
+    nav a:hover::after {
+      width: 100%;
     }
     section {
       padding: 4rem 1rem;
@@ -85,6 +158,20 @@
       font-size: 2rem;
       color: var(--gold);
       margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      border-radius: 3px;
     }
     .bio {
       display: flex;
@@ -100,6 +187,7 @@
       object-fit: cover;
       align-self: center;
       animation: fadeInUp 1s ease forwards;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
     .highlight {
       color: var(--gold);
@@ -112,23 +200,29 @@
       border: none;
       border-radius: 8px;
       animation: fadeIn 1.5s ease forwards;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
     form {
       display: grid;
       gap: 1rem;
       animation: fadeInUp 1s ease forwards;
+      max-width: 500px;
+      margin: 0 auto;
     }
     input, textarea {
       padding: 0.8rem;
-      background: #000;
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
       transition: border-color 0.3s;
+      border-radius: 4px;
+      font-size: 1rem;
     }
     input:focus, textarea:focus {
       border-color: var(--diamond);
       outline: none;
+      box-shadow: 0 0 8px rgba(185, 242, 255, 0.4);
     }
     button {
       padding: 1rem;
@@ -137,16 +231,23 @@
       font-weight: bold;
       color: black;
       cursor: pointer;
-      transition: opacity 0.3s;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
     }
     button:hover {
       opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     }
     .confirmation {
       color: var(--diamond);
       font-weight: bold;
       margin-top: 1rem;
       display: none;
+      text-align: center;
+      font-size: 1.1rem;
     }
     footer {
       background: #000;
@@ -155,6 +256,7 @@
       padding: 2rem 1rem;
       text-align: center;
       line-height: 1.6;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
     }
     footer p {
       margin-bottom: 0.5rem;
@@ -171,11 +273,12 @@
       overflow: hidden;
       border-radius: 12px;
       border: 4px solid var(--gold);
-      box-shadow: 0 0 10px var(--gold);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     }
     .carousel-images {
       display: flex;
       transition: transform 0.7s ease-in-out;
+      height: 400px;
     }
     .carousel-images img {
       width: 100%;
@@ -197,9 +300,10 @@
       justify-content: space-between;
       transform: translateY(-50%);
       pointer-events: none;
+      padding: 0 15px;
     }
     .carousel-buttons button {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.7);
       border: none;
       color: var(--gold);
       font-size: 2rem;
@@ -207,11 +311,18 @@
       cursor: pointer;
       pointer-events: auto;
       border-radius: 50%;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
       user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
     }
     .carousel-buttons button:hover {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
+      color: var(--diamond);
+      transform: scale(1.1);
     }
 
     /* Scroll to top button */
@@ -219,7 +330,7 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--diamond));
       color: var(--black);
       border: none;
       border-radius: 50%;
@@ -230,13 +341,13 @@
       display: none;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 10px var(--gold);
-      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      transition: all 0.3s ease;
       z-index: 1000;
     }
     #scrollToTop:hover {
-      background: var(--diamond);
-      transform: scale(1.1);
+      transform: scale(1.1) translateY(-3px);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
     }
 
     /* Animations */
@@ -254,14 +365,45 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
+    
+    /* Efecto de brillo en el encabezado */
+    .header-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
   </style>
 </head>
 <body>
   <header>
+    <div class="header-glow"></div>
     <img src="https://i.postimg.cc/xCTVt6hn/IMG-20250624-211951-442.webp" alt="Logo KxN" class="header-image" />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
+    
+    <!-- Sección de redes sociales -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xWx40xv9R0&_r=1" target="_blank" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://x.com/kxnoficial?t=Qhy-oniD1uXRmK0lS2vKRg&s=09" target="_blank" aria-label="X (Twitter)">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/share/1EfMfTnpRG/" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+    
     <nav>
       <a href="#bio">Biografía</a>
       <a href="#musica">Música</a>
@@ -393,6 +535,16 @@
     });
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Efecto adicional: Parallax en el encabezado
+    document.addEventListener('DOMContentLoaded', function() {
+      const header = document.querySelector('header');
+      
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        header.style.backgroundPositionY = -scrollPosition * 0.3 + 'px';
+      });
     });
   </script>
 </body>
