@@ -29,8 +29,7 @@
       line-height: 1.6;
       scroll-behavior: smooth;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%),
-        linear-gradient(to bottom, rgba(11, 11, 11, 0.8), rgba(11, 11, 11, 1));
+        radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%);
       overflow-x: hidden;
     }
     header {
@@ -44,6 +43,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      z-index: 10;
     }
     header::before {
       content: "";
@@ -59,9 +59,6 @@
     .header-content {
       position: relative;
       z-index: 10;
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 0.5s;
     }
     .header-image {
       display: block;
@@ -101,8 +98,6 @@
       position: relative;
       z-index: 2;
       margin-top: 0.5rem;
-      animation: fadeIn 2s ease forwards 1.5s;
-      opacity: 0;
     }
     .tagline {
       font-size: 1.2rem;
@@ -111,8 +106,6 @@
       position: relative;
       z-index: 2;
       margin-top: 1rem;
-      animation: fadeIn 2s ease forwards 1.8s;
-      opacity: 0;
       text-transform: uppercase;
       font-weight: 300;
     }
@@ -124,8 +117,6 @@
       margin: 3rem 0 1rem;
       position: relative;
       z-index: 2;
-      animation: fadeIn 2s ease forwards 2s;
-      opacity: 0;
     }
     nav a {
       color: var(--gold);
@@ -199,8 +190,6 @@
       box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
       position: relative;
       overflow: hidden;
-      transform: translateY(30px);
-      opacity: 0;
     }
     .bio::before {
       content: "";
@@ -225,12 +214,10 @@
       border-radius: 15px;
       border: 4px solid var(--gold);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
-      transform: perspective(1000px) rotateY(-10deg);
       transition: transform 0.5s;
-      animation: floatImage 8s ease-in-out infinite;
     }
     .bio-image-container:hover {
-      transform: perspective(1000px) rotateY(0deg) scale(1.03);
+      transform: scale(1.03);
     }
     .bio img {
       width: 100%;
@@ -249,6 +236,8 @@
       font-style: italic;
       text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
       position: relative;
+      display: block;
+      margin: 1.5rem 0;
     }
     .highlight::before {
       content: "❝";
@@ -267,12 +256,10 @@
       overflow: hidden;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
       transition: transform 0.3s;
-      transform: translateY(30px);
-      opacity: 0;
       border: 3px solid var(--gold);
     }
     .music-video:hover {
-      transform: scale(1.02) rotate(1deg);
+      transform: scale(1.02);
       box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
     }
     .music-video iframe {
@@ -291,8 +278,6 @@
       box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
       max-width: 700px;
       margin: 0 auto;
-      transform: translateY(30px);
-      opacity: 0;
     }
     .form-group {
       position: relative;
@@ -350,7 +335,6 @@
       font-weight: 700;
       position: relative;
       overflow: hidden;
-      animation: pulse 2s infinite;
     }
     button::after {
       content: '';
@@ -365,7 +349,6 @@
     button:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(212, 175, 55, 0.7);
-      animation: none;
     }
     button:hover::after {
       left: 100%;
@@ -433,7 +416,7 @@
     .social-icons a:hover {
       background: rgba(185, 242, 255, 0.2);
       color: var(--diamond);
-      transform: translateY(-5px) rotate(10deg);
+      transform: translateY(-5px);
       box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     }
 
@@ -442,8 +425,6 @@
       max-width: 1000px;
       margin: 4rem auto;
       position: relative;
-      transform: translateY(30px);
-      opacity: 0;
     }
     .carousel {
       position: relative;
@@ -452,26 +433,16 @@
       border: 4px solid var(--gold);
       box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
       height: 550px;
-      perspective: 1200px;
     }
     .carousel-images {
       display: flex;
       height: 100%;
-      transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition: transform 0.7s ease-in-out;
     }
     .carousel-images img {
       width: 100%;
       flex-shrink: 0;
       object-fit: cover;
-      transition: all 0.7s ease;
-      transform: scale(0.95);
-      opacity: 0.8;
-      filter: brightness(0.8);
-    }
-    .carousel-images img.active {
-      transform: scale(1);
-      opacity: 1;
-      filter: brightness(1);
     }
     .carousel-buttons {
       position: absolute;
@@ -556,14 +527,12 @@
       transition: all 0.4s;
       z-index: 1000;
       opacity: 0.9;
-      animation: pulse 2s infinite;
     }
     #scrollToTop:hover {
       background: var(--diamond);
-      transform: scale(1.15) rotate(360deg);
+      transform: scale(1.15);
       box-shadow: 0 0 30px rgba(185, 242, 255, 0.9);
       opacity: 1;
-      animation: none;
     }
 
     /* Animations */
@@ -584,15 +553,12 @@
     @keyframes pulse {
       0% { 
         opacity: 1;
-        transform: scale(1);
       }
       50% { 
         opacity: 0.8;
-        transform: scale(1.05);
       }
       100% { 
         opacity: 1;
-        transform: scale(1);
       }
     }
     @keyframes rotate {
@@ -613,34 +579,6 @@
       }
       50% {
         transform: translateY(-15px);
-      }
-    }
-    @keyframes floatImage {
-      0%, 100% {
-        transform: perspective(1000px) rotateY(-10deg) translateY(0);
-      }
-      50% {
-        transform: perspective(1000px) rotateY(-10deg) translateY(-10px);
-      }
-    }
-    @keyframes slideInLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    @keyframes slideInRight {
-      0% {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
       }
     }
     
@@ -669,11 +607,11 @@
     }
     @keyframes float {
       0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
+        transform: translateY(0) translateX(0);
         opacity: 0.6;
       }
       100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        transform: translateY(-100vh) translateX(100px);
         opacity: 0;
       }
     }
@@ -687,8 +625,6 @@
       border-radius: 15px;
       border: 1px solid rgba(212, 175, 55, 0.3);
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      transform: translateY(30px);
-      opacity: 0;
     }
     .audio-player h3 {
       color: var(--gold);
@@ -818,4 +754,33 @@
   </style>
 </head>
 <body>
-  <div class="part
+  <div class="particles" id="particles"></div>
+  
+  <header>
+    <div class="header-content">
+      <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Logo KxN" class="header-image" />
+      <h1>KxN</h1>
+      <div class="real-name">Tomás Miguel Beby Díaz</div>
+      <p class="tagline">Artista · Creador · Visionario</p>
+      <nav>
+        <a href="#bio">Biografía</a>
+        <a href="#musica">Música</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer">Blog 📝</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="bio">
+    <h2>Biografía</h2>
+    <div class="bio">
+      <div class="bio-content">
+        <div class="bio-image-container">
+          <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
+        </div>
+        <div class="bio-text">
+          <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
+          <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
+          <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+          <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero l
