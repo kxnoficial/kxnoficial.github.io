@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KxN | Tomás Miguel Beby Díaz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #000000;
@@ -12,11 +15,18 @@
             --gold: #D4AF37;
             --gold-light: rgba(212, 175, 55, 0.3);
             --diamond: rgba(185, 242, 255, 0.8);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
-        /* Fondo en movimiento de lujo */
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--black);
             color: var(--white);
             line-height: 1.8;
@@ -26,8 +36,15 @@
             text-rendering: optimizeLegibility;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
         
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        /* Fondo en movimiento de lujo */
         body::before {
             content: "";
             position: fixed;
@@ -49,7 +66,7 @@
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
             background: rgba(0, 0, 0, 0.5);
@@ -60,10 +77,18 @@
             box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
         }
         
+        /* Cabecera */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-top: 1rem;
+        }
+        
         /* Foto de perfil flotante con marco de lujo */
         .profile-pic {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid transparent;
@@ -82,12 +107,6 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
         h1 {
             font-size: 4rem;
             font-weight: 300;
@@ -99,13 +118,14 @@
             color: transparent;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
+        
         .tagline {
-    font-size: 0.9rem;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 1rem 0 2rem;
-    display: block;
+            font-size: 0.9rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 1rem 0 2rem;
+            display: block;
         }
             
         /* Redes sociales estilo lujoso */
@@ -121,13 +141,13 @@
             color: var(--white);
             text-decoration: none;
             font-size: 1.2rem;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.05);
@@ -147,7 +167,7 @@
         
         .social-links a:hover {
             color: var(--gold);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
         
@@ -167,14 +187,15 @@
         .nav-pages a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            padding: 0.8rem 1.8rem;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.3);
             letter-spacing: 1px;
+            border-radius: 30px;
         }
         
         .nav-pages a::before {
@@ -198,7 +219,7 @@
             left: 100%;
         }
         
-        /* Contenido de subpáginas (oculto por defecto) */
+        /* Contenido de subpáginas */
         .page {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -213,174 +234,7 @@
             display: block;
         }
         
-        /* Estilos para el formulario de contacto de lujo */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--gold-light);
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-form::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--gold), var(--diamond), var(--gold));
-            background-size: 200% 200%;
-            animation: gradient 5s ease infinite;
-            border-radius: 6px;
-            opacity: 0.3;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--gold-light);
-            color: var(--white);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--gold), var(--diamond));
-            color: var(--black);
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .submit-btn:hover {
-            background: linear-gradient(to right, var(--diamond), var(--gold));
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .submit-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-        
-        /* Estilos para la sección de redes sociales */
-        .social-section {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem 0;
-            position: relative;
-        }
-        
-        .social-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-        }
-        
-        .social-section h3 {
-            color: var(--gold);
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-        
-        /* Botón de volver con estilo de lujo */
-        .back-btn {
-            display: inline-block;
-            margin: 2rem 0;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.9rem;
-            position: relative;
-            padding-left: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn::before {
-            content: "←";
-            position: absolute;
-            left: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            color: var(--diamond);
-            padding-left: 2rem;
-        }
-        
-        /* Efectos de diamantes */
-        .diamond-effect {
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        /* Estilos para el contenido de las páginas */
+        /* Contenido de las páginas */
         .page-content {
             padding: 1rem 0;
             line-height: 1.8;
@@ -392,6 +246,7 @@
             margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            font-size: 2.2rem;
         }
         
         .page-content h2::after {
@@ -400,21 +255,10 @@
             bottom: -10px;
             left: 0;
             width: 50px;
-            height: 1px;
+            height: 2px;
             background: var(--gold);
         }
         
-        /* Efecto de brillo al cargar la página */
-        @keyframes shine {
-            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
-            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
-        }
-        
-        .shine-effect {
-            animation: shine 2s ease-in-out;
-        }
-
         /* Estilo para el marco de foto en biografía */
         .bio-photo-frame {
             padding: 15px;
@@ -470,481 +314,353 @@
             flex: 1;
             min-width: 300px;
         }
-    </style>
-</head>
-<body>
-    <div class="container shine-effect">
-        <header>
-            <img src="IMG-20250624-WA0008.jpg" alt="Tomás Miguel" class="profile-pic">
-            <h1>KxN</h1>
-            <p class="tagline">TOMÁS MIGUEL BEBY DÍAZ</p>
-            
-            <!-- Redes Sociales -->
-            <div class="social-section">
-                <h3>Conéctate Conmigo</h3>
-                <div class="social-links">
-                    <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                    <a href="https://bsky.app/profiloficial.com" target="_blank" title="Bluesky"><i class="fas fa-circle"></i></a>
-                    <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="nav-pages">
-                <a href="#" onclick="showPage('home')">Inicio</a>
-                <a href="#" onclick="showPage('bio')">Biografía</a>
-                <a href="#" onclick="showPage('music')">Música</a>
-                <a href="#" onclick="showPage('gallery')">Álbum</a>
-                <a href="#" onclick="showPage('contact')">Contacto</a>
-            </div>
-        </header>
         
-        <!-- Página de Inicio -->
-        <div id="home" class="page active">
-            <div class="page-content">
-                <section>
-                    <h2>Último Proyecto</h2>
-                    <p>Explora mi última creación vocal donde fusiono lo clásico con lo digital, transformando canciones conocidas en experiencias auditivas únicas.</p>
-                    <a href="#" onclick="showPage('music')" class="back-btn">Ver Música</a>
-                </section>
-                
-                <section style="margin-top: 3rem;">
-                    <h2>Solicita Tu Canción</h2>
-                    <p>¿Tienes una canción que te gustaría escuchar en mi estilo? Hazme saber tus peticiones a través de nuestro formulario de contacto.</p>
-                    <a href="#" onclick="showPage('contact')" class="back-btn">Ir al Formulario</a>
-                </section>
-            </div>
-        </div>
-        
-        <!-- Página de Biografía - Versión Premium -->
-<div id="bio" class="page">
-    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-    <div class="page-content">
-        <div class="bio-content">
-            <!-- Marco de foto con diamantes -->
-            <div class="bio-photo-frame">
-                <div class="bio-photo-inner">
-                    <img src="IMG_20250624_201119.jpg" alt="Tomás Miguel en el estudio" class="bio-photo">
-                </div>
-            </div>
-            
-            <div class="bio-text">
-                <!-- Título con efecto dorado -->
-                <h2 style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem;">
-                    Tomás Miguel Beby Díaz
-                </h2>
-                
-                <!-- Fecha y lugar con estilo elegante -->
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-                    <div style="display: flex; align-items: center;">
-                        <i class="fas fa-calendar-alt" style="color: var(--gold); margin-right: 8px;"></i>
-                        <span style="color: var(--gold);">24 de diciembre de 1999</span>
-                    </div>
-                    <div style="height: 20px; width: 1px; background: var(--gold-light);"></div>
-                    <div style="display: flex; align-items: center;">
-                        <i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 8px;"></i>
-                        <span>Santa Cruz de Tenerife, Islas Canarias</span>
-                    </div>
-                </div>
-                
-                <!-- Historia personal -->
-                <div style="position: relative; padding-left: 30px; margin-bottom: 2rem;">
-                    <div style="position: absolute; left: 0; top: 5px; width: 3px; height: 90%; background: linear-gradient(to bottom, var(--gold), var(--diamond));"></div>
-                    <p>Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí. Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <strong style="color: var(--diamond);">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</strong></p>
-                </div>
-                
-                <!-- Proceso creativo -->
-                <div style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid var(--gold); padding: 1.5rem; margin: 2rem 0; border-radius: 0 5px 5px 0;">
-                    <h3 style="color: var(--gold); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-magic" style="color: var(--diamond);"></i>
-                        Mi Proceso Creativo
-                    </h3>
-                    <p>Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente. <strong>Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</strong></p>
-                    <p style="margin-bottom: 0;">Mis covers los grabo en mi cuarto. No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo.</p>
-                </div>
-                
-                <!-- Filosofía musical -->
-                <p style="font-style: italic; position: relative; padding-left: 2rem; color: rgba(255,255,255,0.8);">
-                    <i class="fas fa-quote-left" style="color: var(--gold-light); position: absolute; left: 0; top: 0; font-size: 1.5rem;"></i>
-                    Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Explicación del nombre artístico -->
-        <div style="background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(20,20,30,0.8)); border-radius: 8px; padding: 2rem; margin-top: 3rem; position: relative; overflow: hidden; border: 1px solid var(--gold-light);">
-            <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%); filter: blur(30px);"></div>
-            
-            <h3 style="color: var(--diamond); margin-top: 0; text-align: center; font-size: 1.8rem; position: relative;">
-                <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">KxN</span>
-            </h3>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <!-- Letra K -->
-                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 5px; border-bottom: 3px solid var(--gold);">
-                    <h4 style="color: var(--gold); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.8rem; font-weight: bold;">K</span> Karma
-                    </h4>
-                    <p>La música es energía que damos y recibimos. Todo lo que pones en tu arte vuelve a ti, guiando mi forma de crear y compartir.</p>
-                </div>
-                
-                <!-- Letra x -->
-                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 5px; border-bottom: 3px solid var(--diamond);">
-                    <h4 style="color: var(--diamond); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.8rem; font-weight: bold;">x</span> Conexión
-                    </h4>
-                    <p>Punto donde el karma y la nota se unen, fusionando lo emocional con lo técnico, lo humano con la tecnología.</p>
-                </div>
-                
-                <!-- Letra N -->
-                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 5px; border-bottom: 3px solid var(--gold);">
-                    <h4 style="color: var(--gold); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.8rem; font-weight: bold;">N</span> Nota
-                    </h4>
-                    <p>Base fundamental de toda melodía que capturo y reinvento, la esencia pura de la expresión musical.</p>
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--gold-light);">
-                "KxN refleja mi visión de la música: un ciclo de energía, emoción y técnica que se cruzan para crear algo auténtico"
-            </p>
-        </div>
-    </div>
-</div>
-        <!-- Página de Música -->
-        <div id="music" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Último Cover</h2>
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2rem 0;">
-                    <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?modestbranding=1&rel=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
-                </div>
-                
-                <h2 style="margin-top: 3rem;">Discografía</h2>
-                <p>Explora mi colección de covers y trabajos originales donde aplico mi técnica de deconstrucción vocal.</p>
-                <!-- Aquí podrías añadir una lista de reproducción o más videos -->
-            </div>
-        </div>
-        
-        <!-- Página de Álbum -->
-        <div id="gallery" class="page">
-            <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-            <div class="page-content">
-                <h2>Álbum Visual</h2>
-                <p>Una colección de imágenes que capturan la esencia de mi proceso creativo y presentaciones.</p>
-                <!-- Aquí podrías añadir tu galería de imágenes -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 1</div>
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 2</div>
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 3</div>
-                    <div style="height: 250px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-light);">Imagen 4</div>
-                </div>
-            </div>
-        </div>
-        <!-- Página de Música - Versión para Covers -->
-<div id="music" class="page">
-    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-    <div class="page-content">
-        <h2 style="display: flex; align-items: center; gap: 15px; margin-bottom: 2rem;">
-            <i class="fas fa-microphone-alt" style="color: var(--gold);"></i>
-            <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">Mis Covers</span>
-        </h2>
-
-        <!-- Video destacado -->
-        <div style="background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden; border: 1px solid var(--gold-light); margin-bottom: 3rem;">
-            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                <iframe 
-                    src="https://www.youtube.com/embed/TU_ID_VIDEO_DESTACADO" 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <div style="padding: 1.5rem;">
-                <h3 style="color: var(--diamond); margin-top: 0;">Último Cover: <span style="color: var(--gold);">[Nombre de la Canción]</span></h3>
-                <p>Una reinterpretación personal donde fusiono [describe tu estilo, ej: "mi voz estratificada con atmósferas electrónicas"]</p>
-                <div style="display: flex; gap: 15px; margin-top: 1rem;">
-                    <a href="ENLACE_YT" target="_blank" style="background: var(--gold); color: black; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
-                        <i class="fab fa-youtube"></i> Ver en YouTube
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Colección de Covers -->
-        <h3 style="color: var(--gold); border-bottom: 1px solid var(--gold-light); padding-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-layer-group" style="font-size: 1.1rem;"></i>
-            Colección de Covers
-        </h3>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-            <!-- Cover 1 -->
-            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; border: 1px solid var(--gold-light); transition: all 0.3s ease;">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(212, 175, 55, 0.1);">
-                    <img src="PORTADA_COVER_1.jpg" alt="Cover de [Canción]" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); display: flex; align-items: flex-end; padding: 1rem;">
-                        <span style="color: white; font-weight: bold;">[Duración]</span>
-                    </div>
-                </div>
-                <div style="padding: 1.2rem;">
-                    <h4 style="color: var(--diamond); margin-top: 0; margin-bottom: 0.5rem;">"[Nombre del Cover]"</h4>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1rem;">Original de <strong>[Artista]</strong></p>
-                    <div style="display: flex; gap: 10px;">
-                        <a href="ENLACE_YT" target="_blank" style="color: var(--gold); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-play"></i> Escuchar
-                        </a>
-                        <span style="color: var(--gold-light);">|</span>
-                        <a href="#" style="color: var(--gold-light); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="far fa-heart"></i> Favorito
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cover 2 -->
-            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; border: 1px solid var(--diamond); transition: all 0.3s ease;">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(185, 242, 255, 0.1);">
-                    <img src="PORTADA_COVER_2.jpg" alt="Cover de [Canción]" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); display: flex; align-items: flex-end; padding: 1rem;">
-                        <span style="color: white; font-weight: bold;">[Duración]</span>
-                    </div>
-                </div>
-                <div style="padding: 1.2rem;">
-                    <h4 style="color: var(--diamond); margin-top: 0; margin-bottom: 0.5rem;">"[Nombre del Cover]"</h4>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1rem;">Original de <strong>[Artista]</strong></p>
-                    <div style="display: flex; gap: 10px;">
-                        <a href="ENLACE_YT" target="_blank" style="color: var(--gold); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-play"></i> Escuchar
-                        </a>
-                        <span style="color: var(--gold-light);">|</span>
-                        <a href="#" style="color: var(--gold-light); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="far fa-heart"></i> Favorito
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Plantilla para nuevo cover -->
-            <div style="background: rgba(0,0,0,0.2); border: 2px dashed var(--gold-light); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
-                <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--gold-light); margin-bottom: 1rem;"></i>
-                <h4 style="color: var(--gold); margin: 0 0 0.5rem 0;">Próximo Cover</h4>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0;">¿Qué canción te gustaría escuchar?</p>
-                <a href="#" onclick="showPage('contact')" style="color: var(--gold); text-decoration: none; font-size: 0.9rem; margin-top: 1rem; display: inline-flex; align-items: center; gap: 5px;">
-                    <i class="fas fa-music"></i> Sugiéreme
-                </a>
-            </div>
-        </div>
-
-        <!-- Nota sobre los covers -->
-        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(212, 175, 55, 0.05); border-left: 3px solid var(--gold);">
-            <h4 style="color: var(--gold); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-exclamation-circle"></i>
-                Sobre mis versiones
-            </h4>
-            <p style="margin-bottom: 0;">Estos covers son interpretaciones vocales personales. Todos los derechos de las canciones originales pertenecen a sus respectivos artistas y sellos discográficos. Realizados bajo el concepto de <strong>fair use</strong> para fines artísticos sin ánimo de lucro.</p>
-        </div>
-    </div>
-</div>
-
-    <script>
-        // Sistema de subpáginas
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-            
-            // Efecto de brillo al cambiar de página
-            document.querySelector('.container').classList.remove('shine-effect');
-            void document.querySelector('.container').offsetWidth; // Trigger reflow
-            document.querySelector('.container').classList.add('shine-effect');
+        /* Botón de volver */
+        .back-btn {
+            display: inline-block;
+            margin: 0 0 2rem 0;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 1.8rem;
+            transition: var(--transition);
+            font-weight: 500;
         }
         
-        // Efecto de diamantes al mover el mouse
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.7) {
-                const diamond = document.createElement('div');
-                diamond.className = 'diamond-effect';
-                diamond.style.width = `${Math.random() * 10 + 5}px`;
-                diamond.style.height = diamond.style.width;
-                diamond.style.left = `${e.clientX}px`;
-                diamond.style.top = `${e.clientY}px`;
-                diamond.style.transform = `rotate(${Math.random() * 360}deg)`;
-                diamond.style.background = `linear-gradient(45deg, transparent, ${Math.random() > 0.5 ? 'var(--gold)' : 'var(--diamond)'}, transparent)`;
-                
-                document.body.appendChild(diamond);
-                
-                // Animación
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = 1 + Math.random() * 2;
-                const distance = 50 + Math.random() * 100;
-                
-                let posX = e.clientX;
-                let posY = e.clientY;
-                let opacity = 1;
-                
-                const animate = () => {
-                    posX += Math.cos(angle) * velocity;
-                    posY += Math.sin(angle) * velocity;
-                    opacity -= 0.01;
-                    
-                    diamond.style.left = `${posX}px`;
-                    diamond.style.top = `${posY}px`;
-                    diamond.style.opacity = opacity;
-                    
-                    if (opacity > 0) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        diamond.remove();
-                    }
-                };
-                
-                animate();
-            }
-                <!-- Página de Contacto - Colocar esto con las otras páginas (antes del script) -->
-<div id="contact" class="page">
-    <a href="#" onclick="showPage('home')" class="back-btn">Volver</a>
-    <div class="page-content">
-        <h2 style="display: flex; align-items: center; gap: 15px;">
-            <i class="fas fa-envelope" style="color: var(--gold);"></i>
-            <span style="background: linear-gradient(to right, var(--gold), var(--diamond)); -webkit-background-clip: text; background-clip: text; color: transparent;">Contáctame</span>
-        </h2>
-        
-        <div style="margin: 2rem 0; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 8px; border-left: 3px solid var(--gold);">
-            <h3 style="color: var(--diamond); margin-top: 0; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-heart" style="color: var(--gold);"></i>
-                ¡Hablemos de música!
-            </h3>
-            <p>Me encantaría recibir tus comentarios, sugerencias de canciones para covers, o simplemente charlar sobre música. Aunque soy amateur, pongo todo mi empeño en cada proyecto.</p>
-        </div>
-        
-        <form id="contactForm" class="contact-form">
-            <div class="form-group">
-                <label for="name"><i class="fas fa-user" style="margin-right: 8px;"></i> Tu nombre</label>
-                <input type="text" id="name" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email"><i class="fas fa-envelope" style="margin-right: 8px;"></i> Correo electrónico</label>
-                <input type="email" id="email" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="subject"><i class="fas fa-question-circle" style="margin-right: 8px;"></i> ¿Sobre qué quieres hablar?</label>
-                <select id="subject" class="form-control" required>
-                    <option value="" disabled selected>Elige un tema</option>
-                    <option value="suggestion">Sugerencia de canción para cover</option>
-                    <option value="feedback">Comentario sobre mis covers</option>
-                    <option value="collab">Posible colaboración</option>
-                    <option value="other">Otro tema</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="message"><i class="fas fa-comment" style="margin-right: 8px;"></i> Tu mensaje</label>
-                <textarea id="message" class="form-control" required placeholder="Cuéntame lo que quieras..."></textarea>
-            </div>
-            
-            <div style="margin: 1.5rem 0; font-size: 0.8rem; color: rgba(255,255,255,0.6);">
-                <p>Nota: Soy un artista amateur y no realizo trabajos profesionales remunerados. Todos mis covers son por pasión por la música y sin ánimo de lucro.</p>
-            </div>
-            
-            <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i> Enviar Mensaje
-            </button>
-        </form>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <h3 style="color: var(--gold); margin-bottom: 1rem;">Mis Redes Sociales</h3>
-            <p style="margin-bottom: 1.5rem;">También puedes contactarme a través de:</p>
-            
-            <div class="social-links" style="justify-content: center;">
-                <a href="https://wktok.com/@kxnoficial?_t=ZN-8xTJ9U7VHYU&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/1Afkyd1Mnj/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/kxnoficial?t=4E-9S_-UNQkwLfkLCJWFfA&s=09" target="_blank" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                <a href="https://youtube.com/@kxnoficial?si=eKKeNinLIU_7IP5S" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gold-light);">
-                <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
-                Todos mis covers son interpretaciones personales sin fines comerciales
-            </p>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Sistema de subpáginas
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo(0, 0);
-        
-        // Efecto de brillo al cambiar de página
-        document.querySelector('.container').classList.remove('shine-effect');
-        void document.querySelector('.container').offsetWidth; // Trigger reflow
-        document.querySelector('.container').classList.add('shine-effect');
-    }
-    
-    // Efecto de diamantes al mover el mouse
-    document.addEventListener('mousemove', (e) => {
-        if (Math.random() > 0.7) {
-            const diamond = document.createElement('div');
-            diamond.className = 'diamond-effect';
-            diamond.style.width = `${Math.random() * 10 + 5}px`;
-            diamond.style.height = diamond.style.width;
-            diamond.style.left = `${e.clientX}px`;
-            diamond.style.top = `${e.clientY}px`;
-            diamond.style.transform = `rotate(${Math.random() * 360}deg)`;
-            diamond.style.background = `linear-gradient(45deg, transparent, ${Math.random() > 0.5 ? 'var(--gold)' : 'var(--diamond)'}, transparent)`;
-            
-            document.body.appendChild(diamond);
-            
-            // Animación
-            const angle = Math.random() * Math.PI * 2;
-            const velocity = 1 + Math.random() * 2;
-            const distance = 50 + Math.random() * 100;
-            
-            let posX = e.clientX;
-            let posY = e.clientY;
-            let opacity = 1;
-            
-            const animate = () => {
-                posX += Math.cos(angle) * velocity;
-                posY += Math.sin(angle) * velocity;
-                opacity -= 0.01;
-                
-                diamond.style.left = `${posX}px`;
-                diamond.style.top = `${posY}px`;
-                diamond.style.opacity = opacity;
-                
-                if (opacity > 0) {
-                    requestAnimationFrame(animate);
-                } else {
-                    diamond.remove();
-                }
-            };
-            
-            animate();
+        .back-btn::before {
+            content: "←";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: var(--transition);
         }
-    });
-    
-    // Manejo del formulario de contacto
-    document.addEventListener('DOMContentLoaded', function() {
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('¡Gracias por tu mensaje! Te responderé lo antes posible.');
-                this.reset();
-            });
+        
+        .back-btn:hover {
+            color: var(--diamond);
+            padding-left: 2.2rem;
         }
-    });
-</script>
-</body>
-</html>
+        
+        /* Efecto de diamantes */
+        .diamond-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        /* Efecto de brillo al cargar la página */
+        @keyframes shine {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        .shine-effect {
+            animation: shine 2s ease-in-out;
+        }
+        
+        /* Sección de música */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .music-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--gold-light);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .music-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        
+        .music-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .music-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .music-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+        
+        .music-info {
+            padding: 1.2rem;
+        }
+        
+        .music-info h4 {
+            color: var(--diamond);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .music-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .music-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Formulario de contacto */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gold-light);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--gold), var(--diamond), var(--gold));
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+            border-radius: 6px;
+            opacity: 0.3;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--gold-light);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--gold), var(--diamond));
+            color: var(--black);
+            border: none;
+            padding: 1.1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--diamond), var(--gold));
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Mensaje de confirmación */
+        .confirmation-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .confirmation-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        
+        .confirmation-logo::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        
+        .confirmation-logo .logo-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--diamond));
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--black);
+            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .confirmation-message h3 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .confirmation-message p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .confirmation-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--gold), var(--diamond));
+            color: var(--black);
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .confirmation-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Spinner de carga */
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid var(--gold);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0
