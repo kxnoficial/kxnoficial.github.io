@@ -9,18 +9,23 @@
   <meta property="og:image" content="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" />
   <meta property="og:url" content="https://kxn-artist.com" />
   <title>KxN | Tomás Miguel Beby Díaz</title>
+  
+  <!-- Preconexión segura y precarga de recursos críticos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" as="image">
+  
   <style>
     :root {
       --black: #0b0b0b;
       --white: #ffffff;
       --gold: #d4af37;
       --diamond: #b9f2ff;
-      --light-text: #d0d0d0;
+      --light-text: #e0e0e0; /* Mejor contraste para accesibilidad */
       --breakpoint-md: 768px;
+      --transition-time: 0.4s;
     }
     * {
       box-sizing: border-box;
@@ -57,13 +62,13 @@
       margin: 0 auto 1.5rem;
       width: 150px;
       height: 150px;
-      border-radius:  ​​50%;
+      border-radius: 50%;
       border: 4px solid var(--gold);
       object-fit: cover;
       position: relative;
       z-index: 2;
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-      transition: transform 0.5s, box-shadow 0.5s;
+      transition: transform var(--transition-time), box-shadow var(--transition-time);
     }
     .header-image:hover {
       transform: scale(1.05);
@@ -71,7 +76,7 @@
     }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: clamp(2.5rem, 6vw, 3rem); /* Tamaño responsivo */
       background: linear-gradient(to right, var(--gold), var(--diamond));
       -webkit-background-clip: text;
       color: transparent;
@@ -82,14 +87,14 @@
       letter-spacing: 2px;
     }
     .real-name {
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2vw, 0.9rem); /* Tamaño responsivo */
       color: var(--light-text);
       font-weight: 300;
       position: relative;
       z-index: 2;
     }
     .tagline {
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem); /* Tamaño responsivo */
       letter-spacing: 3px;
       color: var(--light-text);
       position: relative;
@@ -109,7 +114,7 @@
       color: var(--gold);
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      transition: var(--transition-time);
       padding: 0.5rem 1rem;
       border: 1px solid transparent;
       border-radius: 30px;
@@ -124,7 +129,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-      transition: 0.5s;
+      transition: var(--transition-time);
     }
     nav a:hover {
       color: var(--diamond);
@@ -142,7 +147,7 @@
     }
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 5vw, 2.5rem); /* Tamaño responsivo */
       color: var(--gold);
       margin-bottom: 2rem;
       text-align: center;
@@ -192,13 +197,14 @@
       align-self: center;
       animation: fadeInUp 1s ease forwards;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      transition: transform 0.5s;
+      transition: transform var(--transition-time);
+      aspect-ratio: 4/3; /* Relación de aspecto fija */
     }
     .bio img:hover {
       transform: scale(1.03);
     }
     .bio p {
-      font-size: 1.05rem;
+      font-size: clamp(1rem, 2vw, 1.05rem); /* Tamaño responsivo */
       line-height: 1.8;
       position: relative;
       z-index: 2;
@@ -217,14 +223,15 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s;
+      transition: transform var(--transition-time);
+      aspect-ratio: 16/9; /* Relación de aspecto fija */
     }
     .music-video:hover {
       transform: scale(1.02);
     }
     .music-video iframe {
       width: 100%;
-      height: 400px;
+      height: 100%;
       border: none;
       animation: fadeIn 1.5s ease forwards;
       display: block;
@@ -247,7 +254,7 @@
       border: 1px solid var(--gold);
       color: white;
       font-family: inherit;
-      transition: all 0.3s;
+      transition: all var(--transition-time);
       border-radius: 8px;
       font-size: 1rem;
     }
@@ -262,9 +269,9 @@
       background: linear-gradient(to right, var(--gold), var(--diamond));
       border: none;
       font-weight: bold;
-      color: black;
+      color: #111; /* Texto más oscuro para mejor contraste */
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all var(--transition-time);
       border-radius: 8px;
       font-size: 1.1rem;
       letter-spacing: 1px;
@@ -273,6 +280,7 @@
       font-weight: 700;
       position: relative;
       overflow: hidden;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.3); /* Mejor legibilidad */
     }
     button::after {
       content: '';
@@ -282,11 +290,15 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: 0.5s;
+      transition: var(--transition-time);
     }
     button:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+    }
+    button:focus-visible {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
     }
     button:hover::after {
       left: 100%;
@@ -342,7 +354,7 @@
       border-radius: 12px;
       border: 4px solid var(--gold);
       box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-      height: 450px;
+      aspect-ratio: 16/9; /* Relación de aspecto fija */
     }
     .carousel-images {
       display: flex;
@@ -356,6 +368,7 @@
       transition: opacity 0.5s ease;
       opacity: 1;
       filter: none;
+      height: 100%; /* Asegura que cubra todo el contenedor */
     }
     .carousel-buttons {
       position: absolute;
@@ -375,7 +388,7 @@
       cursor: pointer;
       pointer-events: auto;
       border-radius: 50%;
-      transition: all 0.3s;
+      transition: all var(--transition-time);
       user-select: none;
       width: 60px;
       height: 60px;
@@ -408,7 +421,7 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.3);
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all var(--transition-time);
       border: 1px solid transparent;
     }
     .indicator.active {
@@ -435,15 +448,20 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
-      transition: all 0.4s;
+      transition: all var(--transition-time);
       z-index: 1000;
       opacity: 0.9;
+      display: none; /* Inicialmente oculto */
     }
     #scrollToTop:hover {
       background: var(--diamond);
       transform: scale(1.1) rotate(360deg);
       box-shadow: 0 0 25px rgba(185, 242, 255, 0.9);
       opacity: 1;
+    }
+    #scrollToTop:focus-visible {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
     }
 
     /* Animations */
@@ -508,13 +526,20 @@
       }
     }
 
+    /* Reducción de movimiento para accesibilidad */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
       header {
         padding: 3rem 1rem;
-      }
-      h1 {
-        font-size: 2.5rem;
       }
       nav {
         gap: 1rem;
@@ -525,15 +550,6 @@
       }
       section {
         padding: 3rem 1rem;
-      }
-      h2 {
-        font-size: 2rem;
-      }
-      .carousel {
-        height: 350px;
-      }
-      .music-video iframe {
-        height: 300px;
       }
       .carousel-buttons button {
         width: 50px;
@@ -549,6 +565,12 @@
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
+      }
+      .bio {
+        padding: 1.5rem;
+      }
+      form {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -621,7 +643,7 @@
       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
       
       <label for="email" class="sr-only">Email</label>
-      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true">
+      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true" inputmode="email">
       
       <label for="mensaje" class="sr-only">Mensaje</label>
       <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje..." required aria-required="true"></textarea>
@@ -744,7 +766,7 @@
     showImage(0);
     startInterval();
 
-    // Scroll to top button - CORREGIDO
+    // Scroll to top button
     const scrollBtn = document.getElementById('scrollToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -818,7 +840,7 @@
           // Mostrar mensaje de confirmación
           confirmation.style.display = 'block';
           
-          // Reiniciar formulario después de 3 segundos
+          // Reiniciar formulario después de 5 segundos
           setTimeout(() => {
             contactForm.reset();
             confirmation.style.display = 'none';
