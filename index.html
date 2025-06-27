@@ -1,140 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <meta name="description" content="KxN - Sitio oficial de Tomás Miguel Beby Díaz. Descubre su música, biografía y galería de imágenes." />
-  <meta property="og:title" content="KxN | Tomás Miguel Beby Díaz" />
-  <meta property="og:description" content="Artista musical especializado en covers y reinterpretaciones vocales. Descubre su mundo musical." />
-  <meta property="og:image" content="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" />
-  <meta property="og:url" content="https://kxn-artist.com" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KxN | Tomás Miguel Beby Díaz</title>
-  
-  <!-- Preconexión segura y precarga de recursos críticos -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" as="image">
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --black: #0b0b0b;
+      --deep-space: #05050a;
       --white: #ffffff;
       --gold: #d4af37;
+      --neon-gold: #ffdb70;
       --diamond: #b9f2ff;
+      --neon-diamond: #7ff0ff;
       --light-text: #e0e0e0;
-      --breakpoint-md: 768px;
-      --transition-time: 0.4s;
+      --transition-time: 0.6s;
       --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
       --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
     }
+    
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+    
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--black);
+      background: radial-gradient(ellipse at bottom, var(--deep-space) 0%, var(--black) 100%);
       color: var(--white);
       line-height: 1.6;
-      scroll-behavior: smooth;
-      background-image: radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%);
       overflow-x: hidden;
-    }
-    header {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(to bottom, #000, #111);
+      perspective: 1000px;
+      min-height: 100vh;
       position: relative;
-      overflow: hidden;
-      animation: fadeIn 1.2s var(--ease-out-quart) forwards;
+      scroll-behavior: smooth;
     }
-    header::before {
-      content: "";
+    
+    /* Partículas interactivas */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .particle {
       position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--neon-gold), transparent);
+      opacity: 0.7;
+      animation: floatParticle 15s infinite linear;
+      box-shadow: 0 0 15px var(--neon-gold);
+    }
+    
+    /* Preloader */
+    #preloader {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-      pointer-events: none;
-      animation: shimmer 15s infinite linear;
+      background: var(--deep-space);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease-out;
     }
+    
+    .loader {
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba(212, 175, 55, 0.2);
+      border-top: 4px solid var(--neon-gold);
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+      position: relative;
+    }
+    
+    .loader::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border: 4px solid rgba(185, 242, 255, 0.1);
+      border-top: 4px solid var(--neon-diamond);
+      border-radius: 50%;
+      animation: spin 2s linear infinite reverse;
+    }
+    
+    .loader-text {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      color: var(--neon-gold);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeInOut 2s infinite;
+      animation-delay: 0.5s;
+    }
+    
+    /* Cabecera con efecto parallax */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+      transform-style: preserve-3d;
+    }
+    
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+                  linear-gradient(to bottom, transparent 70%, var(--deep-space) 100%);
+      transform: translateZ(-10px) scale(2.1);
+      z-index: -1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
     .header-image {
-      display: block;
-      margin: 0 auto 1.5rem;
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       border: 4px solid var(--gold);
       object-fit: cover;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-      transition: transform var(--transition-time) var(--ease-in-out-quart), 
-                 box-shadow var(--transition-time) var(--ease-in-out-quart);
-      animation: floatImage 8s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.8),
+                  0 0 60px rgba(212, 175, 55, 0.4);
+      margin-bottom: 2rem;
+      transform: translateZ(20px);
+      transition: all var(--transition-time) var(--ease-in-out-quart);
     }
+    
     .header-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+      transform: scale(1.05) rotate(5deg) translateZ(20px);
+      box-shadow: 0 0 40px var(--neon-gold),
+                  0 0 80px rgba(212, 175, 55, 0.6);
     }
+    
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 3rem);
-      color: var(--gold); /* Fallback para navegadores antiguos */
-      background: linear-gradient(to right, var(--gold), var(--diamond));
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      background: linear-gradient(45deg, var(--neon-gold), var(--neon-diamond));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 0.2rem;
-      text-shadow: 0 0 10px rgba(185, 242, 255, 0.3);
-      position: relative;
-      z-index: 2;
-      letter-spacing: 2px;
-      animation: textGlow 3s ease-in-out infinite alternate;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(185, 242, 255, 0.3);
+      letter-spacing: 3px;
+      transform: translateZ(30px);
     }
+    
     .real-name {
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
       color: var(--light-text);
       font-weight: 300;
-      position: relative;
-      z-index: 2;
-      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) both;
+      margin-bottom: 1rem;
+      transform: translateZ(20px);
     }
+    
     .tagline {
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      letter-spacing: 3px;
-      color: var(--light-text);
-      position: relative;
-      z-index: 2;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      letter-spacing: 4px;
+      color: var(--neon-diamond);
       margin-top: 0.5rem;
-      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) both;
+      transform: translateZ(20px);
+      text-shadow: 0 0 10px rgba(127, 240, 255, 0.5);
     }
+    
+    /* Navegación con efecto neón */
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin: 3rem 0 1rem;
       position: relative;
       z-index: 2;
+      transform: translateZ(30px);
     }
+    
     nav a {
-      color: var(--gold);
+      color: var(--neon-gold);
       text-decoration: none;
       font-weight: bold;
-      transition: all var(--transition-time) var(--ease-in-out-quart);
-      padding: 0.5rem 1.2rem;
-      border: 1px solid transparent;
-      border-radius: 30px;
+      padding: 0.8rem 1.8rem;
+      border: 2px solid var(--gold);
+      border-radius: 50px;
       position: relative;
       overflow: hidden;
-      animation: fadeIn 0.8s 0.5s var(--ease-out-quart) both;
-      transform-origin: center;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      background: rgba(0, 0, 0, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     }
+    
     nav a::before {
       content: '';
       position: absolute;
@@ -142,126 +226,145 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
       transition: var(--transition-time) var(--ease-in-out-quart);
     }
+    
     nav a:hover {
-      color: var(--diamond);
-      border-color: var(--diamond);
-      background: rgba(185, 242, 255, 0.1);
-      transform: translateY(-3px);
+      color: var(--neon-diamond);
+      border-color: var(--neon-diamond);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 20px var(--neon-diamond),
+                  0 0 40px rgba(185, 242, 255, 0.3);
+      transform: translateY(-5px);
     }
+    
     nav a:hover::before {
       left: 100%;
     }
+    
+    /* Secciones con efecto de desplazamiento */
     section {
-      padding: 4rem 1rem;
-      max-width: 900px;
-      margin: auto;
+      padding: 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
       position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.8s var(--ease-out-quart) forwards;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    section:nth-child(1) { animation-delay: 0.1s; }
-    section:nth-child(2) { animation-delay: 0.2s; }
-    section:nth-child(3) { animation-delay: 0.3s; }
-    section:nth-child(4) { animation-delay: 0.4s; }
+    
+    .section-content {
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 3rem;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                  inset 0 0 20px rgba(212, 175, 55, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+    }
     
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      color: var(--gold);
-      margin-bottom: 2rem;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      background: linear-gradient(45deg, var(--neon-gold), var(--neon-diamond));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 3rem;
       text-align: center;
       position: relative;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards;
+      letter-spacing: 3px;
+      padding-bottom: 1rem;
     }
+    
     h2::after {
-      content: "";
-      display: block;
-      width: 120px;
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
       height: 4px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
-      margin: 1.5rem auto 0;
       border-radius: 4px;
-      opacity: 0;
-      transform: scaleX(0);
-      transform-origin: center;
-      animation: scaleIn 0.6s 0.5s var(--ease-out-quart) forwards;
     }
+    
+    /* Biografía con efecto de cristal */
     .bio {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
+    }
+    
+    .bio-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .bio-img-container {
+      position: relative;
       border-radius: 15px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      position: relative;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
-    }
-    .bio::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
-      z-index: -1;
-      animation: rotate 20s linear infinite, pulseOpacity 8s infinite alternate;
-    }
-    .bio img {
-      width: 100%;
-      max-width: 350px;
-      border: 4px solid var(--gold);
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      align-self: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      transform: perspective(1000px) rotateY(-5deg);
       transition: transform var(--transition-time) var(--ease-in-out-quart);
-      aspect-ratio: 4/3;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.6s var(--ease-out-quart) forwards;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
-    .bio img:hover {
-      transform: scale(1.03) rotate(1deg);
+    
+    .bio-img-container:hover {
+      transform: perspective(1000px) rotateY(0deg);
     }
-    .bio p {
-      font-size: clamp(1rem, 2vw, 1.05rem);
+    
+    .bio-img-container img {
+      width: 100%;
+      display: block;
+      transition: transform var(--transition-time) var(--ease-in-out-quart);
+    }
+    
+    .bio-img-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .bio-img-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(185, 242, 255, 0.1));
+      z-index: 1;
+    }
+    
+    .bio-text {
+      font-size: clamp(1rem, 2vw, 1.1rem);
       line-height: 1.8;
-      position: relative;
-      z-index: 2;
       color: var(--light-text);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.8s var(--ease-out-quart) forwards;
     }
-    .bio p:nth-child(1) { animation-delay: 0.5s; }
-    .bio p:nth-child(2) { animation-delay: 0.6s; }
-    .bio p:nth-child(3) { animation-delay: 0.7s; }
-    .bio p:nth-child(4) { animation-delay: 0.8s; }
-    .bio p:nth-child(5) { animation-delay: 0.9s; }
     
     .highlight {
-      color: var(--gold);
+      color: var(--neon-gold);
       font-weight: 700;
-      font-style: italic;
-      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
       position: relative;
       display: inline-block;
     }
+    
     .highlight::after {
       content: '';
       position: absolute;
@@ -269,136 +372,148 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--diamond);
+      background: var(--neon-diamond);
       transition: width 0.6s var(--ease-in-out-quart);
     }
+    
     .highlight:hover::after {
       width: 100%;
     }
-    .music-video {
+    
+    /* Galería con efecto 3D */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
       position: relative;
-      max-width: 700px;
-      margin: 0 auto;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-      transition: transform var(--transition-time) var(--ease-in-out-quart);
-      aspect-ratio: 16/9;
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards, 
-                 scaleIn 0.8s 0.4s var(--ease-out-quart) forwards;
+      transform: perspective(1000px) rotateX(5deg) rotateY(0deg);
+      transition: transform var(--transition-time) var(--ease-in-out-quart),
+                  box-shadow var(--transition-time) var(--ease-in-out-quart);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      height: 300px;
     }
-    .music-video:hover {
-      transform: scale(1.02);
+    
+    .gallery-item:hover {
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+                  0 0 30px rgba(212, 175, 55, 0.5);
+      z-index: 2;
     }
-    .music-video iframe {
+    
+    .gallery-item img {
       width: 100%;
       height: 100%;
-      border: none;
-      display: block;
+      object-fit: cover;
+      transition: transform var(--transition-time) var(--ease-in-out-quart);
     }
-    form {
-      display: grid;
-      gap: 1.2rem;
-      background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      max-width: 600px;
-      margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards;
-    }
-    input, textarea {
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid var(--gold);
-      color: white;
-      font-family: inherit;
-      transition: all var(--transition-time) var(--ease-in-out-quart);
-      border-radius: 8px;
-      font-size: 1rem;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
-    }
-    input:nth-child(1) { animation-delay: 0.4s; }
-    input:nth-child(2) { animation-delay: 0.5s; }
-    textarea { animation-delay: 0.6s; }
     
-    input:focus, textarea:focus {
-      border-color: var(--diamond);
-      outline: none;
-      box-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
-      background: rgba(0, 0, 0, 0.9);
-      transform: translateY(-2px);
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
-    button {
-      padding: 1.2rem;
-      background: linear-gradient(to right, var(--gold), var(--diamond));
-      border: none;
-      font-weight: bold;
-      color: #111;
-      cursor: pointer;
-      transition: all var(--transition-time) var(--ease-in-out-quart);
-      border-radius: 8px;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      margin-top: 1rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      position: relative;
-      overflow: hidden;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.8s 0.7s var(--ease-out-quart) forwards;
-    }
-    button::after {
+    
+    .gallery-item::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      z-index: 1;
+    }
+    
+    /* Redes sociales con efecto neón */
+    .social-section {
+      text-align: center;
+      margin: 5rem auto;
+      max-width: 1000px;
+      padding: 0 2rem;
+      position: relative;
+    }
+    
+    .social-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      background: linear-gradient(45deg, var(--neon-gold), var(--neon-diamond));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 3px;
+      margin-bottom: 2.5rem;
+      position: relative;
+      text-transform: uppercase;
+    }
+    
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    .social-links a {
+      color: var(--light-text);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      position: relative;
+      transition: all 0.4s var(--ease-in-out-quart);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      font-size: 1.1rem;
+      border: 2px solid var(--gold);
+      border-radius: 50px;
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      min-width: 200px;
+    }
+    
+    .social-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
       transition: var(--transition-time) var(--ease-in-out-quart);
+      opacity: 0;
     }
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+    
+    .social-links a:hover {
+      color: var(--neon-diamond);
+      border-color: var(--neon-diamond);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 30px var(--neon-diamond),
+                  0 0 60px rgba(185, 242, 255, 0.3);
+      transform: translateY(-5px);
     }
-    button:focus-visible {
-      outline: 3px solid var(--diamond);
-      outline-offset: 2px;
-    }
-    button:hover::after {
+    
+    .social-links a:hover::before {
+      opacity: 1;
       left: 100%;
     }
-    .confirmation {
-      color: var(--diamond);
-      font-weight: bold;
-      margin-top: 1.5rem;
-      display: none;
-      text-align: center;
-      font-size: 1.2rem;
-      animation: pulse 2s infinite, fadeIn 0.5s ease;
-    }
+    
+    /* Footer con efecto de gradiente */
     footer {
-      background: #000;
+      background: linear-gradient(to top, #000, #111);
       color: #ccc;
       font-size: 0.95rem;
-      padding: 2.5rem 1rem;
+      padding: 4rem 2rem;
       text-align: center;
       line-height: 1.7;
       border-top: 1px solid rgba(212, 175, 55, 0.2);
       position: relative;
-      opacity: 0;
-      animation: fadeIn 1s 0.5s var(--ease-out-quart) forwards;
+      margin-top: 5rem;
     }
+    
     footer::before {
       content: "";
       position: absolute;
@@ -407,134 +522,22 @@
       width: 100%;
       height: 3px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
-      transform-origin: left;
-      animation: scaleXIn 0.8s 0.7s var(--ease-out-quart) forwards;
     }
+    
     footer p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.8s 0.8s var(--ease-out-quart) forwards;
     }
-    footer p:nth-child(1) { animation-delay: 0.5s; }
-    footer p:nth-child(2) { animation-delay: 0.6s; }
-    footer p:nth-child(3) { animation-delay: 0.7s; }
-    footer p:nth-child(4) { animation-delay: 0.8s; }
     
     footer i {
-      color: var(--gold);
+      color: var(--neon-gold);
       margin-right: 8px;
       animation: pulse 2s infinite;
     }
-
-    /* Carrusel mejorado */
-    .carousel-container {
-      max-width: 800px;
-      margin: 3rem auto;
-      position: relative;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
-    }
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 4px solid var(--gold);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-      aspect-ratio: 16/9;
-      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-      transition: transform 0.5s var(--ease-in-out-quart);
-    }
-    .carousel:hover {
-      transform: perspective(1000px) rotateX(1deg) rotateY(1deg);
-    }
-    .carousel-images {
-      display: flex;
-      height: 100%;
-      transition: transform 0.7s var(--ease-in-out-quart);
-    }
-    .carousel-images img {
-      width: 100%;
-      flex-shrink: 0;
-      object-fit: cover;
-      opacity: 1;
-      filter: none;
-      height: 100%;
-      transition: filter 0.5s var(--ease-in-out-quart);
-    }
-    .carousel-images img:hover {
-      filter: brightness(1.05);
-    }
-    .carousel-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .carousel-buttons button {
-      background: rgba(0,0,0,0.8);
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      pointer-events: auto;
-      border-radius: 50%;
-      transition: all var(--transition-time) var(--ease-in-out-quart);
-      user-select: none;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 1.5rem;
-      z-index: 10;
-      transform: scale(1);
-      opacity: 0.8;
-    }
-    .carousel-buttons button:hover {
-      background: rgba(212, 175, 55, 0.3);
-      color: var(--diamond);
-      transform: scale(1.1);
-      opacity: 1;
-    }
-
-    /* Indicadores del carrusel */
-    .carousel-indicators {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      z-index: 10;
-    }
-    .indicator {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: all var(--transition-time) var(--ease-in-out-quart);
-      border: 1px solid transparent;
-    }
-    .indicator.active {
-      background: var(--gold);
-      transform: scale(1.3);
-      border-color: var(--diamond);
-      box-shadow: 0 0 8px var(--gold);
-      animation: pulse 1.5s infinite;
-    }
-
-    /* Scroll to top button */
+    
+    /* Botón de scroll */
     #scrollToTop {
       position: fixed;
       bottom: 40px;
@@ -556,43 +559,46 @@
       opacity: 0;
       transform: translateY(20px) scale(0.8);
     }
+    
     #scrollToTop.visible {
       opacity: 0.9;
       transform: translateY(0) scale(1);
     }
+    
     #scrollToTop:hover {
       background: var(--diamond);
       transform: scale(1.1) rotate(360deg);
       box-shadow: 0 0 25px rgba(185, 242, 255, 0.9);
       opacity: 1;
     }
-    #scrollToTop:focus-visible {
-      outline: 3px solid var(--diamond);
-      outline-offset: 2px;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
+    
+    /* Animaciones */
+    @keyframes floatParticle {
       0% {
-        opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(0) translateX(0) rotate(0deg);
       }
       100% {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
       }
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
     @keyframes pulse {
       0% { 
         opacity: 1;
         transform: scale(1);
       }
       50% { 
-        opacity: 0.8;
+        opacity: 0.7;
         transform: scale(1.05);
       }
       100% { 
@@ -600,237 +606,47 @@
         transform: scale(1);
       }
     }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes floatImage {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    @keyframes textGlow {
-      0% {
-        text-shadow: 0 0 10px rgba(185, 242, 255, 0.3);
-      }
-      100% {
-        text-shadow: 0 0 20px rgba(185, 242, 255, 0.6);
-      }
-    }
-    @keyframes scaleIn {
-      0% {
-        transform: scale(0.95);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes scaleXIn {
-      0% {
-        transform: scaleX(0);
-      }
-      100% {
-        transform: scaleX(1);
-      }
-    }
-    @keyframes shimmer {
-      0% {
-        background-position: -1000px 0;
-      }
-      100% {
-        background-position: 1000px 0;
-      }
-    }
-    @keyframes pulseOpacity {
-      0%, 100% {
-        opacity: 0.2;
-      }
-      50% {
-        opacity: 0.4;
-      }
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
     
-    /* Efecto de partículas */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .particle {
-      position: absolute;
-      background: var(--gold);
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: float 15s infinite linear;
-    }
-    
-    /* ESTILOS PARA REDES SOCIALES SOLO TEXTO */
-    .social-section {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      margin: 2.5rem auto;
-      max-width: 800px;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.2s var(--ease-out-quart) forwards;
-    }
-    
-    .social-heading {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      font-size: 1.4rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 8px;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards;
-    }
-    
-    .social-heading::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      transform-origin: center;
-      animation: scaleXIn 0.6s 0.5s var(--ease-out-quart) forwards;
-    }
-    
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 28px;
-      margin-top: 0.5rem;
-    }
-    
-    .social-links a {
-      color: var(--light-text);
-      text-decoration: none;
-      padding: 8px 0;
-      position: relative;
-      transition: all 0.25s var(--ease-in-out-quart);
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 400;
-      font-size: 0.95rem;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.6s var(--ease-out-quart) forwards;
-    }
-    
-    .social-links a:nth-child(1) { animation-delay: 0.4s; }
-    .social-links a:nth-child(2) { animation-delay: 0.5s; }
-    .social-links a:nth-child(3) { animation-delay: 0.6s; }
-    .social-links a:nth-child(4) { animation-delay: 0.7s; }
-    .social-links a:nth-child(5) { animation-delay: 0.8s; }
-    .social-links a:nth-child(6) { animation-delay: 0.9s; }
-    
-    .social-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--gold);
-      transition: width 0.25s var(--ease-in-out-quart);
-    }
-    
-    .social-links a:hover {
-      color: var(--gold);
-      transform: translateY(-3px);
-    }
-    
-    .social-links a:hover::after {
-      width: 100%;
+    /* Responsive */
+    @media (max-width: 992px) {
+      .bio-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .bio-img-container {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
     }
     
     @media (max-width: 768px) {
-      .social-section {
-        margin: 2rem auto;
+      section {
+        padding: 5rem 1.5rem;
       }
       
-      .social-heading {
-        font-size: 1.2rem;
-        margin-bottom: 1.2rem;
+      .section-content {
+        padding: 2rem;
       }
       
-      .social-links {
-        gap: 18px;
-      }
-      
-      .social-links a {
-        font-size: 0.85rem;
-        padding: 6px 0;
-      }
-    }
-
-    /* Reducción de movimiento para accesibilidad */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .particles {
-        display: none;
-      }
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      header {
-        padding: 3rem 1rem;
-      }
       nav {
         gap: 1rem;
       }
+      
       nav a {
-        padding: 0.4rem 0.8rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+      }
+      
+      .social-links a {
+        min-width: 160px;
+        padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
       }
-      section {
-        padding: 3rem 1rem;
-      }
-      .carousel-buttons button {
-        width: 50px;
-        height: 50px;
-        margin: 0 0.8rem;
-      }
-      footer {
-        padding: 2rem 1rem;
-      }
+      
       #scrollToTop {
         bottom: 20px;
         right: 20px;
@@ -838,40 +654,53 @@
         height: 50px;
         font-size: 1.5rem;
       }
-      .bio {
-        padding: 1.5rem;
-      }
-      form {
-        padding: 1.5rem;
-      }
     }
     
-    /* Desactivar partículas en móviles */
-    @media (hover: none) and (pointer: coarse) {
-      .particles {
-        display: none;
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .social-links {
+        gap: 1rem;
+      }
+      
+      .social-links a {
+        min-width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <div class="loader-text">KxN</div>
+  </div>
   
+  <!-- Partículas interactivas -->
+  <div id="particles"></div>
+  
+  <!-- Cabecera con efecto parallax -->
   <header>
-    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp?format=webp&quality=80" alt="KxN - Tomás Miguel Beby Díaz" class="header-image" loading="lazy" />
-    <h1>KxN</h1>
-    <div class="real-name">Tomás Miguel Beby Díaz</div>
-    <p class="tagline">Artista · Creador · Visionario</p>
-    <nav aria-label="Navegación principal">
-      <a href="#bio" aria-label="Ir a Biografía">Biografía</a>
-      <a href="#musica" aria-label="Ir a Música">Música</a>
-      <a href="#galeria" aria-label="Ir a Galería">Galería</a>
-      <a href="#contacto" aria-label="Ir a Contacto">Contacto</a>
-      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar el blog">Blog <i class="fas fa-pencil-alt"></i></a>
-    </nav>
+    <div class="parallax-bg"></div>
+    <div class="header-content">
+      <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp?format=webp&quality=80" 
+           alt="KxN - Tomás Miguel Beby Díaz" 
+           class="header-image">
+      <h1>KxN</h1>
+      <div class="real-name">Tomás Miguel Beby Díaz</div>
+      <p class="tagline">Artista · Creador · Visionario</p>
+      <nav aria-label="Navegación principal">
+        <a href="#bio" aria-label="Ir a Biografía">Biografía</a>
+        <a href="#musica" aria-label="Ir a Música">Música</a>
+        <a href="#galeria" aria-label="Ir a Galería">Galería</a>
+        <a href="#contacto" aria-label="Ir a Contacto">Contacto</a>
+      </nav>
+    </div>
   </header>
-
-  <!-- Sección de Redes Sociales solo texto con encabezado -->
+  
+  <!-- Sección de Redes Sociales -->
   <div class="social-section">
     <h3 class="social-heading">Sígueme en mis redes</h3>
     <div class="social-links">
@@ -884,73 +713,71 @@
     </div>
   </div>
 
-  <section id="bio" aria-labelledby="bio-title">
-    <h2 id="bio-title">Biografía</h2>
-    <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg?format=webp&quality=80" alt="KxN grabando un cover en estudio" loading="lazy" />
-      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
-      <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
-      <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-      <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
-      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
-      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
-      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
-    </div>
-  </section>
-
-  <section id="musica" aria-labelledby="musica-title">
-    <h2 id="musica-title">Música</h2>
-    <div class="music-video">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen loading="lazy" title="Playlist de KxN en YouTube"></iframe>
-    </div>
-  </section>
-
-  <section id="galeria" aria-labelledby="galeria-title">
-    <h2 id="galeria-title">Galería</h2>
-    <div class="carousel-container">
-      <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Galería de imágenes de KxN">
-        <div class="carousel-images" role="group" aria-live="polite">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg?format=webp&quality=80" alt="KxN en sesión fotográfica - Foto 1" loading="lazy" />
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp?format=webp&quality=80" alt="KxN en estudio de grabación - Foto 2" loading="lazy" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp?format=webp&quality=80" alt="KxN en concierto - Foto 3" loading="lazy" />
-        </div>
-        <div class="carousel-buttons">
-          <button id="prev" aria-label="Imagen anterior">&#10094;</button>
-          <button id="next" aria-label="Imagen siguiente">&#10095;</button>
-        </div>
-        <div class="carousel-indicators" role="tablist">
-          <div class="indicator active" role="tab" aria-selected="true" data-index="0" aria-label="Imagen 1"></div>
-          <div class="indicator" role="tab" aria-selected="false" data-index="1" aria-label="Imagen 2"></div>
-          <div class="indicator" role="tab" aria-selected="false" data-index="2" aria-label="Imagen 3"></div>
+  <!-- Sección de Biografía -->
+  <section id="bio">
+    <div class="section-content">
+      <h2>Biografía</h2>
+      <div class="bio">
+        <div class="bio-content">
+          <div class="bio-img-container">
+            <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg?format=webp&quality=80" 
+                 alt="KxN grabando un cover en estudio" 
+                 loading="lazy">
+          </div>
+          <div class="bio-text">
+            <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
+            <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
+            <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+            <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
+            <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
+            La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
+            La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
+            La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contacto" aria-labelledby="contacto-title">
-    <h2 id="contacto-title">Contacto</h2>
-    <form id="contact-form">
-      <label for="nombre" class="sr-only">Nombre</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
-      
-      <label for="email" class="sr-only">Email</label>
-      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true" inputmode="email"
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-      
-      <label for="mensaje" class="sr-only">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje..." required aria-required="true"></textarea>
-      
-      <button type="submit" aria-label="Enviar mensaje">
-        Enviar mensaje
-      </button>
-      
-      <div class="confirmation" id="confirmation-message">
-        Gracias por tu mensaje. Te responderé pronto 🚀
+  <!-- Sección de Galería -->
+  <section id="galeria">
+    <div class="section-content">
+      <h2>Galería</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg?format=webp&quality=80" 
+               alt="KxN en sesión fotográfica" 
+               loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp?format=webp&quality=80" 
+               alt="KxN en estudio de grabación" 
+               loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp?format=webp&quality=80" 
+               alt="KxN en concierto" 
+               loading="lazy">
+        </div>
       </div>
-    </form>
+    </div>
   </section>
 
+  <!-- Sección de Música -->
+  <section id="musica">
+    <div class="section-content">
+      <h2>Música</h2>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                allowfullscreen 
+                loading="lazy" 
+                title="Playlist de KxN en YouTube"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
     <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
@@ -958,205 +785,156 @@
     <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
   </footer>
 
+  <!-- Botón de scroll -->
   <button id="scrollToTop" aria-label="Subir al inicio">
     <i class="fas fa-arrow-up"></i>
   </button>
 
   <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-      
-      indicators.forEach((indicator, i) => {
-        const isActive = i === index;
-        indicator.classList.toggle('active', isActive);
-        indicator.setAttribute('aria-selected', isActive);
-        indicator.setAttribute('tabindex', isActive ? '0' : '-1');
-      });
-      
-      carousel.setAttribute('aria-label', `Imagen ${index + 1} de ${images.length}: ${images[index].alt}`);
-    }
-
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-      
-      indicator.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          const index = parseInt(e.target.getAttribute('data-index'));
-          showImage(index);
-          resetInterval();
+    // Preloader
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      gsap.to(preloader, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        onComplete: () => {
+          preloader.style.display = 'none';
+          initAnimations();
         }
       });
     });
-
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
     
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-    carousel.addEventListener('focusin', stopInterval);
-    carousel.addEventListener('focusout', startInterval);
-
-    showImage(0);
-    startInterval();
-
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.classList.add('visible');
-      } else {
-        scrollBtn.classList.remove('visible');
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 50;
+    // Inicializar animaciones
+    function initAnimations() {
+      // Configurar ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
       
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        const duration = 15 + Math.random() * 10;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        particle.style.animationDuration = `${duration}s`;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .social-section, .social-heading, .social-links a, footer p').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Formulario mejorado con fetch
-    const contactForm = document.getElementById('contact-form');
-    const confirmation = document.getElementById('confirmation-message');
-    
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(contactForm);
-      
-      try {
-        const response = await fetch('https://formspree.io/f/xrbkoowp', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
+      // Animaciones para las secciones
+      gsap.utils.toArray('section').forEach(section => {
+        gsap.from(section, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
           }
         });
-        
-        if (response.ok) {
-          confirmation.style.display = 'block';
-          contactForm.reset();
-          
-          setTimeout(() => {
-            confirmation.style.display = 'none';
-          }, 5000);
-        } else {
-          alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-        }
-      } catch (error) {
-        alert('Error de red. Por favor, verifica tu conexión e inténtalo de nuevo.');
-      }
-    });
-    
-    // Clase para etiquetas ocultas (accesibilidad)
-    const style = document.createElement('style');
-    style.textContent = `
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-      }
-    `;
-    document.head.appendChild(style);
-    
-    // Efecto de sonido al hacer hover en elementos interactivos (opcional)
-    const hoverSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
-    document.querySelectorAll('a, button, .indicator').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        hoverSound.currentTime = 0;
-        hoverSound.volume = 0.1;
-        hoverSound.play().catch(e => console.log("Audio play prevented by browser policy"));
       });
-    });
+      
+      // Animaciones para los elementos internos
+      gsap.utils.toArray('.section-content, .gallery-item, .bio-img-container, .bio-text').forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+      
+      // Animaciones para el encabezado
+      gsap.from('.header-image', {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.75)"
+      });
+      
+      gsap.from('h1', {
+        opacity: 0,
+        y: -30,
+        duration: 1,
+        delay: 0.3
+      });
+      
+      gsap.from('.real-name, .tagline', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        delay: 0.6,
+        stagger: 0.2
+      });
+      
+      gsap.from('nav a', {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.8,
+        stagger: 0.1
+      });
+      
+      // Sistema de partículas
+      function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 100;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          
+          const size = Math.random() * 10 + 2;
+          const posX = Math.random() * 100;
+          const delay = Math.random() * 15;
+          const duration = 15 + Math.random() * 10;
+          
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${posX}%`;
+          particle.style.animationDelay = `${delay}s`;
+          particle.style.opacity = Math.random() * 0.5 + 0.3;
+          particle.style.animationDuration = `${duration}s`;
+          
+          particlesContainer.appendChild(particle);
+        }
+      }
+      
+      createParticles();
+      
+      // Efecto parallax para el encabezado
+      document.addEventListener('mousemove', (e) => {
+        const parallaxBg = document.querySelector('.parallax-bg');
+        const x = (window.innerWidth - e.pageX) / 50;
+        const y = (window.innerHeight - e.pageY) / 50;
+        
+        parallaxBg.style.transform = `translate3d(${x}px, ${y}px, -10px) scale(2.1)`;
+      });
+      
+      // Botón de scroll
+      const scrollBtn = document.getElementById('scrollToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          scrollBtn.classList.add('visible');
+        } else {
+          scrollBtn.classList.remove('visible');
+        }
+      });
+      
+      scrollBtn.addEventListener('click', () => {
+        gsap.to(window, {
+          scrollTo: 0,
+          duration: 1.5,
+          ease: "power3.out"
+        });
+      });
+      
+      // Efecto de sonido al hacer hover en elementos interactivos
+      const hoverSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
+      
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          hoverSound.currentTime = 0;
+          hoverSound.volume = 0.2;
+          hoverSound.play().catch(e => console.log("Audio play prevented by browser policy"));
+        });
+      });
+    }
   </script>
 </body>
 </html>
