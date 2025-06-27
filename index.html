@@ -23,7 +23,7 @@
       --white: #ffffff;
       --gold: #d4af37;
       --diamond: #b9f2ff;
-      --light-text: #e0e0e0; /* Mejor contraste para accesibilidad */
+      --light-text: #e0e0e0;
       --breakpoint-md: 768px;
       --transition-time: 0.4s;
     }
@@ -76,9 +76,11 @@
     }
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 3rem); /* Tamaño responsivo */
+      font-size: clamp(2.5rem, 6vw, 3rem);
+      color: var(--gold); /* Fallback para navegadores antiguos */
       background: linear-gradient(to right, var(--gold), var(--diamond));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
       margin-bottom: 0.2rem;
       text-shadow: 0 0 10px rgba(185, 242, 255, 0.3);
@@ -87,14 +89,14 @@
       letter-spacing: 2px;
     }
     .real-name {
-      font-size: clamp(0.8rem, 2vw, 0.9rem); /* Tamaño responsivo */
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
       color: var(--light-text);
       font-weight: 300;
       position: relative;
       z-index: 2;
     }
     .tagline {
-      font-size: clamp(0.9rem, 2.5vw, 1rem); /* Tamaño responsivo */
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       letter-spacing: 3px;
       color: var(--light-text);
       position: relative;
@@ -147,7 +149,7 @@
     }
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 2.5rem); /* Tamaño responsivo */
+      font-size: clamp(2rem, 5vw, 2.5rem);
       color: var(--gold);
       margin-bottom: 2rem;
       text-align: center;
@@ -198,13 +200,13 @@
       animation: fadeInUp 1s ease forwards;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
       transition: transform var(--transition-time);
-      aspect-ratio: 4/3; /* Relación de aspecto fija */
+      aspect-ratio: 4/3;
     }
     .bio img:hover {
       transform: scale(1.03);
     }
     .bio p {
-      font-size: clamp(1rem, 2vw, 1.05rem); /* Tamaño responsivo */
+      font-size: clamp(1rem, 2vw, 1.05rem);
       line-height: 1.8;
       position: relative;
       z-index: 2;
@@ -224,7 +226,7 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
       transition: transform var(--transition-time);
-      aspect-ratio: 16/9; /* Relación de aspecto fija */
+      aspect-ratio: 16/9;
     }
     .music-video:hover {
       transform: scale(1.02);
@@ -269,7 +271,7 @@
       background: linear-gradient(to right, var(--gold), var(--diamond));
       border: none;
       font-weight: bold;
-      color: #111; /* Texto más oscuro para mejor contraste */
+      color: #111;
       cursor: pointer;
       transition: all var(--transition-time);
       border-radius: 8px;
@@ -280,7 +282,7 @@
       font-weight: 700;
       position: relative;
       overflow: hidden;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.3); /* Mejor legibilidad */
+      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
     }
     button::after {
       content: '';
@@ -354,7 +356,7 @@
       border-radius: 12px;
       border: 4px solid var(--gold);
       box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-      aspect-ratio: 16/9; /* Relación de aspecto fija */
+      aspect-ratio: 16/9;
     }
     .carousel-images {
       display: flex;
@@ -368,7 +370,7 @@
       transition: opacity 0.5s ease;
       opacity: 1;
       filter: none;
-      height: 100%; /* Asegura que cubra todo el contenedor */
+      height: 100%;
     }
     .carousel-buttons {
       position: absolute;
@@ -451,7 +453,7 @@
       transition: all var(--transition-time);
       z-index: 1000;
       opacity: 0.9;
-      display: none; /* Inicialmente oculto */
+      display: none;
     }
     #scrollToTop:hover {
       background: var(--diamond);
@@ -573,13 +575,20 @@
         padding: 1.5rem;
       }
     }
+    
+    /* Desactivar partículas en móviles */
+    @media (hover: none) and (pointer: coarse) {
+      .particles {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="particles" id="particles"></div>
   
   <header>
-    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="KxN - Tomás Miguel Beby Díaz" class="header-image" loading="lazy" />
+    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp?format=webp&quality=80" alt="KxN - Tomás Miguel Beby Díaz" class="header-image" loading="lazy" />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
@@ -595,7 +604,7 @@
   <section id="bio" aria-labelledby="bio-title">
     <h2 id="bio-title">Biografía</h2>
     <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover en estudio" loading="lazy" />
+      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg?format=webp&quality=80" alt="KxN grabando un cover en estudio" loading="lazy" />
       <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
       <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
       <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
@@ -619,9 +628,9 @@
     <div class="carousel-container">
       <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Galería de imágenes de KxN">
         <div class="carousel-images" role="group" aria-live="polite">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="KxN en sesión fotográfica - Foto 1" loading="lazy" />
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="KxN en estudio de grabación - Foto 2" loading="lazy" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="KxN en concierto - Foto 3" loading="lazy" />
+          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg?format=webp&quality=80" alt="KxN en sesión fotográfica - Foto 1" loading="lazy" />
+          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp?format=webp&quality=80" alt="KxN en estudio de grabación - Foto 2" loading="lazy" />
+          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp?format=webp&quality=80" alt="KxN en concierto - Foto 3" loading="lazy" />
         </div>
         <div class="carousel-buttons">
           <button id="prev" aria-label="Imagen anterior">&#10094;</button>
@@ -643,7 +652,8 @@
       <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
       
       <label for="email" class="sr-only">Email</label>
-      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true" inputmode="email">
+      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true" inputmode="email"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
       
       <label for="mensaje" class="sr-only">Mensaje</label>
       <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje..." required aria-required="true"></textarea>
@@ -681,7 +691,6 @@
     let slideInterval;
     const slideDuration = 5000;
 
-    // Mostrar imagen actual
     function showImage(index) {
       if(index < 0) index = images.length - 1;
       else if(index >= images.length) index = 0;
@@ -689,7 +698,6 @@
       carouselImages.style.transform = `translateX(${-index * 100}%)`;
       currentIndex = index;
       
-      // Actualizar indicadores y ARIA
       indicators.forEach((indicator, i) => {
         const isActive = i === index;
         indicator.classList.toggle('active', isActive);
@@ -697,21 +705,17 @@
         indicator.setAttribute('tabindex', isActive ? '0' : '-1');
       });
       
-      // Actualizar etiqueta ARIA para accesibilidad
       carousel.setAttribute('aria-label', `Imagen ${index + 1} de ${images.length}: ${images[index].alt}`);
     }
 
-    // Siguiente imagen
     function nextImage() {
       showImage(currentIndex + 1);
     }
     
-    // Imagen anterior
     function prevImage() {
       showImage(currentIndex - 1);
     }
 
-    // Eventos de botones
     nextBtn.addEventListener('click', () => {
       nextImage();
       resetInterval();
@@ -722,7 +726,6 @@
       resetInterval();
     });
 
-    // Eventos de indicadores
     indicators.forEach(indicator => {
       indicator.addEventListener('click', function() {
         const index = parseInt(this.getAttribute('data-index'));
@@ -730,7 +733,6 @@
         resetInterval();
       });
       
-      // Soporte para teclado
       indicator.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           const index = parseInt(e.target.getAttribute('data-index'));
@@ -740,29 +742,24 @@
       });
     });
 
-    // Iniciar intervalo
     function startInterval() {
       slideInterval = setInterval(nextImage, slideDuration);
     }
     
-    // Detener intervalo
     function stopInterval() {
       clearInterval(slideInterval);
     }
     
-    // Reiniciar intervalo
     function resetInterval() {
       stopInterval();
       startInterval();
     }
 
-    // Pausar al pasar el ratón
     carousel.addEventListener('mouseenter', stopInterval);
     carousel.addEventListener('mouseleave', startInterval);
     carousel.addEventListener('focusin', stopInterval);
     carousel.addEventListener('focusout', startInterval);
 
-    // Iniciar carrusel
     showImage(0);
     startInterval();
 
@@ -788,7 +785,6 @@
         const particle = document.createElement('div');
         particle.classList.add('particle');
         
-        // Tamaño y posición aleatorios
         const size = Math.random() * 6 + 2;
         const posX = Math.random() * 100;
         const delay = Math.random() * 15;
@@ -837,10 +833,8 @@
         });
         
         if (response.ok) {
-          // Mostrar mensaje de confirmación
           confirmation.style.display = 'block';
           
-          // Reiniciar formulario después de 5 segundos
           setTimeout(() => {
             contactForm.reset();
             confirmation.style.display = 'none';
