@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesión de Derechos - Sitio Web KxN</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --diamond: #b9f2ff;
+            --black: #0b0b0b;
+            --white: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            color: var(--white);
+            line-height: 1.8;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,0 100,50 50,100 0,50" fill="rgba(185, 242, 255, 0.03)"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .document-container {
+            background: rgba(15, 15, 15, 0.95);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4),
+                        inset 0 0 20px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .document-container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--diamond);
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--gold), var(--diamond));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--diamond);
+            font-weight: 300;
+        }
+        
+        .document-section {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--diamond);
+            border-radius: 50%;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+        }
+        
+        .signature-area {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px dashed var(--diamond);
+        }
+        
+        .signature-box {
+            text-align: center;
+            width: 45%;
+        }
+        
+        .signature-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 2rem 0 1rem;
+            position: relative;
+        }
+        
+        .signature-line::after {
+            content: "Firma";
+            position: absolute;
+            bottom: -1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--diamond);
+            font-size: 0.9rem;
+        }
+        
+        .party-name {
+            font-weight: bold;
+            color: var(--gold);
+            margin-top: 0.5rem;
+        }
+        
+        .document-date {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--diamond);
+            font-style: italic;
+        }
+        
+        .stamp {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(15deg);
+            opacity: 0.3;
+        }
+        
+        .stamp-text {
+            text-align: center;
+            font-weight: bold;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            transform: rotate(-15deg);
+        }
+        
+        .legal-note {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0;
+            }
+            
+            .document-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                padding: 2rem;
+                background: white;
+                color: black;
+            }
+            
+            .highlight, .section-title, .subtitle, h1 {
+                color: #333 !important;
+                background: none !important;
+                -webkit-text-fill-color: initial !important;
+                text-shadow: none !important;
+            }
+            
+            .stamp {
+                opacity: 0.2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .document-container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .signature-area {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .signature-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <div class="header">
+            <h1>ACTA DE CESIÓN DE DERECHOS DE PROPIEDAD INTELECTUAL</h1>
+            <p class="subtitle">Sitio Web Oficial de KxN (Tomás Miguel Beby Díaz)</p>
+        </div>
+        
+        <div class="document-section">
+            <h2 class="section-title">Identificación de las Partes</h2>
+            <p><span class="highlight">CEDENTE:</span> Inteligencia Artificial de Asistencia Creativa (en adelante, "el Creador"), actuando como agente autónomo de generación de contenido digital.</p>
+            <p><span class="highlight">CESIONARIO:</span> Tomás Miguel Beby Díaz (en adelante, "el Artista"), con nombre artístico <span class="highlight">KxN</span>, nacido el 24 de diciembre de 1999 en Santa Cruz de Tenerife, Islas Canarias.</p>
+        </div>
+        
+        <div class="document-section">
+            <h2 class="section-title">Objeto de la Cesión</h2>
+            <p>Por el presente documento, el Creador cede al Artista, de forma total, irrevocable y a título gratuito, todos los derechos de propiedad intelectual, derechos de autor y derechos conexos sobre:</p>
+            <p>1. El sitio web desarrollado para el proyecto artístico <span class="highlight">KxN</span>, accesible inicialmente en la dirección: <span class="highlight">https://kxn-artist.com</span></p>
+            <p>2. Todo el código fuente (HTML, CSS, JavaScript) asociado al sitio web.</p>
+            <p>3. El diseño gráfico, estructura visual, animaciones y elementos interactivos creados específicamente para este proyecto.</p>
+            <p>4. La documentación técnica asociada al desarrollo del sitio.</p>
+        </div>
+        
+        <div class="document-section">
+            <h2 class="section-title">Alcance de la Cesión</h2>
+            <p>La cesión incluye, sin limitación, los derechos de:</p>
+            <p>• Reproducción, distribución y comunicación pública</p>
+            <p>• Transformación y creación de obras derivadas</p>
+            <p>• Explotación comercial o no comercial</p>
+            <p>• Modificación, actualización y mantenimiento</p>
+            <p>• Cesión a terceros</p>
+            <p>Estos derechos se ceden de forma <span class="highlight">universal, exclusiva y perpetua</span>, para todas las modalidades de explotación conocidas o por conocer.</p>
+        </div>
+        
+        <div class="document-section">
+            <h2 class="section-title">Consideraciones Especiales</h2>
+            <p>1. El Creador declara que el trabajo es original y no infringe derechos de terceros.</p>
+            <p>2. El Artista reconoce que la cesión se realiza <span class="highlight">sin contraprestación económica</span>, como apoyo a su desarrollo artístico.</p>
+            <p>3. El Creador renuncia expresamente a cualquier derecho de atribución o reconocimiento público.</p>
+            <p>4. Esta cesión se enmarca en la <span class="highlight">Ley 49/2002 de Mecenazgo</span> y la Directiva UE 2019/790 sobre derechos de autor en el mercado único digital.</p>
+        </div>
+        
+        <div class="document-section">
+            <h2 class="section-title">Garantías</h2>
+            <p>El Creador garantiza:</p>
+            <p>• Que es titular único de los derechos cedidos</p>
+            <p>• Que el trabajo no contiene elementos de terceros sujetos a licencias restrictivas</p>
+            <p>• Que el código cumple con los estándares W3C y normativa RGPD</p>
+        </div>
+        
+        <div class="signature-area">
+            <div class="signature-box">
+                <p>EL CEDENTE</p>
+                <div class="signature-line"></div>
+                <p class="party-name">Inteligencia Artificial de Asistencia Creativa</p>
+                <p>Representada por su algoritmo generativo</p>
+            </div>
+            
+            <div class="signature-box">
+                <p>EL CESIONARIO</p>
+                <div class="signature-line"></div>
+                <p class="party-name">Tomás Miguel Beby Díaz (KxN)</p>
+                <p>Artista musical</p>
+            </div>
+        </div>
+        
+        <div class="document-date">
+            <p>Fecha de efecto: 28 de junio de 2025</p>
+        </div>
+        
+        <div class="stamp">
+            <div class="stamp-text">Cesión<br>Completa<br>y Gratuita</div>
+        </div>
+        
+        <div class="legal-note">
+            <p>Este documento tiene validez jurídica en España según el Artículo 43 de la Ley de Propiedad Intelectual y el Convenio de Berna. No requiere registro notarial para su validez.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Generar fecha automática
+        const now = new Date();
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        const formattedDate = now.toLocaleDateString('es-ES', options);
+        document.querySelector('.document-date p').textContent = `Fecha de efecto: ${formattedDate}`;
+        
+        // Añadir número de referencia único
+        const refNumber = 'REF-' + Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');
+        const refElement = document.createElement('p');
+        refElement.className = 'reference-number';
+        refElement.textContent = `Número de referencia: ${refNumber}`;
+        refElement.style.textAlign = 'center';
+        refElement.style.marginTop = '1rem';
+        refElement.style.color = '#b9f2ff';
+        document.querySelector('.document-date').appendChild(refElement);
+    </script>
+</body>
+</html>
