@@ -334,6 +334,13 @@
       transform: translateY(20px);
       animation: fadeInUp 0.8s 0.8s var(--ease-out-quart) forwards;
       text-align: justify;
+      hyphens: auto;
+    }
+    
+    /* CORRECCIÓN: Alineación izquierda para el párrafo problemático */
+    .bio p:nth-child(3) {
+      text-align: left !important;
+      hyphens: none;
     }
     
     .bio p:nth-child(1) { animation-delay: 0.5s; }
@@ -1056,18 +1063,6 @@
         display: none;
       }
     }
-    
-    /* Clase para etiquetas ocultas (accesibilidad) */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
   </style>
 </head>
 <body>
@@ -1118,7 +1113,10 @@
     <div class="bio">
       <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg?format=webp&quality=80" alt="KxN grabando un cover en estudio" loading="lazy" />
       <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
+      
+      <!-- Párrafo corregido -->
       <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
+      
       <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
       <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
       <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
@@ -1432,34 +1430,6 @@
         alert('Error de red. Por favor, verifica tu conexión e inténtalo de nuevo.');
       }
     });
-    
-    // Efecto de sonido al hacer hover (configurable)
-    const enableSoundEffects = false;
-    
-    if (enableSoundEffects) {
-      const hoverSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
-      
-      document.querySelectorAll('a, button, .indicator').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          hoverSound.currentTime = 0;
-          hoverSound.volume = 0.15;
-          hoverSound.play().catch(e => console.log("Audio play prevented by browser policy"));
-        });
-      });
-    }
-    
-    // Efecto de sonido al enviar formulario
-    const enableSubmitSound = false;
-    
-    if (enableSubmitSound) {
-      const submitSound = new Audio('data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV');
-      
-      contactForm.addEventListener('submit', () => {
-        submitSound.currentTime = 0;
-        submitSound.volume = 0.2;
-        submitSound.play().catch(e => console.log("Audio play prevented by browser policy"));
-      });
-    }
   </script>
 </body>
 </html>
