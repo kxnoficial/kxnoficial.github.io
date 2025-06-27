@@ -2,18 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="KxN - Sitio oficial de Tomás Miguel Beby Díaz. Descubre su música, biografía y galería de imágenes." />
+  <meta property="og:title" content="KxN | Tomás Miguel Beby Díaz" />
+  <meta property="og:description" content="Artista musical especializado en covers y reinterpretaciones vocales. Descubre su mundo musical." />
+  <meta property="og:image" content="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" />
+  <meta property="og:url" content="https://kxn-artist.com" />
   <title>KxN | Tomás Miguel Beby Díaz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
       --black: #0b0b0b;
       --white: #ffffff;
       --gold: #d4af37;
       --diamond: #b9f2ff;
+      --light-text: #d0d0d0; /* Mejor contraste para accesibilidad */
+      --breakpoint-md: 768px;
     }
     * {
       box-sizing: border-box;
@@ -76,7 +82,7 @@
     }
     .real-name {
       font-size: 0.9rem;
-      color: #aaa;
+      color: var(--light-text);
       font-weight: 300;
       position: relative;
       z-index: 2;
@@ -84,7 +90,7 @@
     .tagline {
       font-size: 1rem;
       letter-spacing: 3px;
-      color: #aaa;
+      color: var(--light-text);
       position: relative;
       z-index: 2;
       margin-top: 0.5rem;
@@ -195,6 +201,7 @@
       line-height: 1.8;
       position: relative;
       z-index: 2;
+      color: var(--light-text);
     }
     .highlight {
       color: var(--gold);
@@ -536,29 +543,44 @@
         padding: 2rem 1rem;
       }
     }
+    
+    /* Iconos SVG para reemplazar Font Awesome */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
   <div class="particles" id="particles"></div>
   
   <header>
-    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="Logo KxN" class="header-image" />
+    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" alt="KxN - Tomás Miguel Beby Díaz" class="header-image" loading="lazy" />
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
-    <nav>
-      <a href="#bio">Biografía</a>
-      <a href="#musica">Música</a>
-      <a href="#galeria">Galería</a>
-      <a href="#contacto">Contacto</a>
-      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer">Blog 📝</a>
+    <nav aria-label="Navegación principal">
+      <a href="#bio" aria-label="Ir a Biografía">Biografía</a>
+      <a href="#musica" aria-label="Ir a Música">Música</a>
+      <a href="#galeria" aria-label="Ir a Galería">Galería</a>
+      <a href="#contacto" aria-label="Ir a Contacto">Contacto</a>
+      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar el blog">Blog 
+        <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+          <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 12H7v-2h10v2zm0-3H7V9h10v2zm0-3H7V6h10v2z"/>
+        </svg>
+      </a>
     </nav>
   </header>
 
-  <section id="bio">
-    <h2>Biografía</h2>
+  <section id="bio" aria-labelledby="bio-title">
+    <h2 id="bio-title">Biografía</h2>
     <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover" />
+      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg" alt="KxN grabando un cover en estudio" loading="lazy" />
       <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
       <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
       <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
@@ -570,186 +592,64 @@
     </div>
   </section>
 
-  <section id="musica">
-    <h2>Música</h2>
+  <section id="musica" aria-labelledby="musica-title">
+    <h2 id="musica-title">Música</h2>
     <div class="music-video">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen loading="lazy" title="Playlist de KxN en YouTube"></iframe>
     </div>
   </section>
 
-  <section id="galeria">
-    <h2>Galería</h2>
+  <section id="galeria" aria-labelledby="galeria-title">
+    <h2 id="galeria-title">Galería</h2>
     <div class="carousel-container">
-      <div class="carousel" aria-label="Galería de imágenes">
-        <div class="carousel-images">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="Foto artística de KxN" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="Foto artística de KxN" />
+      <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Galería de imágenes de KxN">
+        <div class="carousel-images" role="group" aria-live="polite">
+          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg" alt="KxN en sesión fotográfica - Foto 1" loading="lazy" />
+          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp" alt="KxN en estudio de grabación - Foto 2" loading="lazy" />
+          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp" alt="KxN en concierto - Foto 3" loading="lazy" />
         </div>
         <div class="carousel-buttons">
           <button id="prev" aria-label="Imagen anterior">&#10094;</button>
           <button id="next" aria-label="Imagen siguiente">&#10095;</button>
         </div>
-        <div class="carousel-indicators">
-          <div class="indicator active" data-index="0"></div>
-          <div class="indicator" data-index="1"></div>
-          <div class="indicator" data-index="2"></div>
+        <div class="carousel-indicators" role="tablist">
+          <div class="indicator active" role="tab" aria-selected="true" data-index="0" aria-label="Imagen 1"></div>
+          <div class="indicator" role="tab" aria-selected="false" data-index="1" aria-label="Imagen 2"></div>
+          <div class="indicator" role="tab" aria-selected="false" data-index="2" aria-label="Imagen 3"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form action="https://formspree.io/f/xrbkoowp" method="POST" onsubmit="document.querySelector('.confirmation').style.display = 'block';">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
-      <button type="submit">Enviar mensaje</button>
-      <div class="confirmation">Gracias por tu mensaje. Te responderé pronto 🚀</div>
+  <section id="contacto" aria-labelledby="contacto-title">
+    <h2 id="contacto-title">Contacto</h2>
+    <form id="contact-form">
+      <label for="nombre" class="sr-only">Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
+      
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true">
+      
+      <label for="mensaje" class="sr-only">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje..." required aria-required="true"></textarea>
+      
+      <button type="submit" aria-label="Enviar mensaje">
+        Enviar mensaje
+      </button>
+      
+      <div class="confirmation" id="confirmation-message">
+        Gracias por tu mensaje. Te responderé pronto 🚀
+      </div>
     </form>
   </section>
 
   <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-  </footer>
-
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    // Mostrar imagen actual
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-      
-      // Actualizar indicadores
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === index);
-      });
-    }
-
-    // Siguiente imagen
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    // Imagen anterior
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    // Eventos de botones
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    // Eventos de indicadores
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-    });
-
-    // Iniciar intervalo
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    
-    // Detener intervalo
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    // Reiniciar intervalo
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    // Pausar al pasar el ratón
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-
-    // Iniciar carrusel
-    showImage(0);
-    startInterval();
-
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = 'flex';
-      } else {
-        scrollBtn.style.display = 'none';
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Tamaño y posición aleatorios
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp 1s ease forwards`;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-</body>
-</html>
+    <p>
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+      </svg>
+      2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados
+    </p>
+    <p>
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+        <path d
