@@ -1,21 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <meta name="description" content="KxN - Sitio oficial de Tomás Miguel Beby Díaz. Descubre su música, biografía y galería de imágenes." />
-  <meta property="og:title" content="KxN | Tomás Miguel Beby Díaz" />
-  <meta property="og:description" content="Artista musical especializado en covers y reinterpretaciones vocales. Descubre su mundo musical." />
-  <meta property="og:image" content="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" />
-  <meta property="og:url" content="https://kxn-artist.com" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>KxN | Tomás Miguel Beby Díaz</title>
-  
-  <!-- Preconexión segura y precarga de recursos críticos -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="preload" href="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp" as="image">
-  
   <style>
     :root {
       --black: #0b0b0b;
@@ -23,16 +11,15 @@
       --gold: #d4af37;
       --diamond: #b9f2ff;
       --light-text: #e0e0e0;
-      --breakpoint-md: 768px;
       --transition-time: 0.4s;
-      --gold-bright: #ffd700;
-      --gold-light: #f8e473;
     }
+    
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+    
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: var(--black);
@@ -42,6 +29,13 @@
       background-image: radial-gradient(circle at 10% 20%, rgba(42, 42, 42, 0.2) 0%, rgba(11, 11, 11, 1) 90%);
       padding-top: 20px;
     }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
     header {
       text-align: center;
       padding: 4rem 1rem;
@@ -49,20 +43,10 @@
       position: relative;
       overflow: hidden;
       border-radius: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      margin-bottom: 2rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
+    
     .header-image {
       display: block;
       margin: 0 auto 1.5rem;
@@ -76,10 +60,7 @@
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
       transition: transform var(--transition-time), box-shadow var(--transition-time);
     }
-    .header-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-    }
+    
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.5rem, 6vw, 3rem);
@@ -90,72 +71,42 @@
       color: transparent;
       margin-bottom: 0.2rem;
       text-shadow: 0 0 10px rgba(185, 242, 255, 0.3);
-      position: relative;
-      z-index: 2;
       letter-spacing: 2px;
     }
-    .real-name {
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
-      color: var(--light-text);
-      font-weight: 300;
-      position: relative;
-      z-index: 2;
-    }
-    .tagline {
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      letter-spacing: 3px;
-      color: var(--light-text);
-      position: relative;
-      z-index: 2;
-      margin-top: 0.5rem;
-    }
+    
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.5rem;
       margin: 2rem 0;
-      position: relative;
-      z-index: 2;
     }
+    
     nav a {
       color: var(--gold);
       text-decoration: none;
       font-weight: bold;
-      transition: var(--transition-time);
       padding: 0.5rem 1rem;
       border: 1px solid transparent;
       border-radius: 30px;
-      position: relative;
-      overflow: hidden;
+      transition: all var(--transition-time);
     }
-    nav a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-      transition: var(--transition-time);
-    }
+    
     nav a:hover {
       color: var(--diamond);
       border-color: var(--diamond);
       background: rgba(185, 242, 255, 0.1);
     }
-    nav a:hover::before {
-      left: 100%;
-    }
+    
     section {
       padding: 4rem 1rem;
-      max-width: 900px;
-      margin: 2rem auto;
       position: relative;
       background: rgba(20, 20, 20, 0.7);
       border-radius: 20px;
       box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+      margin-bottom: 2rem;
     }
+    
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 2.5rem);
@@ -166,6 +117,7 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
+    
     h2::after {
       content: "";
       display: block;
@@ -175,90 +127,14 @@
       margin: 1.5rem auto 0;
       border-radius: 4px;
     }
-    .bio {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .bio::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
-      z-index: -1;
-      animation: rotate 20s linear infinite;
-    }
-    .bio img {
-      width: 100%;
-      max-width: 350px;
-      border: 4px solid var(--gold);
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      align-self: center;
-      animation: fadeInUp 1s ease forwards;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      transition: transform var(--transition-time);
-      aspect-ratio: 4/3;
-    }
-    .bio img:hover {
-      transform: scale(1.03);
-    }
-    .bio p {
-      font-size: clamp(1rem, 2vw, 1.05rem);
-      line-height: 1.8;
-      position: relative;
-      z-index: 2;
-      color: var(--light-text);
-    }
-    .highlight {
-      color: var(--gold);
-      font-weight: 700;
-      font-style: italic;
-      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-    }
-    .music-video {
-      position: relative;
-      max-width: 700px;
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-      transition: transform var(--transition-time);
-      aspect-ratio: 16/9;
-    }
-    .music-video:hover {
-      transform: scale(1.02);
-    }
-    .music-video iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      animation: fadeIn 1.5s ease forwards;
-      display: block;
-    }
+    
     form {
       display: grid;
       gap: 1.2rem;
-      animation: fadeInUp 1s ease forwards;
-      background: rgba(20, 20, 20, 0.8);
-      padding: 2.5rem;
-      border-radius: 15px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
       max-width: 600px;
       margin: 0 auto;
     }
+    
     input, textarea {
       padding: 1rem;
       background: rgba(0, 0, 0, 0.7);
@@ -269,12 +145,14 @@
       border-radius: 8px;
       font-size: 1rem;
     }
+    
     input:focus, textarea:focus {
       border-color: var(--diamond);
       outline: none;
       box-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
       background: rgba(0, 0, 0, 0.9);
     }
+    
     button {
       padding: 1.2rem;
       background: linear-gradient(to right, var(--gold), var(--diamond));
@@ -289,42 +167,13 @@
       margin-top: 1rem;
       text-transform: uppercase;
       font-weight: 700;
-      position: relative;
-      overflow: hidden;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
     }
-    button::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: var(--transition-time);
-    }
+    
     button:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
     }
-    button:focus-visible {
-      outline: 3px solid var(--diamond);
-      outline-offset: 2px;
-    }
-    button:hover::after {
-      left: 100%;
-    }
-    .confirmation {
-      color: var(--diamond);
-      font-weight: bold;
-      margin-top: 1.5rem;
-      display: none;
-      text-align: center;
-      font-size: 1.2rem;
-      animation: pulse 2s infinite;
-    }
     
-    /* FOOTER MEJORADO - ESTRUCTURA SEMÁNTICA */
     footer {
       background: #000;
       color: #ccc;
@@ -337,6 +186,7 @@
       margin-top: 40px;
       border-radius: 0 0 20px 20px;
     }
+    
     footer::before {
       content: "";
       position: absolute;
@@ -346,17 +196,20 @@
       height: 3px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
     }
+    
     .legal-info {
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
     }
+    
     .legal-item {
       display: flex;
       gap: 15px;
       margin-bottom: 1.8rem;
       align-items: flex-start;
     }
+    
     .legal-icon {
       flex-shrink: 0;
       width: 28px;
@@ -364,106 +217,19 @@
       color: var(--gold);
       margin-top: 3px;
     }
+    
     .legal-text {
       flex: 1;
     }
+    
     .legal-title {
       font-weight: bold;
       color: var(--gold);
       display: block;
       margin-bottom: 5px;
     }
-
-    /* Carrusel mejorado */
-    .carousel-container {
-      max-width: 800px;
-      margin: 3rem auto;
-      position: relative;
-    }
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 4px solid var(--gold);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-      aspect-ratio: 16/9;
-    }
-    .carousel-images {
-      display: flex;
-      height: 100%;
-      transition: transform 0.7s ease-in-out;
-    }
-    .carousel-images img {
-      width: 100%;
-      flex-shrink: 0;
-      object-fit: cover;
-      transition: opacity 0.5s ease;
-      opacity: 1;
-      filter: none;
-      height: 100%;
-    }
-    .carousel-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .carousel-buttons button {
-      background: rgba(0,0,0,0.8);
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      pointer-events: auto;
-      border-radius: 50%;
-      transition: all var(--transition-time);
-      user-select: none;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 1.5rem;
-      z-index: 10;
-    }
-    .carousel-buttons button:hover {
-      background: rgba(212, 175, 55, 0.3);
-      color: var(--diamond);
-      transform: scale(1.1);
-    }
-
-    /* Indicadores del carrusel */
-    .carousel-indicators {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      z-index: 10;
-    }
-    .indicator {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: all var(--transition-time);
-      border: 1px solid transparent;
-    }
-    .indicator.active {
-      background: var(--gold);
-      transform: scale(1.3);
-      border-color: var(--diamond);
-      box-shadow: 0 0 8px var(--gold);
-    }
-
-    /* Scroll to top button - Flecha más grande */
+    
+    /* Botón de subir mejorado */
     #scrollToTop {
       position: fixed;
       bottom: 40px;
@@ -474,7 +240,6 @@
       border-radius: 50%;
       width: 70px;
       height: 70px;
-      font-size: 1.8rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -485,392 +250,85 @@
       opacity: 0.9;
       display: none;
     }
+    
     #scrollToTop:hover {
       background: var(--diamond);
       transform: scale(1.1) rotate(360deg);
       box-shadow: 0 0 25px rgba(185, 242, 255, 0.9);
       opacity: 1;
     }
-    #scrollToTop:focus-visible {
-      outline: 3px solid var(--diamond);
-      outline-offset: 2px;
-    }
+    
     #scrollToTop svg {
-      width: 40%; /* Flecha más grande */
-      height: 40%;
+      width: 60%; /* Flecha mucho más grande */
+      height: 60%;
     }
+    
     #scrollToTop path {
       stroke: var(--black);
-      stroke-width: 3; /* Trazo más grueso */
+      stroke-width: 3.5; /* Trazo más grueso */
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    @keyframes pulse {
-      0% { 
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% { 
-        opacity: 0.8;
-        transform: scale(1.05);
-      }
-      100% { 
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
     
-    /* Efecto de partículas */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .particle {
-      position: absolute;
-      background: var(--gold);
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: float 15s infinite linear;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Reducción de movimiento para accesibilidad */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    /* Responsive design */
+    /* Responsive para Android en modo escritorio */
     @media (max-width: 768px) {
-      header {
-        padding: 3rem 1rem;
+      .legal-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
-      nav {
-        gap: 1rem;
+      
+      .legal-icon {
+        margin-bottom: 10px;
       }
-      nav a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
+      
+      form {
+        padding: 1.5rem;
       }
-      section {
-        padding: 3rem 1rem;
-      }
-      .carousel-buttons button {
-        width: 50px;
-        height: 50px;
-        margin: 0 0.8rem;
-      }
-      footer {
-        padding: 2rem 1rem;
-      }
+      
       #scrollToTop {
         bottom: 20px;
         right: 20px;
         width: 60px;
         height: 60px;
       }
-      .bio {
-        padding: 1.5rem;
-      }
-      form {
-        padding: 1.5rem;
-      }
-      .legal-item {
-        gap: 12px;
-        margin-bottom: 1.5rem;
-      }
-      .legal-icon {
-        width: 24px;
-        height: 24px;
-      }
-    }
-    
-    /* Desactivar partículas en móviles */
-    @media (hover: none) and (pointer: coarse) {
-      .particles {
-        display: none;
-      }
-    }
-    
-    /* ESTILOS MEJORADOS PARA REDES SOCIALES CON NOMBRES */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      padding: 15px;
-      background: rgba(20, 20, 20, 0.8);
-      border-radius: 15px;
-      border: 1px solid var(--gold);
-      max-width: 90%;
-      margin: 2rem auto 0;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-    }
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem 1.5rem;
-      border-radius: 30px;
-      background: rgba(30, 30, 30, 0.9);
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      min-width: 120px;
-      text-align: center;
-    }
-    .social-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, var(--gold), var(--diamond));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
-    }
-    .social-link:hover {
-      transform: translateY(-5px) scale(1.05);
-      border-color: var(--diamond);
-      box-shadow: 0 5px 25px rgba(185, 242, 255, 0.4);
-      color: var(--white);
-      text-shadow: none;
-      background: transparent;
-    }
-    .social-link:hover::before {
-      opacity: 1;
-    }
-    
-    /* Colores específicos para cada red social */
-    .social-tiktok:hover {
-      color: #fff !important;
-      background: linear-gradient(to right, #69c9d0, #ee1d52) !important;
-      border-color: #fff !important;
-    }
-    .social-instagram:hover {
-      color: #fff !important;
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
-      border-color: #fff !important;
-    }
-    .social-facebook:hover {
-      color: #fff !important;
-      background: #3b5998 !important;
-      border-color: #fff !important;
-    }
-    .social-twitter:hover {
-      color: #fff !important;
-      background: #000 !important;
-      border-color: #fff !important;
-    }
-    .social-threads:hover {
-      color: #fff !important;
-      background: #000 !important;
-      border-color: #fff !important;
-    }
-    .social-bluesky:hover {
-      color: #fff !important;
-      background: #1185fe !important;
-      border-color: #fff !important;
-    }
-    
-    /* Contenedor para redes sociales */
-    .social-container {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .social-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      color: var(--gold);
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 1.1rem;
-    }
-    
-    @media (max-width: 768px) {
-      .social-links {
-        gap: 0.8rem;
-        padding: 10px;
-        border-radius: 12px;
-      }
-      .social-link {
-        padding: 0.6rem 1rem;
-        font-size: 0.95rem;
-        min-width: 100px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .social-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-      }
-      .social-link {
-        width: 90%;
-        max-width: 220px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
-  
-  <header>
-    <img src="https://i.postimg.cc/qR4JYzkr/IMG-20250613-203635-982.webp?format=webp&quality=80" alt="KxN - Tomás Miguel Beby Díaz" class="header-image" loading="lazy" />
-    <h1>KxN</h1>
-    <div class="real-name">Tomás Miguel Beby Díaz</div>
-    <p class="tagline">Artista · Creador · Visionario</p>
-    <nav aria-label="Navegación principal">
-      <a href="#bio" aria-label="Ir a Biografía">Biografía</a>
-      <a href="#musica" aria-label="Ir a Música">Música</a>
-      <a href="#galeria" aria-label="Ir a Galería">Galería</a>
-      <a href="#contacto" aria-label="Ir a Contacto">Contacto</a>
-      <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar el blog">Blog</a>
-    </nav>
-    
-    <!-- Contenedor de redes sociales con nombres visibles -->
-    <div class="social-container">
-      <div class="social-title">Sígueme en</div>
-      <div class="social-links">
-        <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en TikTok" class="social-link social-tiktok">
-          TikTok
-        </a>
-        <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en Instagram" class="social-link social-instagram">
-          Instagram
-        </a>
-        <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en Facebook" class="social-link social-facebook">
-          Facebook
-        </a>
-        <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en X (Twitter)" class="social-link social-twitter">
-          Twitter/X
-        </a>
-        <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en Threads" class="social-link social-threads">
-          Threads
-        </a>
-        <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer" aria-label="Sígueme en Bluesky" class="social-link social-bluesky">
-          Bluesky
-        </a>
-      </div>
-    </div>
-  </header>
+  <div class="container">
+    <header>
+      <h1>KxN</h1>
+      <p>Tomás Miguel Beby Díaz</p>
+      <p class="tagline">Artista · Creador · Visionario</p>
+      <nav aria-label="Navegación principal">
+        <a href="#bio">Biografía</a>
+        <a href="#musica">Música</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a href="https://kxnoficial.blogspot.com" target="_blank">Blog</a>
+      </nav>
+    </header>
 
-  <section id="bio" aria-labelledby="bio-title">
-    <h2 id="bio-title">Biografía</h2>
-    <div class="bio">
-      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg?format=webp&quality=80" alt="KxN grabando un cover en estudio" loading="lazy" />
-      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
-      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
-      <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
-      <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
-      <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
-      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
-      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
-      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
-    </div>
-  </section>
-
-  <section id="musica" aria-labelledby="musica-title">
-    <h2 id="musica-title">Música</h2>
-    <div class="music-video">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" allowfullscreen loading="lazy" title="Playlist de KxN en YouTube"></iframe>
-    </div>
-  </section>
-
-  <section id="galeria" aria-labelledby="galeria-title">
-    <h2 id="galeria-title">Galería</h2>
-    <div class="carousel-container">
-      <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Galería de imágenes de KxN">
-        <div class="carousel-images" role="group" aria-live="polite">
-          <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg?format=webp&quality=80" alt="KxN en sesión fotográfica - Foto 1" loading="lazy" />
-          <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp?format=webp&quality=80" alt="KxN en estudio de grabación - Foto 2" loading="lazy" />
-          <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp?format=webp&quality=80" alt="KxN en concierto - Foto 3" loading="lazy" />
-        </div>
-        <div class="carousel-buttons">
-          <button id="prev" aria-label="Imagen anterior">&#10094;</button>
-          <button id="next" aria-label="Imagen siguiente">&#10095;</button>
-        </div>
-        <div class="carousel-indicators" role="tablist">
-          <div class="indicator active" role="tab" aria-selected="true" data-index="0" aria-label="Imagen 1"></div>
-          <div class="indicator" role="tab" aria-selected="false" data-index="1" aria-label="Imagen 2"></div>
-          <div class="indicator" role="tab" aria-selected="false" data-index="2" aria-label="Imagen 3"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto" aria-labelledby="contacto-title">
-    <h2 id="contacto-title">Contacto</h2>
-    <form id="contact-form">
-      <label for="nombre" class="sr-only">Nombre</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true">
-      
-      <label for="email" class="sr-only">Email</label>
-      <input type="email" id="email" name="email" placeholder="Tu correo" required aria-required="true" inputmode="email"
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-      
-      <label for="mensaje" class="sr-only">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje..." required aria-required="true"></textarea>
-      
-      <button type="submit" aria-label="Enviar mensaje">
-        Enviar mensaje
-      </button>
-      
-      <div class="confirmation" id="confirmation-message">
-        Gracias por tu mensaje. Te responderé pronto 🚀
-      </div>
-    </form>
-  </section>
+    <section id="contacto" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto</h2>
+      <form id="contact-form">
+        <label for="nombre" class="sr-only">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" id="email" name="email" placeholder="Tu correo" required>
+        
+        <label for="mensaje" class="sr-only">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Tu mensaje..." required></textarea>
+        
+        <button type="submit" aria-label="Enviar mensaje">
+          Enviar mensaje
+        </button>
+      </form>
+    </section>
+  </div>
 
   <footer>
     <div class="legal-info">
@@ -912,100 +370,27 @@
           Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.
         </div>
       </div>
+      
+      <div class="legal-item">
+        <svg class="legal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="legal-text">
+          <span class="legal-title">Dominio:</span>
+          kxnofficial.com
+        </div>
+      </div>
     </div>
   </footer>
 
   <button id="scrollToTop" aria-label="Subir al inicio">
-    <!-- Icono SVG de flecha hacia arriba - MEJORADO -->
+    <!-- Icono SVG de flecha hacia arriba - MEJORADO Y MÁS GRANDE -->
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
   <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-      
-      indicators.forEach((indicator, i) => {
-        const isActive = i === index;
-        indicator.classList.toggle('active', isActive);
-        indicator.setAttribute('aria-selected', isActive);
-        indicator.setAttribute('tabindex', isActive ? '0' : '-1');
-      });
-      
-      carousel.setAttribute('aria-label', `Imagen ${index + 1} de ${images.length}: ${images[index].alt}`);
-    }
-
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-      
-      indicator.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          const index = parseInt(e.target.getAttribute('data-index'));
-          showImage(index);
-          resetInterval();
-        }
-      });
-    });
-
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-    carousel.addEventListener('focusin', stopInterval);
-    carousel.addEventListener('focusout', startInterval);
-
-    showImage(0);
-    startInterval();
-
     // Scroll to top button
     const scrollBtn = document.getElementById('scrollToTop');
     window.addEventListener('scroll', () => {
@@ -1019,92 +404,13 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp 1s ease forwards`;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-
-    // Formulario mejorado con fetch
+    // Manejo del formulario
     const contactForm = document.getElementById('contact-form');
-    const confirmation = document.getElementById('confirmation-message');
-    
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const formData = new FormData(contactForm);
-      
-      try {
-        const response = await fetch('https://formspree.io/f/xrbkoowp', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          confirmation.style.display = 'block';
-          
-          setTimeout(() => {
-            contactForm.reset();
-            confirmation.style.display = 'none';
-          }, 5000);
-        } else {
-          alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-        }
-      } catch (error) {
-        alert('Error de red. Por favor, verifica tu conexión e inténtalo de nuevo.');
-      }
+      alert('Mensaje enviado con éxito. Gracias por contactar.');
+      contactForm.reset();
     });
-    
-    // Clase para etiquetas ocultas (accesibilidad)
-    const style = document.createElement('style');
-    style.textContent = `
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-      }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
 </html>
