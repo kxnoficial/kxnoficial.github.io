@@ -349,10 +349,17 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
-    footer i {
+    footer .icon {
+      width: 1.2em;
+      height: 1.2em;
       color: var(--gold);
       margin-right: 8px;
+      vertical-align: middle;
     }
 
     /* Carrusel mejorado */
@@ -444,7 +451,7 @@
       box-shadow: 0 0 8px var(--gold);
     }
 
-    /* Scroll to top button */
+    /* Scroll to top button - Mejorado con icono SVG */
     #scrollToTop {
       position: fixed;
       bottom: 40px;
@@ -475,6 +482,15 @@
     #scrollToTop:focus-visible {
       outline: 3px solid var(--diamond);
       outline-offset: 2px;
+    }
+    #scrollToTop svg {
+      width: 60%;
+      height: 60%;
+    }
+    #scrollToTop path {
+      stroke: var(--black);
+      stroke-width: 2;
+      fill: none;
     }
 
     /* Animations */
@@ -836,14 +852,37 @@
   </section>
 
   <footer>
-    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
+    <p>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M14 9.75C14 9.75 14.5 9 12 9C9.5 9 9 9.75 9 9.75M14 14.25C14 14.25 14.5 15 12 15C9.5 15 9 14.25 9 14.25M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados
+    </p>
+    <p>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.
+    </p>
+    <p>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M14 8H7M14 12H7M3 20H21M3 4H21M4 4V16C4 16.5523 4.44772 17 5 17H19C19.5523 17 20 16.5523 20 16V4M6 20V17.5M18 20V17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.
+    </p>
+    <p>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 15V17M8 11V8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V11M8 11H16M8 11H5M16 11H19M5 11V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V11H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.
+    </p>
   </footer>
 
   <button id="scrollToTop" aria-label="Subir al inicio">
-    <i class="fas fa-arrow-up"></i>
+    <!-- Icono SVG de flecha hacia arriba -->
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </button>
 
   <script>
