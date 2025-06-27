@@ -89,12 +89,54 @@
       z-index: 2;
       margin-top: 0.5rem;
     }
+    /* Estilos para las redes sociales */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.8rem 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .social-links a {
+      color: var(--diamond);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid transparent;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .social-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(185, 242, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    .social-links a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.1);
+    }
+    .social-links a:hover::before {
+      left: 100%;
+    }
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin: 0.5rem 0 2rem; /* Ajustamos margen superior */
       position: relative;
       z-index: 2;
     }
@@ -508,6 +550,14 @@
       h1 {
         font-size: 2.5rem;
       }
+      .social-links {
+        gap: 0.8rem;
+        margin: 1.2rem 0 1rem;
+      }
+      .social-links a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
       nav {
         gap: 1rem;
       }
@@ -546,6 +596,17 @@
     <h1>KxN</h1>
     <div class="real-name">Tomás Miguel Beby Díaz</div>
     <p class="tagline">Artista · Creador · Visionario</p>
+    
+    <!-- Sección de redes sociales -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer">Threads</a>
+      <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer">Bluesky</a>
+      <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+    
     <nav>
       <a href="#bio">Biografía</a>
       <a href="#musica">Música</a>
@@ -612,144 +673,4 @@
 
   <footer>
     <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
-    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
-    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
-    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
-  </footer>
-
-  <button id="scrollToTop" aria-label="Subir al inicio"><i class="fas fa-arrow-up"></i></button>
-
-  <script>
-    // Carrusel mejorado
-    const carousel = document.querySelector('.carousel');
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = carouselImages.querySelectorAll('img');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    let slideInterval;
-    const slideDuration = 5000;
-
-    // Mostrar imagen actual
-    function showImage(index) {
-      if(index < 0) index = images.length - 1;
-      else if(index >= images.length) index = 0;
-
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      currentIndex = index;
-      
-      // Actualizar indicadores
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === index);
-      });
-    }
-
-    // Siguiente imagen
-    function nextImage() {
-      showImage(currentIndex + 1);
-    }
-    
-    // Imagen anterior
-    function prevImage() {
-      showImage(currentIndex - 1);
-    }
-
-    // Eventos de botones
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetInterval();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetInterval();
-    });
-
-    // Eventos de indicadores
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
-        showImage(index);
-        resetInterval();
-      });
-    });
-
-    // Iniciar intervalo
-    function startInterval() {
-      slideInterval = setInterval(nextImage, slideDuration);
-    }
-    
-    // Detener intervalo
-    function stopInterval() {
-      clearInterval(slideInterval);
-    }
-    
-    // Reiniciar intervalo
-    function resetInterval() {
-      stopInterval();
-      startInterval();
-    }
-
-    // Pausar al pasar el ratón
-    carousel.addEventListener('mouseenter', stopInterval);
-    carousel.addEventListener('mouseleave', startInterval);
-
-    // Iniciar carrusel
-    showImage(0);
-    startInterval();
-
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = 'flex';
-      } else {
-        scrollBtn.style.display = 'none';
-      }
-    });
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Efecto de partículas
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Tamaño y posición aleatorios
-        const size = Math.random() * 6 + 2;
-        const posX = Math.random() * 100;
-        const delay = Math.random() * 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = Math.random() * 0.7 + 0.3;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    createParticles();
-
-    // Animaciones al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = `fadeInUp 1s ease forwards`;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-</body>
-</html>
+    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría
