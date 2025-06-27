@@ -584,33 +584,61 @@
     }
 
     /* ESTILOS PARA REDES SOCIALES SOLO TEXTO */
-    .social-links {
+    .social-section {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.8px;
-      font-size: 0.95rem;
-      margin: 2.5rem auto;
       text-align: center;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
+      margin: 2.5rem auto;
       max-width: 800px;
       padding: 0 1rem;
       position: relative;
       z-index: 2;
     }
+    
+    .social-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 8px;
+      text-transform: uppercase;
+    }
+    
+    .social-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 0.5rem;
+    }
+    
     .social-links a {
       color: var(--light-text);
       text-decoration: none;
-      padding: 6px 0;
+      padding: 8px 0;
       position: relative;
       transition: all 0.25s ease;
       white-space: nowrap;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       font-weight: 400;
+      font-size: 0.95rem;
     }
+    
     .social-links a::after {
       content: '';
       position: absolute;
@@ -621,20 +649,32 @@
       background-color: var(--gold);
       transition: width 0.25s ease;
     }
+    
     .social-links a:hover {
       color: var(--gold);
     }
+    
     .social-links a:hover::after {
       width: 100%;
     }
+    
     @media (max-width: 768px) {
-      .social-links {
-        gap: 18px;
+      .social-section {
         margin: 2rem auto;
       }
+      
+      .social-heading {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .social-links {
+        gap: 18px;
+      }
+      
       .social-links a {
         font-size: 0.85rem;
-        padding: 5px 0;
+        padding: 6px 0;
       }
     }
   </style>
@@ -656,14 +696,17 @@
     </nav>
   </header>
 
-  <!-- Sección de Redes Sociales solo texto -->
-  <div class="social-links">
-    <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a>
-    <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer">X</a>
-    <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer">Threads</a>
-    <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer">Bluesky</a>
+  <!-- Sección de Redes Sociales solo texto con encabezado -->
+  <div class="social-section">
+    <h3 class="social-heading">Sígueme en mis redes</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer">Threads</a>
+      <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer">Bluesky</a>
+    </div>
   </div>
 
   <section id="bio" aria-labelledby="bio-title">
