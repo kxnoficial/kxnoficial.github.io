@@ -323,6 +323,8 @@
       font-size: 1.2rem;
       animation: pulse 2s infinite;
     }
+    
+    /* FOOTER MEJORADO - ESTRUCTURA SEMÁNTICA */
     footer {
       background: #000;
       color: #ccc;
@@ -344,23 +346,32 @@
       height: 3px;
       background: linear-gradient(to right, var(--gold), var(--diamond));
     }
-    footer p {
-      margin-bottom: 1rem;
+    .legal-info {
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      align-items: flex-start; /* Cambiado para mejor alineación */
-      justify-content: center;
-      gap: 10px;
+      margin: 0 auto;
       text-align: left;
     }
-    footer .icon {
-      width: 24px; /* Tamaño unificado */
-      height: 24px;
+    .legal-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 1.8rem;
+      align-items: flex-start;
+    }
+    .legal-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
       color: var(--gold);
-      flex-shrink: 0; /* Evita que se reduzca */
-      margin-top: 3px; /* Ajuste fino de alineación */
+      margin-top: 3px;
+    }
+    .legal-text {
+      flex: 1;
+    }
+    .legal-title {
+      font-weight: bold;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 5px;
     }
 
     /* Carrusel mejorado */
@@ -452,7 +463,7 @@
       box-shadow: 0 0 8px var(--gold);
     }
 
-    /* Scroll to top button - Mejorado con icono SVG */
+    /* Scroll to top button - Flecha más grande */
     #scrollToTop {
       position: fixed;
       bottom: 40px;
@@ -461,8 +472,8 @@
       color: var(--black);
       border: none;
       border-radius: 50%;
-      width: 70px; /* Aumentado */
-      height: 70px; /* Aumentado */
+      width: 70px;
+      height: 70px;
       font-size: 1.8rem;
       cursor: pointer;
       display: flex;
@@ -485,12 +496,12 @@
       outline-offset: 2px;
     }
     #scrollToTop svg {
-      width: 70%; /* Aumentado */
-      height: 70%; /* Aumentado */
+      width: 40%; /* Flecha más grande */
+      height: 40%;
     }
     #scrollToTop path {
       stroke: var(--black);
-      stroke-width: 2;
+      stroke-width: 3; /* Trazo más grueso */
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -594,9 +605,8 @@
       #scrollToTop {
         bottom: 20px;
         right: 20px;
-        width: 60px; /* Tamaño proporcional */
+        width: 60px;
         height: 60px;
-        font-size: 1.5rem;
       }
       .bio {
         padding: 1.5rem;
@@ -604,12 +614,13 @@
       form {
         padding: 1.5rem;
       }
-      footer p {
-        gap: 8px;
+      .legal-item {
+        gap: 12px;
+        margin-bottom: 1.5rem;
       }
-      footer .icon {
-        width: 20px;
-        height: 20px;
+      .legal-icon {
+        width: 24px;
+        height: 24px;
       }
     }
     
@@ -862,36 +873,52 @@
   </section>
 
   <footer>
-    <p>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M14 9.75C14 9.75 14.5 9 12 9C9.5 9 9 9.75 9 9.75M14 14.25C14 14.25 14.5 15 12 15C9.5 15 9 14.25 9 14.25M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados
-    </p>
-    <p>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.
-    </p>
-    <p>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M14 8H7M14 12H7M3 20H21M3 4H21M4 4V16C4 16.5523 4.44772 17 5 17H19C19.5523 17 20 16.5523 20 16V4M6 20V17.5M18 20V17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.
-    </p>
-    <p>
-      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 15V17M8 11V8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V11M8 11H16M8 11H5M16 11H19M5 11V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V11H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.
-    </p>
+    <div class="legal-info">
+      <div class="legal-item">
+        <svg class="legal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 9.75C14 9.75 14.5 9 12 9C9.5 9 9 9.75 9 9.75M14 14.25C14 14.25 14.5 15 12 15C9.5 15 9 14.25 9 14.25M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="legal-text">
+          2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados
+        </div>
+      </div>
+      
+      <div class="legal-item">
+        <svg class="legal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="legal-text">
+          <span class="legal-title">Aviso Legal:</span>
+          Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.
+        </div>
+      </div>
+      
+      <div class="legal-item">
+        <svg class="legal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 8H7M14 12H7M3 20H21M3 4H21M4 4V16C4 16.5523 4.44772 17 5 17H19C19.5523 17 20 16.5523 20 16V4M6 20V17.5M18 20V17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="legal-text">
+          <span class="legal-title">Marca Registrada:</span>
+          El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.
+        </div>
+      </div>
+      
+      <div class="legal-item">
+        <svg class="legal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 15V17M8 11V8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V11M8 11H16M8 11H5M16 11H19M5 11V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V11H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="legal-text">
+          <span class="legal-title">Protección Legal:</span>
+          Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.
+        </div>
+      </div>
+    </div>
   </footer>
 
   <button id="scrollToTop" aria-label="Subir al inicio">
     <!-- Icono SVG de flecha hacia arriba - MEJORADO -->
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
