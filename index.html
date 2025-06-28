@@ -449,9 +449,11 @@
     }
     
     .youtube-btn:hover {
+      color: var(--diamond);
+      border-color: var(--diamond);
+      background: linear-gradient(135deg, var(--youtube-dark), var(--youtube-red));
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
-      border-color: rgba(255, 255, 255, 0.5);
     }
     
     .youtube-btn:hover::before {
@@ -911,6 +913,172 @@
       transform: scale(1.2) rotate(5deg);
     }
 
+    /* NUEVAS SECCIONES */
+    /* Sección de Proyectos Destacados */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .project-card {
+      background: rgba(15, 15, 15, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.4),
+        inset 0 0 10px rgba(0, 0, 0, 0.7);
+      transition: transform var(--transition-time) var(--ease-in-out-quart);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+    }
+    
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--gold);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-title {
+      font-size: 1.4rem;
+      color: var(--diamond);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .project-description {
+      color: var(--light-text);
+      margin-bottom: 1.2rem;
+    }
+    
+    .project-link {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      color: var(--black);
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+    }
+    
+    .project-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+    }
+    
+    /* Sección de Estadísticas */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 4rem auto;
+      max-width: 900px;
+    }
+    
+    .stat-card {
+      text-align: center;
+      background: rgba(15, 15, 15, 0.9);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.4),
+        inset 0 0 10px rgba(0, 0, 0, 0.7);
+      transition: transform var(--transition-time) var(--ease-in-out-quart);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--diamond);
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--light-text);
+    }
+    
+    /* Sección de Filosofía Artística */
+    .philosophy {
+      background: rgba(15, 15, 15, 0.9);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+      margin: 4rem auto;
+      max-width: 900px;
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
+    }
+    
+    .philosophy h3 {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .philosophy-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .principle {
+      background: rgba(0,0,0,0.5);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    .principle i {
+      font-size: 2.5rem;
+      color: var(--diamond);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .principle h4 {
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    
+    .principle p {
+      color: var(--light-text);
+      line-height: 1.7;
+    }
+    
     /* Animaciones */
     @keyframes fadeInUp {
       0% {
@@ -1116,6 +1284,14 @@
         padding: 1rem 2rem;
         font-size: 1.1rem;
       }
+      
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
     @media (max-width: 600px) {
@@ -1153,6 +1329,10 @@
         padding: 0.9rem 1.8rem;
         font-size: 1rem;
       }
+      
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
     }
     
     /* Desactivar efectos en móviles */
@@ -1175,6 +1355,7 @@
     <nav aria-label="Navegación principal">
       <a href="#bio" aria-label="Ir a Biografía">Biografía</a>
       <a href="#musica" aria-label="Ir a Música">Música</a>
+      <a href="#proyectos" aria-label="Ir a Proyectos">Proyectos</a>
       <a href="#galeria" aria-label="Ir a Galería">Galería</a>
       <a href="#contacto" aria-label="Ir a Contacto">Contacto</a>
       <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar el blog">Blog <i class="fas fa-pencil-alt"></i></a>
@@ -1224,6 +1405,31 @@
     </div>
   </section>
 
+  <!-- Sección de Filosofía Artística -->
+  <section id="filosofia" aria-labelledby="filosofia-title">
+    <h2 id="filosofia-title">Filosofía Artística</h2>
+    <div class="philosophy">
+      <h3>Los pilares de mi creación musical</h3>
+      <div class="philosophy-content">
+        <div class="principle">
+          <i class="fas fa-heart"></i>
+          <h4>Pasión Auténtica</h4>
+          <p>Cada cover que creo nace de una conexión emocional genuina con la música. No recreo canciones, las reimagino con mi propia esencia.</p>
+        </div>
+        <div class="principle">
+          <i class="fas fa-microphone-alt"></i>
+          <h4>Innovación Vocal</h4>
+          <p>Experimentación constante con mi voz como instrumento. Uso la tecnología para expandir posibilidades, no para reemplazar la autenticidad.</p>
+        </div>
+        <div class="principle">
+          <i class="fas fa-users"></i>
+          <h4>Conexión Humana</h4>
+          <p>La música es un diálogo. Cada cover es una invitación a compartir emociones y experiencias con quienes me escuchan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="musica" aria-labelledby="musica-title">
     <h2 id="musica-title">Música</h2>
     <div class="music-video">
@@ -1241,6 +1447,60 @@
       <a href="https://youtube.com/@kxnoficial?si=K3yZgUsQy6bnZTw2" class="youtube-btn" target="_blank" rel="noopener noreferrer" aria-label="Suscríbete a mi canal de YouTube">
         <i class="fab fa-youtube"></i> Suscríbete
       </a>
+    </div>
+  </section>
+
+  <!-- Sección de Estadísticas -->
+  <section id="estadisticas" aria-labelledby="estadisticas-title">
+    <h2 id="estadisticas-title">Mi Impacto</h2>
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number" id="subscribers-count">0</div>
+        <div class="stat-label">Suscriptores</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="views-count">0</div>
+        <div class="stat-label">Reproducciones</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="covers-count">50+</div>
+        <div class="stat-label">Covers creados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="years-count">5+</div>
+        <div class="stat-label">Años creando</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Proyectos Destacados -->
+  <section id="proyectos" aria-labelledby="proyectos-title">
+    <h2 id="proyectos-title">Proyectos Destacados</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="https://i.postimg.cc/4x8C4m8H/project1.jpg" alt="Proyecto Vocal Evolution" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">Vocal Evolution</h3>
+          <p class="project-description">Serie de covers que muestran la evolución de mi técnica vocal a lo largo de los años.</p>
+          <a href="#" class="project-link">Ver proyecto</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://i.postimg.cc/3wGt0R3y/project2.jpg" alt="Proyecto Reimaginando Clásicos" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">Reimaginando Clásicos</h3>
+          <p class="project-description">Versiones únicas de canciones icónicas con arreglos vocales innovadores.</p>
+          <a href="#" class="project-link">Ver proyecto</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://i.postimg.cc/3NqWtL3T/project3.jpg" alt="Proyecto Sesiones Acústicas" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3 class="project-title">Sesiones Acústicas</h3>
+          <p class="project-description">Grabaciones íntimas que destacan la pureza vocal sin efectos digitales.</p>
+          <a href="#" class="project-link">Ver proyecto</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1545,7 +1805,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .social-section, .social-heading, .social-links a, footer p, .youtube-sub').forEach(el => {
+    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .social-section, .social-heading, .social-links a, footer p, .youtube-sub, .stat-card, .project-card, .philosophy').forEach(el => {
       observer.observe(el);
     });
 
@@ -1581,6 +1841,36 @@
         alert('Error de red. Por favor, verifica tu conexión e inténtalo de nuevo.');
       }
     });
+
+    // Animación de contadores
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        obj.innerHTML = value.toLocaleString() + "+";
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+    
+    // Iniciar contadores cuando la sección es visible
+    const statsSection = document.getElementById('estadisticas');
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateValue('subscribers-count', 0, 12500, 2000);
+          animateValue('views-count', 0, 350000, 2000);
+          statsObserver.disconnect();
+        }
+      });
+    });
+    
+    statsObserver.observe(statsSection);
   </script>
 </body>
 </html>
