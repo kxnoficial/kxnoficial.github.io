@@ -39,6 +39,8 @@
       --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
       --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
       --current-height: 500px; /* Variable para altura dinámica */
+      --youtube-red: #ff0000;
+      --youtube-dark: #cc0000;
     }
     
     /* Reseteo y estilos base */
@@ -403,6 +405,62 @@
       height: 100%;
       border: none;
       display: block;
+    }
+    
+    /* Botón de Suscripción a YouTube */
+    .youtube-sub {
+      text-align: center;
+      margin-top: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.5s var(--ease-out-quart) forwards;
+    }
+    
+    .youtube-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, var(--youtube-red), var(--youtube-dark));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      text-transform: uppercase;
+    }
+    
+    .youtube-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: var(--transition-time) var(--ease-in-out-quart);
+    }
+    
+    .youtube-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .youtube-btn:hover::before {
+      left: 100%;
+    }
+    
+    .youtube-btn:focus-visible {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
     }
     
     /* Formulario premium */
@@ -1053,6 +1111,11 @@
       .carousel {
         min-height: 350px;
       }
+      
+      .youtube-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
     }
     
     @media (max-width: 600px) {
@@ -1084,6 +1147,11 @@
       
       .carousel {
         min-height: 300px;
+      }
+      
+      .youtube-btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
       }
     }
     
@@ -1166,6 +1234,13 @@
         title="Playlist de KxN en YouTube"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       ></iframe>
+    </div>
+    
+    <!-- Botón de Suscripción a YouTube añadido aquí -->
+    <div class="youtube-sub">
+      <a href="https://youtube.com/@kxnoficial?si=K3yZgUsQy6bnZTw2" class="youtube-btn" target="_blank" rel="noopener noreferrer" aria-label="Suscríbete a mi canal de YouTube">
+        <i class="fab fa-youtube"></i> Suscríbete
+      </a>
     </div>
   </section>
 
@@ -1470,7 +1545,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .social-section, .social-heading, .social-links a, footer p').forEach(el => {
+    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .social-section, .social-heading, .social-links a, footer p, .youtube-sub').forEach(el => {
       observer.observe(el);
     });
 
