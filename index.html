@@ -25,7 +25,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Variables CSS */
     :root {
       --black: #0b0b0b;
       --white: #ffffff;
@@ -44,7 +43,6 @@
       --focus-green: #4CAF50;
     }
     
-    /* Reseteo y estilos base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -64,7 +62,6 @@
       position: relative;
     }
     
-    /* Estilos de encabezado mejorados */
     header {
       text-align: center;
       padding: 5rem 1rem;
@@ -88,7 +85,6 @@
       z-index: 1;
     }
     
-    /* Animación de diamantes flotantes */
     .diamond-bg {
       position: absolute;
       top: 0;
@@ -179,7 +175,6 @@
       border-radius: 30px;
     }
     
-    /* Navegación premium */
     nav {
       display: flex;
       justify-content: center;
@@ -219,19 +214,19 @@
       transition: var(--transition-time) var(--ease-in-out-quart);
     }
     
-    nav a:hover {
+    nav a:hover, nav a:focus {
       color: var(--diamond);
       border-color: var(--diamond);
       background: rgba(185, 242, 255, 0.15);
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      outline: none;
     }
     
     nav a:hover::before {
       left: 100%;
     }
     
-    /* Secciones premium */
     section {
       padding: 5rem 1rem;
       max-width: 1000px;
@@ -404,9 +399,9 @@
       height: 100%;
       border: none;
       display: block;
+      loading: lazy;
     }
     
-    /* Botón de Suscripción a YouTube */
     .youtube-sub {
       text-align: center;
       margin-top: 2.5rem;
@@ -447,10 +442,11 @@
       transition: var(--transition-time) var(--ease-in-out-quart);
     }
     
-    .youtube-btn:hover {
+    .youtube-btn:hover, .youtube-btn:focus {
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
       border-color: rgba(255, 255, 255, 0.5);
+      outline: none;
     }
     
     .youtube-btn:hover::before {
@@ -462,7 +458,6 @@
       outline-offset: 2px;
     }
     
-    /* Formulario premium */
     form {
       display: grid;
       gap: 1.5rem;
@@ -547,9 +542,10 @@
       transition: var(--transition-time) var(--ease-in-out-quart);
     }
     
-    button:hover {
+    button:hover, button:focus {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(212, 175, 55, 0.7);
+      outline: none;
     }
     
     button:focus-visible {
@@ -575,7 +571,18 @@
       background: rgba(0, 0, 0, 0.5);
     }
     
-    /* Footer premium */
+    .form-loading {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-loading i {
+      font-size: 2rem;
+      color: var(--diamond);
+      animation: rotate 1.5s linear infinite;
+    }
+    
     footer {
       background: #000;
       color: #ccc;
@@ -624,7 +631,6 @@
       animation: pulse 2s infinite;
     }
 
-    /* Carrusel premium */
     .carousel-container {
       max-width: 900px;
       margin: 4rem auto;
@@ -721,12 +727,18 @@
       transform: none;
     }
     
-    .carousel-buttons button:hover {
+    .carousel-buttons button:hover, .carousel-buttons button:focus {
       background: rgba(212, 175, 55, 0.4);
       color: var(--diamond);
       transform: scale(1.15);
       opacity: 1;
       border-color: var(--diamond);
+      outline: none;
+    }
+
+    .carousel-buttons button:focus {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
     }
 
     .carousel-indicators {
@@ -758,7 +770,20 @@
       animation: pulse 1.5s infinite;
     }
 
-    /* Botón de scroll premium */
+    .carousel-pagination {
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8);
+      z-index: 10;
+      opacity: 0.9;
+    }
+
     #scrollToTop {
       position: fixed;
       bottom: 40px;
@@ -780,6 +805,7 @@
       opacity: 0;
       transform: translateY(20px) scale(0.8);
       font-weight: bold;
+      lang: es;
     }
     
     #scrollToTop.visible {
@@ -787,10 +813,11 @@
       transform: translateY(0) scale(1);
     }
     
-    #scrollToTop:hover {
+    #scrollToTop:hover, #scrollToTop:focus {
       transform: scale(1.15) rotate(360deg);
       box-shadow: 0 0 40px rgba(185, 242, 255, 0.9);
       opacity: 1;
+      outline: none;
     }
     
     #scrollToTop:focus-visible {
@@ -798,7 +825,6 @@
       outline-offset: 2px;
     }
 
-    /* Nueva sección: Mi Decisión Digital */
     .digital-decision {
       background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
       padding: 6rem 1rem;
@@ -936,7 +962,6 @@
       color: var(--light-text);
     }
     
-    /* Contador infinito */
     .infinite-counter {
       position: relative;
       padding: 2.5rem;
@@ -980,7 +1005,6 @@
       z-index: 2;
     }
 
-    /* Animaciones */
     @keyframes fadeInUp {
       0% {
         opacity: 0;
@@ -1099,7 +1123,6 @@
       }
     }
     
-    /* Efecto de partículas premium */
     .particles {
       position: fixed;
       top: 0;
@@ -1117,7 +1140,6 @@
       animation: float 20s infinite linear;
     }
     
-    /* Reducción de movimiento para accesibilidad */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
@@ -1130,7 +1152,6 @@
       }
     }
 
-    /* Responsive design premium */
     @media (max-width: 900px) {
       header {
         padding: 4rem 1rem;
@@ -1193,6 +1214,10 @@
       .counter-display {
         font-size: 3.5rem;
       }
+
+      .carousel-pagination {
+        bottom: 50px;
+      }
     }
     
     @media (max-width: 600px) {
@@ -1215,6 +1240,11 @@
       
       .carousel-indicators {
         bottom: 15px;
+      }
+
+      .carousel-pagination {
+        bottom: 40px;
+        font-size: 1rem;
       }
       
       .carousel {
@@ -1259,7 +1289,6 @@
     </nav>
   </header>
 
-  <!-- Sección: Mi Decisión Digital -->
   <div class="digital-decision" id="decision-digital">
     <div class="decision-container">
       <div class="decision-card">
@@ -1360,6 +1389,9 @@
           <div class="indicator" role="tab" aria-selected="false" data-index="1" aria-label="Imagen 2"></div>
           <div class="indicator" role="tab" aria-selected="false" data-index="2" aria-label="Imagen 3"></div>
         </div>
+        <div class="carousel-pagination" aria-hidden="true">
+          <span id="current-slide">1</span>/<span id="total-slides">3</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1409,6 +1441,10 @@
         Enviar mensaje
       </button>
       
+      <div class="form-loading" id="form-loading">
+        <i class="fas fa-spinner"></i>
+      </div>
+      
       <div class="confirmation" id="confirmation-message">
         Gracias por tu mensaje. Te responderé pronto 🚀
       </div>
@@ -1435,9 +1471,14 @@
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
     const indicators = document.querySelectorAll('.indicator');
+    const currentSlideElement = document.getElementById('current-slide');
+    const totalSlidesElement = document.getElementById('total-slides');
     let currentIndex = 0;
     let slideInterval;
     const slideDuration = 6000;
+    
+    // Inicializar paginación
+    totalSlidesElement.textContent = slides.length;
     
     // Función para calcular altura basada en la imagen
     function calculateHeight() {
@@ -1482,6 +1523,9 @@
         indicator.setAttribute('aria-selected', isActive);
         indicator.setAttribute('tabindex', isActive ? '0' : '-1');
       });
+      
+      // Actualizar paginación
+      currentSlideElement.textContent = index + 1;
       
       calculateHeight();
       
@@ -1637,11 +1681,18 @@
     // Formulario premium con fetch
     const contactForm = document.getElementById('contact-form');
     const confirmation = document.getElementById('confirmation-message');
+    const formLoading = document.getElementById('form-loading');
     
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const formData = new FormData(contactForm);
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      
+      // Mostrar spinner y deshabilitar botón
+      formLoading.style.display = 'block';
+      submitButton.disabled = true;
+      confirmation.style.display = 'none';
       
       try {
         const response = await fetch('https://formspree.io/f/xrbkoowp', {
@@ -1664,6 +1715,10 @@
         }
       } catch (error) {
         alert('Error de red. Por favor, verifica tu conexión e inténtalo de nuevo.');
+      } finally {
+        // Ocultar spinner y habilitar botón
+        formLoading.style.display = 'none';
+        submitButton.disabled = false;
       }
     });
     
