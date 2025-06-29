@@ -317,7 +317,6 @@
       align-self: center;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
       transition: transform var(--transition-time) var(--ease-in-out-quart);
-      /* Eliminado aspect-ratio: 4/3; */
       background-color: rgba(0, 0, 0, 0.2); /* Fondo para fotos verticales */
       padding: 5px; /* Espacio interno */
       opacity: 0;
@@ -802,113 +801,118 @@
       outline: 3px solid var(--diamond);
       outline-offset: 2px;
     }
-
-    /* Sección de redes sociales premium */
-    .social-section {
-      font-family: 'Montserrat', sans-serif;
+    
+    /* Sección de enfoque en YouTube */
+    .youtube-focus {
+      background: linear-gradient(to bottom, #111, #000);
+      padding: 5rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .youtube-focus::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+      animation: shimmer 15s infinite linear;
+      z-index: 1;
+    }
+    
+    .focus-container {
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
-      margin: 3rem auto;
-      max-width: 900px;
-      padding: 0 1rem;
       position: relative;
       z-index: 2;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
       animation: fadeInUp 0.8s 0.2s var(--ease-out-quart) forwards;
     }
     
-    .social-heading {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1.7rem;
-      color: var(--gold);
-      letter-spacing: 3px;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 10px;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards;
+    .focus-content {
+      background: rgba(15, 15, 15, 0.9);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.7);
+      margin-top: 2rem;
+      backdrop-filter: blur(5px);
     }
     
-    .social-heading::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 70%;
-      height: 3px;
-      margin: 0 auto;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      transform-origin: center;
-      animation: scaleXIn 0.6s 0.5s var(--ease-out-quart) forwards;
+    .focus-icon {
+      font-size: 4rem;
+      color: var(--youtube-red);
+      margin-bottom: 1.5rem;
+      display: block;
+      animation: pulse 2s infinite;
     }
     
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 35px;
-      margin-top: 1rem;
-    }
-    
-    .social-links a {
+    .focus-content p {
+      font-size: clamp(1.05rem, 2.5vw, 1.1rem);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      text-align: center;
       color: var(--light-text);
-      text-decoration: none;
-      padding: 10px 0;
-      position: relative;
-      transition: all 0.25s var(--ease-in-out-quart);
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 500;
-      font-size: 1.1rem;
       opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.6s var(--ease-out-quart) forwards;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
     }
     
-    .social-links a:nth-child(1) { animation-delay: 0.4s; }
-    .social-links a:nth-child(2) { animation-delay: 0.5s; }
-    .social-links a:nth-child(3) { animation-delay: 0.6s; }
-    .social-links a:nth-child(4) { animation-delay: 0.7s; }
-    .social-links a:nth-child(5) { animation-delay: 0.8s; }
-    .social-links a:nth-child(6) { animation-delay: 0.9s; }
+    .focus-content p:nth-child(1) { animation-delay: 0.3s; }
+    .focus-content p:nth-child(2) { animation-delay: 0.4s; }
+    .focus-content p:nth-child(3) { animation-delay: 0.5s; }
     
-    .social-links a::after {
+    .focus-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, var(--youtube-red), var(--youtube-dark));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.6s var(--ease-out-quart) forwards;
+    }
+    
+    .focus-btn::before {
       content: '';
       position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--gold);
-      transition: width 0.25s var(--ease-in-out-quart);
-    }
-    
-    .social-links a:hover {
-      color: var(--gold);
-      transform: translateY(-5px);
-    }
-    
-    .social-links a:hover::after {
+      top: 0;
+      left: -100%;
       width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: var(--transition-time) var(--ease-in-out-quart);
     }
     
-    .social-icon {
-      font-size: 1.3rem;
-      color: var(--gold);
-      transition: transform 0.3s var(--ease-in-out-quart);
+    .focus-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
+      border-color: rgba(255, 255, 255, 0.5);
     }
     
-    .social-links a:hover .social-icon {
-      transform: scale(1.2) rotate(5deg);
+    .focus-btn:hover::before {
+      left: 100%;
     }
 
     /* Animaciones */
@@ -1104,17 +1108,17 @@
         padding: 2rem;
       }
       
-      .social-links {
-        gap: 25px;
-      }
-      
       .carousel {
         min-height: 350px;
       }
       
-      .youtube-btn {
+      .youtube-btn, .focus-btn {
         padding: 1rem 2rem;
         font-size: 1.1rem;
+      }
+      
+      .focus-content {
+        padding: 2rem;
       }
     }
     
@@ -1123,11 +1127,6 @@
         flex-direction: column;
         align-items: center;
         gap: 0.8rem;
-      }
-      
-      .social-links {
-        flex-direction: column;
-        gap: 15px;
       }
       
       .bio p {
@@ -1149,9 +1148,13 @@
         min-height: 300px;
       }
       
-      .youtube-btn {
+      .youtube-btn, .focus-btn {
         padding: 0.9rem 1.8rem;
         font-size: 1rem;
+      }
+      
+      .focus-content {
+        padding: 1.5rem;
       }
     }
     
@@ -1181,28 +1184,19 @@
     </nav>
   </header>
 
-  <!-- Sección de Redes Sociales premium -->
-  <div class="social-section">
-    <h3 class="social-heading">Conecta con KxN</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/kxnoficial?igsh=ajJsbWk5MWR4Y3Jx" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-instagram social-icon"></i> Instagram
-      </a>
-      <a href="https://www.tiktok.com/@kxnoficial?_t=ZN-8xXVtqYjZXK&_r=1" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-tiktok social-icon"></i> TikTok
-      </a>
-      <a href="https://x.com/kxnoficial?s=09" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-x-twitter social-icon"></i> X
-      </a>
-      <a href="https://www.facebook.com/share/1Atd4ygnNc/" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-facebook social-icon"></i> Facebook
-      </a>
-      <a href="https://www.threads.net/@kxnoficial" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-threads social-icon"></i> Threads
-      </a>
-      <a href="https://bsky.app/profile/kxnoficial.com" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-cloud social-icon"></i> Bluesky
-      </a>
+  <!-- Sección de enfoque en YouTube -->
+  <div class="youtube-focus">
+    <div class="focus-container">
+      <h2>Mi Enfoque en YouTube</h2>
+      <div class="focus-content">
+        <i class="fas fa-bullseye focus-icon"></i>
+        <p>He tomado la decisión consciente de retirarme de otras redes sociales para enfocarme completamente en lo que más me apasiona: <span class="highlight">crear música</span>. Estas plataformas, aunque valiosas, demandaban demasiado tiempo y energía que ahora dedico a perfeccionar mi arte y conectar con ustedes a través de mi música.</p>
+        <p>YouTube es mi plataforma elegida porque me permite compartir mi trabajo de la forma más auténtica y directa. Es aquí donde mi voz y mis creaciones encuentran su hogar, y donde puedo interactuar con quienes realmente valoran mi arte.</p>
+        <p>Si deseas seguir mi trayectoria, estar al tanto de mis nuevos covers y apoyar mi música, te invito a suscribirte a mi canal. Es el único lugar donde publico contenido regularmente y donde podremos mantenernos conectados.</p>
+        <a href="https://youtube.com/@kxnoficial?si=K3yZgUsQy6bnZTw2" class="focus-btn" target="_blank" rel="noopener noreferrer" aria-label="Suscríbete a mi canal de YouTube">
+          <i class="fab fa-youtube"></i> Suscríbete en YouTube
+        </a>
+      </div>
     </div>
   </div>
 
@@ -1545,7 +1539,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .social-section, .social-heading, .social-links a, footer p, .youtube-sub').forEach(el => {
+    document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, footer p, .youtube-sub, .focus-container, .focus-content p, .focus-btn').forEach(el => {
       observer.observe(el);
     });
 
