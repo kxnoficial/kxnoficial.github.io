@@ -167,6 +167,678 @@
       border-radius: 30px;
     }
     
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 3rem 0 1.5rem;
+      position: relative;
+      z-index: 3;
+    }
+    
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      padding: 0.8rem 1.8rem;
+      border: 2px solid transparent;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.8s 0.5s var(--ease-out-quart) both;
+      transform-origin: center;
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(5px);
+      font-size: 1.1rem;
+    }
+    
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+      transition: var(--transition-time) var(--ease-in-out-quart);
+    }
+    
+    nav a:hover, nav a:focus {
+      color: var(--diamond);
+      border-color: var(--diamond);
+      background: rgba(185, 242, 255, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      outline: none;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    section {
+      padding: 5rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s var(--ease-out-quart) forwards;
+    }
+    
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      color: var(--gold);
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards;
+      font-weight: 600;
+      padding-bottom: 1rem;
+    }
+    
+    h2::after {
+      content: "";
+      display: block;
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      margin: 1.5rem auto 0;
+      border-radius: 4px;
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: center;
+      animation: scaleIn 0.6s 0.5s var(--ease-out-quart) forwards;
+    }
+    
+    .bio {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      background: rgba(15, 15, 15, 0.9);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
+      backdrop-filter: blur(5px);
+    }
+    
+    .bio::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+      z-index: -1;
+      animation: rotate 20s linear infinite, pulseOpacity 8s infinite alternate;
+    }
+    
+    .bio img {
+      width: 100%;
+      max-width: 400px;
+      border: 4px solid var(--gold);
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      object-fit: contain;
+      align-self: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      transition: transform var(--transition-time) var(--ease-in-out-quart);
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 5px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.6s var(--ease-out-quart) forwards;
+    }
+    
+    .bio img:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+    
+    .bio p {
+      font-size: clamp(1.05rem, 2.5vw, 1.1rem);
+      line-height: 1.8;
+      position: relative;
+      z-index: 2;
+      color: var(--light-text);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.8s var(--ease-out-quart) forwards;
+      text-align: justify;
+      hyphens: auto;
+    }
+    
+    .bio p:nth-child(3) {
+      text-align: left !important;
+      hyphens: none;
+    }
+    
+    .bio p:nth-child(1) { animation-delay: 0.5s; }
+    .bio p:nth-child(2) { animation-delay: 0.6s; }
+    .bio p:nth-child(3) { animation-delay: 0.7s; }
+    .bio p:nth-child(4) { animation-delay: 0.8s; }
+    .bio p:nth-child(5) { animation-delay: 0.9s; }
+    
+    .highlight {
+      color: var(--gold);
+      font-weight: 600;
+      font-style: italic;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      position: relative;
+      display: inline-block;
+      padding: 0 0.2rem;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--diamond);
+      transition: width 0.6s var(--ease-in-out-quart);
+    }
+    
+    .highlight:hover::after {
+      width: 100%;
+    }
+    
+    .music-video {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+      transition: transform var(--transition-time) var(--ease-in-out-quart);
+      aspect-ratio: 16/9;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards, 
+                 scaleIn 0.8s 0.4s var(--ease-out-quart) forwards;
+      border: 3px solid var(--gold);
+    }
+    
+    .music-video:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
+    }
+    
+    .music-video iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      loading: lazy;
+    }
+    
+    .youtube-sub {
+      text-align: center;
+      margin-top: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.5s var(--ease-out-quart) forwards;
+    }
+    
+    .youtube-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, var(--youtube-red), var(--youtube-dark));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      text-transform: uppercase;
+    }
+    
+    .youtube-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: var(--transition-time) var(--ease-in-out-quart);
+    }
+    
+    .youtube-btn:hover, .youtube-btn:focus {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
+      border-color: rgba(255, 255, 255, 0.5);
+      outline: none;
+    }
+    
+    .youtube-btn:hover::before {
+      left: 100%;
+    }
+    
+    .youtube-btn:focus-visible {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
+    }
+    
+    form {
+      display: grid;
+      gap: 1.5rem;
+      background: rgba(15, 15, 15, 0.9);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.7);
+      max-width: 650px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.3s var(--ease-out-quart) forwards;
+      backdrop-filter: blur(5px);
+    }
+    
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    input, textarea {
+      padding: 1.2rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid var(--gold);
+      color: white;
+      font-family: inherit;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      border-radius: 10px;
+      font-size: 1.05rem;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
+    }
+    
+    input:nth-child(1) { animation-delay: 0.4s; }
+    input:nth-child(2) { animation-delay: 0.5s; }
+    textarea { animation-delay: 0.6s; }
+    
+    input:focus, textarea:focus {
+      border-color: var(--diamond);
+      outline: none;
+      box-shadow: 0 0 20px rgba(185, 242, 255, 0.7);
+      background: rgba(0, 0, 0, 0.9);
+      transform: translateY(-3px);
+    }
+    
+    input.invalid, textarea.invalid {
+      border-color: var(--error-red);
+      box-shadow: 0 0 15px rgba(255, 85, 85, 0.5);
+    }
+    
+    .error-message {
+      color: var(--error-red);
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.3s ease forwards;
+    }
+    
+    .error-message.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    button {
+      padding: 1.3rem;
+      background: linear-gradient(135deg, var(--gold), var(--diamond));
+      border: none;
+      font-weight: bold;
+      color: #111;
+      cursor: pointer;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      border-radius: 10px;
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      margin-top: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.8s 0.7s var(--ease-out-quart) forwards;
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+    
+    button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: var(--transition-time) var(--ease-in-out-quart);
+    }
+    
+    button:hover, button:focus {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.7);
+      outline: none;
+    }
+    
+    button:focus-visible {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
+    }
+    
+    button:hover::after {
+      left: 100%;
+    }
+    
+    .confirmation {
+      color: var(--diamond);
+      font-weight: bold;
+      margin-top: 1.5rem;
+      display: none;
+      text-align: center;
+      font-size: 1.3rem;
+      animation: pulse 2s infinite, fadeIn 0.5s ease;
+      text-shadow: 0 0 10px rgba(185, 242, 255, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .form-loading {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-loading i {
+      font-size: 2rem;
+      color: var(--diamond);
+      animation: rotate 1.5s linear infinite;
+    }
+    
+    footer {
+      background: #000;
+      color: #ccc;
+      font-size: 1rem;
+      padding: 3.5rem 1rem;
+      text-align: center;
+      line-height: 1.8;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s 0.5s var(--ease-out-quart) forwards;
+      margin-top: 4rem;
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+    }
+    
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--gold), var(--diamond));
+      transform-origin: left;
+      animation: scaleXIn 0.8s 0.7s var(--ease-out-quart) forwards;
+    }
+    
+    footer p {
+      margin-bottom: 1.2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.8s 0.8s var(--ease-out-quart) forwards;
+    }
+    
+    footer p:nth-child(1) { animation-delay: 0.5s; }
+    footer p:nth-child(2) { animation-delay: 0.6s; }
+    footer p:nth-child(3) { animation-delay: 0.7s; }
+    footer p:nth-child(4) { animation-delay: 0.8s; }
+    
+    footer i {
+      color: var(--gold);
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+
+    .carousel-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s var(--ease-out-quart) forwards;
+    }
+    
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 4px solid var(--gold);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.8);
+      min-height: 400px;
+      max-height: 70vh;
+      height: var(--current-height);
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      transition: transform 0.5s var(--ease-in-out-quart), height 0.7s var(--ease-in-out-quart);
+    }
+    
+    .carousel:hover {
+      transform: perspective(1000px) rotateX(1deg) rotateY(1deg);
+    }
+    
+    .carousel-images {
+      display: flex;
+      height: 100%;
+      transition: transform 0.7s var(--ease-in-out-quart);
+    }
+    
+    .slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+    
+    .carousel-images img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: all 0.5s var(--ease-in-out-quart);
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 5px;
+    }
+    
+    .carousel-images img:hover {
+      filter: brightness(1.1);
+      transform: scale(1.03);
+    }
+    
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    
+    .carousel-buttons button {
+      background: rgba(0,0,0,0.8);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-size: 2.2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      pointer-events: auto;
+      border-radius: 50%;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      user-select: none;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 2rem;
+      z-index: 10;
+      transform: scale(1);
+      opacity: 0.8;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    
+    .carousel-buttons button:hover, .carousel-buttons button:focus {
+      background: rgba(212, 175, 55, 0.4);
+      color: var(--diamond);
+      transform: scale(1.15);
+      opacity: 1;
+      border-color: var(--diamond);
+      outline: none;
+    }
+
+    .carousel-buttons button:focus {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 25px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      z-index: 10;
+    }
+    
+    .indicator {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      border: 1px solid transparent;
+    }
+    
+    .indicator.active {
+      background: var(--gold);
+      transform: scale(1.4);
+      border-color: var(--diamond);
+      box-shadow: 0 0 10px var(--gold);
+      animation: pulse 1.5s infinite;
+    }
+
+    .carousel-pagination {
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8);
+      z-index: 10;
+      opacity: 0.9;
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: linear-gradient(135deg, var(--gold), var(--diamond));
+      color: var(--black);
+      border: none;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.9);
+      transition: all var(--transition-time) var(--ease-in-out-quart);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px) scale(0.8);
+      font-weight: bold;
+      lang: es;
+    }
+    
+    #scrollToTop.visible {
+      opacity: 0.9;
+      transform: translateY(0) scale(1);
+    }
+    
+    #scrollToTop:hover, #scrollToTop:focus {
+      transform: scale(1.15) rotate(360deg);
+      box-shadow: 0 0 40px rgba(185, 242, 255, 0.9);
+      opacity: 1;
+      outline: none;
+    }
+    
+    #scrollToTop:focus-visible {
+      outline: 3px solid var(--diamond);
+      outline-offset: 2px;
+    }
+
     /* SECCIÓN REDES SOCIALES PREMIUM */
     .social-section {
       padding: 3rem 1rem;
@@ -346,19 +1018,95 @@
     .floating-2 { top: 20%; right: 15%; animation: float 25s infinite linear; }
     .floating-3 { bottom: 15%; left: 20%; animation: float 30s infinite linear; }
     
-    /* Resto del CSS... (manteniendo los estilos anteriores) */
-    
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-      position: relative;
-      z-index: 3;
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
-    /* ... (otros estilos permanecen iguales) ... */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    
+    @keyframes pulse {
+      0% { 
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
+      100% { 
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes floatImage {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 15px rgba(185, 242, 255, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 30px rgba(185, 242, 255, 0.8);
+      }
+    }
+    
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0.95);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes scaleXIn {
+      0% {
+        transform: scaleX(0);
+      }
+      100% {
+        transform: scaleX(1);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% {
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 0.4;
+      }
+    }
     
     @keyframes float {
       0% {
@@ -372,15 +1120,105 @@
       }
     }
     
-    /* ... (otros keyframes permanecen iguales) ... */
+    @keyframes floatDiamond {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
     
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: float 20s infinite linear;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .particles, .diamond-bg {
+        display: none;
+      }
+    }
+
     @media (max-width: 900px) {
-      .social-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      header {
+        padding: 4rem 1rem;
       }
       
-      .social-container {
+      nav {
+        gap: 1rem;
+      }
+      
+      nav a {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+      }
+      
+      section {
+        padding: 4rem 1rem;
+      }
+      
+      .carousel-buttons button {
+        width: 55px;
+        height: 55px;
+        margin: 0 1rem;
+        font-size: 1.8rem;
+      }
+      
+      footer {
+        padding: 2.5rem 1rem;
+        clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+      }
+      
+      #scrollToTop {
+        bottom: 25px;
+        right: 25px;
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+      }
+      
+      .bio, form, .social-container {
         padding: 2rem;
+      }
+      
+      .carousel {
+        min-height: 350px;
+      }
+      
+      .youtube-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+      
+      .social-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       }
       
       .social-icon {
@@ -398,6 +1236,41 @@
     }
     
     @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      
+      .bio p {
+        text-align: left;
+      }
+      
+      .carousel-buttons button {
+        width: 45px;
+        height: 45px;
+        margin: 0 0.5rem;
+        font-size: 1.5rem;
+      }
+      
+      .carousel-indicators {
+        bottom: 15px;
+      }
+
+      .carousel-pagination {
+        bottom: 40px;
+        font-size: 1rem;
+      }
+      
+      .carousel {
+        min-height: 300px;
+      }
+      
+      .youtube-btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+      }
+      
       .social-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
@@ -447,6 +1320,73 @@
       <a href="https://kxnoficial.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar el blog">Blog <i class="fas fa-pencil-alt"></i></a>
     </nav>
   </header>
+
+  <section id="bio" aria-labelledby="bio-title">
+    <h2 id="bio-title">Biografía</h2>
+    <div class="bio">
+      <img src="https://i.postimg.cc/rynPLV01/IMG-20250624-201119.jpg?format=webp&quality=80" alt="KxN grabando un cover en estudio" loading="lazy" />
+      <p><strong>Tomás Miguel Beby Díaz</strong><br>24 de diciembre de 1999<br>Santa Cruz de Tenerife, Islas Canarias</p>
+      
+      <p><span class="highlight">Desde 2008, cuando descubrí a Lady Gaga en YouTube, todo cambió para mí.</span> Desde ese momento tuve claro que quería ser cantante. He dejado de compararme con otros y empecé a disfrutar de la música por lo que es. <span class="highlight">Siempre habrá alguien que cante mejor, pero creo que lo importante es superarnos y luchar por nosotros mismos, no por ser mejores que nadie más.</span></p>
+      
+      <p><span class="highlight">Transformo canciones que me gustan en versiones propias, donde mi voz se mezcla con tecnología para crear algo diferente.</span> Me gusta jugar con la voz y buscar nuevas formas de interpretar sin perder la esencia original.</p>
+      <p><span class="highlight">Mis covers los grabo en mi cuarto.</span> No tengo un estudio profesional, pero le pongo muchas ganas para hacer el mejor trabajo posible con lo que sé y los recursos que tengo. Para mí, la música es un proceso personal de aprendizaje y disfrute, y eso es lo que intento transmitir en cada canción.</p>
+      <p><span class="highlight">Mi nombre artístico es <strong>KxN</strong>.</span><br>
+      La <strong>K</strong> representa la palabra “Karma”. Para mí, la música es una energía que damos y recibimos, un ciclo constante de emociones y conexiones que se reflejan en cada canción.<br>
+      La <strong>N</strong> simboliza la Nota, la base fundamental de toda melodía y expresión musical que intento capturar y reinventar.<br>
+      La <strong>x</strong> en medio es el punto donde el karma y la nota se encuentran, la unión entre lo emocional y lo técnico, entre lo humano y la tecnología.</p>
+    </div>
+  </section>
+
+  <section id="musica" aria-labelledby="musica-title">
+    <h2 id="musica-title">Música</h2>
+    <div class="music-video">
+      <iframe 
+        src="https://www.youtube.com/embed/videoseries?list=PLkrx55sRJ3VfAd4PUICoy4OKTE02s5aN6" 
+        allowfullscreen 
+        loading="lazy" 
+        title="Playlist de KxN en YouTube"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    </div>
+    
+    <div class="youtube-sub">
+      <a href="https://youtube.com/@kxnoficial?si=K3yZgUsQy6bnZTw2" class="youtube-btn" target="_blank" rel="noopener noreferrer" aria-label="Suscríbete a mi canal de YouTube">
+        <i class="fab fa-youtube"></i> Suscríbete
+      </a>
+    </div>
+  </section>
+
+  <section id="galeria" aria-labelledby="galeria-title">
+    <h2 id="galeria-title">Galería</h2>
+    <div class="carousel-container">
+      <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Galería de imágenes de KxN">
+        <div class="carousel-images" role="group" aria-live="polite">
+          <div class="slide">
+            <img src="https://i.postimg.cc/8kJQzX8f/Polish-20250623-124942947.jpg?format=webp&quality=80" alt="KxN en sesión fotográfica - Foto 1" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="https://i.postimg.cc/RFg8ZfdR/IMG-20250613-124908-347.webp?format=webp&quality=80" alt="KxN en estudio de grabación - Foto 2" loading="lazy" />
+          </div>
+          <div class="slide">
+            <img src="https://i.postimg.cc/053SKPWx/IMG-20250620-212554-786.webp?format=webp&quality=80" alt="KxN en concierto - Foto 3" loading="lazy" />
+          </div>
+        </div>
+        <div class="carousel-buttons">
+          <button id="prev" aria-label="Imagen anterior">&#10094;</button>
+          <button id="next" aria-label="Imagen siguiente">&#10095;</button>
+        </div>
+        <div class="carousel-indicators" role="tablist">
+          <div class="indicator active" role="tab" aria-selected="true" data-index="0" aria-label="Imagen 1"></div>
+          <div class="indicator" role="tab" aria-selected="false" data-index="1" aria-label="Imagen 2"></div>
+          <div class="indicator" role="tab" aria-selected="false" data-index="2" aria-label="Imagen 3"></div>
+        </div>
+        <div class="carousel-pagination" aria-hidden="true">
+          <span id="current-slide">1</span>/<span id="total-slides">3</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Sección de redes sociales premium -->
   <section id="social" class="social-section" aria-labelledby="social-title">
@@ -523,10 +1463,448 @@
     </div>
   </section>
 
-  <!-- Resto de las secciones... -->
-  
+  <section id="contacto" aria-labelledby="contacto-title">
+    <h2 id="contacto-title">Contacto</h2>
+    <form id="contact-form" action="https://formspree.io/f/xrbkoowp" method="POST">
+      <div class="input-group">
+        <label for="nombre" class="sr-only">Nombre completo</label>
+        <input 
+          type="text" 
+          id="nombre" 
+          name="nombre" 
+          placeholder="Tu nombre" 
+          required 
+          aria-required="true"
+          aria-describedby="error-nombre"
+        >
+        <div class="error-message" id="error-nombre" aria-live="polite"></div>
+      </div>
+      
+      <div class="input-group">
+        <label for="email" class="sr-only">Correo electrónico</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Tu correo" 
+          required 
+          aria-required="true" 
+          inputmode="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          aria-describedby="error-email"
+        >
+        <div class="error-message" id="error-email" aria-live="polite"></div>
+      </div>
+      
+      <div class="input-group">
+        <label for="mensaje" class="sr-only">Mensaje</label>
+        <textarea 
+          id="mensaje" 
+          name="mensaje" 
+          rows="6" 
+          placeholder="Tu mensaje..." 
+          required 
+          aria-required="true"
+          aria-describedby="error-mensaje"
+        ></textarea>
+        <div class="error-message" id="error-mensaje" aria-live="polite"></div>
+      </div>
+      
+      <button type="submit" aria-label="Enviar mensaje">
+        Enviar mensaje
+      </button>
+      
+      <div class="form-loading" id="form-loading">
+        <i class="fas fa-spinner"></i>
+      </div>
+      
+      <div class="confirmation" id="confirmation-message">
+        Gracias por tu mensaje. Te responderé pronto 🚀
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <p><i class="fas fa-copyright"></i> 2025 <strong>KxN</strong> (Tomás Miguel Beby Díaz) – Todos los derechos reservados</p>
+    <p><i class="fas fa-shield-alt"></i> <strong>Aviso Legal:</strong> Este sitio web y todo su contenido son propiedad exclusiva de Tomás Miguel Beby Díaz, quien desarrolla su actividad artística bajo el nombre <strong>KxN</strong>. La voz y la interpretación vocal son propiedad del autor, mientras que las instrumentales utilizadas corresponden a otros artistas y no son de su autoría.</p>
+    <p><i class="fas fa-scale-balanced"></i> El nombre artístico "<strong>KxN</strong>" es una marca de facto en uso desde 2025 y representa la identidad artística de su creador. Cualquier uso no autorizado está prohibido.</p>
+    <p><i class="fas fa-lock"></i> Sitio protegido por derechos de autor y leyes de propiedad intelectual internacionales.</p>
+  </footer>
+
+  <button id="scrollToTop" aria-label="Subir al inicio" lang="es">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <script>
-    // ... (el script permanece igual) ...
+    // ========================
+    // MÓDULO DE CARRUSEL
+    // ========================
+    const carouselModule = (() => {
+      const carousel = document.querySelector('.carousel');
+      const carouselImages = document.querySelector('.carousel-images');
+      const slides = carouselImages.querySelectorAll('.slide');
+      const images = carouselImages.querySelectorAll('.slide img');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const indicators = document.querySelectorAll('.indicator');
+      const currentSlideElement = document.getElementById('current-slide');
+      const totalSlidesElement = document.getElementById('total-slides');
+      let currentIndex = 0;
+      let slideInterval;
+      const slideDuration = 6000;
+      
+      // Inicializar paginación
+      totalSlidesElement.textContent = slides.length;
+      
+      // Calcular altura basada en la imagen
+      const calculateHeight = () => {
+        const activeImage = images[currentIndex];
+        if (!activeImage) return;
+        
+        const aspectRatio = activeImage.naturalWidth / activeImage.naturalHeight;
+        let newHeight;
+        
+        if (aspectRatio > 1.5) {
+          newHeight = Math.min(70 * window.innerHeight / 100, 500);
+        } else if (aspectRatio > 1) {
+          newHeight = Math.min(75 * window.innerHeight / 100, 550);
+        } else {
+          newHeight = Math.min(85 * window.innerHeight / 100, 650);
+        }
+        
+        document.documentElement.style.setProperty('--current-height', `${newHeight}px`);
+      }
+      
+      // Mostrar imagen específica
+      const showImage = (index) => {
+        if(index < 0) index = slides.length - 1;
+        else if(index >= slides.length) index = 0;
+
+        carouselImages.style.transform = `translateX(${-index * 100}%)`;
+        currentIndex = index;
+        
+        indicators.forEach((indicator, i) => {
+          const isActive = i === index;
+          indicator.classList.toggle('active', isActive);
+          indicator.setAttribute('aria-selected', isActive);
+          indicator.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+        
+        currentSlideElement.textContent = index + 1;
+        calculateHeight();
+        if (images[index]) {
+          carousel.setAttribute('aria-label', `Imagen ${index + 1} de ${slides.length}: ${images[index].alt}`);
+        }
+      }
+
+      // Navegación
+      const nextImage = () => showImage(currentIndex + 1);
+      const prevImage = () => showImage(currentIndex - 1);
+      
+      // Manejo de intervalo
+      const startInterval = () => slideInterval = setInterval(nextImage, slideDuration);
+      const stopInterval = () => clearInterval(slideInterval);
+      const resetInterval = () => {
+        stopInterval();
+        startInterval();
+      }
+
+      // Inicializar eventos
+      const initEvents = () => {
+        nextBtn.addEventListener('click', () => {
+          nextImage();
+          resetInterval();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+          prevImage();
+          resetInterval();
+        });
+
+        indicators.forEach(indicator => {
+          indicator.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            stopInterval();
+            showImage(index);
+            startInterval();
+          });
+          
+          indicator.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              const index = parseInt(e.target.getAttribute('data-index'));
+              stopInterval();
+              showImage(index);
+              startInterval();
+            }
+          });
+        });
+
+        carousel.addEventListener('mouseenter', stopInterval);
+        carousel.addEventListener('mouseleave', startInterval);
+        carousel.addEventListener('focusin', stopInterval);
+        carousel.addEventListener('focusout', startInterval);
+      }
+
+      // Inicializar
+      const init = () => {
+        images.forEach(img => {
+          img.onload = function() {
+            if (this === images[currentIndex]) calculateHeight();
+          };
+          if (img.complete) img.onload();
+        });
+        
+        window.addEventListener('resize', calculateHeight);
+        initEvents();
+        showImage(0);
+        startInterval();
+      }
+
+      return { init };
+    })();
+
+    // ========================
+    // MÓDULO DE FORMULARIO
+    // ========================
+    const formModule = (() => {
+      const contactForm = document.getElementById('contact-form');
+      const confirmation = document.getElementById('confirmation-message');
+      const formLoading = document.getElementById('form-loading');
+      const errorMessages = {
+        nombre: document.getElementById('error-nombre'),
+        email: document.getElementById('error-email'),
+        mensaje: document.getElementById('error-mensaje')
+      };
+      
+      // Validación de campos
+      const validateField = (fieldId, errorId, validator) => {
+        const field = document.getElementById(fieldId);
+        const errorElement = errorMessages[fieldId];
+        
+        if (!validator(field.value)) {
+          field.classList.add('invalid');
+          errorElement.textContent = getErrorMessage(fieldId);
+          errorElement.classList.add('show');
+          return false;
+        } else {
+          field.classList.remove('invalid');
+          errorElement.classList.remove('show');
+          return true;
+        }
+      }
+      
+      // Mensajes de error
+      const getErrorMessage = (fieldId) => {
+        switch(fieldId) {
+          case 'nombre': 
+            return 'Por favor, ingresa tu nombre completo';
+          case 'email': 
+            return 'Por favor, ingresa un correo válido (ejemplo@dominio.com)';
+          case 'mensaje': 
+            return 'Por favor, escribe un mensaje de al menos 10 caracteres';
+          default:
+            return 'Campo inválido';
+        }
+      }
+      
+      // Validadores
+      const validators = {
+        nombre: value => value.trim().length >= 3,
+        email: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+        mensaje: value => value.trim().length >= 10
+      };
+      
+      // Validación en tiempo real
+      const initFieldValidation = () => {
+        ['nombre', 'email', 'mensaje'].forEach(fieldId => {
+          const field = document.getElementById(fieldId);
+          field.addEventListener('input', () => {
+            validateField(fieldId, `error-${fieldId}`, validators[fieldId]);
+          });
+        });
+      }
+      
+      // Validar todo el formulario
+      const validateForm = () => {
+        let isValid = true;
+        
+        ['nombre', 'email', 'mensaje'].forEach(fieldId => {
+          if (!validateField(fieldId, `error-${fieldId}`, validators[fieldId])) {
+            isValid = false;
+          }
+        });
+        
+        return isValid;
+      }
+      
+      // Enviar formulario
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        if (!validateForm()) return;
+        
+        const formData = new FormData(contactForm);
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        
+        formLoading.style.display = 'block';
+        submitButton.disabled = true;
+        confirmation.style.display = 'none';
+        
+        try {
+          const response = await fetch('https://formspree.io/f/xrbkoowp', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            confirmation.style.display = 'block';
+            contactForm.reset();
+            
+            setTimeout(() => {
+              confirmation.style.display = 'none';
+            }, 6000);
+          } else {
+            alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+          }
+        } catch (error) {
+          alert('Error de red. Por favor, verifica tu conexión e inténtalo de nuevo.');
+        } finally {
+          formLoading.style.display = 'none';
+          submitButton.disabled = false;
+        }
+      }
+      
+      // Inicializar
+      const init = () => {
+        initFieldValidation();
+        contactForm.addEventListener('submit', handleSubmit);
+      }
+      
+      return { init };
+    })();
+
+    // ========================
+    // MÓDULO DE EFECTOS VISUALES
+    // ========================
+    const visualEffectsModule = (() => {
+      // Botón de scroll
+      const scrollBtn = document.getElementById('scrollToTop');
+      
+      const initScrollButton = () => {
+        window.addEventListener('scroll', () => {
+          scrollBtn.classList.toggle('visible', window.scrollY > 500);
+        });
+        
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+      
+      // Efecto de partículas
+      const createParticles = () => {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 80;
+        const colors = [
+          'rgba(212, 175, 55, 0.7)', 
+          'rgba(185, 242, 255, 0.7)',
+          'rgba(255, 255, 255, 0.7)'
+        ];
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          
+          const size = Math.random() * 8 + 2;
+          const posX = Math.random() * 100;
+          const delay = Math.random() * 20;
+          const duration = 20 + Math.random() * 15;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${posX}%`;
+          particle.style.animationDelay = `${delay}s`;
+          particle.style.opacity = Math.random() * 0.7 + 0.3;
+          particle.style.animationDuration = `${duration}s`;
+          particle.style.backgroundColor = color;
+          
+          particlesContainer.appendChild(particle);
+        }
+      }
+      
+      // Diamantes flotantes
+      const createDiamonds = () => {
+        const diamondContainer = document.getElementById('diamond-bg');
+        const diamondCount = 12;
+        
+        for (let i = 0; i < diamondCount; i++) {
+          const diamond = document.createElement('div');
+          diamond.classList.add('diamond');
+          
+          const size = Math.random() * 50 + 20;
+          const posX = Math.random() * 100;
+          const delay = Math.random() * 20;
+          const duration = 25 + Math.random() * 15;
+          const opacity = Math.random() * 0.4 + 0.1;
+          
+          diamond.style.width = `${size}px`;
+          diamond.style.height = `${size}px`;
+          diamond.style.left = `${posX}%`;
+          diamond.style.animationDelay = `${delay}s`;
+          diamond.style.opacity = opacity;
+          diamond.style.animationDuration = `${duration}s`;
+          
+          diamondContainer.appendChild(diamond);
+        }
+      }
+      
+      // Observador de intersección para animaciones
+      const initIntersectionObserver = () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = 'running';
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, h2, .bio, .bio img, .bio p, .carousel-container, form, input, textarea, button, .youtube-sub, .social-section, .social-container, .social-card, footer p').forEach(el => {
+          observer.observe(el);
+        });
+      }
+      
+      // Inicializar
+      const init = () => {
+        initScrollButton();
+        createParticles();
+        createDiamonds();
+        initIntersectionObserver();
+      }
+      
+      return { init };
+    })();
+
+    // ========================
+    // INICIALIZACIÓN GENERAL
+    // ========================
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        carouselModule.init();
+        formModule.init();
+        visualEffectsModule.init();
+      } catch (e) {
+        console.error('Error inicializando módulos:', e);
+        // Fallback para usuarios sin JavaScript
+        document.querySelectorAll('[style*="opacity:0"]').forEach(el => {
+          el.style.opacity = 1;
+          el.style.transform = 'none';
+        });
+      }
+    });
+
   </script>
 </body>
 </html>
